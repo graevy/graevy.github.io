@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>B)</title>
+    <link>http://quatl.ooo/</link>
+    <description>Recent content on B)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2022, Avery Lawrence</copyright>
+    <lastBuildDate>Thu, 22 Dec 2022 19:54:08 -0800</lastBuildDate><atom:link href="http://quatl.ooo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello World</title>
+      <link>http://quatl.ooo/posts/hello-world/</link>
+      <pubDate>Thu, 22 Dec 2022 19:54:08 -0800</pubDate>
+      
+      <guid>http://quatl.ooo/posts/hello-world/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
