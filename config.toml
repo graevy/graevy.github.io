@@ -1,6 +1,6 @@
 baseURL = 'http://quatl.ooo/'
 languageCode = 'en-us'
-title = 'Projects'
+title = 'print hello'
 theme = 'devise'
 relativeURLs = true
 enableEmoji = true
