@@ -6,7 +6,7 @@ relativeURLs = true
 enableEmoji = true
 googleAnalytics = ""
 enableRobotsTXT = true
-copyright = "&copy; 2022, Avery Lawrence"
+copyright = "&copy; 2023 Avery Lawrence"
 
 # Main menu items
 [menu]
@@ -20,7 +20,7 @@ copyright = "&copy; 2022, Avery Lawrence"
     identifier = "posts"
     name = "Posts"
     title = "Posts"
-    url = "/post/"
+    url = "/posts/"
     weight = -100
   [[menu.main]]
     identifier = "categories"
@@ -31,24 +31,25 @@ copyright = "&copy; 2022, Avery Lawrence"
 
 # Configuration Features
 [params]
-  description = "Project site!"      # Your meta description of the site
-  header_title = "Does this appear anywhere"                 # Your header title
-  header_subtitle = "Guess this goes below it" # Your header subtitle
-  home_image = "/images/avatar.png"          # Path to header image starting from the static directory
+  description = "Project site!"              # Your meta description of the site
+  header_title = "graevy"                    # Your header title
+  header_subtitle = "Unit Test Procrastinator"      # Your header subtitle
+  home_image = "/images/graevy.png"          # Path to header image starting from the static directory
   recent_posts = 5                           # Max amount of recent posts to show
   mainSections = ["posts", "post", "blog"]   # Main sections to include in recent posts
   [params.style]                             # CSS style overrides
-    backgroundColor = "#f8f9fa"
-    fontColor = "#212529"
+    backgroundColor = "#121215"
+    fontColor = "#50b020"
+    homeImageBorderColor = "#50b020"
   [[params.social]]
     fa_icon = "fab fa-github fa-1x"          # Font Awesome icon class
     href = "https://github.com/graevy"      # Link to associate with icon (http://, https://, mailto:)
   [[params.social]]
     fa_icon = "fab fa-linkedin-in fa-1x"
-    href = ""
+    href = "https://www.linkedin.com/in/avery-mallet-lawrence/"
   # [[params.social]]
   #   fa_icon = "fab fa-twitter fa-1x"
   #   href = ""
   [[params.social]]
     fa_icon = "fas fa-at fa-1x"
-    href = ""
+    href = "mailto:avry@pm.me"
