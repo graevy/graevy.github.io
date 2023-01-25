@@ -20,7 +20,7 @@ copyright = "&copy; 2023 Avery Lawrence"
     identifier = "posts"
     name = "Posts"
     title = "Posts"
-    url = "/posts/"
+    url = "/content/posts/"
     weight = -100
   [[menu.main]]
     identifier = "categories"
