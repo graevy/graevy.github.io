@@ -20,7 +20,7 @@ copyright = "&copy; 2022, Avery Lawrence"
     identifier = "posts"
     name = "Posts"
     title = "Posts"
-    url = "/post/"
+    url = "/posts/"
     weight = -100
   [[menu.main]]
     identifier = "categories"
@@ -45,10 +45,10 @@ copyright = "&copy; 2022, Avery Lawrence"
     href = "https://github.com/graevy"      # Link to associate with icon (http://, https://, mailto:)
   [[params.social]]
     fa_icon = "fab fa-linkedin-in fa-1x"
-    href = ""
+    href = "https://www.linkedin.com/in/avery-mallet-lawrence/"
   # [[params.social]]
   #   fa_icon = "fab fa-twitter fa-1x"
   #   href = ""
   [[params.social]]
     fa_icon = "fas fa-at fa-1x"
-    href = ""
+    href = "mailto:avry@pm.me"
