@@ -1,6 +1,6 @@
 baseURL = 'http://quatl.ooo/'
 languageCode = 'en-us'
-title = 'print hello'
+title = 'print("hello!")'
 theme = 'devise'
 relativeURLs = true
 enableEmoji = true
@@ -12,15 +12,15 @@ copyright = "&copy; 2023 Avery Lawrence"
 [menu]
   [[menu.main]]
     identifier = "about"
-    name = "About"
-    title = "About"
-    url = "/about/"
+    name = "Resume"
+    title = "Resume"
+    url = "/resume/"
     weight = -110
   [[menu.main]]
     identifier = "posts"
     name = "Posts"
     title = "Posts"
-    url = "/content/posts/"
+    url = "/posts/"
     weight = -100
   [[menu.main]]
     identifier = "categories"

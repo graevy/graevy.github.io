@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>print hello</title>
+    <title>print(&#34;hello!&#34;)</title>
     <link>http://quatl.ooo/</link>
-    <description>Recent content on print hello</description>
+    <description>Recent content on print(&#34;hello!&#34;)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2023 Avery Lawrence</copyright>
