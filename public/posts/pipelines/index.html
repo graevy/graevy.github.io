@@ -86,8 +86,30 @@
 </header>
 <div class="container">
     <div class="pl-sm-4 ml-sm-5">
-        <h2 id="it-lives">it lives</h2>
-<p>and hopefully can document whatever I&rsquo;m working on so I can link my projects &gt;.&lt;</p>
+        <h2 id="source-to-deploy-directly">Source to Deploy, directly</h2>
+<p>I had enough free time to throw together this project site over the holidays. Without any real networking knowledge, I snagged on basics for hours; the worst by far<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> was the webhooks. Ultimately, the 3 guides I referenced didn&rsquo;t mention that network points and nodes (?) have their own rules for port forwarding:</p>
+<ul>
+<li>Cloudflare has a very short <a href="https://developers.cloudflare.com/fundamentals/get-started/reference/network-ports/">whitelist</a><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>,</li>
+<li>Most distros, and particularly webhost distro images (I imagine), require port whitelisting through <code>iptables</code>/<code>nftables</code> backends typically managed with <code>ufw</code></li>
+</ul>
+<p>Basically, any point along the source -&gt; browser pipe can block you. And if it&rsquo;s github webhooks -&gt; dns resolver (cloudflare) -&gt; webhost (digitalocean) -&gt; server running <code>webhook</code> package systemd service -&gt; router -&gt; endpoint, it&rsquo;s dicey. It&rsquo;s understandable that a guide wouldn&rsquo;t include this information; it&rsquo;s obvious to an expert, and beginners will probably just start with <code>git pull</code>s on a cronjob/systemd timer.</p>
+<h2 id="build-and-test">Build and Test</h2>
+<p>I&rsquo;ve been careful not to interfere with Hugo&rsquo;s default build process <code>hugo</code>; it also handles testing beautifully through <code>hugo server</code>. My only hangup was forgetting my browser caches recently visited webpages: something that Hugo explicitly warns you about in the documentation (that I read a month ago).</p>
+<p>I was annoyed by customizability issues in the devise theme, but they were <a href="https://github.com/austingebauer/devise/commit/8b4bc6fb5fb28986685679a6f2267053514e87c2">recently added</a> as features, so I dodged build scripts with toml tinkering<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. I&rsquo;m considering more complex html elements if they don&rsquo;t impact page size which might require forking the devise theme to not complicate the build process.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Defeating me until I returned and could ask people who knew what they were doing&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>There are compromises for custom port forwarding through cloudflare, but there are ports which explicitly disable caching, and the only reason not to use them is because you have to add <code>-port 1234</code> to the <code>webhook</code> config file located by default at <code>/etc/systemd/system/webhook.service</code>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>THANK YOU <a href="https://github.com/kjeller">kjeller</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 
     </div>
 

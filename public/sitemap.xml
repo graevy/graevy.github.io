@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://quatl.ooo/posts/hello-world/</loc>
-    <lastmod>2022-12-22T19:54:08-08:00</lastmod>
+    <loc>http://quatl.ooo/posts/pipelines/</loc>
+    <lastmod>2023-01-25T14:09:41-08:00</lastmod>
   </url><url>
     <loc>http://quatl.ooo/posts/</loc>
-    <lastmod>2022-12-22T19:54:08-08:00</lastmod>
+    <lastmod>2023-01-25T14:09:41-08:00</lastmod>
   </url><url>
     <loc>http://quatl.ooo/</loc>
+    <lastmod>2023-01-25T14:09:41-08:00</lastmod>
+  </url><url>
+    <loc>http://quatl.ooo/posts/hello-world/</loc>
     <lastmod>2022-12-22T19:54:08-08:00</lastmod>
   </url><url>
     <loc>http://quatl.ooo/categories/</loc>
