@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2023 Avery Lawrence</copyright>
-    <lastBuildDate>Wed, 25 Jan 2023 14:09:41 -0800</lastBuildDate><atom:link href="http://quatl.ooo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 25 Jan 2023 16:52:32 -0800</lastBuildDate><atom:link href="http://quatl.ooo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Aoc22</title>
+      <link>http://quatl.ooo/posts/aoc22/</link>
+      <pubDate>Wed, 25 Jan 2023 16:52:32 -0800</pubDate>
+      
+      <guid>http://quatl.ooo/posts/aoc22/</guid>
+      <description>Background Back in November I told my friends I&amp;rsquo;d do advent of code with them this year. I was going to do it entirely in Rust, because I kept talking about how much I wanted to learn more Rust to actually use it for systems programming. I fell a bit behind, caught up some days, and promised I&amp;rsquo;d catch up when I had more free time over the holidays. String processing was a little weird, but manageable; I spent evenings sipping tea and staring at std::vec::Vec and std::str to replicate the kind of pythonic 10-line algorithms I usually write for leetcode problems.</description>
+    </item>
+    
     <item>
       <title>Pipelines</title>
       <link>http://quatl.ooo/posts/pipelines/</link>
