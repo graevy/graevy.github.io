@@ -14,7 +14,7 @@ copyright = "&copy; 2023 Avery Lawrence"
     identifier = "about"
     name = "Resume"
     title = "Resume"
-    url = "/resume/resume.pdf"
+    url = "/resume/"
     weight = -110
   [[menu.main]]
     identifier = "posts"
@@ -38,9 +38,9 @@ copyright = "&copy; 2023 Avery Lawrence"
   recent_posts = 5                           # Max amount of recent posts to show
   mainSections = ["posts", "post", "blog"]   # Main sections to include in recent posts
   [params.style]                             # CSS style overrides
-    backgroundColor = "#1c171a"
-    fontColor = "#4070b0"
-    homeImageBorderColor = "#4070b0"
+    backgroundColor = "#121215"
+    fontColor = "#50b020"
+    homeImageBorderColor = "#50b020"
   [[params.social]]
     fa_icon = "fab fa-github fa-1x"          # Font Awesome icon class
     href = "https://github.com/graevy"      # Link to associate with icon (http://, https://, mailto:)
