@@ -10,12 +10,12 @@ copyright = "&copy; 2023 Avery Lawrence"
 
 # Main menu items
 [menu]
-  [[menu.main]]
-    identifier = "about"
-    name = "About"
-    title = "About"
-    url = "/about/"
-    weight = -110
+  # [[menu.main]]
+  #   identifier = "about"
+  #   name = "About"
+  #   title = "About"
+  #   url = "/about/"
+  #   weight = -110
   [[menu.main]]
     identifier = "pdf"
     name = "Resume (pdf)"

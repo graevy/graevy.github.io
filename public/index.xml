@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2023 Avery Lawrence</copyright>
-    <lastBuildDate>Wed, 25 Jan 2023 16:52:32 -0800</lastBuildDate><atom:link href="http://quatl.ooo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 Jan 2023 00:27:20 -0800</lastBuildDate><atom:link href="http://quatl.ooo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Font</title>
+      <link>http://quatl.ooo/posts/font/</link>
+      <pubDate>Thu, 26 Jan 2023 00:27:20 -0800</pubDate>
+      
+      <guid>http://quatl.ooo/posts/font/</guid>
+      <description>Liberation Mono Surprisingly, the devise theme doesn&amp;rsquo;t appear to have a way to change your main font. I forked it and submitted a PR. Soon the site will be less new, and functional enough; I can slow down. I&amp;rsquo;ll write a summary of the gopro metadata project first, because the process was pretty sloppy.</description>
+    </item>
+    
     <item>
       <title>Aoc22</title>
       <link>http://quatl.ooo/posts/aoc22/</link>
