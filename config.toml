@@ -12,22 +12,28 @@ copyright = "&copy; 2023 Avery Lawrence"
 [menu]
   [[menu.main]]
     identifier = "about"
-    name = "Resume"
-    title = "Resume"
-    url = "/resume/"
+    name = "About"
+    title = "About"
+    url = "/about/"
     weight = -110
+  [[menu.main]]
+    identifier = "pdf"
+    name = "Resume (pdf)"
+    title = "CV"
+    url = "/resume/resume.pdf"
+    weight = -100
   [[menu.main]]
     identifier = "posts"
     name = "Posts"
     title = "Posts"
     url = "/posts/"
-    weight = -100
-  [[menu.main]]
-    identifier = "categories"
-    name = "Categories"
-    title = "Categories"
-    url = "/categories/"
     weight = -90
+  # [[menu.main]]
+  #   identifier = "categories"
+  #   name = "Categories"
+  #   title = "Categories"
+  #   url = "/categories/"
+  #   weight = -80
 
 # Configuration Features
 [params]
