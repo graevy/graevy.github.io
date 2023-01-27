@@ -6,7 +6,7 @@ draft: false
 
 ### Gopro GPS Metadata
 
-My [startup](https://okmilo.com) contract is about to end, so this is a good time for a writeup on the software I wrote to help me do field testing. I just want to clarify that this wasn't a coding contract, and that all of this was me working in my free time to interact with practical software.
+My [startup](https://okmilo.com) contract is about to end, so this is a good time for a writeup on the [software I wrote](https://github.com/graevy/gopro-metadata) to help me do field testing. I should clarify that this wasn't a coding contract; this was me coding in my free time to encounter practical software.
 
 In short, we were given gopro cameras to supplement field testing with video, but there was no quantitative positional data accompanying those tests. After poking around, I learned that GoPros do record GPX data (GPS XML), but extract it with either an unsupported 2017 desktop app or a paid phone app that didn't give me files.
 
