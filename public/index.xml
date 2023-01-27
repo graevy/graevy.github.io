@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2023 Avery Lawrence</copyright>
-    <lastBuildDate>Thu, 26 Jan 2023 00:27:20 -0800</lastBuildDate><atom:link href="http://quatl.ooo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 Jan 2023 00:00:30 -0800</lastBuildDate><atom:link href="http://quatl.ooo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gopro</title>
+      <link>http://quatl.ooo/posts/gopro/</link>
+      <pubDate>Fri, 27 Jan 2023 00:00:30 -0800</pubDate>
+      
+      <guid>http://quatl.ooo/posts/gopro/</guid>
+      <description>Gopro GPS Metadata My startup contract is about to end, so this is a good time for a writeup on the software I wrote to help me do field testing. I just want to clarify that this wasn&amp;rsquo;t a coding contract, and that all of this was me working in my free time to interact with practical software.
+In short, we were given gopro cameras to supplement field testing with video, but there was no quantitative positional data accompanying those tests.</description>
+    </item>
+    
     <item>
       <title>Font</title>
       <link>http://quatl.ooo/posts/font/</link>
