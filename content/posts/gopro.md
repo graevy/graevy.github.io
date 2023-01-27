@@ -6,7 +6,7 @@ draft: false
 
 ### Gopro GPS Metadata
 
-My [startup](https://okmilo.com) contract is about to end, so this is a good time for a writeup on the [software I wrote](https://github.com/graevy/gopro-metadata) to help me do field testing. I should clarify that this wasn't a coding contract; this was me coding in my free time to encounter practical software.
+My [startup](https://okmilo.com) contract is about to end, so this is a good time for a writeup on the [software I wrote](https://github.com/graevy/gopro-metadata) to help me do field testing. I should clarify that this wasn't a coding contract; I sought to encounter practical software independently.
 
 In short, we were given gopro cameras to supplement field testing with video, but there was no quantitative positional data accompanying those tests. After poking around, I learned that GoPros do record GPX data (GPS XML), but extract it with either an unsupported 2017 desktop app or a paid phone app that didn't give me files.
 
@@ -14,9 +14,9 @@ First script was a quick python XML parser that I piped ```strings``` output int
 
 This was my first mistake: not immediately delving into the python ecosystem[^1] for established tools. I'd never tackled something this broad before in a short timespan[^2], and, being used to writing my own tools to learn fundamentals, I didn't do due diligence.
 
-Second script generated gpx files from videos successfully. Great. I found someone else's script to parse the gpx buckets and lobotomized the user-friendly drag-and-drop interface inside it.
+Second script generated gpx files from videos[^3] successfully. Great. I found someone else's script to parse the gpx buckets and lobotomized the user-friendly drag-and-drop interface inside it.
 
-I tunnel-visioned on gpx file generation as a goal, and neglected a proper pipeline; **my second mistake**. I think I lost about a week to this[^3]. My script then became: generate gpx files -> generate csv/kml/whatever from gpx files -> delete gpx files. This was easy to rationalize; I was close to my goal, and if I cared about performance I wouldn't be using python. But, it made debugging a nightmare; objects were on disk instead of in memory, each test took minutes to run, directory handling was needless complication.
+I tunnel-visioned on gpx file generation as a goal, and neglected a proper pipeline; **my second mistake**. I think I lost about a week to this[^4]. My script then became: generate gpx files -> generate csv/kml/whatever from gpx files -> delete gpx files. This was easy to rationalize; I was close to my goal, and if I cared about performance I wouldn't be using python. But, it made debugging a nightmare; objects were on disk instead of in memory, each test took minutes to run, file operations were needless complication.
 
 So, I did my first major refactor, piping my forked gpx script's output directly into ```gpxpy```. Sometimes when you refactor, it clears your head, you know? Simplified processes are easier to map mentally, meaning fewer bugs, meaning better processes...there was a major "zen of refactoring" moment here. Everything was beautiful,
 
@@ -24,7 +24,7 @@ until I rigidly adhered to composition-over-inheritance, **my third mistake**. I
 
 Now the script was executing flawlessly. I had gorgeous csv output to shove into google maps to show routes taken. Except the gpx data inside the gopros was buggy as hell. Points at coordinates 0,0, points in the middle of the pacific, timestamps from epoch...there is some synchronization issue that lasts anywhere from 0 to 30? seconds when a gopro starts recording video, where the data just can't be trusted. I had to write some sanity checking algorithms to strip bad data and sort output.
 
-I tried three different tools to verify what I was seeing (one of which was gopro proprietary) and, well, the first few seconds of a gopro recording couldn't reliably tell me where anyone was standing. Our use-case mostly involved short recorded segments, leaving awkward gaps in field test data. This was **my fourth mistake**: My boss' boss wanted us to use gopros; I should've just ignored him and used phones[^4].
+I tried three different tools to verify what I was seeing (one of which was gopro proprietary) and, well, the first few seconds of a gopro recording couldn't reliably tell me where anyone was standing. Our use-case mostly involved short recorded segments[^5], leaving awkward gaps in field test data. This was **my fourth mistake**: My boss' boss wanted us to use gopros; I should've just ignored him and used phones[^6].
 
 So, that's how my gopro metadata extractor went. It took about a month. It works; gopros sometimes don't.
 
@@ -33,6 +33,10 @@ So, that's how my gopro metadata extractor went. It took about a month. It works
 
 [^2]: I had years to tinker with my ttrpg library while learning python at my old job, vs ASAP here
 
-[^3]: Averaging an hour a day, probably
+[^3]: Sidenote: gopros write two simultaneous video streams in user-selected resolution/60fps and 240p/30fps, respectively; the latter ".LRV" files (low-resolution video) also contain the gpx buckets, and are much faster to parse by virtue of being smaller.
 
-[^4]: Credit to my boss for pushing me in that direction, but I was in too deep to pivot. You could call it sunk-cost avoidance, but I didn't know the gopro gpx data would be so awful; the mistake was really not combing over it before proceeding with feature creep.
+[^4]: Averaging an hour or two a day, probably
+
+[^5]: A large part of this is how quickly gopros eat through their batteries. We had to bring spares, disable bluetooth, and record in 1080p to last a full work day.
+
+[^6]: Credit to my boss for pushing me in that direction, but I was in too deep to pivot. You could call it sunk-cost avoidance, but I didn't know the gopro gpx data would be so awful; the mistake was really not combing over it before proceeding with feature creep.
