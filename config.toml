@@ -45,8 +45,8 @@ copyright = "&copy; 2023 Avery Lawrence"
   mainSections = ["posts", "post", "blog"]   # Main sections to include in recent posts
   [params.style]                             # CSS style overrides
     backgroundColor = "#121215"
-    homeImageBorderColor = "#85b550"
-    fontColor = "#85b550"
+    homeImageBorderColor = "#95d550"
+    fontColor = "#95d550"
     fontFamilyBase = "Liberation Mono"
   [[params.social]]
     fa_icon = "fab fa-github fa-1x"          # Font Awesome icon class
