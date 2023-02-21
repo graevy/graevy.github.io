@@ -11,11 +11,11 @@ The last update was: Feb 20 2023
 
 # Browser
 
-Chrome is phasing out privacy features and adblockers, and its browser monopoly adversely affects web development.
-Vivaldi is pretty nice. It has good tab management, integrated mail, calendar, etc. and it's mostly open source.
-Brave is infamously headed by (among other things) a covid denier, but does have features like integrated ad blocking.
-Opera has good media integration.
-Firefox is open source, customizable, and the most popular alternative.
+Chrome is phasing out privacy features and adblockers, and its browser monopoly adversely affects web development, so stop using it!
+- Vivaldi is pretty nice. It has good tab management, integrated mail, calendar, etc. and it's mostly open source.
+- Brave is infamously headed by (among other things) a covid denier, but does have features like integrated ad blocking.
+- Opera has good media integration.
+- Firefox is open source, customizable, and the most popular alternative (that isn't Edge or Safari)
 
 Firefox addons I recommend to everyone in order of importance:
 - Ublock Origin
@@ -46,7 +46,7 @@ To find approximate knowledge that isn't monetized, AI chatbots like chatGPT are
 
 AI chatbots are bad at giving you exactly correct answers. I just asked chatGPT what 2+3-5+12*4/2 is (24); it said 10.
 
-[Archive.org](https://archive.org/) saves old webpages. This is very important work, and very useful. For instance, to find the darknet link below, I searched `darknetmarkets 2022 site:reddit.com`, looked for the first banned subreddit I could find, put its URL into the internet archive, retrieved an old version of the site, and found a collection of helpful links in its sidebar.
+[Archive.org](https://archive.org/) saves old webpages. This is very important work, and very useful. To find the darknet link below, I searched `darknetmarkets 2022 site:reddit.com`, looked for the first banned subreddit I could find, put its URL into the internet archive, retrieved an old version of the site, and found a collection of helpful links in its sidebar.
 
 # TOR/VPNs and the darkweb
 
@@ -54,7 +54,9 @@ AI chatbots are bad at giving you exactly correct answers. I just asked chatGPT 
 
 VPNs are a node between user and endpoint; you have to trust them to use them. [Mullvad](https://mullvad.net/en/) is a frequently recommended vpn service. These are not as private as people tend to believe.
 
-Darknet markets come and go all the time. At the moment, https://darknet.markets/ has a lot of links. Monero is the current anonymous cryptocurrency of choice.
+Darknet markets come and go all the time. At the moment, https://darknet.markets/ has a lot of links. You can only use these links in a TOR browser.
+
+Monero is the current anonymous cryptocurrency of choice.
 
 # Piracy
 
@@ -66,21 +68,15 @@ You need a program to handle torrenting. [qBittorrent](https://qbittorrent.org/d
 
 Sometimes, Disney or some other media giant will serve you your torrents. They do this to get your IP address, to nag your ISP, to nag you. You can ignore these emails; ISPs want your money, so they won't cancel your service. If you get enough emails, they'll slap you on the wrist somehow. Using a VPN will stop the letters.
 
-Note that not all torrenting is illegal; it's a very helpful way to share files without a dedicated server. I have downloaded device drivers with torrent clients, public domain works, etc.
-
 ### Basic virus avoidance techniques
 
-Know your file extensions: a .exe file is a windows executable file for running a program. If you download music, and it's a .exe file, that's probably a virus. If you don't know an extension, search it online.
+Know your file extensions: a .exe file is a windows executable file for running a program. If you download music, and it's a .exe file, that's a virus. If you don't know an extension, search it online. Some downloads, like game installers, need admin permissions. A music file asking for admin permissions is a virus.
 
-Some downloads will require admin permissions. Game installers are a good example; video files are not.
+Search engines are full of fake websites. Wikipedia, subreddits, and discords will have URLs for popular software.
 
-This post has resources that I "trust". If something is a maybe-virus, you can use [virustotal](https://virustotal.com). You'll get more false results depending on the file; I've never seen a windows cracking tool pass an antivirus scan or a video file fail one.
+If you're taking a chance on something, you can use [virustotal](https://virustotal.com). You'll get more false results depending on the file; I've never seen a windows cracking tool pass an antivirus scan or a video file fail one.
 
-If you just search something like "mobilism" (mentioned later), you'll run into fake websites. Just search reddit to get the URL.
-
-I don't know of any good free antiviruses anymore.
-
-If you get a virus, you probably won't know about it. Every few years, reinstall your OS from a flash drive, and then format the drive.
+Free antiviruses aren't better than windows defender. If you get a virus, you probably won't know about it. Periodically wiping your drive is the only reliable way to clear certain viruses.
 
 ### Windows
 
@@ -88,16 +84,15 @@ This is a lot less risky than it used to be because most cracks now use official
 - Get latest windows image from microsoft
 - Create an installation USB with [rufus](https://rufus.ie/en/) (Windows), Disk Utility (mac), or the dd command (linux)
 - Go through the installation process, select Pro or Pro N (Pro N is the EU-compliant version with less bloat)
-- Go to [this github](https://github.com/massgravel/Microsoft-Activation-Scripts), open powershell as an admin, and crack it
+- Go to [this github](https://github.com/massgravel/Microsoft-Activation-Scripts), open powershell or a terminal as an admin, and crack it
 - If you installed Pro N, specifically, you have to install the Windows Media Feature Pack; look it up
 - I recommend [tronscript](https://old.reddit.com/r/tronscript) for debloating and [chocolatey](https://chocolatey.org) for package managing
 
-
 ### Music
 
-It's hard to get a virus from downloading music, not that anyone does that anymore. If you want to actually download music, [rutracker](https://rutracker.org) is my favorite pubic tracker for music (rip what.cd).
+It's hard to get a virus from downloading music, not that anyone does that anymore. [rutracker](https://rutracker.org) is my favorite pubic tracker for music (rip what.cd).
 
-What you're probably looking for is a cracked spotify app in Android Apps below. You might also be interested in [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases).
+You're probably looking for a cracked spotify app in Android Apps below. You might also be interested in [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases) for youtube.
 
 ### Video
 
@@ -107,7 +102,7 @@ Use [VLC](https://www.videolan.org/) to watch videos.
 
 Check the "Download in sequential order" button in qbittorrent so you can watch videos before you've finished downloading them. You generally only need to download about 5-10% of a video before you can just stream it if your connection is fast enough.
 
-To help tie things together, I asked chatGPT: "provide a glossary of terms (such as "x265", or "5.1", or "BRRip") used to describe video hosted on torrent trackers" and received this response before it was cut off due to length:
+I asked chatGPT: "provide a glossary of terms (such as "x265", or "5.1", or "BRRip") used to describe video hosted on torrent trackers" and received this response before it was cut off due to length:
 
 ```
 Sure, here's a glossary of terms commonly used to describe video hosted on torrent trackers:
@@ -149,8 +144,8 @@ There is a bounty ecosystem where people donate to reputable game crackers. Don'
 
 ### Books
 
-[libgen](https://gen.lib.rus.ec) is the best. Myanonamouse is a good private tracker for books that will let you in after an interview. The piracy subreddit maintains a list of book trackers. A generic web search with pdf, epub, etc. extensions is a last resort.
+[libgen](https://gen.lib.rus.ec) is the best. Myanonamouse is a good private tracker for books that will let you in after an interview. The piracy subreddit maintains a list of book trackers; these are always coming and going. A generic web search with pdf, epub, etc. extensions is a last resort.
 
 ### Papers
 
-Sci-hub's uptime is very intermittent. You should actually just email paper authors and they'll send you a copy.
+Sci-hub's been down for awhile. Just email paper authors and they'll send you a copy. Extensions like Bypass Paywalls Clean or Unpaywall have historically been okay at this.

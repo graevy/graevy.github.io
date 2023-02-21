@@ -85,11 +85,13 @@
         <p>I&rsquo;m writing this post for my friends who know how to use the internet, but not effectively or safely. I&rsquo;ll try to keep this up to date.</p>
 <p>The last update was: Feb 20 2023</p>
 <h1 id="browser">Browser</h1>
-<p>Chrome is phasing out privacy features and adblockers, and its browser monopoly adversely affects web development.
-Vivaldi is pretty nice. It has good tab management, integrated mail, calendar, etc. and it&rsquo;s mostly open source.
-Brave is infamously headed by (among other things) a covid denier, but does have features like integrated ad blocking.
-Opera has good media integration.
-Firefox is open source, customizable, and the most popular alternative.</p>
+<p>Chrome is phasing out privacy features and adblockers, and its browser monopoly adversely affects web development, so stop using it!</p>
+<ul>
+<li>Vivaldi is pretty nice. It has good tab management, integrated mail, calendar, etc. and it&rsquo;s mostly open source.</li>
+<li>Brave is infamously headed by (among other things) a covid denier, but does have features like integrated ad blocking.</li>
+<li>Opera has good media integration.</li>
+<li>Firefox is open source, customizable, and the most popular alternative (that isn&rsquo;t Edge or Safari)</li>
+</ul>
 <p>Firefox addons I recommend to everyone in order of importance:</p>
 <ul>
 <li>Ublock Origin</li>
@@ -114,42 +116,40 @@ Firefox is open source, customizable, and the most popular alternative.</p>
 <p>To find approximate knowledge that isn&rsquo;t monetized, AI chatbots like chatGPT are a great way to search for things, because they&rsquo;re trained on the internet. I just searched &ldquo;what is the purpose of magnetic eye shadow pallette&rdquo;; I only saw ads. Here is a dialogue I just had with chatGPT:</p>
 <p><img src="../../images/eyeshadow.png" alt=""></p>
 <p>AI chatbots are bad at giving you exactly correct answers. I just asked chatGPT what 2+3-5+12*4/2 is (24); it said 10.</p>
-<p><a href="https://archive.org/">Archive.org</a> saves old webpages. This is very important work, and very useful. For instance, to find the darknet link below, I searched <code>darknetmarkets 2022 site:reddit.com</code>, looked for the first banned subreddit I could find, put its URL into the internet archive, retrieved an old version of the site, and found a collection of helpful links in its sidebar.</p>
+<p><a href="https://archive.org/">Archive.org</a> saves old webpages. This is very important work, and very useful. To find the darknet link below, I searched <code>darknetmarkets 2022 site:reddit.com</code>, looked for the first banned subreddit I could find, put its URL into the internet archive, retrieved an old version of the site, and found a collection of helpful links in its sidebar.</p>
 <h1 id="torvpns-and-the-darkweb">TOR/VPNs and the darkweb</h1>
 <p><a href="https://www.torproject.org/download/">The Onion Router</a> bounces your connection around dozens of different anonymous nodes before reaching an endpoint. This is a secure way to access the internet, generally, but is slow. Properly configured, TOR is an acceptable way to use the darkweb. <a href="https://tails.boum.org/">Tails</a> is a portable linux distribution that pre-configures TOR.</p>
 <p>VPNs are a node between user and endpoint; you have to trust them to use them. <a href="https://mullvad.net/en/">Mullvad</a> is a frequently recommended vpn service. These are not as private as people tend to believe.</p>
-<p>Darknet markets come and go all the time. At the moment, <a href="https://darknet.markets/">https://darknet.markets/</a> has a lot of links. Monero is the current anonymous cryptocurrency of choice.</p>
+<p>Darknet markets come and go all the time. At the moment, <a href="https://darknet.markets/">https://darknet.markets/</a> has a lot of links. You can only use these links in a TOR browser.</p>
+<p>Monero is the current anonymous cryptocurrency of choice.</p>
 <h1 id="piracy">Piracy</h1>
 <p>Here is an overview of content-specific internet piracy ecosystems.</p>
 <h3 id="explanation-of-torrenting">Explanation of torrenting</h3>
 <p>You need a program to handle torrenting. <a href="https://qbittorrent.org/download.php">qBittorrent</a> is open source (anyone can view all of its code, making it more secure and ad-free). You get parts of files from anyone else who has them and is online (this part is secure because of the torrent protocol). Torrents themselves can be viruses because anyone can upload one. To actually download a torrent, you have to browse a torrent tracker to get either &ldquo;magnet link&quot;s or .torrent files for a torrent client to use.</p>
 <p>Sometimes, Disney or some other media giant will serve you your torrents. They do this to get your IP address, to nag your ISP, to nag you. You can ignore these emails; ISPs want your money, so they won&rsquo;t cancel your service. If you get enough emails, they&rsquo;ll slap you on the wrist somehow. Using a VPN will stop the letters.</p>
-<p>Note that not all torrenting is illegal; it&rsquo;s a very helpful way to share files without a dedicated server. I have downloaded device drivers with torrent clients, public domain works, etc.</p>
 <h3 id="basic-virus-avoidance-techniques">Basic virus avoidance techniques</h3>
-<p>Know your file extensions: a .exe file is a windows executable file for running a program. If you download music, and it&rsquo;s a .exe file, that&rsquo;s probably a virus. If you don&rsquo;t know an extension, search it online.</p>
-<p>Some downloads will require admin permissions. Game installers are a good example; video files are not.</p>
-<p>This post has resources that I &ldquo;trust&rdquo;. If something is a maybe-virus, you can use <a href="https://virustotal.com">virustotal</a>. You&rsquo;ll get more false results depending on the file; I&rsquo;ve never seen a windows cracking tool pass an antivirus scan or a video file fail one.</p>
-<p>If you just search something like &ldquo;mobilism&rdquo; (mentioned later), you&rsquo;ll run into fake websites. Just search reddit to get the URL.</p>
-<p>I don&rsquo;t know of any good free antiviruses anymore.</p>
-<p>If you get a virus, you probably won&rsquo;t know about it. Every few years, reinstall your OS from a flash drive, and then format the drive.</p>
+<p>Know your file extensions: a .exe file is a windows executable file for running a program. If you download music, and it&rsquo;s a .exe file, that&rsquo;s a virus. If you don&rsquo;t know an extension, search it online. Some downloads, like game installers, need admin permissions. A music file asking for admin permissions is a virus.</p>
+<p>Search engines are full of fake websites. Wikipedia, subreddits, and discords will have URLs for popular software.</p>
+<p>If you&rsquo;re taking a chance on something, you can use <a href="https://virustotal.com">virustotal</a>. You&rsquo;ll get more false results depending on the file; I&rsquo;ve never seen a windows cracking tool pass an antivirus scan or a video file fail one.</p>
+<p>Free antiviruses aren&rsquo;t better than windows defender. If you get a virus, you probably won&rsquo;t know about it. Periodically wiping your drive is the only reliable way to clear certain viruses.</p>
 <h3 id="windows">Windows</h3>
 <p>This is a lot less risky than it used to be because most cracks now use official microsoft windows images.</p>
 <ul>
 <li>Get latest windows image from microsoft</li>
 <li>Create an installation USB with <a href="https://rufus.ie/en/">rufus</a> (Windows), Disk Utility (mac), or the dd command (linux)</li>
 <li>Go through the installation process, select Pro or Pro N (Pro N is the EU-compliant version with less bloat)</li>
-<li>Go to <a href="https://github.com/massgravel/Microsoft-Activation-Scripts">this github</a>, open powershell as an admin, and crack it</li>
+<li>Go to <a href="https://github.com/massgravel/Microsoft-Activation-Scripts">this github</a>, open powershell or a terminal as an admin, and crack it</li>
 <li>If you installed Pro N, specifically, you have to install the Windows Media Feature Pack; look it up</li>
 <li>I recommend <a href="https://old.reddit.com/r/tronscript">tronscript</a> for debloating and <a href="https://chocolatey.org">chocolatey</a> for package managing</li>
 </ul>
 <h3 id="music">Music</h3>
-<p>It&rsquo;s hard to get a virus from downloading music, not that anyone does that anymore. If you want to actually download music, <a href="https://rutracker.org">rutracker</a> is my favorite pubic tracker for music (rip what.cd).</p>
-<p>What you&rsquo;re probably looking for is a cracked spotify app in Android Apps below. You might also be interested in <a href="https://github.com/yt-dlp/yt-dlp/releases">yt-dlp</a>.</p>
+<p>It&rsquo;s hard to get a virus from downloading music, not that anyone does that anymore. <a href="https://rutracker.org">rutracker</a> is my favorite pubic tracker for music (rip what.cd).</p>
+<p>You&rsquo;re probably looking for a cracked spotify app in Android Apps below. You might also be interested in <a href="https://github.com/yt-dlp/yt-dlp/releases">yt-dlp</a> for youtube.</p>
 <h3 id="video">Video</h3>
 <p>Low risk for the same reason as above; video files don&rsquo;t have elevated permissions. Get these by going to your public tracker of choice (I recommend <a href="https://1337x.to">1337x</a> first, then <a href="https://thepiratebay.org">thepiratebay</a>). Private trackers have the best selections; those typically involve getting an invite and passing a screening process.</p>
 <p>Use <a href="https://www.videolan.org/">VLC</a> to watch videos.</p>
 <p>Check the &ldquo;Download in sequential order&rdquo; button in qbittorrent so you can watch videos before you&rsquo;ve finished downloading them. You generally only need to download about 5-10% of a video before you can just stream it if your connection is fast enough.</p>
-<p>To help tie things together, I asked chatGPT: &ldquo;provide a glossary of terms (such as &ldquo;x265&rdquo;, or &ldquo;5.1&rdquo;, or &ldquo;BRRip&rdquo;) used to describe video hosted on torrent trackers&rdquo; and received this response before it was cut off due to length:</p>
+<p>I asked chatGPT: &ldquo;provide a glossary of terms (such as &ldquo;x265&rdquo;, or &ldquo;5.1&rdquo;, or &ldquo;BRRip&rdquo;) used to describe video hosted on torrent trackers&rdquo; and received this response before it was cut off due to length:</p>
 <pre tabindex="0"><code>Sure, here&#39;s a glossary of terms commonly used to describe video hosted on torrent trackers:
 
 x265: An advanced video compression format that provides better video quality than the older x264 format, while using less storage space and bandwidth.
@@ -179,9 +179,9 @@ SD: Stands for &#34;standard definition.&#34;
 <h3 id="games">Games</h3>
 <p>There is a bounty ecosystem where people donate to reputable game crackers. Don&rsquo;t get games off of public trackers like thepiratebay. Two of the most reputable crackers are <a href="https//:fitgirl-repacks.site">fitgirl</a> and <a href="https://dodi-repacks.site">dodi</a>. If they don&rsquo;t have what you&rsquo;re looking for, go check <a href="https://old.reddit.com/r/CrackWatch">the CrackWatch subreddit</a> to find a reputable cracker who does.</p>
 <h3 id="books">Books</h3>
-<p><a href="https://gen.lib.rus.ec">libgen</a> is the best. Myanonamouse is a good private tracker for books that will let you in after an interview. The piracy subreddit maintains a list of book trackers. A generic web search with pdf, epub, etc. extensions is a last resort.</p>
+<p><a href="https://gen.lib.rus.ec">libgen</a> is the best. Myanonamouse is a good private tracker for books that will let you in after an interview. The piracy subreddit maintains a list of book trackers; these are always coming and going. A generic web search with pdf, epub, etc. extensions is a last resort.</p>
 <h3 id="papers">Papers</h3>
-<p>Sci-hub&rsquo;s uptime is very intermittent. You should actually just email paper authors and they&rsquo;ll send you a copy.</p>
+<p>Sci-hub&rsquo;s been down for awhile. Just email paper authors and they&rsquo;ll send you a copy. Extensions like Bypass Paywalls Clean or Unpaywall have historically been okay at this.</p>
 
     </div>
 
