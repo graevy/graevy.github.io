@@ -82,41 +82,47 @@
 </header>
 <div class="container">
     <div class="pl-sm-4 ml-sm-5">
-        <p>I&rsquo;m writing this post for my friends who are generally tech-literate but not informed about harm reduction online. I will try to update this as my knowledge about the para-internet changes.</p>
+        <p>I&rsquo;m writing this post for my friends who know how to use the internet, but not effectively or safely. I&rsquo;ll try to keep this up to date.</p>
 <p>The last update was: Feb 20 2023</p>
 <h1 id="browser">Browser</h1>
-<p>Firefox is the &ldquo;best&rdquo; chrome alternative if you care about privacy and not giving alphabet a 90% browser monopoly. Brave is infamously headed by (among other things) a covid denier, Vivaldi is a good power-user browser, and Opera exists. Firefox addons I recommend to everyone:</p>
+<p>Chrome is phasing out privacy features and adblockers, and its browser monopoly adversely affects web development.
+Vivaldi is pretty nice. It has good tab management, integrated mail, calendar, etc. and it&rsquo;s mostly open source.
+Brave is infamously headed by (among other things) a covid denier, but does have features like integrated ad blocking.
+Opera has good media integration.
+Firefox is open source, customizable, and the most popular alternative.</p>
+<p>Firefox addons I recommend to everyone in order of importance:</p>
 <ul>
 <li>Ublock Origin</li>
-<li>SponsorBlock</li>
 <li>I still don&rsquo;t care about cookies</li>
+<li>SponsorBlock</li>
 <li>Bypass Paywalls Clean</li>
 <li>Alternative Player for Twitch.tv (this hides ads)</li>
 <li>Link Cleaner</li>
+<li>Tab Session Manager</li>
 </ul>
-<p>Sometimes using firefox with addons will break a webpage. Firefox has a safe mode (starts without any customization) for this.</p>
-<p>Mozilla maintains <a href="https://support.mozilla.org/en-US/kb/switching-chrome-firefox">a page</a> detailing how to switch from chrome to firefox. I will only nag you once.</p>
-<h1 id="searching">Searching</h1>
-<p>Search engines don&rsquo;t work anymore because of SEO and a lack of financial incentive to fix the problem. It&rsquo;s helpful to know that:</p>
+<p>Sometimes addons will break a webpage. Most browsers have a safe mode (loads a new menu for this) for this.</p>
+<p>Mozilla maintains <a href="https://support.mozilla.org/en-US/kb/switching-chrome-firefox">a page</a> detailing how to switch from chrome to firefox</p>
+<h1 id="searching-tips">Searching tips</h1>
+<p>Search engines don&rsquo;t work anymore because of SEO and a lack of financial incentive to fix the problem. Search engines have a general syntax you can use to search better. It&rsquo;s helpful to know that:</p>
 <ul>
 <li><code>seattle &quot;vegan&quot; restaurants</code> will only return results containing the keyword <code>vegan</code></li>
 <li><code>seattle restaurants -pinterest -vegan</code> will only return results that don&rsquo;t contain <code>vegan</code> or <code>pinterest</code></li>
 <li><code>seattle restaurants site:reddit.com</code> will only return results from reddit;</li>
 <li><code>seattle &quot;vegan&quot; restaurants -pinterest site:reddit.com</code> will give you reddit posts containing the word vegan about seattle restaurants that don&rsquo;t have pinterest anywhere in their body or title.</li>
 </ul>
-<p>I use duckduckgo, but it isn&rsquo;t much better than google. Generally, people sitesearch reddit to find product reviews; the internet is centralized now.</p>
-<p>To find approximate knowledge that isn&rsquo;t monetized, AI chatbots like chatGPT are a great way to search for things, because their input data is text on the internet. I just searched &ldquo;what is the purpose of magnetic eye shadow pallette&rdquo;; I only saw ads for eye shadow pallette. Here is a dialogue I just had with chatGPT:</p>
+<p>I use duckduckgo, but it isn&rsquo;t much better than google. I find most people sitesearch reddit (appending site:reddit.com) to find product reviews that aren&rsquo;t sponsored.</p>
+<p>To find approximate knowledge that isn&rsquo;t monetized, AI chatbots like chatGPT are a great way to search for things, because they&rsquo;re trained on the internet. I just searched &ldquo;what is the purpose of magnetic eye shadow pallette&rdquo;; I only saw ads. Here is a dialogue I just had with chatGPT:</p>
 <p><img src="../../images/eyeshadow.png" alt=""></p>
 <p>AI chatbots are bad at giving you exactly correct answers. I just asked chatGPT what 2+3-5+12*4/2 is (24); it said 10.</p>
-<p><a href="https://archive.org/">Archive.org</a> is a helpful resource to be aware of. For instance, to find the darknet link below, I searched <code>darknetmarkets 2022 site:reddit.com</code>, looked for the first banned subreddit I could find, put its URL into the internet archive, retrieved an old version of the site, and found a collection of helpful links in its sidebar.</p>
+<p><a href="https://archive.org/">Archive.org</a> saves old webpages. This is very important work, and very useful. For instance, to find the darknet link below, I searched <code>darknetmarkets 2022 site:reddit.com</code>, looked for the first banned subreddit I could find, put its URL into the internet archive, retrieved an old version of the site, and found a collection of helpful links in its sidebar.</p>
 <h1 id="torvpns-and-the-darkweb">TOR/VPNs and the darkweb</h1>
-<p><a href="https://www.torproject.org/download/">The Onion Router</a> bounces your connection around dozens of different anonymous nodes before reaching an endpoint. This is a secure way to access the internet, generally, but is very slow. Properly configured, TOR is an acceptable way to use the darkweb. <a href="https://tails.boum.org/">Tails</a> is a portable linux distribution that pre-configures TOR.</p>
-<p>VPNs add a single node between user and endpoint; you have to trust them to use them. <a href="https://mullvad.net/en/">Mullvad</a> is a frequently recommended vpn service.</p>
-<p>Darknet markets come and go all the time. At the moment, <a href="https://darknet.markets/">https://darknet.markets/</a> has a lot of links. Monero is the current cryptocurrency of choice; the rest are more traceable.</p>
+<p><a href="https://www.torproject.org/download/">The Onion Router</a> bounces your connection around dozens of different anonymous nodes before reaching an endpoint. This is a secure way to access the internet, generally, but is slow. Properly configured, TOR is an acceptable way to use the darkweb. <a href="https://tails.boum.org/">Tails</a> is a portable linux distribution that pre-configures TOR.</p>
+<p>VPNs are a node between user and endpoint; you have to trust them to use them. <a href="https://mullvad.net/en/">Mullvad</a> is a frequently recommended vpn service. These are not as private as people tend to believe.</p>
+<p>Darknet markets come and go all the time. At the moment, <a href="https://darknet.markets/">https://darknet.markets/</a> has a lot of links. Monero is the current anonymous cryptocurrency of choice.</p>
 <h1 id="piracy">Piracy</h1>
 <p>Here is an overview of content-specific internet piracy ecosystems.</p>
 <h3 id="explanation-of-torrenting">Explanation of torrenting</h3>
-<p>You need an app to handle torrenting. <a href="https://qbittorrent.org/download.php">qBittorrent</a> is open source (anyone can view all of its code, making it more secure and ad-free). You get parts of files from anyone else who has them and is online (this part is secure because of the torrent protocol). Torrents themselves can be viruses because anyone can upload one. To actually download a torrent, you have to browse a torrent tracker to get either &ldquo;magnet link&quot;s or .torrent files for a torrent client to use.</p>
+<p>You need a program to handle torrenting. <a href="https://qbittorrent.org/download.php">qBittorrent</a> is open source (anyone can view all of its code, making it more secure and ad-free). You get parts of files from anyone else who has them and is online (this part is secure because of the torrent protocol). Torrents themselves can be viruses because anyone can upload one. To actually download a torrent, you have to browse a torrent tracker to get either &ldquo;magnet link&quot;s or .torrent files for a torrent client to use.</p>
 <p>Sometimes, Disney or some other media giant will serve you your torrents. They do this to get your IP address, to nag your ISP, to nag you. You can ignore these emails; ISPs want your money, so they won&rsquo;t cancel your service. If you get enough emails, they&rsquo;ll slap you on the wrist somehow. Using a VPN will stop the letters.</p>
 <p>Note that not all torrenting is illegal; it&rsquo;s a very helpful way to share files without a dedicated server. I have downloaded device drivers with torrent clients, public domain works, etc.</p>
 <h3 id="basic-virus-avoidance-techniques">Basic virus avoidance techniques</h3>
