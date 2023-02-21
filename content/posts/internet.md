@@ -1,53 +1,60 @@
 ---
-title: "Using the internet practically"
+title: "Internet tips"
 date: 2023-02-20T20:41:32-08:00
 draft: false
 ---
 
-I'm writing this post for my friends who are generally tech-literate but not informed about harm reduction online. I will try to update this as my knowledge about the para-internet changes.
+I'm writing this post for my friends who know how to use the internet, but not effectively or safely. I'll try to keep this up to date.
 
 The last update was: Feb 20 2023
 
 
 # Browser
 
-Firefox is the "best" chrome alternative if you care about privacy and not giving alphabet a 90% browser monopoly. Brave is infamously headed by (among other things) a covid denier, Vivaldi is a good power-user browser, and Opera exists. Firefox addons I recommend to everyone:
+Chrome is phasing out privacy features and adblockers, and its browser monopoly adversely affects web development.
+Vivaldi is pretty nice. It has good tab management, integrated mail, calendar, etc. and it's mostly open source.
+Brave is infamously headed by (among other things) a covid denier, but does have features like integrated ad blocking.
+Opera has good media integration.
+Firefox is open source, customizable, and the most popular alternative.
+
+Firefox addons I recommend to everyone in order of importance:
 - Ublock Origin
-- SponsorBlock
 - I still don't care about cookies
+- SponsorBlock
 - Bypass Paywalls Clean
 - Alternative Player for Twitch.tv (this hides ads)
 - Link Cleaner
+- Tab Session Manager
 
-Sometimes using firefox with addons will break a webpage. Firefox has a safe mode (starts without any customization) for this.
+Sometimes addons will break a webpage. Most browsers have a safe mode (loads a new menu for this) for this.
 
-Mozilla maintains [a page](https://support.mozilla.org/en-US/kb/switching-chrome-firefox) detailing how to switch from chrome to firefox. I will only nag you once.
+Mozilla maintains [a page](https://support.mozilla.org/en-US/kb/switching-chrome-firefox) detailing how to switch from chrome to firefox
 
-# Searching
+# Searching tips
 
-Search engines don't work anymore because of SEO and a lack of financial incentive to fix the problem. It's helpful to know that:
+Search engines don't work anymore because of SEO and a lack of financial incentive to fix the problem. Search engines have a general syntax you can use to search better. It's helpful to know that:
 - `seattle "vegan" restaurants` will only return results containing the keyword `vegan`
 - `seattle restaurants -pinterest -vegan` will only return results that don't contain `vegan` or `pinterest`
 - `seattle restaurants site:reddit.com` will only return results from reddit;
 - `seattle "vegan" restaurants -pinterest site:reddit.com` will give you reddit posts containing the word vegan about seattle restaurants that don't have pinterest anywhere in their body or title.
 
-I use duckduckgo, but it isn't much better than google. Generally, people sitesearch reddit to find product reviews; the internet is centralized now.
+I use duckduckgo, but it isn't much better than google. I find most people sitesearch reddit (appending site:reddit.com) to find product reviews that aren't sponsored.
 
-To find approximate knowledge that isn't monetized, AI chatbots like chatGPT are a great way to search for things, because their input data is text on the internet. I just searched "what is the purpose of magnetic eye shadow pallette"; I only saw ads for eye shadow pallette. Here is a dialogue I just had with chatGPT:
+To find approximate knowledge that isn't monetized, AI chatbots like chatGPT are a great way to search for things, because they're trained on the internet. I just searched "what is the purpose of magnetic eye shadow pallette"; I only saw ads. Here is a dialogue I just had with chatGPT:
 
 ![](/images/eyeshadow.png)
 
 AI chatbots are bad at giving you exactly correct answers. I just asked chatGPT what 2+3-5+12*4/2 is (24); it said 10.
 
-[Archive.org](https://archive.org/) is a helpful resource to be aware of. For instance, to find the darknet link below, I searched `darknetmarkets 2022 site:reddit.com`, looked for the first banned subreddit I could find, put its URL into the internet archive, retrieved an old version of the site, and found a collection of helpful links in its sidebar.
+[Archive.org](https://archive.org/) saves old webpages. This is very important work, and very useful. For instance, to find the darknet link below, I searched `darknetmarkets 2022 site:reddit.com`, looked for the first banned subreddit I could find, put its URL into the internet archive, retrieved an old version of the site, and found a collection of helpful links in its sidebar.
 
 # TOR/VPNs and the darkweb
 
-[The Onion Router](https://www.torproject.org/download/) bounces your connection around dozens of different anonymous nodes before reaching an endpoint. This is a secure way to access the internet, generally, but is very slow. Properly configured, TOR is an acceptable way to use the darkweb. [Tails](https://tails.boum.org/) is a portable linux distribution that pre-configures TOR.
+[The Onion Router](https://www.torproject.org/download/) bounces your connection around dozens of different anonymous nodes before reaching an endpoint. This is a secure way to access the internet, generally, but is slow. Properly configured, TOR is an acceptable way to use the darkweb. [Tails](https://tails.boum.org/) is a portable linux distribution that pre-configures TOR.
 
-VPNs add a single node between user and endpoint; you have to trust them to use them. [Mullvad](https://mullvad.net/en/) is a frequently recommended vpn service.
+VPNs are a node between user and endpoint; you have to trust them to use them. [Mullvad](https://mullvad.net/en/) is a frequently recommended vpn service. These are not as private as people tend to believe.
 
-Darknet markets come and go all the time. At the moment, https://darknet.markets/ has a lot of links. Monero is the current cryptocurrency of choice; the rest are more traceable.
+Darknet markets come and go all the time. At the moment, https://darknet.markets/ has a lot of links. Monero is the current anonymous cryptocurrency of choice.
 
 # Piracy
 
@@ -55,7 +62,7 @@ Here is an overview of content-specific internet piracy ecosystems.
 
 ### Explanation of torrenting
 
-You need an app to handle torrenting. [qBittorrent](https://qbittorrent.org/download.php) is open source (anyone can view all of its code, making it more secure and ad-free). You get parts of files from anyone else who has them and is online (this part is secure because of the torrent protocol). Torrents themselves can be viruses because anyone can upload one. To actually download a torrent, you have to browse a torrent tracker to get either "magnet link"s or .torrent files for a torrent client to use.
+You need a program to handle torrenting. [qBittorrent](https://qbittorrent.org/download.php) is open source (anyone can view all of its code, making it more secure and ad-free). You get parts of files from anyone else who has them and is online (this part is secure because of the torrent protocol). Torrents themselves can be viruses because anyone can upload one. To actually download a torrent, you have to browse a torrent tracker to get either "magnet link"s or .torrent files for a torrent client to use.
 
 Sometimes, Disney or some other media giant will serve you your torrents. They do this to get your IP address, to nag your ISP, to nag you. You can ignore these emails; ISPs want your money, so they won't cancel your service. If you get enough emails, they'll slap you on the wrist somehow. Using a VPN will stop the letters.
 
