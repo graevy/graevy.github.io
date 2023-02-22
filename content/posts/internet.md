@@ -1,21 +1,20 @@
 ---
-title: "Internet tips"
+title: "Internet harm reduction"
 date: 2023-02-20T20:41:32-08:00
 draft: false
 ---
 
-I'm writing this post for my friends who know how to use the internet, but not effectively or safely. I'll try to keep this up to date.
+This is for my friends who know how to use the internet, but not safely.
 
-The last update was: Feb 20 2023
-
+Last updated: Feb 22 2023
 
 # Browser
 
-Chrome is phasing out privacy features and adblockers, and its browser monopoly adversely affects web development, so stop using it!
-- Vivaldi is pretty nice. It has good tab management, integrated mail, calendar, etc. and it's mostly open source.
-- Brave is infamously headed by (among other things) a covid denier, but does have features like integrated ad blocking.
-- Opera has good media integration.
+Chrome is phasing out privacy features and adblockers, and browser monopolies are bad, so stop using it!
 - Firefox is open source, customizable, and the most popular alternative (that isn't Edge or Safari)
+- Vivaldi has good tab management, integrated mail, calendar, etc. and it's mostly open source
+- Brave accommodates right-wing conspiracists, but does have features like integrated ad blocking
+- Opera has good media integration
 
 Firefox addons I recommend to everyone in order of importance:
 - Ublock Origin
@@ -28,11 +27,11 @@ Firefox addons I recommend to everyone in order of importance:
 
 Sometimes addons will break a webpage. Most browsers have a safe mode (loads a new menu for this) for this.
 
-Mozilla maintains [a page](https://support.mozilla.org/en-US/kb/switching-chrome-firefox) detailing how to switch from chrome to firefox
+Mozilla maintains [a page](https://support.mozilla.org/en-US/kb/switching-chrome-firefox) detailing how to switch from chrome to firefox.
 
 # Searching tips
 
-Search engines don't work anymore because of SEO and a lack of financial incentive to fix the problem. Search engines have a general syntax you can use to search better. It's helpful to know that:
+There's a lot of misinformation and advertising in search results because of Search Engine Optimization (SEO) and a lack of financial incentive to fix the problem. Search engines have a general syntax you can use to search better. It's helpful to know that:
 - `seattle "vegan" restaurants` will only return results containing the keyword `vegan`
 - `seattle restaurants -pinterest -vegan` will only return results that don't contain `vegan` or `pinterest`
 - `seattle restaurants site:reddit.com` will only return results from reddit;
@@ -40,7 +39,7 @@ Search engines don't work anymore because of SEO and a lack of financial incenti
 
 I use duckduckgo, but it isn't much better than google. I find most people sitesearch reddit (appending site:reddit.com) to find product reviews that aren't sponsored.
 
-To find approximate knowledge that isn't monetized, AI chatbots like chatGPT are a great way to search for things, because they're trained on the internet. I just searched "what is the purpose of magnetic eye shadow pallette"; I only saw ads. Here is a dialogue I just had with chatGPT:
+For approximate knowledge that isn't monetized, AI chatbots like chatGPT are a great way to search for things, because they're trained on the internet. I just searched "what is the purpose of magnetic eye shadow pallette"; I only saw ads. Here is a dialogue I just had with chatGPT:
 
 ![](/images/eyeshadow.png)
 
@@ -70,33 +69,39 @@ Sometimes, Disney or some other media giant will serve you your torrents. They d
 
 ### Basic virus avoidance techniques
 
-Know your file extensions: a .exe file is a windows executable file for running a program. If you download music, and it's a .exe file, that's a virus. If you don't know an extension, search it online. Some downloads, like game installers, need admin permissions. A music file asking for admin permissions is a virus.
+Know your file extensions: a .exe file is a windows executable file for running a program. If you download music, and it's a .exe file, that's a virus. If you don't know an extension, search it online. Installers need admin permissions; a game torrent will need admin permissions, but a video file asking for them is a virus.
 
-Search engines are full of fake websites. Wikipedia, subreddits, and discords will have URLs for popular software.
+Search results are full of fake websites identical to the real one except by their URL. Their purpose is to try to "phish" credentials or get you to install a virus. Some examples:
+- `facebook.com.market` is a subdomain of `com.market`
+- `facebook.co`, `facebook.net`, etc. are *not* the same websites as `facebook.com`, and could be owned by anyone. The owners of facebook bought the `facebook.co` domain to prevent people from making this mistake, and the .net top-level-domain organization won't sell `facebook.net`
+It's often better to get a URL secondhand through a wikipedia page than just by searching.
 
-If you're taking a chance on something, you can use [virustotal](https://virustotal.com). You'll get more false results depending on the file; I've never seen a windows cracking tool pass an antivirus scan or a video file fail one.
+If you're taking a chance on something, you can use [virustotal](https://virustotal.com). You'll get more false results depending on the file; a windows cracking tool will fail an antivirus scan pretty much every time.
 
-Free antiviruses aren't better than windows defender. If you get a virus, you probably won't know about it. Periodically wiping your drive is the only reliable way to clear certain viruses.
+Free antiviruses aren't better than whatever is bundled with your OS. If you get a virus, you probably won't know about it. Periodically wiping your drive is the only reliable way to clear certain viruses.
 
 ### Windows
 
-This is a lot less risky than it used to be because most cracks now use official microsoft windows images. 
+This is a lot less risky than it used to be because most cracks now use microsoft's windows images. Go to [this github](https://github.com/massgravel/Microsoft-Activation-Scripts) and follow the instructions. Remember to open powershell/terminal *as an administrator*.
+
+To install windows:
 - Get latest windows image from microsoft
-- Create an installation USB with [rufus](https://rufus.ie/en/) (Windows), Disk Utility (mac), or the dd command (linux)
-- Go through the installation process, select Pro or Pro N (Pro N is the EU-compliant version with less bloat)
-- Go to [this github](https://github.com/massgravel/Microsoft-Activation-Scripts), open powershell or a terminal as an admin, and crack it
-- If you installed Pro N, specifically, you have to install the Windows Media Feature Pack; look it up
+- Create an installation USB with [rufus](https://rufus.ie/en/) (Windows), Disk Utility (mac), or something like `dd if=/path/to/iso of=/path/to/usb conv=fsync bs=8M` (linux)
+- Go through the installation process, select Pro or Pro N (Pro N is the EU-compliant version with less bloat, but you'll have to install the Windows Media Feature Pack yourself)
 - I recommend [tronscript](https://old.reddit.com/r/tronscript) for debloating and [chocolatey](https://chocolatey.org) for package managing
+- Crack it using the github link above
 
 ### Music
 
 It's hard to get a virus from downloading music, not that anyone does that anymore. [rutracker](https://rutracker.org) is my favorite pubic tracker for music (rip what.cd).
 
-You're probably looking for a cracked spotify app in Android Apps below. You might also be interested in [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases) for youtube.
+You're probably looking for a cracked spotify app in Android Apps below. [revanced](https://revanced.io/)/[newpipe](https://newpipe.net/) will handle youtube.
+
+For desktops, [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases) downloads youtube media, and just using the web version of spotify with ublock origin on firefox should block ads.
 
 ### Video
 
-Low risk for the same reason as above; video files don't have elevated permissions. Get these by going to your public tracker of choice (I recommend [1337x](https://1337x.to) first, then [thepiratebay](https://thepiratebay.org)). Private trackers have the best selections; those typically involve getting an invite and passing a screening process.
+Low risk for the same reason as above; video files don't need elevated permissions. Get these by going to your public tracker of choice (I recommend [1337x](https://1337x.to) first, then [thepiratebay](https://thepiratebay.org)). Private trackers have the best selections; those typically involve being invited and passing a screening process.
 
 Use [VLC](https://www.videolan.org/) to watch videos.
 
@@ -130,9 +135,9 @@ SD: Stands for "standard definition."
 
 ### Android Apps
 
-Get illicit APKs from [mobilism](https://forum.mobilism.org/index.php). This ecosystem's pretty seedy.
+Get illicit APKs from [mobilism](https://forum.mobilism.org/index.php). This ecosystem's pretty seedy. [f-droid](https://f-droid.org/) is a package manager like the google play store, except it only has free open source apps. 
 
-Apple users: you need to jailbreak your device.
+Apple users: device jailbreaking is beyond the scope of this post.
 
 ### Software
 
@@ -144,7 +149,7 @@ There is a bounty ecosystem where people donate to reputable game crackers. Don'
 
 ### Books
 
-[libgen](https://gen.lib.rus.ec) is the best. Myanonamouse is a good private tracker for books that will let you in after an interview. The piracy subreddit maintains a list of book trackers; these are always coming and going. A generic web search with pdf, epub, etc. extensions is a last resort.
+[libgen](https://gen.lib.rus.ec) is the best. Myanonamouse is a good private tracker for books that will let you in after an interview. The [piracy subreddit](https://old.reddit.com/r/piracy) maintains a list of book trackers; these are always coming and going. A generic web search with pdf, epub, etc. extensions is a last resort.
 
 ### Papers
 
