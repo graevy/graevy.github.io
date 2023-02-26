@@ -4,17 +4,15 @@ date: 2023-02-20T20:41:32-08:00
 draft: false
 ---
 
-This is for my friends who know how to use the internet, but not safely.
+This is a harm reduction guide for my friends who risk malware and surveillance, mostly while stealing things on the internet, but also just by browsing unhygenically.
 
-Last updated: Feb 22 2023
+Last updated: Feb 25 2023
 
 # Browser
 
 Chrome is phasing out privacy features and adblockers, and browser monopolies are bad, so stop using it!
 - Firefox is open source, customizable, and the most popular alternative (that isn't Edge or Safari)
-- Vivaldi has good tab management, integrated mail, calendar, etc. and it's mostly open source
-- Brave accommodates right-wing conspiracists, but does have features like integrated ad blocking
-- Opera has good media integration
+- Vivaldi has good tab management, integrated mail, calendar, etc. and is mostly open source
 
 Firefox addons I recommend to everyone in order of importance:
 - Ublock Origin
@@ -49,9 +47,9 @@ AI chatbots are bad at giving you exactly correct answers. I just asked chatGPT 
 
 # TOR/VPNs and the darkweb
 
-[The Onion Router](https://www.torproject.org/download/) bounces your connection around dozens of different anonymous nodes before reaching an endpoint. This is a secure way to access the internet, generally, but is slow. Properly configured, TOR is an acceptable way to use the darkweb. [Tails](https://tails.boum.org/) is a portable linux distribution that pre-configures TOR.
+[The Onion Router](https://www.torproject.org/download/) bounces your connection around dozens of different anonymous nodes before reaching an endpoint. This is a [generally](https://web.archive.org/web/20220821150904/https://arstechnica.com/information-technology/2013/09/majority-of-tor-crypto-keys-could-be-broken-by-nsa-researcher-says/) ["secure"](https://web.archive.org/web/20230122181201/https://gizmodo.com/fbi-tor-ip-address-muhammed-momtaz-al-azhari-isis-1849975153) way to access the internet, but is slow. Make sure you [properly configure](https://tb-manual.torproject.org/running-tor-browser/) TOR. [Tails](https://tails.boum.org/) is a portable linux distribution that pre-configures TOR, if you're both knowledgeable and paranoid.
 
-VPNs are a node between user and endpoint; you have to trust them to use them. [Mullvad](https://mullvad.net/en/) is a frequently recommended vpn service. These are not as private as people tend to believe.
+VPNs are a node between user and endpoint. This means you connect to a website through a middleman, called a proxy, so that the website can only see the proxy. The proxy can sell your [valuable](https://web.archive.org/web/20230224200913/https://www.statista.com/topics/1464/big-data/#topicOverview) data, which they as middlemen can neatly package, and any VPN service with an ad budget is almost certainly doing that to remain competitive. Off the top of my head, PrivateInternetAccess & NordVPN also explicitly cooperate with states. [Mullvad](https://mullvad.net/en/) is a frequently recommended vpn service.
 
 Darknet markets come and go all the time. At the moment, https://darknet.markets/ has a lot of links. You can only use these links in a TOR browser.
 
@@ -85,17 +83,19 @@ Free antiviruses aren't better than whatever is bundled with your OS. If you get
 This is a lot less risky than it used to be because most cracks now use microsoft's windows images. Go to [this github](https://github.com/massgravel/Microsoft-Activation-Scripts) and follow the instructions. Remember to open powershell/terminal *as an administrator*.
 
 To install windows:
-- Get latest windows image from microsoft
+- Get latest windows image from microsoft [10](https://www.microsoft.com/en-us/software-download/windows10ISO) [11](https://www.microsoft.com/en-us/software-download/windows11/)
 - Create an installation USB with [rufus](https://rufus.ie/en/) (Windows), Disk Utility (mac), or something like `dd if=/path/to/iso of=/path/to/usb conv=fsync bs=8M` (linux)
-- Go through the installation process, select Pro or Pro N (Pro N is the EU-compliant version with less bloat, but you'll have to install the Windows Media Feature Pack yourself)
+- Reboot with the USB plugged in; if you aren't taken to an installation screen, you need to enter your BIOS and change your boot order, typically by holding down the f12 (or f2, f8, delete...) key
+- Go through the installation process, select Pro or Pro N (Pro N is the EU-compliant version with less bloat, but you'll want to install the Windows Media Feature Pack yourself)
 - I recommend [tronscript](https://old.reddit.com/r/tronscript) for debloating and [chocolatey](https://chocolatey.org) for package managing
-- Crack it using the github link above
+- The tron command for a `tron.bat` file downloaded to `C:\Users\a\Downloads\Tron` is `C:\Users\a\Downloads\Tron\tron.bat -a -sa -sd -v` (skipping antivirus scans & defrag)
+- Crack windows using the *admin* powershell github commands in the link above
 
 ### Music
 
 It's hard to get a virus from downloading music, not that anyone does that anymore. [rutracker](https://rutracker.org) is my favorite pubic tracker for music (rip what.cd).
 
-You're probably looking for a cracked spotify app in Android Apps below. [revanced](https://revanced.io/)/[newpipe](https://newpipe.net/) will handle youtube.
+You're probably looking for a cracked spotify app in Android Apps below. [revanced](https://revanced.io/)/[newpipe](https://newpipe.net/) will handle youtube at the time of writing; ad-blockers come and go.
 
 For desktops, [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases) downloads youtube media, and just using the web version of spotify with ublock origin on firefox should block ads.
 
@@ -103,9 +103,7 @@ For desktops, [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases) downloads yout
 
 Low risk for the same reason as above; video files don't need elevated permissions. Get these by going to your public tracker of choice (I recommend [1337x](https://1337x.to) first, then [thepiratebay](https://thepiratebay.org)). Private trackers have the best selections; those typically involve being invited and passing a screening process.
 
-Use [VLC](https://www.videolan.org/) to watch videos.
-
-Check the "Download in sequential order" button in qbittorrent so you can watch videos before you've finished downloading them. You generally only need to download about 5-10% of a video before you can just stream it if your connection is fast enough.
+Check the "Download in sequential order" button in qbittorrent so you can watch videos before you've finished downloading them. You generally only need to download about 5-10% of a video before you can just stream it if your connection is fast enough. Use [VLC](https://www.videolan.org/) to watch videos. [MPC-HC](https://github.com/clsid2/mpc-hc/releases) is the only competitor I'm aware of.
 
 I asked chatGPT: "provide a glossary of terms (such as "x265", or "5.1", or "BRRip") used to describe video hosted on torrent trackers" and received this response before it was cut off due to length:
 
@@ -137,11 +135,11 @@ SD: Stands for "standard definition."
 
 Get illicit APKs from [mobilism](https://forum.mobilism.org/index.php). This ecosystem's pretty seedy. [f-droid](https://f-droid.org/) is a package manager like the google play store, except it only has free open source apps. 
 
-Apple users: device jailbreaking is beyond the scope of this post.
+Apple users: device jailbreaking is inconsistent.
 
 ### Software
 
-This is the hardest one to do properly; I think it's the riskiest. Find popular torrents on a public tracker and roll those dice. Use a virtual machine; that's beyond the scope of this post. Occasionally a repacker will host what you're looking for.
+This is the riskiest. Find popular torrents on a public tracker and roll those dice. Use a [virtual machine](https://www.virtualbox.org/wiki/Downloads); that's beyond the scope of this post. Occasionally a repacker will host what you're looking for.
 
 ### Games
 
