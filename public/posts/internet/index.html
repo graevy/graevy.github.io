@@ -82,15 +82,13 @@
 </header>
 <div class="container">
     <div class="pl-sm-4 ml-sm-5">
-        <p>This is for my friends who know how to use the internet, but not safely.</p>
-<p>Last updated: Feb 22 2023</p>
+        <p>This is a harm reduction guide for my friends who risk malware and surveillance, mostly while stealing things on the internet, but also just by browsing unhygenically.</p>
+<p>Last updated: Feb 25 2023</p>
 <h1 id="browser">Browser</h1>
 <p>Chrome is phasing out privacy features and adblockers, and browser monopolies are bad, so stop using it!</p>
 <ul>
 <li>Firefox is open source, customizable, and the most popular alternative (that isn&rsquo;t Edge or Safari)</li>
-<li>Vivaldi has good tab management, integrated mail, calendar, etc. and it&rsquo;s mostly open source</li>
-<li>Brave accommodates right-wing conspiracists, but does have features like integrated ad blocking</li>
-<li>Opera has good media integration</li>
+<li>Vivaldi has good tab management, integrated mail, calendar, etc. and is mostly open source</li>
 </ul>
 <p>Firefox addons I recommend to everyone in order of importance:</p>
 <ul>
@@ -118,8 +116,8 @@
 <p>AI chatbots are bad at giving you exactly correct answers. I just asked chatGPT what 2+3-5+12*4/2 is (24); it said 10.</p>
 <p><a href="https://archive.org/">Archive.org</a> saves old webpages. This is very important work, and very useful. To find the darknet link below, I searched <code>darknetmarkets 2022 site:reddit.com</code>, looked for the first banned subreddit I could find, put its URL into the internet archive, retrieved an old version of the site, and found a collection of helpful links in its sidebar.</p>
 <h1 id="torvpns-and-the-darkweb">TOR/VPNs and the darkweb</h1>
-<p><a href="https://www.torproject.org/download/">The Onion Router</a> bounces your connection around dozens of different anonymous nodes before reaching an endpoint. This is a secure way to access the internet, generally, but is slow. Properly configured, TOR is an acceptable way to use the darkweb. <a href="https://tails.boum.org/">Tails</a> is a portable linux distribution that pre-configures TOR.</p>
-<p>VPNs are a node between user and endpoint; you have to trust them to use them. <a href="https://mullvad.net/en/">Mullvad</a> is a frequently recommended vpn service. These are not as private as people tend to believe.</p>
+<p><a href="https://www.torproject.org/download/">The Onion Router</a> bounces your connection around dozens of different anonymous nodes before reaching an endpoint. This is a <a href="https://web.archive.org/web/20220821150904/https://arstechnica.com/information-technology/2013/09/majority-of-tor-crypto-keys-could-be-broken-by-nsa-researcher-says/">generally</a> <a href="https://web.archive.org/web/20230122181201/https://gizmodo.com/fbi-tor-ip-address-muhammed-momtaz-al-azhari-isis-1849975153">&ldquo;secure&rdquo;</a> way to access the internet, but is slow. Make sure you <a href="https://tb-manual.torproject.org/running-tor-browser/">properly configure</a> TOR. <a href="https://tails.boum.org/">Tails</a> is a portable linux distribution that pre-configures TOR, if you&rsquo;re both knowledgeable and paranoid.</p>
+<p>VPNs are a node between user and endpoint. This means you connect to a website through a middleman, called a proxy, so that the website can only see the proxy. The proxy can sell your <a href="https://web.archive.org/web/20230224200913/https://www.statista.com/topics/1464/big-data/#topicOverview">valuable</a> data, which they as middlemen can neatly package, and any VPN service with an ad budget is almost certainly doing that to remain competitive. Off the top of my head, PrivateInternetAccess &amp; NordVPN also explicitly cooperate with states. <a href="https://mullvad.net/en/">Mullvad</a> is a frequently recommended vpn service.</p>
 <p>Darknet markets come and go all the time. At the moment, <a href="https://darknet.markets/">https://darknet.markets/</a> has a lot of links. You can only use these links in a TOR browser.</p>
 <p>Monero is the current anonymous cryptocurrency of choice.</p>
 <h1 id="piracy">Piracy</h1>
@@ -141,20 +139,21 @@ It&rsquo;s often better to get a URL secondhand through a wikipedia page than ju
 <p>This is a lot less risky than it used to be because most cracks now use microsoft&rsquo;s windows images. Go to <a href="https://github.com/massgravel/Microsoft-Activation-Scripts">this github</a> and follow the instructions. Remember to open powershell/terminal <em>as an administrator</em>.</p>
 <p>To install windows:</p>
 <ul>
-<li>Get latest windows image from microsoft</li>
+<li>Get latest windows image from microsoft <a href="https://www.microsoft.com/en-us/software-download/windows10ISO">10</a> <a href="https://www.microsoft.com/en-us/software-download/windows11/">11</a></li>
 <li>Create an installation USB with <a href="https://rufus.ie/en/">rufus</a> (Windows), Disk Utility (mac), or something like <code>dd if=/path/to/iso of=/path/to/usb conv=fsync bs=8M</code> (linux)</li>
-<li>Go through the installation process, select Pro or Pro N (Pro N is the EU-compliant version with less bloat, but you&rsquo;ll have to install the Windows Media Feature Pack yourself)</li>
+<li>Reboot with the USB plugged in; if you aren&rsquo;t taken to an installation screen, you need to enter your BIOS and change your boot order, typically by holding down the f12 (or f2, f8, delete&hellip;) key</li>
+<li>Go through the installation process, select Pro or Pro N (Pro N is the EU-compliant version with less bloat, but you&rsquo;ll want to install the Windows Media Feature Pack yourself)</li>
 <li>I recommend <a href="https://old.reddit.com/r/tronscript">tronscript</a> for debloating and <a href="https://chocolatey.org">chocolatey</a> for package managing</li>
-<li>Crack it using the github link above</li>
+<li>The tron command for a <code>tron.bat</code> file downloaded to <code>C:\Users\a\Downloads\Tron</code> is <code>C:\Users\a\Downloads\Tron\tron.bat -a -sa -sd -v</code> (skipping antivirus scans &amp; defrag)</li>
+<li>Crack windows using the <em>admin</em> powershell github commands in the link above</li>
 </ul>
 <h3 id="music">Music</h3>
 <p>It&rsquo;s hard to get a virus from downloading music, not that anyone does that anymore. <a href="https://rutracker.org">rutracker</a> is my favorite pubic tracker for music (rip what.cd).</p>
-<p>You&rsquo;re probably looking for a cracked spotify app in Android Apps below. <a href="https://revanced.io/">revanced</a>/<a href="https://newpipe.net/">newpipe</a> will handle youtube.</p>
+<p>You&rsquo;re probably looking for a cracked spotify app in Android Apps below. <a href="https://revanced.io/">revanced</a>/<a href="https://newpipe.net/">newpipe</a> will handle youtube at the time of writing; ad-blockers come and go.</p>
 <p>For desktops, <a href="https://github.com/yt-dlp/yt-dlp/releases">yt-dlp</a> downloads youtube media, and just using the web version of spotify with ublock origin on firefox should block ads.</p>
 <h3 id="video">Video</h3>
 <p>Low risk for the same reason as above; video files don&rsquo;t need elevated permissions. Get these by going to your public tracker of choice (I recommend <a href="https://1337x.to">1337x</a> first, then <a href="https://thepiratebay.org">thepiratebay</a>). Private trackers have the best selections; those typically involve being invited and passing a screening process.</p>
-<p>Use <a href="https://www.videolan.org/">VLC</a> to watch videos.</p>
-<p>Check the &ldquo;Download in sequential order&rdquo; button in qbittorrent so you can watch videos before you&rsquo;ve finished downloading them. You generally only need to download about 5-10% of a video before you can just stream it if your connection is fast enough.</p>
+<p>Check the &ldquo;Download in sequential order&rdquo; button in qbittorrent so you can watch videos before you&rsquo;ve finished downloading them. You generally only need to download about 5-10% of a video before you can just stream it if your connection is fast enough. Use <a href="https://www.videolan.org/">VLC</a> to watch videos. <a href="https://github.com/clsid2/mpc-hc/releases">MPC-HC</a> is the only competitor I&rsquo;m aware of.</p>
 <p>I asked chatGPT: &ldquo;provide a glossary of terms (such as &ldquo;x265&rdquo;, or &ldquo;5.1&rdquo;, or &ldquo;BRRip&rdquo;) used to describe video hosted on torrent trackers&rdquo; and received this response before it was cut off due to length:</p>
 <pre tabindex="0"><code>Sure, here&#39;s a glossary of terms commonly used to describe video hosted on torrent trackers:
 
@@ -179,9 +178,9 @@ Remux: A video format that refers to a high-quality video that has been copied f
 SD: Stands for &#34;standard definition.&#34;
 </code></pre><h3 id="android-apps">Android Apps</h3>
 <p>Get illicit APKs from <a href="https://forum.mobilism.org/index.php">mobilism</a>. This ecosystem&rsquo;s pretty seedy. <a href="https://f-droid.org/">f-droid</a> is a package manager like the google play store, except it only has free open source apps.</p>
-<p>Apple users: device jailbreaking is beyond the scope of this post.</p>
+<p>Apple users: device jailbreaking is inconsistent.</p>
 <h3 id="software">Software</h3>
-<p>This is the hardest one to do properly; I think it&rsquo;s the riskiest. Find popular torrents on a public tracker and roll those dice. Use a virtual machine; that&rsquo;s beyond the scope of this post. Occasionally a repacker will host what you&rsquo;re looking for.</p>
+<p>This is the riskiest. Find popular torrents on a public tracker and roll those dice. Use a <a href="https://www.virtualbox.org/wiki/Downloads">virtual machine</a>; that&rsquo;s beyond the scope of this post. Occasionally a repacker will host what you&rsquo;re looking for.</p>
 <h3 id="games">Games</h3>
 <p>There is a bounty ecosystem where people donate to reputable game crackers. Don&rsquo;t get games off of public trackers like thepiratebay. Two of the most reputable crackers are <a href="https//:fitgirl-repacks.site">fitgirl</a> and <a href="https://dodi-repacks.site">dodi</a>. If they don&rsquo;t have what you&rsquo;re looking for, go check <a href="https://old.reddit.com/r/CrackWatch">the CrackWatch subreddit</a> to find a reputable cracker who does.</p>
 <h3 id="books">Books</h3>
