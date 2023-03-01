@@ -88,19 +88,20 @@
 <p>Chrome is phasing out privacy features and adblockers, and browser monopolies are bad, so stop using it!</p>
 <ul>
 <li>Firefox is open source, customizable, and the most popular alternative (that isn&rsquo;t Edge or Safari)</li>
-<li>Vivaldi has good tab management, integrated mail, calendar, etc. and is mostly open source</li>
+<li>Vivaldi is a mostly open-source power-user browser, with tab management, integrated mail, calendar, translation, etc., but forks chromium</li>
 </ul>
 <p>Firefox addons I recommend to everyone in order of importance:</p>
 <ul>
 <li>Ublock Origin</li>
 <li>I still don&rsquo;t care about cookies</li>
-<li>SponsorBlock</li>
-<li>Bypass Paywalls Clean</li>
-<li>Alternative Player for Twitch.tv (this hides ads)</li>
+<li>SponsorBlock (skips youtube sponsored segments)</li>
+<li><a href="https://gitlab.com/magnolia1234/bypass-paywalls-firefox-clean">Bypass Paywalls Clean</a> (can&rsquo;t be installed regularly due to DMCA violation?)</li>
+<li>Alternative Player for Twitch.tv (hides ads)</li>
 <li>Link Cleaner</li>
-<li>Tab Session Manager</li>
+<li>Tab Session Manager (vivaldi does it better)</li>
 </ul>
-<p>Sometimes addons will break a webpage. Most browsers have a safe mode (loads a new menu for this) for this.</p>
+<p>Sometimes addons will break a webpage. Most browsers have a safe mode for this, which loads a separate browser instance with zero customization.</p>
+<p>If you aren&rsquo;t going to use a dedicated password manager like <a href="https://bitwarden.com/">Bitwarden</a>, firefox accounts have a sync feature between devices which also tracks public password database leaks. I recommend using the Secure Password Generator addon for this.</p>
 <p>Mozilla maintains <a href="https://support.mozilla.org/en-US/kb/switching-chrome-firefox">a page</a> detailing how to switch from chrome to firefox.</p>
 <h1 id="searching-tips">Searching tips</h1>
 <p>There&rsquo;s a lot of misinformation and advertising in search results because of Search Engine Optimization (SEO) and a lack of financial incentive to fix the problem. Search engines have a general syntax you can use to search better. It&rsquo;s helpful to know that:</p>
@@ -110,21 +111,20 @@
 <li><code>seattle restaurants site:reddit.com</code> will only return results from reddit;</li>
 <li><code>seattle &quot;vegan&quot; restaurants -pinterest site:reddit.com</code> will give you reddit posts containing the word vegan about seattle restaurants that don&rsquo;t have pinterest anywhere in their body or title.</li>
 </ul>
-<p>I use duckduckgo, but it isn&rsquo;t much better than google. I find most people sitesearch reddit (appending site:reddit.com) to find product reviews that aren&rsquo;t sponsored.</p>
+<p>I find most people sitesearch reddit (appending site:reddit.com) to find product reviews that aren&rsquo;t sponsored.</p>
 <p>For approximate knowledge that isn&rsquo;t monetized, AI chatbots like chatGPT are a great way to search for things, because they&rsquo;re trained on the internet. I just searched &ldquo;what is the purpose of magnetic eye shadow pallette&rdquo;; I only saw ads. Here is a dialogue I just had with chatGPT:</p>
 <p><img src="../../images/eyeshadow.png" alt=""></p>
 <p>AI chatbots are bad at giving you exactly correct answers. I just asked chatGPT what 2+3-5+12*4/2 is (24); it said 10.</p>
 <p><a href="https://archive.org/">Archive.org</a> saves old webpages. This is very important work, and very useful. To find the darknet link below, I searched <code>darknetmarkets 2022 site:reddit.com</code>, looked for the first banned subreddit I could find, put its URL into the internet archive, retrieved an old version of the site, and found a collection of helpful links in its sidebar.</p>
 <h1 id="torvpns-and-the-darkweb">TOR/VPNs and the darkweb</h1>
-<p><a href="https://www.torproject.org/download/">The Onion Router</a> bounces your connection around dozens of different anonymous nodes before reaching an endpoint. This is a <a href="https://web.archive.org/web/20220821150904/https://arstechnica.com/information-technology/2013/09/majority-of-tor-crypto-keys-could-be-broken-by-nsa-researcher-says/">generally</a> <a href="https://web.archive.org/web/20230122181201/https://gizmodo.com/fbi-tor-ip-address-muhammed-momtaz-al-azhari-isis-1849975153">&ldquo;secure&rdquo;</a> way to access the internet, but is slow. Make sure you <a href="https://tb-manual.torproject.org/running-tor-browser/">properly configure</a> TOR. <a href="https://tails.boum.org/">Tails</a> is a portable linux distribution that pre-configures TOR, if you&rsquo;re both knowledgeable and paranoid.</p>
-<p>VPNs are a node between user and endpoint. This means you connect to a website through a middleman, called a proxy, so that the website can only see the proxy. The proxy can sell your <a href="https://web.archive.org/web/20230224200913/https://www.statista.com/topics/1464/big-data/#topicOverview">valuable</a> data, which they as middlemen can neatly package, and any VPN service with an ad budget is almost certainly doing that to remain competitive. Off the top of my head, PrivateInternetAccess &amp; NordVPN also explicitly cooperate with states. <a href="https://mullvad.net/en/">Mullvad</a> is a frequently recommended vpn service.</p>
-<p>Darknet markets come and go all the time. At the moment, <a href="https://darknet.markets/">https://darknet.markets/</a> has a lot of links. You can only use these links in a TOR browser.</p>
-<p>Monero is the current anonymous cryptocurrency of choice.</p>
+<p><a href="https://www.torproject.org/download/">The Onion Router</a> bounces your connection around dozens of different anonymous nodes before reaching an endpoint. This is a <a href="https://web.archive.org/web/20220821150904/https://arstechnica.com/information-technology/2013/09/majority-of-tor-crypto-keys-could-be-broken-by-nsa-researcher-says/">generally</a> <a href="https://web.archive.org/web/20230122181201/https://gizmodo.com/fbi-tor-ip-address-muhammed-momtaz-al-azhari-isis-1849975153">secure</a> way to access the internet, but is slow. Make sure you <a href="https://tb-manual.torproject.org/running-tor-browser/">properly configure</a> TOR. <a href="https://tails.boum.org/">Tails</a> is a portable linux distribution that pre-configures TOR, if you&rsquo;re both knowledgeable and paranoid.</p>
+<p>VPNs are a node between user and endpoint. This means you connect to a website through a middleman, so that the website can&rsquo;t see your IP. The proxy can sell your <a href="https://web.archive.org/web/20230224200913/https://www.statista.com/topics/1464/big-data/#topicOverview">valuable</a> data, which they as middlemen can neatly package, and any VPN service with an ad budget is almost certainly doing that to remain competitive. Off the top of my head, PrivateInternetAccess &amp; NordVPN also explicitly cooperate with states. <a href="https://mullvad.net/en/">Mullvad</a> is a frequently recommended vpn service.</p>
+<p>Darknet markets come and go all the time. At the moment, <a href="https://darknet.markets/">https://darknet.markets/</a> has a lot of links. You can only use these links in a TOR browser. Monero is the current anonymous cryptocurrency of choice.</p>
 <h1 id="piracy">Piracy</h1>
 <p>Here is an overview of content-specific internet piracy ecosystems.</p>
 <h3 id="explanation-of-torrenting">Explanation of torrenting</h3>
-<p>You need a program to handle torrenting. <a href="https://qbittorrent.org/download.php">qBittorrent</a> is open source (anyone can view all of its code, making it more secure and ad-free). You get parts of files from anyone else who has them and is online (this part is secure because of the torrent protocol). Torrents themselves can be viruses because anyone can upload one. To actually download a torrent, you have to browse a torrent tracker to get either &ldquo;magnet link&quot;s or .torrent files for a torrent client to use.</p>
-<p>Sometimes, Disney or some other media giant will serve you your torrents. They do this to get your IP address, to nag your ISP, to nag you. You can ignore these emails; ISPs want your money, so they won&rsquo;t cancel your service. If you get enough emails, they&rsquo;ll slap you on the wrist somehow. Using a VPN will stop the letters.</p>
+<p>You need a program to handle torrenting. <a href="https://qbittorrent.org/download.php">qBittorrent</a> is open source. You get parts of files from anyone else who has them and is online (this part is secure because of the torrent protocol). Torrents can be viruses because anyone can upload one. To actually download a torrent, you have to browse a torrent tracker to get either &ldquo;magnet link&quot;s or .torrent files for a torrent client to use.</p>
+<p>Sometimes, Disney or some other media giant will serve you your torrents. They do this to get your IP address, to nag your ISP, to nag you. You can usually ignore these emails; ISPs want your money. If you get enough emails, they&rsquo;ll slap you on the wrist. A VPN will stop the emails.</p>
 <h3 id="basic-virus-avoidance-techniques">Basic virus avoidance techniques</h3>
 <p>Know your file extensions: a .exe file is a windows executable file for running a program. If you download music, and it&rsquo;s a .exe file, that&rsquo;s a virus. If you don&rsquo;t know an extension, search it online. Installers need admin permissions; a game torrent will need admin permissions, but a video file asking for them is a virus.</p>
 <p>Search results are full of fake websites identical to the real one except by their URL. Their purpose is to try to &ldquo;phish&rdquo; credentials or get you to install a virus. Some examples:</p>
@@ -136,19 +136,19 @@ It&rsquo;s often better to get a URL secondhand through a wikipedia page than ju
 <p>If you&rsquo;re taking a chance on something, you can use <a href="https://virustotal.com">virustotal</a>. You&rsquo;ll get more false results depending on the file; a windows cracking tool will fail an antivirus scan pretty much every time.</p>
 <p>Free antiviruses aren&rsquo;t better than whatever is bundled with your OS. If you get a virus, you probably won&rsquo;t know about it. Periodically wiping your drive is the only reliable way to clear certain viruses.</p>
 <h3 id="windows">Windows</h3>
-<p>This is a lot less risky than it used to be because most cracks now use microsoft&rsquo;s windows images. Go to <a href="https://github.com/massgravel/Microsoft-Activation-Scripts">this github</a> and follow the instructions. Remember to open powershell/terminal <em>as an administrator</em>.</p>
+<p>This is a lot less risky than it used to be because most cracks now use microsoft&rsquo;s windows images. To crack an active windows installation, go to <a href="https://github.com/massgravel/Microsoft-Activation-Scripts">this github</a> and follow the instructions. Remember to open powershell/terminal <em>as an administrator</em>.</p>
 <p>To install windows:</p>
 <ul>
-<li>Get latest windows image from microsoft <a href="https://www.microsoft.com/en-us/software-download/windows10ISO">10</a> <a href="https://www.microsoft.com/en-us/software-download/windows11/">11</a></li>
-<li>Create an installation USB with <a href="https://rufus.ie/en/">rufus</a> (Windows), Disk Utility (mac), or something like <code>dd if=/path/to/iso of=/path/to/usb conv=fsync bs=8M</code> (linux)</li>
-<li>Reboot with the USB plugged in; if you aren&rsquo;t taken to an installation screen, you need to enter your BIOS and change your boot order, typically by holding down the f12 (or f2, f8, delete&hellip;) key</li>
+<li>Get latest windows image (<a href="https://www.microsoft.com/en-us/software-download/windows10ISO">10</a> <a href="https://www.microsoft.com/en-us/software-download/windows11/">11</a></li>
+<li>Create an installation USB with <a href="https://rufus.ie/en/">rufus</a> (windows), Disk Utility (mac), or something like <code>dd if=/path/to/iso of=/path/to/usb conv=fsync bs=8M</code> (linux)) from microsoft</li>
+<li>Reboot with the USB plugged in; if you aren&rsquo;t taken to an installation screen, you need to reboot and <a href="https://www.wikihow.com/Enter-BIOS">enter your BIOS</a>, typically by holding down the f2 (or f8, f12 delete&hellip;) key, and change your boot order to prioritize the plugged-in USB.</li>
 <li>Go through the installation process, select Pro or Pro N (Pro N is the EU-compliant version with less bloat, but you&rsquo;ll want to install the Windows Media Feature Pack yourself)</li>
 <li>I recommend <a href="https://old.reddit.com/r/tronscript">tronscript</a> for debloating and <a href="https://chocolatey.org">chocolatey</a> for package managing</li>
-<li>The tron command for a <code>tron.bat</code> file downloaded to <code>C:\Users\a\Downloads\Tron</code> is <code>C:\Users\a\Downloads\Tron\tron.bat -a -sa -sd -v</code> (skipping antivirus scans &amp; defrag)</li>
-<li>Crack windows using the <em>admin</em> powershell github commands in the link above</li>
+<li>An example tron command for a <code>tron.bat</code> file downloaded to <code>C:\Users\a\Downloads\Tron</code> on a fresh machine is <code>C:\Users\a\Downloads\Tron\tron.bat -a -sa -sd -scc -v</code> (skipping antivirus scans, defrag, and cookies). Run this in cmd as an administrator.</li>
+<li>Crack windows using the <em>admin</em> powershell github commands in the <a href="https://github.com/massgravel/Microsoft-Activation-Scripts">link</a> above</li>
 </ul>
 <h3 id="music">Music</h3>
-<p>It&rsquo;s hard to get a virus from downloading music, not that anyone does that anymore. <a href="https://rutracker.org">rutracker</a> is my favorite pubic tracker for music (rip what.cd).</p>
+<p>It&rsquo;s hard to get a virus from downloading music, not that anyone does that anymore. <a href="https://rutracker.org">rutracker</a> is my favorite public tracker for music (rip what.cd).</p>
 <p>You&rsquo;re probably looking for a cracked spotify app in Android Apps below. <a href="https://revanced.io/">revanced</a>/<a href="https://newpipe.net/">newpipe</a> will handle youtube at the time of writing; ad-blockers come and go.</p>
 <p>For desktops, <a href="https://github.com/yt-dlp/yt-dlp/releases">yt-dlp</a> downloads youtube media, and just using the web version of spotify with ublock origin on firefox should block ads.</p>
 <h3 id="video">Video</h3>

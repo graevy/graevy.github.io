@@ -12,18 +12,20 @@ Last updated: Feb 25 2023
 
 Chrome is phasing out privacy features and adblockers, and browser monopolies are bad, so stop using it!
 - Firefox is open source, customizable, and the most popular alternative (that isn't Edge or Safari)
-- Vivaldi has good tab management, integrated mail, calendar, etc. and is mostly open source
+- Vivaldi is a mostly open-source power-user browser, with tab management, integrated mail, calendar, translation, etc., but forks chromium
 
 Firefox addons I recommend to everyone in order of importance:
 - Ublock Origin
 - I still don't care about cookies
-- SponsorBlock
-- Bypass Paywalls Clean
-- Alternative Player for Twitch.tv (this hides ads)
+- SponsorBlock (skips youtube sponsored segments)
+- [Bypass Paywalls Clean](https://gitlab.com/magnolia1234/bypass-paywalls-firefox-clean) (can't be installed regularly due to DMCA violation?)
+- Alternative Player for Twitch.tv (hides ads)
 - Link Cleaner
-- Tab Session Manager
+- Tab Session Manager (vivaldi does it better)
 
-Sometimes addons will break a webpage. Most browsers have a safe mode (loads a new menu for this) for this.
+Sometimes addons will break a webpage. Most browsers have a safe mode for this, which loads a separate browser instance with zero customization.
+
+If you aren't going to use a dedicated password manager like [Bitwarden](https://bitwarden.com/), firefox accounts have a sync feature between devices which also tracks public password database leaks. I recommend using the Secure Password Generator addon for this.
 
 Mozilla maintains [a page](https://support.mozilla.org/en-US/kb/switching-chrome-firefox) detailing how to switch from chrome to firefox.
 
@@ -35,7 +37,7 @@ There's a lot of misinformation and advertising in search results because of Sea
 - `seattle restaurants site:reddit.com` will only return results from reddit;
 - `seattle "vegan" restaurants -pinterest site:reddit.com` will give you reddit posts containing the word vegan about seattle restaurants that don't have pinterest anywhere in their body or title.
 
-I use duckduckgo, but it isn't much better than google. I find most people sitesearch reddit (appending site:reddit.com) to find product reviews that aren't sponsored.
+I find most people sitesearch reddit (appending site:reddit.com) to find product reviews that aren't sponsored.
 
 For approximate knowledge that isn't monetized, AI chatbots like chatGPT are a great way to search for things, because they're trained on the internet. I just searched "what is the purpose of magnetic eye shadow pallette"; I only saw ads. Here is a dialogue I just had with chatGPT:
 
@@ -47,13 +49,11 @@ AI chatbots are bad at giving you exactly correct answers. I just asked chatGPT 
 
 # TOR/VPNs and the darkweb
 
-[The Onion Router](https://www.torproject.org/download/) bounces your connection around dozens of different anonymous nodes before reaching an endpoint. This is a [generally](https://web.archive.org/web/20220821150904/https://arstechnica.com/information-technology/2013/09/majority-of-tor-crypto-keys-could-be-broken-by-nsa-researcher-says/) ["secure"](https://web.archive.org/web/20230122181201/https://gizmodo.com/fbi-tor-ip-address-muhammed-momtaz-al-azhari-isis-1849975153) way to access the internet, but is slow. Make sure you [properly configure](https://tb-manual.torproject.org/running-tor-browser/) TOR. [Tails](https://tails.boum.org/) is a portable linux distribution that pre-configures TOR, if you're both knowledgeable and paranoid.
+[The Onion Router](https://www.torproject.org/download/) bounces your connection around dozens of different anonymous nodes before reaching an endpoint. This is a [generally](https://web.archive.org/web/20220821150904/https://arstechnica.com/information-technology/2013/09/majority-of-tor-crypto-keys-could-be-broken-by-nsa-researcher-says/) [secure](https://web.archive.org/web/20230122181201/https://gizmodo.com/fbi-tor-ip-address-muhammed-momtaz-al-azhari-isis-1849975153) way to access the internet, but is slow. Make sure you [properly configure](https://tb-manual.torproject.org/running-tor-browser/) TOR. [Tails](https://tails.boum.org/) is a portable linux distribution that pre-configures TOR, if you're both knowledgeable and paranoid.
 
-VPNs are a node between user and endpoint. This means you connect to a website through a middleman, called a proxy, so that the website can only see the proxy. The proxy can sell your [valuable](https://web.archive.org/web/20230224200913/https://www.statista.com/topics/1464/big-data/#topicOverview) data, which they as middlemen can neatly package, and any VPN service with an ad budget is almost certainly doing that to remain competitive. Off the top of my head, PrivateInternetAccess & NordVPN also explicitly cooperate with states. [Mullvad](https://mullvad.net/en/) is a frequently recommended vpn service.
+VPNs are a node between user and endpoint. This means you connect to a website through a middleman, so that the website can't see your IP. The proxy can sell your [valuable](https://web.archive.org/web/20230224200913/https://www.statista.com/topics/1464/big-data/#topicOverview) data, which they as middlemen can neatly package, and any VPN service with an ad budget is almost certainly doing that to remain competitive. Off the top of my head, PrivateInternetAccess & NordVPN also explicitly cooperate with states. [Mullvad](https://mullvad.net/en/) is a frequently recommended vpn service.
 
-Darknet markets come and go all the time. At the moment, https://darknet.markets/ has a lot of links. You can only use these links in a TOR browser.
-
-Monero is the current anonymous cryptocurrency of choice.
+Darknet markets come and go all the time. At the moment, https://darknet.markets/ has a lot of links. You can only use these links in a TOR browser. Monero is the current anonymous cryptocurrency of choice.
 
 # Piracy
 
@@ -61,9 +61,9 @@ Here is an overview of content-specific internet piracy ecosystems.
 
 ### Explanation of torrenting
 
-You need a program to handle torrenting. [qBittorrent](https://qbittorrent.org/download.php) is open source (anyone can view all of its code, making it more secure and ad-free). You get parts of files from anyone else who has them and is online (this part is secure because of the torrent protocol). Torrents themselves can be viruses because anyone can upload one. To actually download a torrent, you have to browse a torrent tracker to get either "magnet link"s or .torrent files for a torrent client to use.
+You need a program to handle torrenting. [qBittorrent](https://qbittorrent.org/download.php) is open source. You get parts of files from anyone else who has them and is online (this part is secure because of the torrent protocol). Torrents can be viruses because anyone can upload one. To actually download a torrent, you have to browse a torrent tracker to get either "magnet link"s or .torrent files for a torrent client to use.
 
-Sometimes, Disney or some other media giant will serve you your torrents. They do this to get your IP address, to nag your ISP, to nag you. You can ignore these emails; ISPs want your money, so they won't cancel your service. If you get enough emails, they'll slap you on the wrist somehow. Using a VPN will stop the letters.
+Sometimes, Disney or some other media giant will serve you your torrents. They do this to get your IP address, to nag your ISP, to nag you. You can usually ignore these emails; ISPs want your money. If you get enough emails, they'll slap you on the wrist. A VPN will stop the emails.
 
 ### Basic virus avoidance techniques
 
@@ -80,20 +80,20 @@ Free antiviruses aren't better than whatever is bundled with your OS. If you get
 
 ### Windows
 
-This is a lot less risky than it used to be because most cracks now use microsoft's windows images. Go to [this github](https://github.com/massgravel/Microsoft-Activation-Scripts) and follow the instructions. Remember to open powershell/terminal *as an administrator*.
+This is a lot less risky than it used to be because most cracks now use microsoft's windows images. To crack an active windows installation, go to [this github](https://github.com/massgravel/Microsoft-Activation-Scripts) and follow the instructions. Remember to open powershell/terminal *as an administrator*.
 
 To install windows:
-- Get latest windows image from microsoft [10](https://www.microsoft.com/en-us/software-download/windows10ISO) [11](https://www.microsoft.com/en-us/software-download/windows11/)
-- Create an installation USB with [rufus](https://rufus.ie/en/) (Windows), Disk Utility (mac), or something like `dd if=/path/to/iso of=/path/to/usb conv=fsync bs=8M` (linux)
-- Reboot with the USB plugged in; if you aren't taken to an installation screen, you need to enter your BIOS and change your boot order, typically by holding down the f12 (or f2, f8, delete...) key
+- Get latest windows image ([10](https://www.microsoft.com/en-us/software-download/windows10ISO) [11](https://www.microsoft.com/en-us/software-download/windows11/)
+- Create an installation USB with [rufus](https://rufus.ie/en/) (windows), Disk Utility (mac), or something like `dd if=/path/to/iso of=/path/to/usb conv=fsync bs=8M` (linux)) from microsoft
+- Reboot with the USB plugged in; if you aren't taken to an installation screen, you need to reboot and [enter your BIOS](https://www.wikihow.com/Enter-BIOS), typically by holding down the f2 (or f8, f12 delete...) key, and change your boot order to prioritize the plugged-in USB.
 - Go through the installation process, select Pro or Pro N (Pro N is the EU-compliant version with less bloat, but you'll want to install the Windows Media Feature Pack yourself)
 - I recommend [tronscript](https://old.reddit.com/r/tronscript) for debloating and [chocolatey](https://chocolatey.org) for package managing
-- The tron command for a `tron.bat` file downloaded to `C:\Users\a\Downloads\Tron` is `C:\Users\a\Downloads\Tron\tron.bat -a -sa -sd -v` (skipping antivirus scans & defrag)
-- Crack windows using the *admin* powershell github commands in the link above
+- An example tron command for a `tron.bat` file downloaded to `C:\Users\a\Downloads\Tron` on a fresh machine is `C:\Users\a\Downloads\Tron\tron.bat -a -sa -sd -scc -v` (skipping antivirus scans, defrag, and cookies). Run this in cmd as an administrator.
+- Crack windows using the *admin* powershell github commands in the [link](https://github.com/massgravel/Microsoft-Activation-Scripts) above
 
 ### Music
 
-It's hard to get a virus from downloading music, not that anyone does that anymore. [rutracker](https://rutracker.org) is my favorite pubic tracker for music (rip what.cd).
+It's hard to get a virus from downloading music, not that anyone does that anymore. [rutracker](https://rutracker.org) is my favorite public tracker for music (rip what.cd).
 
 You're probably looking for a cracked spotify app in Android Apps below. [revanced](https://revanced.io/)/[newpipe](https://newpipe.net/) will handle youtube at the time of writing; ad-blockers come and go.
 
