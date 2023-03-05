@@ -53,7 +53,7 @@ AI chatbots are bad at giving you exactly correct answers. I just asked chatGPT 
 
 VPNs are a node between user and endpoint. This means you connect to a website through a middleman, so that the website can't see your IP. The proxy can sell your [valuable](https://web.archive.org/web/20230224200913/https://www.statista.com/topics/1464/big-data/#topicOverview) data, which they as middlemen can neatly package, and any VPN service with an ad budget is almost certainly doing that to remain competitive. Off the top of my head, PrivateInternetAccess & NordVPN also explicitly cooperate with states. [Mullvad](https://mullvad.net/en/) is a frequently recommended vpn service.
 
-Darknet markets come and go all the time. At the moment, https://darknet.markets/ has a lot of links. You can only use these links in a TOR browser. Monero is the current anonymous cryptocurrency of choice.
+Darknet markets come and go all the time. At the moment, https://darknet.markets/ has a lot of links. You can only use these links in a TOR browser. Monero is the current anonymous cryptocurrency of choice; Bitcoin is traceable.
 
 # Piracy
 
@@ -61,7 +61,7 @@ Here is an overview of content-specific internet piracy ecosystems.
 
 ### Explanation of torrenting
 
-You need a program to handle torrenting. [qBittorrent](https://qbittorrent.org/download.php) is open source. You get parts of files from anyone else who has them and is online (this part is secure because of the torrent protocol). Torrents can be viruses because anyone can upload one. To actually download a torrent, you have to browse a torrent tracker to get either "magnet link"s or .torrent files for a torrent client to use.
+You get parts of files from anyone else who has them and is online. You need a program to handle torrenting. [qBittorrent](https://qbittorrent.org/download.php) is open source. Torrents can be viruses because anyone can upload one. To actually download a torrent, you have to browse a torrent tracker to get either "magnet link"s or .torrent files for a torrent client to use.
 
 Sometimes, Disney or some other media giant will serve you your torrents. They do this to get your IP address, to nag your ISP, to nag you. You can usually ignore these emails; ISPs want your money. If you get enough emails, they'll slap you on the wrist. A VPN will stop the emails.
 
@@ -71,8 +71,9 @@ Know your file extensions: a .exe file is a windows executable file for running 
 
 Search results are full of fake websites identical to the real one except by their URL. Their purpose is to try to "phish" credentials or get you to install a virus. Some examples:
 - `facebook.com.market` is a subdomain of `com.market`
-- `facebook.co`, `facebook.net`, etc. are *not* the same websites as `facebook.com`, and could be owned by anyone. The owners of facebook bought the `facebook.co` domain to prevent people from making this mistake, and the .net top-level-domain organization won't sell `facebook.net`
-It's often better to get a URL secondhand through a wikipedia page than just by searching.
+- `facebook.co`, `facebook.net`, etc. are *not* the same websites as `facebook.com`, and could be owned by anyone. The owners of facebook bought the `facebook.co` domain to prevent people from making this mistake, and the .net top-level-domain org won't sell `facebook.net`.
+
+Try to get a URL secondhand through wikipedia or something before searching.
 
 If you're taking a chance on something, you can use [virustotal](https://virustotal.com). You'll get more false results depending on the file; a windows cracking tool will fail an antivirus scan pretty much every time.
 
@@ -83,8 +84,8 @@ Free antiviruses aren't better than whatever is bundled with your OS. If you get
 This is a lot less risky than it used to be because most cracks now use microsoft's windows images. To crack an active windows installation, go to [this github](https://github.com/massgravel/Microsoft-Activation-Scripts) and follow the instructions. Remember to open powershell/terminal *as an administrator*.
 
 To install windows:
-- Get latest windows image ([10](https://www.microsoft.com/en-us/software-download/windows10ISO) [11](https://www.microsoft.com/en-us/software-download/windows11/)
-- Create an installation USB with [rufus](https://rufus.ie/en/) (windows), Disk Utility (mac), or something like `dd if=/path/to/iso of=/path/to/usb conv=fsync bs=8M` (linux)) from microsoft
+- Get latest windows image from microsoft ([10](https://www.microsoft.com/en-us/software-download/windows10ISO) [11](https://www.microsoft.com/en-us/software-download/windows11/))
+- Create an installation USB with [rufus](https://rufus.ie/en/) (windows), Disk Utility (mac), or something like `dd if=/path/to/iso of=/path/to/usb conv=fsync bs=8M` (linux)
 - Reboot with the USB plugged in; if you aren't taken to an installation screen, you need to reboot and [enter your BIOS](https://www.wikihow.com/Enter-BIOS), typically by holding down the f2 (or f8, f12 delete...) key, and change your boot order to prioritize the plugged-in USB.
 - Go through the installation process, select Pro or Pro N (Pro N is the EU-compliant version with less bloat, but you'll want to install the Windows Media Feature Pack yourself)
 - I recommend [tronscript](https://old.reddit.com/r/tronscript) for debloating and [chocolatey](https://chocolatey.org) for package managing
@@ -95,9 +96,9 @@ To install windows:
 
 It's hard to get a virus from downloading music, not that anyone does that anymore. [rutracker](https://rutracker.org) is my favorite public tracker for music (rip what.cd).
 
-You're probably looking for a cracked spotify app in Android Apps below. [revanced](https://revanced.io/)/[newpipe](https://newpipe.net/) will handle youtube at the time of writing; ad-blockers come and go.
+You're probably looking for a cracked spotify app in Android Apps below. [revanced](https://revanced.io/)/[newpipe](https://newpipe.net/) will handle youtube. These projects come and go.
 
-For desktops, [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases) downloads youtube media, and just using the web version of spotify with ublock origin on firefox should block ads.
+For desktops, [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases) downloads youtube media, and just using the web version of spotify with ublock origin on firefox should block its ads.
 
 ### Video
 
@@ -133,17 +134,17 @@ SD: Stands for "standard definition."
 
 ### Android Apps
 
-Get illicit APKs from [mobilism](https://forum.mobilism.org/index.php). This ecosystem's pretty seedy. [f-droid](https://f-droid.org/) is a package manager like the google play store, except it only has free open source apps. 
+Get illicit APKs from [mobilism](https://forum.mobilism.org/index.php). This ecosystem's pretty seedy. [f-droid](https://f-droid.org/) is a package manager like the google play store, except it only has free open source apps. F-droid's app is notoriously buggy so try some frontends like Neo Store or Droid-ify.
 
-Apple users: device jailbreaking is inconsistent.
+Apple users: jailbreaking is outside the scope of this guide.
 
 ### Software
 
-This is the riskiest. Find popular torrents on a public tracker and roll those dice. Use a [virtual machine](https://www.virtualbox.org/wiki/Downloads); that's beyond the scope of this post. Occasionally a repacker will host what you're looking for.
+This is the riskiest. Find popular torrents on a public tracker and roll those dice. Use a [virtual machine](https://www.virtualbox.org/wiki/Downloads); that's also beyond the scope of this guide. Occasionally a repacker will host what you're looking for.
 
 ### Games
 
-There is a bounty ecosystem where people donate to reputable game crackers. Don't get games off of public trackers like thepiratebay. Two of the most reputable crackers are [fitgirl](https//:fitgirl-repacks.site) and [dodi](https://dodi-repacks.site). If they don't have what you're looking for, go check [the CrackWatch subreddit](https://old.reddit.com/r/CrackWatch) to find a reputable cracker who does.
+There is a bounty ecosystem where people donate to reputable game crackers. Don't get games off of public trackers like thepiratebay. Two of the most reputable crackers are [fitgirl](https://fitgirl-repacks.site) and [dodi](https://dodi-repacks.site). If they don't have what you're looking for, go check [the CrackWatch subreddit](https://old.reddit.com/r/CrackWatch) to find a reputable cracker who does.
 
 ### Books
 
