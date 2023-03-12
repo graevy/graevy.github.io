@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://quatl.ooo/posts/internet/</loc>
-    <lastmod>2023-02-20T20:41:32-08:00</lastmod>
+    <loc>http://quatl.ooo/posts/batteries/</loc>
+    <lastmod>2023-03-07T18:00:21-08:00</lastmod>
   </url><url>
     <loc>http://quatl.ooo/posts/</loc>
-    <lastmod>2023-02-20T20:41:32-08:00</lastmod>
+    <lastmod>2023-03-07T18:00:21-08:00</lastmod>
   </url><url>
     <loc>http://quatl.ooo/</loc>
+    <lastmod>2023-03-07T18:00:21-08:00</lastmod>
+  </url><url>
+    <loc>http://quatl.ooo/posts/internet/</loc>
     <lastmod>2023-02-20T20:41:32-08:00</lastmod>
   </url><url>
     <loc>http://quatl.ooo/posts/motherboards/</loc>

@@ -18,7 +18,7 @@ Firefox addons I recommend to everyone in order of importance:
 - Ublock Origin
 - I still don't care about cookies
 - SponsorBlock (skips youtube sponsored segments)
-- [Bypass Paywalls Clean](https://gitlab.com/magnolia1234/bypass-paywalls-firefox-clean) (can't be installed regularly due to DMCA violation?)
+- [Bypass Paywalls Clean](https://gitlab.com/magnolia1234/bypass-paywalls-firefox-clean) (can't be installed regularly due to DMCA violation. download the xpi release and open it with firefox)
 - Alternative Player for Twitch.tv (hides ads)
 - Link Cleaner
 - Tab Session Manager (vivaldi does it better)
@@ -81,7 +81,7 @@ Free antiviruses aren't better than whatever is bundled with your OS. If you get
 
 ### Windows
 
-This is a lot less risky than it used to be because most cracks now use microsoft's windows images. To crack an active windows installation, go to [this github](https://github.com/massgravel/Microsoft-Activation-Scripts) and follow the instructions. Remember to open powershell/terminal *as an administrator*.
+This is a lot less risky than it used to be because most cracks now use microsoft's windows images. To crack an active windows installation, go to [this github](https://github.com/massgravel/Microsoft-Activation-Scripts) and follow the instructions (you want to use HWID). Remember to open powershell/terminal *as an administrator*.
 
 To install windows:
 - Get latest windows image from microsoft ([10](https://www.microsoft.com/en-us/software-download/windows10ISO) [11](https://www.microsoft.com/en-us/software-download/windows11/))

@@ -8,7 +8,7 @@
     
     
     
-    <link rel="stylesheet" href="../css/theme.min.css">
+    <link rel="stylesheet" href="../../css/theme.min.css">
 
     
     
@@ -20,11 +20,11 @@
         <div id="content" class="mx-auto"><header class="container mt-sm-5 mt-4 mb-4 mt-xs-1">
     <div class="row">
         <div class="col-sm-4 col-12 text-sm-right text-center pt-sm-4">
-            <a href="../" class="text-decoration-none">
+            <a href="../../" class="text-decoration-none">
                 <img id="home-image" class="rounded-circle"
                     
                         
-                            src="../images/graevy.png"
+                            src="../../images/graevy.png"
                         
                     
                 />
@@ -32,7 +32,7 @@
         </div>
         <div class="col-sm-8 col-12 text-sm-left text-center">
             <h2 class="m-0 mb-2 mt-4">
-                <a href="../" class="text-decoration-none">
+                <a href="../../" class="text-decoration-none">
                     
                         graevy
                     
@@ -47,11 +47,11 @@
                 
                 
                     <li class="list-inline-item">
-                        <a class="badge badge-white " href="../posts/" title="Posts">Posts</a>
+                        <a class="badge badge-white " href="../../posts/" title="Posts">Posts</a>
                     </li>
                 
                     <li class="list-inline-item">
-                        <a class="badge badge-white " href="../resume/resume.pdf" title="CV">Resume (pdf)</a>
+                        <a class="badge badge-white " href="../../resume/resume.pdf" title="CV">Resume (pdf)</a>
                     </li>
                 
             </ul>
@@ -82,82 +82,35 @@
 </header>
 <div class="container">
     <div class="pl-sm-4 ml-sm-5">
-        <ul class="list-unstyled">
-        
-            <li>
-                <time datetime="2023-03-07T18:00:21-08:00">
-                    Mar 7 2023
-                </time>
-                <a href="../posts/batteries/">
-                    Batteries
-                </a>
-            </li>
-        
-            <li>
-                <time datetime="2023-02-20T20:41:32-08:00">
-                    Feb 20 2023
-                </time>
-                <a href="../posts/internet/">
-                    Internet harm reduction
-                </a>
-            </li>
-        
-            <li>
-                <time datetime="2023-02-07T18:53:07-08:00">
-                    Feb 7 2023
-                </time>
-                <a href="../posts/motherboards/">
-                    Motherboards
-                </a>
-            </li>
-        
-            <li>
-                <time datetime="2023-01-27T00:00:30-08:00">
-                    Jan 27 2023
-                </time>
-                <a href="../posts/gopro/">
-                    Gopro
-                </a>
-            </li>
-        
-            <li>
-                <time datetime="2023-01-26T00:27:20-08:00">
-                    Jan 26 2023
-                </time>
-                <a href="../posts/font/">
-                    Font
-                </a>
-            </li>
-        
-            <li>
-                <time datetime="2023-01-25T16:52:32-08:00">
-                    Jan 25 2023
-                </time>
-                <a href="../posts/aoc22/">
-                    Aoc22
-                </a>
-            </li>
-        
-            <li>
-                <time datetime="2023-01-25T14:09:41-08:00">
-                    Jan 25 2023
-                </time>
-                <a href="../posts/pipelines/">
-                    Pipelines
-                </a>
-            </li>
-        
-            <li>
-                <time datetime="2022-12-22T19:54:08-08:00">
-                    Dec 22 2022
-                </time>
-                <a href="../posts/hello-world/">
-                    Hello World
-                </a>
-            </li>
-        
-        </ul>
+        <p>In which four interpid nerds attempt to subvert battery copy-protection</p>
+<h3 id="background">Background</h3>
+<p>We went for a capacity upgrade (51 -&gt; 62Wh) when swapping out my friend&rsquo;s battery. Dell bios does not like the non-dell battery; the idea is to graft the old battery&rsquo;s management system (BMS) onto the new battery.</p>
+<h4 id="first-hurdle">First Hurdle</h4>
+<p>The casings are different; the old one has clips on the side for disassembly and the new one is pure adhesive. Solution: destroy the new case<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> and use the old one to store the four-phone-batteries-in-a-trenchcoat rig.</p>
+<p><img src="../../images/battery/casings.jpg" alt=""></p>
+<p>(new casing &ldquo;teardown&rdquo; vs old casing+backing)</p>
+<h4 id="second-hurdle">Second Hurdle</h4>
+<p>New BMS contains a plastic power rail connecting to each of the batteries; old BMS connects to an isolated power rail. We have graft the isolated power rail:</p>
+<p><img src="../../images/battery/rail.jpg" alt=""></p>
+<p>The old hydrogen-bloated batteries, the orange isolated power rail, and the minimal BMS chip. Note the inverted middle batteries. We were very concerned by the presence of a third battery terminal between the positive/negative terminals (it&rsquo;s even marked positive):</p>
+<p><img src="../../images/battery/terminals.jpg" alt=""></p>
+<p>Searching the part number on the chip yielded a <a href="../../docs/hc.pdf">Thermal Cutoff Device</a> <a href="https://www.bourns.com/docs/Product-Datasheets/HC.pdf">(linkrot)</a> that we can &ldquo;safely&rdquo; ignore for the graft. I&rsquo;m starting to sympathize with dell, but I&rsquo;m in too deep now.</p>
+<p>Solution: Spot welding, not soldering<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>point of no (literal) return passed.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>disappointment.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
     </div>
+
+    
 
             </div>
         </div><footer class="text-center pb-1">

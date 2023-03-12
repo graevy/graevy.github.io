@@ -6,8 +6,19 @@
     <description>Recent content in Posts on print(&#34;hello!&#34;)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2023 Avery Lawrence</copyright>
-    <lastBuildDate>Mon, 20 Feb 2023 20:41:32 -0800</lastBuildDate><atom:link href="http://quatl.ooo/posts/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Not &amp;copy; 2023 Avery Lawrence</copyright>
+    <lastBuildDate>Tue, 07 Mar 2023 18:00:21 -0800</lastBuildDate><atom:link href="http://quatl.ooo/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Batteries</title>
+      <link>http://quatl.ooo/posts/batteries/</link>
+      <pubDate>Tue, 07 Mar 2023 18:00:21 -0800</pubDate>
+      
+      <guid>http://quatl.ooo/posts/batteries/</guid>
+      <description>In which four interpid nerds attempt to subvert battery copy-protection
+Background We went for a capacity upgrade (51 -&amp;gt; 62Wh) when swapping out my friend&amp;rsquo;s battery. Dell bios does not like the non-dell battery; the idea is to graft the old battery&amp;rsquo;s management system (BMS) onto the new battery.
+First Hurdle The casings are different; the old one has clips on the side for disassembly and the new one is pure adhesive.</description>
+    </item>
+    
     <item>
       <title>Internet harm reduction</title>
       <link>http://quatl.ooo/posts/internet/</link>
@@ -36,7 +47,7 @@ The Problem You can do everything right when e.g. replacing a battery, and end u
       <pubDate>Fri, 27 Jan 2023 00:00:30 -0800</pubDate>
       
       <guid>http://quatl.ooo/posts/gopro/</guid>
-      <description>Gopro GPS Metadata My startup contract is about to end, so this is a good time for a writeup on the software I wrote to help me do field testing. I should clarify that this wasn&amp;rsquo;t a coding contract; I sought to encounter practical software independently.
+      <description>Gopro GPS Metadata My startup contract (non-software) is about to end, so this is a good time for a writeup on the software I wrote to help me do field testing.
 In short, we were given gopro cameras to supplement field testing with video, but there was no quantitative positional data accompanying those tests. After poking around, I learned that GoPros do record GPX data (GPS XML), but extract it with either an unsupported 2017 desktop app or a paid phone app that didn&amp;rsquo;t give me files.</description>
     </item>
     

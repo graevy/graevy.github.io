@@ -6,7 +6,7 @@ relativeURLs = true
 enableEmoji = true
 googleAnalytics = ""
 enableRobotsTXT = true
-copyright = "&copy; 2023 Avery Lawrence"
+copyright = "Not &copy; 2023 Avery Lawrence"
 
 # Main menu items
 [menu]
@@ -39,7 +39,7 @@ copyright = "&copy; 2023 Avery Lawrence"
 [params]
   description = "Project site!"              # Your meta description of the site
   header_title = "graevy"                    # Your header title
-  header_subtitle = "Software Engineer"      # Your header subtitle
+  header_subtitle = "Computerer"             # Your header subtitle
   home_image = "/images/graevy.png"          # Path to header image starting from the static directory
   recent_posts = 5                           # Max amount of recent posts to show
   mainSections = ["posts", "post", "blog"]   # Main sections to include in recent posts

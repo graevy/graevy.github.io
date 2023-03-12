@@ -19,9 +19,17 @@ $fa-font-path: "../webfonts";
 // === Custom Styles ===
 #content {
   width: 100%;
-  max-width: 650px;
+  max-width: 700px;
   min-height: calc(100vh - 105px);
 }
+
+@media (min-width: 576px) {
+  .ml-sm-5 {test:0;}
+  .mx-sm-5 {
+    margin-left:0em !important;
+  }
+}
+
 
 #home-image {
   width: 120px;
