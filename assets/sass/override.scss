@@ -23,13 +23,12 @@ $fa-font-path: "../webfonts";
   min-height: calc(100vh - 105px);
 }
 
-@media (min-width: 576px) {
-  .ml-sm-5 {test:0;}
-  .mx-sm-5 {
-    margin-left:0em !important;
-  }
+// some css overrides because I don't want to touch bootstrap
+// text is off-center because of these patterns; it's misaligned with the footer
+#content div.container div {
+  padding-left:0rem !important;
+  margin-left:0rem !important;
 }
-
 
 #home-image {
   width: 120px;
