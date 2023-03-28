@@ -14,12 +14,12 @@
       <pubDate>Tue, 28 Mar 2023 04:33:25 -0700</pubDate>
       
       <guid>http://quatl.ooo/posts/migration/</guid>
-      <description>After my digitalocean team dissolved, I migrated from a droplet costing me $4/mo to github pages for free. Truly, I could&amp;rsquo;ve avoided webhooks entirely and saved money in the process. But I did centralize my services and lost privacy, so who&amp;rsquo;s to say; I learned all about the specifics of CNAME records interfering with SSL certs ;-;
-Surprisingly, migrating the build pipeline was the easiest migration component, and actually enabling https was the hardest.</description>
+      <description>After my digitalocean team dissolved, I migrated from a $4/mo droplet to github pages for free. Truly, I could&amp;rsquo;ve avoided webhooks entirely and saved money in the process. But I did centralize my services and lost privacy, so who&amp;rsquo;s to say. And, I learned all about CNAME records interfering with SSL certs ;-;
+Surprisingly, the build pipeline was the easiest migration component, and actually enabling https was the hardest. I hung on some DNS records until I decided to remove the cloudflare step (obvious in retrospect, but I wonder if I can reintegrate it).</description>
     </item>
     
     <item>
-      <title>Batteries</title>
+      <title>batteries</title>
       <link>http://quatl.ooo/posts/batteries/</link>
       <pubDate>Tue, 07 Mar 2023 18:00:21 -0800</pubDate>
       
@@ -42,7 +42,7 @@ Firefox is open source, customizable, and the most popular alternative (that isn
     </item>
     
     <item>
-      <title>Motherboards</title>
+      <title>motherboards</title>
       <link>http://quatl.ooo/posts/motherboards/</link>
       <pubDate>Tue, 07 Feb 2023 18:53:07 -0800</pubDate>
       
@@ -52,7 +52,7 @@ The Problem You can do everything right when e.g. replacing a battery, and end u
     </item>
     
     <item>
-      <title>Gopro</title>
+      <title>gopro</title>
       <link>http://quatl.ooo/posts/gopro/</link>
       <pubDate>Fri, 27 Jan 2023 00:00:30 -0800</pubDate>
       
@@ -62,16 +62,16 @@ In short, we were given gopro cameras to supplement field testing with video, bu
     </item>
     
     <item>
-      <title>Font</title>
+      <title>font</title>
       <link>http://quatl.ooo/posts/font/</link>
       <pubDate>Thu, 26 Jan 2023 00:27:20 -0800</pubDate>
       
       <guid>http://quatl.ooo/posts/font/</guid>
-      <description>Liberation Mono Surprisingly, the devise theme doesn&amp;rsquo;t appear to have a way to change your main font. I forked it and submitted a PR. Soon the site will be less new, and functional enough; I can slow down. I&amp;rsquo;ll write a summary of the gopro metadata project first, because the process was pretty sloppy.</description>
+      <description>Liberation Mono Surprisingly, the devise theme doesn&amp;rsquo;t appear to have a way to change your main font. I forked it and submitted a PR. I hope I never touch css again. Soon the site will be less new, and functional enough; I can slow down. I&amp;rsquo;ll write a summary of the gopro metadata project first, because the process was pretty sloppy.</description>
     </item>
     
     <item>
-      <title>Aoc22</title>
+      <title>aoc22</title>
       <link>http://quatl.ooo/posts/aoc22/</link>
       <pubDate>Wed, 25 Jan 2023 16:52:32 -0800</pubDate>
       
@@ -80,7 +80,7 @@ In short, we were given gopro cameras to supplement field testing with video, bu
     </item>
     
     <item>
-      <title>Pipelines</title>
+      <title>pipelines</title>
       <link>http://quatl.ooo/posts/pipelines/</link>
       <pubDate>Wed, 25 Jan 2023 14:09:41 -0800</pubDate>
       
