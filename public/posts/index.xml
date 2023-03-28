@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Not &amp;copy; 2023 Avery Lawrence</copyright>
-    <lastBuildDate>Tue, 07 Mar 2023 18:00:21 -0800</lastBuildDate><atom:link href="http://quatl.ooo/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 28 Mar 2023 04:33:25 -0700</lastBuildDate><atom:link href="http://quatl.ooo/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>migration</title>
+      <link>http://quatl.ooo/posts/migration/</link>
+      <pubDate>Tue, 28 Mar 2023 04:33:25 -0700</pubDate>
+      
+      <guid>http://quatl.ooo/posts/migration/</guid>
+      <description>After my digitalocean team dissolved, I migrated from a droplet costing me $4/mo to github pages for free. Truly, I could&amp;rsquo;ve avoided webhooks entirely and saved money in the process. But I did centralize my services and lost privacy, so who&amp;rsquo;s to say; I learned all about the specifics of CNAME records interfering with SSL certs ;-;
+Surprisingly, migrating the build pipeline was the easiest migration component, and actually enabling https was the hardest.</description>
+    </item>
+    
     <item>
       <title>Batteries</title>
       <link>http://quatl.ooo/posts/batteries/</link>

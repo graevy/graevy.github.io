@@ -27,6 +27,8 @@ Sometimes addons will break a webpage. Most browsers have a safe mode for this, 
 
 If you aren't going to use a dedicated password manager like [Bitwarden](https://bitwarden.com/), firefox accounts have a sync feature between devices which also tracks public password database leaks. I recommend using the Secure Password Generator addon for this.
 
+If you don't have enough memory for your appalling browser tab habits, [increasing browser.low_commit_space_threshold_mb makes firefox unload tabs](https://web.archive.org/web/20230216193845/https://dev.to/msugakov/taking-firefox-memory-usage-under-control-on-linux-4b02).
+
 Mozilla maintains [a page](https://support.mozilla.org/en-US/kb/switching-chrome-firefox) detailing how to switch from chrome to firefox.
 
 # Searching tips

@@ -1,5 +1,5 @@
 ---
-title: "Gopro"
+title: "gopro"
 date: 2023-01-27T00:00:30-08:00
 draft: false
 ---

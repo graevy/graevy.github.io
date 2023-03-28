@@ -1,5 +1,5 @@
 ---
-title: "Pipelines"
+title: "pipelines"
 date: 2023-01-25T14:09:41-08:00
 draft: false
 ---

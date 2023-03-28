@@ -1,5 +1,5 @@
 ---
-title: "Aoc22"
+title: "aoc22"
 date: 2023-01-25T16:52:32-08:00
 draft: false
 ---

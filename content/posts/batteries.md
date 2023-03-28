@@ -1,5 +1,5 @@
 ---
-title: "Batteries"
+title: "batteries"
 date: 2023-03-07T18:00:21-08:00
 draft: false
 ---
