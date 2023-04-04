@@ -14,7 +14,7 @@ We went for a capacity upgrade (51 -> 62Wh) when swapping out my friend's batter
 
 The casings are different; the old one has clips on the side for disassembly and the new one is pure adhesive. Solution: destroy the new case[^1] and use the old one to store the four-phone-batteries-in-a-trenchcoat rig.
 
-![](/images/battery/casings.jpg)
+![casings](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/battery/casings.jpg)
 
 (new casing "teardown" vs old casing+backing)
 
@@ -22,11 +22,11 @@ The casings are different; the old one has clips on the side for disassembly and
 
 New BMS contains a plastic power rail connecting to each of the batteries; old BMS connects to an isolated power rail. We have graft the isolated power rail:
 
-![](/images/battery/rail.jpg)
+![rail](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/battery/rail.jpg)
 
 The old hydrogen-bloated batteries, the orange isolated power rail, and the minimal BMS chip. Note the inverted middle batteries. We were very concerned by the presence of a third battery terminal between the positive/negative terminals (it's even marked positive):
 
-![](/images/battery/terminals.jpg)
+![terminals](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/battery/terminals.jpg)
 
 Searching the part number on the chip yielded a [Thermal Cutoff Device](/docs/hc.pdf) [(linkrot)](https://www.bourns.com/docs/Product-Datasheets/HC.pdf) that we can "safely" ignore for the graft. I'm starting to sympathize with dell, but I'm in too deep now.
 
