@@ -6,7 +6,7 @@ draft: false
 
 This is a harm reduction guide for my friends who risk malware and surveillance, mostly while stealing things on the internet, but also just by browsing unhygenically.
 
-Last updated: Feb 25 2023
+Last updated: Apr 2 2023
 
 # Browser
 
@@ -104,7 +104,7 @@ For desktops, [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases) downloads yout
 
 ### Video
 
-Low risk for the same reason as above; video files don't need elevated permissions. Get these by going to your public tracker of choice (I recommend [1337x](https://1337x.to) first, then [thepiratebay](https://thepiratebay.org)). Private trackers have the best selections; those typically involve being invited and passing a screening process.
+Low risk for the same reason as above; video files don't need elevated permissions. Get these by going to your public tracker of choice (I recommend [1337x](https://1337x.to) first, then [thepiratebay](https://thepiratebay.org))[^2]. Private trackers have the best selections; those typically involve being invited and passing a screening process.
 
 Check the "Download in sequential order" button in qbittorrent so you can watch videos before you've finished downloading them. You generally only need to download about 5-10% of a video before you can just stream it if your connection is fast enough. Use [VLC](https://www.videolan.org/) to watch videos. [MPC-HC](https://github.com/clsid2/mpc-hc/releases) is the only competitor I'm aware of.
 
@@ -136,22 +136,31 @@ SD: Stands for "standard definition."
 
 ### Android Apps
 
-Get illicit APKs from [mobilism](https://forum.mobilism.org/index.php). This ecosystem's pretty seedy. [f-droid](https://f-droid.org/) is a package manager like the google play store, except it only has free open source apps. F-droid's app is notoriously buggy so try some frontends like Neo Store or Droid-ify.
+Get illicit APKs from [mobilism](https://forum.mobilism.org/index.php)[^1]. This ecosystem's pretty seedy. [f-droid](https://f-droid.org/) is a package manager like the google play store, except it only has free open source apps. F-droid's app is notoriously buggy so try some frontends like Neo Store or Droid-ify.
 
 Apple users: jailbreaking is outside the scope of this guide.
 
 ### Software
 
-This is the riskiest. Find popular torrents on a public tracker and roll those dice. Use a [virtual machine](https://www.virtualbox.org/wiki/Downloads); that's also beyond the scope of this guide. Occasionally a repacker will host what you're looking for.
+This is the riskiest. Find popular torrents on a public tracker and roll those dice. Use a [virtual machine](https://www.virtualbox.org/wiki/Downloads)[^4]; that's also beyond the scope of this guide. Occasionally a repacker will host what you're looking for.
 
 ### Games
 
-There is a bounty ecosystem where people donate to reputable game crackers. Don't get games off of public trackers like thepiratebay. Two of the most reputable crackers are [fitgirl](https://fitgirl-repacks.site) and [dodi](https://dodi-repacks.site). If they don't have what you're looking for, go check [the CrackWatch subreddit](https://old.reddit.com/r/CrackWatch) to find a reputable cracker who does.
+There is a bounty ecosystem where people donate to reputable game crackers. Don't get games off of public trackers like thepiratebay. Two of the most reputable crackers are [fitgirl](https://fitgirl-repacks.site)[^1] and [dodi](https://dodi-repacks.site)[^1]. If they don't have what you're looking for, go check [the CrackWatch subreddit](https://old.reddit.com/r/CrackWatch) to find a reputable cracker who does.
 
 ### Books
 
-[libgen](https://gen.lib.rus.ec) is the best. Myanonamouse is a good private tracker for books that will let you in after an interview. The [piracy subreddit](https://old.reddit.com/r/piracy) maintains a list of book trackers; these are always coming and going. A generic web search with pdf, epub, etc. extensions is a last resort.
+[libgen](https://gen.lib.rus.ec) is the best[^1]. Myanonamouse is a good private tracker for books that will let you in after an interview. The [piracy subreddit](https://old.reddit.com/r/piracy) maintains a list of book trackers; these are always coming and going. A filetype search[^3] with pdf, epub, etc. extensions is a last resort.
 
 ### Papers
 
-Sci-hub's been down for awhile. Just email paper authors and they'll send you a copy. Extensions like Bypass Paywalls Clean or Unpaywall have historically been okay at this.
+Sci-hub's been down for awhile. Just email paper authors and they'll send you a copy. You might be able to find a non-paywalled copy on google scholar. Extensions like Bypass Paywalls Clean or Unpaywall have historically been okay at this.
+
+
+[^1]: Technically not a torrent tracker because it hosts links to direct downloads rather than peer-to-peer downloads
+
+[^2]: Thepiratebay has a reputation for viruses, and site VIPs are not to be trusted
+
+[^3]: Append `filetype:pdf` to a search to only return direct links to pdfs, for example
+
+[^4]: VMs are operating-systems-inside-operating-systems that are slower than normal OSes, but if your VM gets a virus, you don't exactly care. [VirtualBox](https://www.virtualbox.org/wiki/Downloads) is what most people use, but I rarely deal with them and they're complicated to setup securely. Good for something like pirated photoshop, ableton, older games, ~~installing BonziBuddy, Monkey, Gator, and Prody Parrot to watch them duke it out,~~ etc.
