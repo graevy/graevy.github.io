@@ -43,7 +43,7 @@ I find most people sitesearch reddit (appending site:reddit.com) to find product
 
 For approximate knowledge that isn't monetized, AI chatbots like chatGPT are a great way to search for things, because they're trained on the internet. I just searched "what is the purpose of magnetic eye shadow pallette"; I only saw ads. Here is a dialogue I just had with chatGPT:
 
-![](https://github.com/graevy/graevy.github.io/blob/main/static/images/eyeshadow.png)
+![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/eyeshadow.png)
 
 AI chatbots are bad at giving you exactly correct answers. I just asked chatGPT what 2+3-5+12*4/2 is (24); it said 10.
 
