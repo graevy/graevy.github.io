@@ -15,6 +15,7 @@ We went for a capacity upgrade (51 -> 62Wh) when swapping out my friend's batter
 The casings are different; the old one has clips on the side for disassembly and the new one is pure adhesive. Solution: destroy the new case[^1] and use the old one to store the four-phone-batteries-in-a-trenchcoat rig.
 
 ![casings](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/battery/casings.jpg)
+<img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/battery/casings.jpg" alt="will it load?" />
 
 (new casing "teardown" vs old casing+backing)
 
