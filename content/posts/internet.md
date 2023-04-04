@@ -27,9 +27,9 @@ Sometimes addons will break a webpage. Most browsers have a safe mode for this, 
 
 If you aren't going to use a dedicated password manager like [Bitwarden](https://bitwarden.com/), firefox accounts have a sync feature between devices which also tracks public password database leaks. I recommend using the Secure Password Generator addon for this.
 
-If you don't have enough memory for your appalling browser tab habits, [increasing browser.low_commit_space_threshold_mb makes firefox unload tabs](https://web.archive.org/web/20230216193845/https://dev.to/msugakov/taking-firefox-memory-usage-under-control-on-linux-4b02).
+If you don't have enough RAM for your appalling browser tab habits, [increasing `browser.low_commit_space_threshold_mb` makes firefox unload tabs](https://web.archive.org/web/20230216193845/https://dev.to/msugakov/taking-firefox-memory-usage-under-control-on-linux-4b02).
 
-Mozilla maintains [a page](https://support.mozilla.org/en-US/kb/switching-chrome-firefox) detailing how to switch from chrome to firefox.
+Mozilla maintains [a page](https://support.mozilla.org/en-US/kb/switching-chrome-firefox) on switching from chrome to firefox.
 
 # Searching tips
 
@@ -39,7 +39,7 @@ There's a lot of misinformation and advertising in search results because of Sea
 - `seattle restaurants site:reddit.com` will only return results from reddit;
 - `seattle "vegan" restaurants -pinterest site:reddit.com` will give you reddit posts containing the word vegan about seattle restaurants that don't have pinterest anywhere in their body or title.
 
-I find most people sitesearch reddit (appending site:reddit.com) to find product reviews that aren't sponsored.
+I find most people sitesearch reddit (appending `site:reddit.com`) to find product reviews that aren't sponsored.
 
 For approximate knowledge that isn't monetized, AI chatbots like chatGPT are a great way to search for things, because they're trained on the internet. I just searched "what is the purpose of magnetic eye shadow pallette"; I only saw ads. Here is a dialogue I just had with chatGPT:
 
@@ -88,7 +88,7 @@ This is a lot less risky than it used to be because most cracks now use microsof
 To install windows:
 - Get latest windows image from microsoft ([10](https://www.microsoft.com/en-us/software-download/windows10ISO) [11](https://www.microsoft.com/en-us/software-download/windows11/))
 - Create an installation USB with [rufus](https://rufus.ie/en/) (windows), Disk Utility (mac), or something like `dd if=/path/to/iso of=/path/to/usb conv=fsync bs=8M` (linux)
-- Reboot with the USB plugged in; if you aren't taken to an installation screen, you need to reboot and [enter your BIOS](https://www.wikihow.com/Enter-BIOS), typically by holding down the f2 (or f8, f12 delete...) key, and change your boot order to prioritize the plugged-in USB.
+- Reboot with the USB plugged in; if you aren't taken to an installation screen, you need to reboot and [enter your BIOS](https://www.wikihow.com/Enter-BIOS), typically by holding down the f2 (or f8, f12, insert, delete...) key, and change your boot order to prioritize the plugged-in USB.
 - Go through the installation process, select Pro or Pro N (Pro N is the EU-compliant version with less bloat, but you'll want to install the Windows Media Feature Pack yourself)
 - I recommend [tronscript](https://old.reddit.com/r/tronscript) for debloating and [chocolatey](https://chocolatey.org) for package managing
 - An example tron command for a `tron.bat` file downloaded to `C:\Users\a\Downloads\Tron` on a fresh machine is `C:\Users\a\Downloads\Tron\tron.bat -a -sa -sd -scc -v` (skipping antivirus scans, defrag, and cookies). Run this in cmd as an administrator.
@@ -96,7 +96,7 @@ To install windows:
 
 ### Music
 
-It's hard to get a virus from downloading music, not that anyone does that anymore. [rutracker](https://rutracker.org) is my favorite public tracker for music (rip what.cd).
+It's hard to get a virus from downloading music, not that anyone does that anymore. [rutracker](https://rutracker.org) is my favorite public tracker for music (rip what.cd); you need to make an account and the whole website is russian so a translation browser extension is a good idea.
 
 You're probably looking for a cracked spotify app in Android Apps below. [revanced](https://revanced.io/)/[newpipe](https://newpipe.net/) will handle youtube. These projects come and go.
 
@@ -106,7 +106,7 @@ For desktops, [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases) downloads yout
 
 Low risk for the same reason as above; video files don't need elevated permissions. Get these by going to your public tracker of choice (I recommend [1337x](https://1337x.to) first, then [thepiratebay](https://thepiratebay.org))[^2]. Private trackers have the best selections; those typically involve being invited and passing a screening process.
 
-Check the "Download in sequential order" button in qbittorrent so you can watch videos before you've finished downloading them. You generally only need to download about 5-10% of a video before you can just stream it if your connection is fast enough. Use [VLC](https://www.videolan.org/) to watch videos. [MPC-HC](https://github.com/clsid2/mpc-hc/releases) is the only competitor I'm aware of.
+Check the "Download in sequential order" button in qbittorrent so you can watch videos before you've finished downloading them. You only need to download about 5-10% of a video before you can play it if your connection is fast enough. Use [VLC](https://www.videolan.org/) to watch videos. [MPC-HC](https://github.com/clsid2/mpc-hc/releases) is the only competitor I'm aware of.
 
 I asked chatGPT: "provide a glossary of terms (such as "x265", or "5.1", or "BRRip") used to describe video hosted on torrent trackers" and received this response before it was cut off due to length:
 
@@ -150,7 +150,7 @@ There is a bounty ecosystem where people donate to reputable game crackers. Don'
 
 ### Books
 
-[libgen](https://gen.lib.rus.ec) is the best[^1]. Myanonamouse is a good private tracker for books that will let you in after an interview. The [piracy subreddit](https://old.reddit.com/r/piracy) maintains a list of book trackers; these are always coming and going. A filetype search[^3] with pdf, epub, etc. extensions is a last resort.
+[libgen](https://gen.lib.rus.ec) is the best[^1]. [Myanonamouse](https://www.myanonamouse.net/) is a good private tracker for books that will let you in after a technical interview. The [piracy subreddit](https://old.reddit.com/r/piracy) maintains a list of book trackers; these are always coming and going. A filetype search[^3] with pdf, epub, etc. extensions is a last resort.
 
 ### Papers
 
