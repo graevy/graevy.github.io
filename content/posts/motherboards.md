@@ -8,7 +8,7 @@ draft: false
 
 Every week I host an open source meetup in Seattle. My friends are always bringing in project laptops to fix up, dual boot linux with, whatever. There's a light-hearted atmosphere, food, people coming and going. 
 
-![](/images/motherboards.jpg)
+![](https://github.com/graevy/graevy.github.io/blob/main/static/images/motherboards.png)
 
 ### The Problem
 
