@@ -40,7 +40,7 @@ copyright = "Not &copy; 2023 Avery Lawrence"
   description = "Project site!"              # Your meta description of the site
   header_title = "graevy"                    # Your header title
   header_subtitle = "Wetware Developer"      # Your header subtitle
-  home_image = "https://github.com/graevy/graevy.github.io/blob/main/static/images/graevy.png"          # Path to header image starting from the static directory
+  home_image = "images/graevy.png"          # Path to header image starting from the static directory
   recent_posts = 5                           # Max amount of recent posts to show
   mainSections = ["posts", "post", "blog"]   # Main sections to include in recent posts
   [params.style]                             # CSS style overrides
