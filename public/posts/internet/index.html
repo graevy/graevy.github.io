@@ -120,37 +120,64 @@
 <h1 id="torvpns-and-the-darkweb">TOR/VPNs and the darkweb</h1>
 <p><a href="https://www.torproject.org/download/">The Onion Router</a> bounces your connection around dozens of different anonymous nodes before reaching an endpoint. This is a <a href="https://web.archive.org/web/20220821150904/https://arstechnica.com/information-technology/2013/09/majority-of-tor-crypto-keys-could-be-broken-by-nsa-researcher-says/">generally</a> <a href="https://web.archive.org/web/20230122181201/https://gizmodo.com/fbi-tor-ip-address-muhammed-momtaz-al-azhari-isis-1849975153">secure</a> way to access the internet, but is slow. Make sure you <a href="https://tb-manual.torproject.org/running-tor-browser/">properly configure</a> TOR. <a href="https://tails.boum.org/">Tails</a> is a portable linux distribution that pre-configures TOR, if you&rsquo;re both knowledgeable and paranoid.</p>
 <p>VPNs are a node between user and endpoint. This means you connect to a website through a middleman, so that the website can&rsquo;t see your IP. The proxy can sell your <a href="https://web.archive.org/web/20230224200913/https://www.statista.com/topics/1464/big-data/#topicOverview">valuable</a> data, which they as middlemen can neatly package, and any VPN service with an ad budget is almost certainly doing that to remain competitive. Off the top of my head, PrivateInternetAccess &amp; NordVPN also explicitly cooperate with states. <a href="https://mullvad.net/en/">Mullvad</a> is a frequently recommended vpn service.</p>
-<p>Darknet markets come and go all the time. At the moment, <a href="https://darknet.markets/">https://darknet.markets/</a> has a lot of links. You can only use these links in a TOR browser. Monero is the current anonymous cryptocurrency of choice; Bitcoin is traceable.</p>
+<p>Darknet markets come and go all the time. At the moment, <a href="https://darknet.markets/">https://darknet.markets/</a> has a lot of links. You can only use these links in a TOR browser. Monero is the current anonymous cryptocurrency of choice; Bitcoin is more traceable.</p>
 <h1 id="piracy">Piracy</h1>
-<p>Here is an overview of content-specific internet piracy ecosystems.</p>
+<p>Here is an overview of content-specific internet piracy ecosystems. I only give frank overviews here because you can find more in-depth resources available at sites like <a href="https://freemediaheckyeah.pages.dev/beginners-guide/">freemediaheckyeah</a> or <a href="https://old.reddit.com/r/piracy/">the piracy subreddit</a></p>
 <h3 id="explanation-of-torrenting">Explanation of torrenting</h3>
-<p>You get parts of files from anyone else who has them and is online. You need a program to handle torrenting. <a href="https://qbittorrent.org/download.php">qBittorrent</a> is open source. Torrents can be viruses because anyone can upload one. To actually download a torrent, you have to browse a torrent tracker to get either &ldquo;magnet link&quot;s or .torrent files for a torrent client to use.</p>
-<p>Sometimes, Disney or some other media giant will serve you your torrents. They do this to get your IP address, to nag your ISP, to nag you. You can usually ignore these emails; ISPs want your money. If you get enough emails, they&rsquo;ll slap you on the wrist. A VPN will stop the emails.</p>
-<h3 id="basic-virus-avoidance-techniques">Basic virus avoidance techniques</h3>
-<p>Know your file extensions: a .exe file is a windows executable file for running a program. If you download music, and it&rsquo;s a .exe file, that&rsquo;s a virus. If you don&rsquo;t know an extension, search it online. Installers need admin permissions; a game torrent will need admin permissions, but a video file asking for them is a virus.</p>
-<p>Search results are full of fake websites identical to the real one except by their URL. Their purpose is to try to &ldquo;phish&rdquo; credentials or get you to install a virus. Some examples:</p>
 <ul>
-<li><code>facebook.com.market</code> is a subdomain of <code>com.market</code></li>
-<li><code>facebook.co</code>, <code>facebook.net</code>, etc. are <em>not</em> the same websites as <code>facebook.com</code>, and could be owned by anyone. The owners of facebook bought the <code>facebook.co</code> domain to prevent people from making this mistake, and the .net top-level-domain org won&rsquo;t sell <code>facebook.net</code>.</li>
+<li>Other people have copies of files you want</li>
+<li>You get pieces of the files from whoever has them and is online</li>
+<li>Many small downloads add up to a <em>torrent</em> of data</li>
+<li>A <em>torrent client</em> connects people who are uploading and downloading</li>
+<li>Everyone currently exchanging files is part of <em>the swarm</em></li>
+<li>Joining a swarm requires a <em>magnet link</em> or a <em>torrent file</em></li>
+<li>These links and files are hosted on a website called a <em>torrent tracker</em></li>
 </ul>
-<p>Try to get a URL secondhand through wikipedia or something before searching.</p>
-<p>If you&rsquo;re taking a chance on something, you can use <a href="https://virustotal.com">virustotal</a>. You&rsquo;ll get more false results depending on the file; a windows cracking tool will fail an antivirus scan pretty much every time.</p>
-<p>Free antiviruses aren&rsquo;t better than whatever is bundled with your OS. If you get a virus, you probably won&rsquo;t know about it. Periodically wiping your drive is the only reliable way to clear certain viruses.</p>
+<p>What torrent client should I use?</p>
+<ul>
+<li><a href="https://www.qbittorrent.org/">qBittorrent</a> is open source and cross platform</li>
+<li><a href="https://transmissionbt.com/">Transmission</a> is popular for its low resource consumption</li>
+<li>Android: <a href="https://f-droid.org/packages/org.proninyaroslav.libretorrent/">LibreTorrent</a> is open source</li>
+<li>iOS: <a href="https://github.com/XITRIX/iTorrent/releases">iTorrent</a> is open source</li>
+</ul>
+<p>Use a different torrent tracker for whatever content you&rsquo;re downloading. The best general purpose tracker is <a href="https://1337x.to">1337x</a>, then whatever&rsquo;s on reddit&rsquo;s <a href="https://www.reddit.com/r/Piracy/wiki/megathread/">piracy megathread</a>.</p>
+<h3 id="virus-safety">Virus safety</h3>
+<ul>
+<li>The torrent tracker tries to prevent people from uploading <em>viruses</em></li>
+<li>Copyright holders will sometimes join the swarm to track your <em>IP address</em> and nag your internet provider
+<ul>
+<li>Virtual Private Networks (VPNs) and proxies can hide your IP address behind another</li>
+<li>Maybe try a less popular torrent for the latest TV show episode release instead</li>
+</ul>
+</li>
+<li>If you want to take a chance on a file, scan it with <a href="https://virustotal.com">virustotal</a></li>
+<li>Know your file extensions: a .exe is a windows program, not a music file</li>
+<li>Don&rsquo;t get phished:
+<ul>
+<li>Try to get a URL secondhand through wikipedia or something before searching</li>
+<li><code>facebook.com.market</code> is a subdomain of <code>com.market</code></li>
+<li><code>facebook.co</code>, <code>facebook.net</code>, etc. are <em>not</em> the same websites as <code>facebook.com</code></li>
+</ul>
+</li>
+<li>You usually won&rsquo;t know if you have a virus; you should wipe your drive and reinstall your OS every once in awhile</li>
+<li>Free antiviruses aren&rsquo;t better than whatever is bundled with your OS now</li>
+</ul>
+<h2 id="where-do-i-pirate-_____">Where do I pirate _____?</h2>
 <h3 id="windows">Windows</h3>
 <p>This is a lot less risky than it used to be because most cracks now use microsoft&rsquo;s windows images. To crack an active windows installation, go to <a href="https://github.com/massgravel/Microsoft-Activation-Scripts">this github</a> and follow the instructions (you want to use HWID). Remember to open powershell/terminal <em>as an administrator</em>.</p>
 <p>To install windows:</p>
 <ul>
 <li>Get latest windows image from microsoft (<a href="https://www.microsoft.com/en-us/software-download/windows10ISO">10</a> <a href="https://www.microsoft.com/en-us/software-download/windows11/">11</a>)</li>
 <li>Create an installation USB with <a href="https://rufus.ie/en/">rufus</a> (windows), Disk Utility (mac), or something like <code>dd if=/path/to/iso of=/path/to/usb conv=fsync bs=8M</code> (linux)</li>
-<li>Reboot with the USB plugged in; if you aren&rsquo;t taken to an installation screen, you need to reboot and <a href="https://www.wikihow.com/Enter-BIOS">enter your BIOS</a>, typically by holding down the f2 (or f8, f12, insert, delete&hellip;) key, and change your boot order to prioritize the plugged-in USB.</li>
+<li>Reboot with the USB plugged in. You will usually have to <a href="https://www.wikihow.com/Enter-BIOS">enter your BIOS</a> (or boot menu), typically by holding down the f2 (or f8, f12, insert, delete&hellip;) key, booting from the USB or changing your boot order to prioritize it.</li>
 <li>Go through the installation process, select Pro or Pro N (Pro N is the EU-compliant version with less bloat, but you&rsquo;ll want to install the Windows Media Feature Pack yourself)</li>
 <li>I recommend <a href="https://old.reddit.com/r/tronscript">tronscript</a> for debloating and <a href="https://chocolatey.org">chocolatey</a> for package managing</li>
 <li>An example tron command for a <code>tron.bat</code> file downloaded to <code>C:\Users\a\Downloads\Tron</code> on a fresh machine is <code>C:\Users\a\Downloads\Tron\tron.bat -a -sa -sd -scc -v</code> (skipping antivirus scans, defrag, and cookies). Run this in cmd as an administrator.</li>
 <li>Crack windows using the <em>admin</em> powershell github commands in the <a href="https://github.com/massgravel/Microsoft-Activation-Scripts">link</a> above</li>
 </ul>
 <h3 id="music">Music</h3>
-<p>It&rsquo;s hard to get a virus from downloading music, not that anyone does that anymore. <a href="https://rutracker.org">rutracker</a> is my favorite public tracker for music (rip what.cd); you need to make an account and the whole website is russian so a translation browser extension is a good idea.</p>
-<p>You&rsquo;re probably looking for a cracked spotify app in Android Apps below. <a href="https://revanced.io/">revanced</a>/<a href="https://newpipe.net/">newpipe</a> will handle youtube. These projects come and go.</p>
+<p>It&rsquo;s hard to get a virus from downloading music, not that anyone does that anymore. <a href="https://rutracker.org">rutracker</a> is my favorite public tracker for music (rip what.cd); you need to make an account and the whole website is russian so a translation browser extension is a good idea. <a href="https://www.slsknet.org/">Soulseek</a> has a pretty good english-language selection but it&rsquo;s kindof closed off from the rest of the torrent ecosystem.</p>
+<p>You&rsquo;re probably looking for a cracked spotify app in Apps below. <a href="https://revanced.io/">revanced</a>/<a href="https://newpipe.net/">newpipe</a> will handle youtube. These projects come and go.</p>
 <p>For desktops, <a href="https://github.com/yt-dlp/yt-dlp/releases">yt-dlp</a> downloads youtube media, and just using the web version of spotify with ublock origin on firefox should block its ads.</p>
 <h3 id="video">Video</h3>
 <p>Low risk for the same reason as above; video files don&rsquo;t need elevated permissions. Get these by going to your public tracker of choice (I recommend <a href="https://1337x.to">1337x</a> first, then <a href="https://thepiratebay.org">thepiratebay</a>)<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Private trackers have the best selections; those typically involve being invited and passing a screening process.</p>
@@ -177,17 +204,16 @@ HDTV: Stands for &#34;high-definition television.&#34; It refers to a television
 Remux: A video format that refers to a high-quality video that has been copied from a Blu-ray or DVD disc without any compression or loss of quality.
 
 SD: Stands for &#34;standard definition.&#34;
-</code></pre><h3 id="android-apps">Android Apps</h3>
-<p>Get illicit APKs from <a href="https://forum.mobilism.org/index.php">mobilism</a><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. This ecosystem&rsquo;s pretty seedy. <a href="https://f-droid.org/">f-droid</a> is a package manager like the google play store, except it only has free open source apps. F-droid&rsquo;s app is notoriously buggy so try some frontends like Neo Store or Droid-ify.</p>
-<p>Apple users: jailbreaking is outside the scope of this guide.</p>
+</code></pre><h3 id="apps">Apps</h3>
+<p>Android users: get illicit APKs from <a href="https://forum.mobilism.org/index.php">mobilism</a><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. This ecosystem&rsquo;s pretty seedy. <a href="https://f-droid.org/">f-droid</a> is a package manager like the google play store, except it only has free open source apps. F-droid&rsquo;s app is notoriously buggy so try some frontends like Neo Store or Droid-ify.</p>
+<p>Apple users: jailbreaking is outside the scope of this guide. <a href="https://www.reddit.com/r/sideloaded/">sideloaded</a> is a community for loading custom apps that don&rsquo;t require jailbreaking. I can&rsquo;t personally vouch for them, though.</p>
 <h3 id="software">Software</h3>
-<p>This is the riskiest. Find popular torrents on a public tracker and roll those dice. Use a <a href="https://www.virtualbox.org/wiki/Downloads">virtual machine</a><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>; that&rsquo;s also beyond the scope of this guide. Occasionally a repacker will host what you&rsquo;re looking for.</p>
+<p>This is the riskiest. I&rsquo;ll direct you to the <a href="https://www.reddit.com/r/Piracy/wiki/megathread/software_downloads">piracy megathread</a>, which vouches for <a href="https://w14.monkrus.ws/">m0nkrus</a>&rsquo; repacks. Otherwise, find torrents on a public tracker and roll the dice. Use a <a href="https://www.virtualbox.org/wiki/Downloads">virtual machine</a><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> if you can; that&rsquo;s also beyond the scope of this guide.</p>
 <h3 id="games">Games</h3>
-<p>There is a bounty ecosystem where people donate to reputable game crackers. Don&rsquo;t get games off of public trackers like thepiratebay. Two of the most reputable crackers are <a href="https://fitgirl-repacks.site">fitgirl</a><sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> and <a href="https://dodi-repacks.site">dodi</a><sup id="fnref2:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. If they don&rsquo;t have what you&rsquo;re looking for, go check <a href="https://old.reddit.com/r/CrackWatch">the CrackWatch subreddit</a> to find a reputable cracker who does.</p>
-<h3 id="books">Books</h3>
-<p><a href="https://gen.lib.rus.ec">libgen</a> is the best<sup id="fnref3:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. <a href="https://www.myanonamouse.net/">Myanonamouse</a> is a good private tracker for books that will let you in after a technical interview. The <a href="https://old.reddit.com/r/piracy">piracy subreddit</a> maintains a list of book trackers; these are always coming and going. A filetype search<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> with pdf, epub, etc. extensions is a last resort.</p>
-<h3 id="papers">Papers</h3>
-<p>Sci-hub&rsquo;s been down for awhile. Just email paper authors and they&rsquo;ll send you a copy. You might be able to find a non-paywalled copy on google scholar. Extensions like Bypass Paywalls Clean or Unpaywall have historically been okay at this.</p>
+<p>There is a bounty ecosystem where people donate to reputable game crackers. Don&rsquo;t get games off of public trackers like thepiratebay if you can avoid it. Two of the most reputable crackers are <a href="https://fitgirl-repacks.site">fitgirl</a><sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> and <a href="https://dodi-repacks.site">dodi</a><sup id="fnref2:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. If they don&rsquo;t have what you&rsquo;re looking for, go search <a href="https://old.reddit.com/r/CrackWatch">the CrackWatch subreddit</a> to find a reputable cracker who does.</p>
+<h3 id="booksacademic-papers">Books/academic papers</h3>
+<p><a href="https://gen.lib.rus.ec">libgen</a> is the best<sup id="fnref3:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. <a href="https://www.myanonamouse.net/">Myanonamouse</a> is a good private tracker for books that will let you in after a technical interview. The <a href="https://www.reddit.com/r/Piracy/wiki/megathread/reading_material_and_elearning">piracy megathread</a> maintains a list of book trackers; these are always coming and going. A filetype search<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> with pdf, mobi, epub, etc. extensions is a last resort.</p>
+<p>For papers specifically, check libgen, then <a href="https://sci-hub.se/">sci-hub</a> (mediocre uptime; blame the lawsuits), then <a href="https://academictorrents.com/">academictorrents</a>, then the <a href="https://www.reddit.com/r/Piracy/wiki/megathread/reading_material_and_elearning">piracy megathread</a>, then&hellip;just email paper authors and they&rsquo;ll usually send you a copy. You might be able to find a non-paywalled copy on google scholar. Extensions like Bypass Paywalls Clean or Unpaywall have historically been bad at papers.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
