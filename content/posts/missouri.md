@@ -6,7 +6,7 @@ draft: false
 
 #### Problem
 
-The Missouri Attorney General's office maintained a page I've backed up [here](missouri.html) for reporting "Transgender concerns" after the state passed legislation banning gender-affirming care.
+The Missouri Attorney General's office maintained a page ([html backup](https://raw.githubusercontent.com/graevy/graevy.github.io/main/static/missouri.html)) for reporting "Transgender concerns" after the state passed legislation banning gender-affirming care.
 
 #### Solution
 
@@ -18,7 +18,7 @@ An overzealous [noise generator](https://github.com/boiled-water-tsar/eat-my-ent
 - finding a sufficiently large dataset of gps-valid missouri addresses and
 - writing an original algorithm utilizing my 1337 programming skills:
 
-![](https://github.com/graevy/graevy.github.io/blob/main/static/images/missouri.png)
+![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/missouri.png)
 
 - also a [quick](https://github.com/boiled-water-tsar/eat-my-entire-trans-ass-andrew-bailey/pull/5/commits/0428d23f7bc6ea611af54c1415b7d02b92519563) and [dirty](https://github.com/boiled-water-tsar/eat-my-entire-trans-ass-andrew-bailey/pull/19) script for feasible missouri phone #s
 
