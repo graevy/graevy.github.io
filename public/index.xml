@@ -14,7 +14,7 @@
       <pubDate>Thu, 27 Apr 2023 03:41:24 -0700</pubDate>
       
       <guid>http://quatl.ooo/posts/missouri/</guid>
-      <description>Problem The Missouri Attorney General&amp;rsquo;s office maintained a page I&amp;rsquo;ve backed up here for reporting &amp;ldquo;Transgender concerns&amp;rdquo; after the state passed legislation banning gender-affirming care.
+      <description>Problem The Missouri Attorney General&amp;rsquo;s office maintained a page (html backup) for reporting &amp;ldquo;Transgender concerns&amp;rdquo; after the state passed legislation banning gender-affirming care.
 Solution An overzealous noise generator which probably got an IP filtered very quickly. Still, the form was taken down, so I&amp;rsquo;ll call that a victory.
 Contribution Localize the junk address data to Missouri by:
 finding a sufficiently large dataset of gps-valid missouri addresses and writing an original algorithm utilizing my 1337 programming skills: also a quick and dirty script for feasible missouri phone #s Commentary I was the first contributor!</description>
@@ -48,8 +48,8 @@ First Hurdle The casings are different; the old one has clips on the side for di
       
       <guid>http://quatl.ooo/posts/internet/</guid>
       <description>This is a harm reduction guide for my friends who risk malware and surveillance, mostly while stealing things on the internet, but also just by browsing unhygenically.
-Last updated: Apr 2 2023
-Browser Chrome is phasing out privacy features and adblockers, and browser monopolies are bad, so stop using it!
+Last updated: May 14 2023 (please email me if anything needs attention)
+Browser Chrome is phasing out privacy features and adblockers, and browser monopolies are bad, so please use a good browser:
 Firefox is open source, customizable, and the most popular alternative (that isn&amp;rsquo;t Edge or Safari) Vivaldi is a mostly open-source power-user browser, with tab management, integrated mail, calendar, translation, etc.</description>
     </item>
     

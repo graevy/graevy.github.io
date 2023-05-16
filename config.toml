@@ -40,11 +40,11 @@ copyright = "Not &copy; 2023 Avery Lawrence"
   description = "Project site!"              # Your meta description of the site
   header_title = "graevy"                    # Your header title
   header_subtitle = "Wetware Developer"      # Your header subtitle
-  home_image = "graevy.png"           # Path to header image starting from the static directory
+  home_image = "graevy.png"                  # Path to header image starting from the static directory
   recent_posts = 5                           # Max amount of recent posts to show
   mainSections = ["posts", "post", "blog"]   # Main sections to include in recent posts
   [params.style]                             # CSS style overrides
-    backgroundColor = "#121215"
+    backgroundColor = "#060608"
     homeImageBorderColor = "#95d550"
     fontColor = "#95d550"
     fontFamilyBase = "Liberation Mono"
