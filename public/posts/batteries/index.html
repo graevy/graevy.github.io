@@ -82,20 +82,26 @@
 </header>
 <div class="container">
     <div class="pl-sm-4 ml-sm-5">
-        <p>In which four interpid nerds attempt to subvert battery copy-protection</p>
-<h3 id="background">Background</h3>
-<p>We went for a capacity upgrade (51 -&gt; 62Wh) when swapping out my friend&rsquo;s battery. Dell bios does not like the non-dell battery; the idea is to graft the old battery&rsquo;s management system (BMS) onto the new battery.</p>
+        <h3 id="background">Background</h3>
+<p>We went for a capacity upgrade (51 -&gt; 62Wh) when swapping out my friend&rsquo;s old laptop battery. Dell bios does not like the non-dell battery; the idea is to graft the old battery&rsquo;s management system (BMS) onto the new battery.</p>
 <h4 id="first-hurdle">First Hurdle</h4>
 <p>The casings are different; the old one has clips on the side for disassembly and the new one is pure adhesive. Solution: destroy the new case<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> and use the old one to store the four-phone-batteries-in-a-trenchcoat rig.</p>
 <p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/battery/casings.jpg" alt="casings"></p>
 <p>(new casing &ldquo;teardown&rdquo; vs old casing+backing)</p>
 <h4 id="second-hurdle">Second Hurdle</h4>
-<p>New BMS contains a plastic power rail connecting to each of the batteries; old BMS connects to an isolated power rail. We have graft the isolated power rail:</p>
+<p>New BMS contains an embedded plastic power rail connecting each of the batteries; old BMS connects to an isolated power rail.</p>
 <p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/battery/rail.jpg" alt="rail"></p>
 <p>The old hydrogen-bloated batteries, the orange isolated power rail, and the minimal BMS chip. Note the inverted middle batteries. We were very concerned by the presence of a third battery terminal between the positive/negative terminals (it&rsquo;s even marked positive):</p>
 <p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/battery/terminals.jpg" alt="terminals"></p>
 <p>Searching the part number on the chip yielded a <a href="../../docs/hc.pdf">Thermal Cutoff Device</a> <a href="https://www.bourns.com/docs/Product-Datasheets/HC.pdf">(linkrot)</a> that we can &ldquo;safely&rdquo; ignore for the graft. I&rsquo;m starting to sympathize with dell, but I&rsquo;m in too deep now.</p>
 <p>Solution: Spot welding, not soldering<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/battery/welding.jpg" alt=""></p>
+<p>We had to wait awhile for the spot welder to be available, but we began by welding these li-ions to the BMS. Unfortunately the batteries were completely drained, meaning we weren&rsquo;t able to check the quality of the welds with a multimeter.</p>
+<p>Solution: get a power supply and manually charge each terminal.</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/battery/charging.jpg" alt=""></p>
+<p>(Charging the batteries we hadn&rsquo;t welded yet)</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/battery/charging2.jpg" alt=""></p>
+<p>(Directly charging the other two in parallel via their new circuit)</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>

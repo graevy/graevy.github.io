@@ -4,11 +4,9 @@ date: 2023-03-07T18:00:21-08:00
 draft: false
 ---
 
-In which four interpid nerds attempt to subvert battery copy-protection
-
 ### Background
 
-We went for a capacity upgrade (51 -> 62Wh) when swapping out my friend's battery. Dell bios does not like the non-dell battery; the idea is to graft the old battery's management system (BMS) onto the new battery.
+We went for a capacity upgrade (51 -> 62Wh) when swapping out my friend's old laptop battery. Dell bios does not like the non-dell battery; the idea is to graft the old battery's management system (BMS) onto the new battery.
 
 #### First Hurdle
 
@@ -20,7 +18,7 @@ The casings are different; the old one has clips on the side for disassembly and
 
 #### Second Hurdle
 
-New BMS contains a plastic power rail connecting to each of the batteries; old BMS connects to an isolated power rail. We have graft the isolated power rail:
+New BMS contains an embedded plastic power rail connecting each of the batteries; old BMS connects to an isolated power rail.
 
 ![rail](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/battery/rail.jpg)
 
@@ -32,8 +30,21 @@ Searching the part number on the chip yielded a [Thermal Cutoff Device](/docs/hc
 
 Solution: Spot welding, not soldering[^2].
 
+![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/battery/welding.jpg)
+
+We had to wait awhile for the spot welder to be available, but we began by welding these li-ions to the BMS. Unfortunately the batteries were completely drained, meaning we weren't able to check the quality of the welds with a multimeter.
+
+Solution: get a power supply and manually charge each terminal.
+
+![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/battery/charging.jpg)
+
+(Charging the batteries we hadn't welded yet)
+
+![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/battery/charging2.jpg)
+
+(Directly charging the other two in parallel via their new circuit)
+
 
 [^1]: point of no (literal) return passed.
 
 [^2]: disappointment.
-

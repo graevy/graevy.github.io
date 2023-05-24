@@ -14,7 +14,7 @@
       <pubDate>Thu, 27 Apr 2023 03:41:24 -0700</pubDate>
       
       <guid>http://quatl.ooo/posts/missouri/</guid>
-      <description>Problem The Missouri Attorney General&amp;rsquo;s office maintained a page I&amp;rsquo;ve backed up here for reporting &amp;ldquo;Transgender concerns&amp;rdquo; after the state passed legislation banning gender-affirming care.
+      <description>Problem The Missouri Attorney General&amp;rsquo;s office maintained a page (html backup) for reporting &amp;ldquo;Transgender concerns&amp;rdquo; after the state passed legislation banning gender-affirming care.
 Solution An overzealous noise generator which probably got an IP filtered very quickly. Still, the form was taken down, so I&amp;rsquo;ll call that a victory.
 Contribution Localize the junk address data to Missouri by:
 finding a sufficiently large dataset of gps-valid missouri addresses and writing an original algorithm utilizing my 1337 programming skills: also a quick and dirty script for feasible missouri phone #s Commentary I was the first contributor!</description>
@@ -36,9 +36,8 @@ Surprisingly, the build pipeline was the easiest migration component, and actual
       <pubDate>Tue, 07 Mar 2023 18:00:21 -0800</pubDate>
       
       <guid>http://quatl.ooo/posts/batteries/</guid>
-      <description>In which four interpid nerds attempt to subvert battery copy-protection
-Background We went for a capacity upgrade (51 -&amp;gt; 62Wh) when swapping out my friend&amp;rsquo;s battery. Dell bios does not like the non-dell battery; the idea is to graft the old battery&amp;rsquo;s management system (BMS) onto the new battery.
-First Hurdle The casings are different; the old one has clips on the side for disassembly and the new one is pure adhesive.</description>
+      <description>Background We went for a capacity upgrade (51 -&amp;gt; 62Wh) when swapping out my friend&amp;rsquo;s old laptop battery. Dell bios does not like the non-dell battery; the idea is to graft the old battery&amp;rsquo;s management system (BMS) onto the new battery.
+First Hurdle The casings are different; the old one has clips on the side for disassembly and the new one is pure adhesive. Solution: destroy the new case1 and use the old one to store the four-phone-batteries-in-a-trenchcoat rig.</description>
     </item>
     
     <item>
