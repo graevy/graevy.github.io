@@ -95,10 +95,10 @@
 <li>Ublock Origin</li>
 <li>I still don&rsquo;t care about cookies</li>
 <li>SponsorBlock (skips youtube sponsored segments)</li>
-<li><a href="https://gitlab.com/magnolia1234/bypass-paywalls-firefox-clean">Bypass Paywalls Clean</a> (can&rsquo;t be installed regularly due to DMCA violation. download the xpi release and open it with firefox)</li>
 <li>Alternative Player for Twitch.tv (hides ads)</li>
 <li>Link Cleaner</li>
 <li>Tab Session Manager (vivaldi does it better)</li>
+<li><a href="https://gitlab.com/magnolia1234/bypass-paywalls-firefox-clean">Bypass Paywalls Clean</a> (can&rsquo;t be installed regularly due to DMCA violation<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. download the xpi release and open it with firefox)</li>
 </ul>
 <p>Sometimes addons will break a webpage. Most browsers have a safe mode for this, which loads a separate browser instance with zero customization.</p>
 <p>If you aren&rsquo;t going to use a dedicated password manager like <a href="https://bitwarden.com/">Bitwarden</a>, firefox accounts have a sync feature between devices which also tracks public password database leaks. I recommend using the Secure Password Generator addon for whenever firefox&rsquo;s generator doesn&rsquo;t recognize a password field.</p>
@@ -119,13 +119,13 @@
 <h1 id="torvpns-and-the-darkweb">TOR/VPNs and the darkweb</h1>
 <p><a href="https://www.torproject.org/download/">The Onion Router</a> bounces your connection around dozens of different anonymous nodes before reaching an endpoint. This is a <a href="https://web.archive.org/web/20220821150904/https://arstechnica.com/information-technology/2013/09/majority-of-tor-crypto-keys-could-be-broken-by-nsa-researcher-says/">generally</a> <a href="https://web.archive.org/web/20230122181201/https://gizmodo.com/fbi-tor-ip-address-muhammed-momtaz-al-azhari-isis-1849975153">secure</a> way to access the internet, but is slow. Make sure you <a href="https://tb-manual.torproject.org/running-tor-browser/">properly configure</a> TOR. <a href="https://tails.boum.org/">Tails</a> is a portable linux distribution that pre-configures TOR, if you&rsquo;re both knowledgeable and paranoid.</p>
 <p>VPNs are a node between user and destination. This means you connect to a website through a middleman, so that the website can&rsquo;t see your IP. The proxy can sell your <a href="https://web.archive.org/web/20230224200913/https://www.statista.com/topics/1464/big-data/#topicOverview">valuable</a> data, which they as middlemen can neatly package. Any VPN service with an ad budget is selling that to remain competitive. Off the top of my head, PrivateInternetAccess &amp; NordVPN also explicitly cooperate with states. <a href="https://mullvad.net/en/">Mullvad</a> is a frequently recommended vpn service.</p>
-<p>Darknet markets come and go all the time. At the moment, <a href="https://darknet.markets/">https://darknet.markets/</a> has a lot of links. You can only use these links in a TOR browser. Monero is the current anonymous cryptocurrency of choice; Bitcoin is more traceable.</p>
+<p>Darknet markets come and go all the time. At the moment, <a href="https://darknet.markets/">https://darknet.markets/</a> has a lot of links<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. You can only use these links in a TOR browser. Monero is the current anonymous cryptocurrency of choice; Bitcoin is more traceable.</p>
 <h1 id="a-namepiracyapiracy"><!-- raw HTML omitted --><!-- raw HTML omitted -->Piracy</h1>
 <p>Here is an overview of content-specific internet piracy ecosystems. I only give frank overviews here because you can find more in-depth resources at <a href="https://freemediaheckyeah.pages.dev/beginners-guide/">freemediaheckyeah</a> or <a href="https://old.reddit.com/r/piracy/">the piracy subreddit</a>.</p>
 <h3 id="explanation-of-torrenting">Explanation of torrenting</h3>
 <ul>
 <li>Other people have copies of files you want</li>
-<li>You get <code>bits</code><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> of the files from whoever has them and is online</li>
+<li>You get <code>bits</code><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> of the files from whoever has them and is online</li>
 <li>Many small downloads sum to a <code>torrent</code> of data</li>
 <li>A <code>torrent client</code> connects you to <code>the swarm</code>: clients who are currently uploading/downloading those files</li>
 <li>Swarm joining instructions are inside a <code>magnet link</code> or a <code>torrent file</code></li>
@@ -137,7 +137,7 @@
 <li>Torrenting is only illegal when copyrighted data is exchanged, therefore:
 <ul>
 <li>the torrent software is itself perfectly legal,</li>
-<li>the torrent tracker is legal<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> because it doesn&rsquo;t host any copyrighted data; only references to it.</li>
+<li>the torrent tracker is legal<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> because it doesn&rsquo;t host any copyrighted data; only references to it.</li>
 </ul>
 </li>
 <li>Exchanging files reveals your <code>IP address</code> unless you use a <code>VPN</code> or <code>proxy</code>;</li>
@@ -150,14 +150,14 @@
 <li>Every now and then, a government will jail someone</li>
 </ul>
 <h3 id="torrentings-virus-landscape">Torrenting&rsquo;s virus landscape</h3>
-<p>Here are the popular<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> reasons people make viruses for torrents. From most to least common:</p>
+<p>Here are the popular<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> reasons people make viruses for torrents. From most to least common:</p>
 <ol>
 <li>To get your credentials.
 <ul>
 <li>Common. Hidden malware that waits for you to login somewhere and records it.</li>
 </ul>
 </li>
-<li>To leverage your hardware to provide value. Either your pc starts mining cryptocurrency, you inadvertently participate in a <a href="https://www.malwarebytes.com/botnet">botnet</a>, or both<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>
+<li>To leverage your hardware to provide value. Either your pc starts mining cryptocurrency, you inadvertently participate in a <a href="https://www.malwarebytes.com/botnet">botnet</a>, or both<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>
 <ul>
 <li>Common because target diversity is great for botnets and people who torrent games usually have good mining GPUs</li>
 </ul>
@@ -196,24 +196,24 @@
 <p>Use a different torrent tracker for whatever content you&rsquo;re downloading. The best general purpose tracker is <a href="https://1337x.to">1337x</a>, then whatever&rsquo;s on reddit&rsquo;s <a href="https://www.reddit.com/r/Piracy/wiki/megathread/">piracy megathread</a>.</p>
 <h2 id="where-do-i-pirate-_____">Where do I pirate _____?</h2>
 <h3 id="windows">Windows</h3>
-<p>This is a lot less risky than it used to be because most cracks now use microsoft&rsquo;s windows images. To crack an active windows installation, go to <a href="https://github.com/massgravel/Microsoft-Activation-Scripts">this github</a><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> and follow the instructions (you want to use HWID). Remember to open powershell/terminal <em>as an administrator</em>.</p>
+<p>This is a lot less risky than it used to be because most cracks now use microsoft&rsquo;s windows images. To crack an active windows installation, go to <a href="https://github.com/massgravel/Microsoft-Activation-Scripts">this github</a><sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> and follow the instructions (you want to use HWID). Remember to open powershell/terminal <em>as an administrator</em>.</p>
 <p>To install windows:</p>
 <ul>
 <li>Get latest windows image from microsoft (<a href="https://www.microsoft.com/en-us/software-download/windows10ISO">10</a> <a href="https://www.microsoft.com/en-us/software-download/windows11/">11</a>)</li>
 <li>Take a thumb drive and either <a href="https://rufus.ie/en/">rufus</a> (windows), Disk Utility (mac), or something like <code>dd if=/path/to/iso of=/path/to/usb conv=fsync bs=8M</code> (linux) to make an installation USB</li>
 <li>Reboot with the USB plugged in. You will usually have to <a href="https://www.wikihow.com/Enter-BIOS">enter your BIOS</a> (or boot menu), typically by holding down the f2 (or f8, f12, insert, delete&hellip;) key, booting from the USB or changing your boot order to prioritize it.</li>
 <li>Install Windows. Select Pro or Pro N (Pro N is the EU-compliant version with less bloat, but you&rsquo;ll want to install the Windows Media Feature Pack yourself)</li>
-<li>I recommend <a href="https://old.reddit.com/r/tronscript">tronscript</a> for debloating<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> and <a href="https://chocolatey.org">chocolatey</a> for package managing<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup></li>
+<li>I recommend <a href="https://old.reddit.com/r/tronscript">tronscript</a> for debloating<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup> and <a href="https://chocolatey.org">chocolatey</a> for package managing<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></li>
 <li>An example tron command for a <code>tron.bat</code> file downloaded to <code>C:\Users\a\Downloads\Tron</code> on a fresh machine is <code>C:\Users\a\Downloads\Tron\tron.bat -a -sa -sd -scc -v</code> (skipping antivirus scans, defrag, and cookies). Run this in cmd as an administrator.</li>
 <li>Crack windows using the <em>admin</em> powershell github commands in the <a href="https://github.com/massgravel/Microsoft-Activation-Scripts">link</a> above</li>
 </ul>
 <h3 id="music">Music</h3>
-<p>It&rsquo;s hard to get a virus from downloading music, not that anyone does that anymore. <a href="https://rutracker.org">rutracker</a> is my favorite public tracker for music<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>; you need to make an account and the whole website is russian so a translation browser extension is a good idea. <a href="https://www.slsknet.org/">Soulseek</a> has a good english-language selection but it&rsquo;s kindof closed off from the rest of the torrent ecosystem.</p>
+<p>It&rsquo;s hard to get a virus from downloading music, not that anyone does that anymore. <a href="https://rutracker.org">rutracker</a> is my favorite public tracker for music<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>; you need to make an account and the whole website is russian so a translation browser extension is a good idea. <a href="https://www.slsknet.org/">Soulseek</a> has a good english-language selection but it&rsquo;s kindof closed off from the rest of the torrent ecosystem.</p>
 <p>You&rsquo;re probably looking for a cracked spotify app in Apps below. <a href="https://revanced.io/">revanced</a>/<a href="https://newpipe.net/">newpipe</a> will handle youtube. These projects come and go.</p>
 <p>For desktops, <a href="https://github.com/yt-dlp/yt-dlp/releases">yt-dlp</a> downloads youtube media, and just using the web version of spotify with ublock origin on firefox should block its ads.</p>
 <h3 id="video">Video</h3>
-<p>Low risk<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> for the same reason as above; video files don&rsquo;t need elevated permissions. Get these by going to your public tracker of choice (I recommend <a href="https://1337x.to">1337x</a> first, then <a href="https://thepiratebay.org">thepiratebay</a>)<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>. Private trackers have the best selections; those typically involve being invited and passing a screening process.</p>
-<p>When starting a new torrent, downloading in &ldquo;sequential order&rdquo; or similar lets you functionally stream video<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup>. You only need to download about 5-10% of a video before you can play it if your connection is fast enough. Use <a href="https://www.videolan.org/">VLC</a> or <a href="https://github.com/clsid2/mpc-hc/releases">MPC-HC</a> to watch videos.</p>
+<p>Low risk<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup> for the same reason as above; video files don&rsquo;t need elevated permissions. Get these by going to your public tracker of choice (I recommend <a href="https://1337x.to">1337x</a> first, then <a href="https://thepiratebay.org">thepiratebay</a>)<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>. Private trackers have the best selections; those typically involve being invited and passing a screening process.</p>
+<p>When starting a new torrent, downloading in &ldquo;sequential order&rdquo; or similar lets you functionally stream video<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup>. You only need to download about 5-10% of a video before you can play it if your connection is fast enough. Use <a href="https://www.videolan.org/">VLC</a> or <a href="https://github.com/clsid2/mpc-hc/releases">MPC-HC</a> to watch videos.</p>
 <p>I asked chatGPT: &ldquo;provide a glossary of terms (such as &ldquo;x265&rdquo;, or &ldquo;5.1&rdquo;, or &ldquo;BRRip&rdquo;) used to describe video hosted on torrent trackers&rdquo; and received this response before it was cut off due to length:</p>
 <pre tabindex="0"><code>Sure, here&#39;s a glossary of terms commonly used to describe video hosted on torrent trackers:
 
@@ -237,15 +237,16 @@ Remux: A video format that refers to a high-quality video that has been copied f
 
 SD: Stands for &#34;standard definition.&#34;
 </code></pre><h3 id="apps">Apps</h3>
-<p>Android users: get illicit APKs from <a href="https://forum.mobilism.org/index.php">mobilism</a><sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>. This ecosystem&rsquo;s pretty seedy. <a href="https://f-droid.org/">f-droid</a> is a package manager like the google play store, except it only has free open source apps. F-droid&rsquo;s app is notoriously buggy so try some frontends like Neo Store or Droid-ify.</p>
+<p>Android users: get illicit APKs from <a href="https://forum.mobilism.org/index.php">mobilism</a><sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>. This ecosystem&rsquo;s pretty seedy. <a href="https://f-droid.org/">f-droid</a> is a package manager like the google play store, except it only has free open source apps. F-droid&rsquo;s app is notoriously buggy so try some frontends like Neo Store or Droid-ify.</p>
 <p>Apple users: jailbreaking is outside the scope of this guide. <a href="https://www.reddit.com/r/sideloaded/">sideloaded</a> is a community for loading custom apps that don&rsquo;t require jailbreaking.</p>
 <h3 id="software">Software</h3>
-<p>This is the riskiest. I&rsquo;ll direct you to the <a href="https://www.reddit.com/r/Piracy/wiki/megathread/software_downloads">piracy megathread</a>, which vouches for <a href="https://w14.monkrus.ws/">m0nkrus</a>&rsquo; repacks. Otherwise, find torrents on a public tracker and roll the dice. Use a <a href="https://www.virtualbox.org/wiki/Downloads">virtual machine</a><sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup> for one-shot tasks; that&rsquo;s also beyond the scope of this guide.</p>
+<p>This is the riskiest. I&rsquo;ll direct you to the <a href="https://www.reddit.com/r/Piracy/wiki/megathread/software_downloads">piracy megathread</a>, which vouches for <a href="https://w14.monkrus.ws/">m0nkrus</a>&rsquo; repacks. Otherwise, find torrents on a public tracker and roll the dice. Use a <a href="https://www.virtualbox.org/wiki/Downloads">virtual machine</a><sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup> for one-shot tasks; that&rsquo;s also beyond the scope of this guide.</p>
 <h3 id="games">Games</h3>
-<p>There is a bounty ecosystem where people donate to reputable game crackers<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>. Don&rsquo;t get games off of public trackers like thepiratebay if you can avoid it. Two of the most reputable crackers are <a href="https://fitgirl-repacks.site">fitgirl</a><sup id="fnref1:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup> and <a href="https://dodi-repacks.site">dodi</a><sup id="fnref2:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>. If they don&rsquo;t have what you&rsquo;re looking for, go search <a href="https://old.reddit.com/r/CrackWatch">the CrackWatch subreddit</a> to find a reputable cracker who does.</p>
+<p>There is a bounty ecosystem where people donate to reputable game crackers<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup>. Don&rsquo;t get games off of public trackers like thepiratebay if you can avoid it. Two of the most reputable crackers are <a href="https://fitgirl-repacks.site">fitgirl</a><sup id="fnref1:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup> and <a href="https://dodi-repacks.site">dodi</a><sup id="fnref2:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>. If they don&rsquo;t have what you&rsquo;re looking for, go search <a href="https://old.reddit.com/r/CrackWatch">the CrackWatch subreddit</a> to find a reputable cracker who does.</p>
 <h3 id="booksacademic-papers">Books/academic papers</h3>
-<p><a href="https://gen.lib.rus.ec">libgen</a> is the best<sup id="fnref3:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>. <a href="https://www.myanonamouse.net/">Myanonamouse</a> is a good private tracker for books that will let you in after a technical interview. The <a href="https://www.reddit.com/r/Piracy/wiki/megathread/reading_material_and_elearning">piracy megathread</a> maintains a list of book trackers; these are always coming and going. A filetype search<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup> with pdf, mobi, epub, etc. extensions is a last resort.</p>
+<p><a href="https://gen.lib.rus.ec">libgen</a> is the best<sup id="fnref3:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>. <a href="https://www.myanonamouse.net/">Myanonamouse</a> is a good private tracker for books that will let you in after a technical interview. The <a href="https://www.reddit.com/r/Piracy/wiki/megathread/reading_material_and_elearning">piracy megathread</a> maintains a list of book trackers; these are always coming and going. A filetype search<sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup> with pdf, mobi, epub, etc. extensions is a last resort.</p>
 <p>For papers specifically, check libgen, then <a href="https://sci-hub.se/">sci-hub</a> (mediocre uptime; blame the lawsuits), then <a href="https://academictorrents.com/">academictorrents</a>, then the <a href="https://www.reddit.com/r/Piracy/wiki/megathread/reading_material_and_elearning">piracy megathread</a>, then&hellip;just email paper authors and they&rsquo;ll usually send you a copy. You might be able to find a non-paywalled copy on google scholar. Extensions like Bypass Paywalls Clean or Unpaywall have historically been bad at papers.</p>
+<p>Have some junk text to make footnotes better<sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup></p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -258,49 +259,58 @@ SD: Stands for &#34;standard definition.&#34;
 </ul>
 &#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></li>
 <li id="fn:2">
-<p>Hence &ldquo;bit-torrent protocol&rdquo;&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>That&rsquo;s how you know it&rsquo;s good.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>Some jurisdictions obligate the torrent tracker to remove illegal content references. This is a flimsy legal argument with a major corporate backing; creative ccTLDs (.to, .cr, .vu&hellip;) make this difficult to enforce. In the absence of jurisdiction, vested interests will DDoS trackers to weaken their reliability.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>For actually good links, find darkweb forums and lurk until you understand the current ecosystem.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
-<p>Source: my ass. See also: <a href="https://en.wikipedia.org/wiki/White_hat_(computer_security)">white hats</a>, &ldquo;because they can&rdquo;, <a href="https://en.wikipedia.org/wiki/Stuxnet">cyberpunk conspiracies using you as a transmission vector</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Hence &ldquo;bit-torrent protocol&rdquo;&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p>It should be noted that historically this was a pretty symbiotic relationship. You save money, someone gets a botnet member (you usually never noticed), everyone wins. If you caught too many botnets, you&rsquo;d reinstall your OS, and your PC would be fast again. Crypto mining and online payments have completely upended this dynamic. Now, viruses want your credentials/silicon with a vengeance.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Some jurisdictions obligate the torrent tracker to remove illegal content references. This is a flimsy legal argument with a major corporate backing; creative ccTLDs (.to, .cr, .vu&hellip;) make this difficult to enforce. In the absence of jurisdiction, vested interests will DDoS trackers to weaken their reliability.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
-<p>Github is actually owned by microsoft; this page is functionally a github canary. <a href="https://web.archive.org/web/20230515185526/https://github.com/massgravel/Microsoft-Activation-Scripts">Here</a>&rsquo;s an archive.org link.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Source: my ass. See also: <a href="https://en.wikipedia.org/wiki/White_hat_(computer_security)">white hats</a>, &ldquo;because they can&rdquo;, <a href="https://en.wikipedia.org/wiki/Stuxnet">cyberpunk conspiracies using you as a transmission vector</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:7">
-<p>Bloatware refers to unwanted bundled software (PUPs); debloating is the process of removing bloatware, often complicated by e.g. the financial incentive of microsoft to place ads in the start menu.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>It should be noted that historically this was a pretty symbiotic relationship. You save money, someone gets a botnet member (you usually never noticed), everyone wins. If you caught too many botnets, you&rsquo;d reinstall your OS, and your PC would be fast again. Crypto mining and online payments have completely upended this dynamic. Now, viruses want your credentials/silicon with a vengeance.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:8">
-<p>A package manager downloads, installs, uninstalls, and updates software for you. Entering e.g. <code>choco install firefox audacity vlc qbittorrent</code> in <em>admin</em> powershell installs these apps; <code>choco uninstall audacity</code> will uninstall audacity only if chocolatey installed it; <code>choco upgrade all</code> updates every chocolatey-managed app on your machine at once. Anyone allergic to powershell can use Chocolatey GUI, which is pretty mediocre. Package managers only manage apps they installed, so they&rsquo;re best configured right after a full wipe. This is how linux handles software, grafted onto windows.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Github is actually owned by microsoft; this page is functionally a github canary. <a href="https://web.archive.org/web/20230515185526/https://github.com/massgravel/Microsoft-Activation-Scripts">Here</a>&rsquo;s an archive.org link.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:9">
-<p>rip what.cd&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Bloatware refers to unwanted bundled software (PUPs); debloating is the process of removing bloatware, often complicated by e.g. the financial incentive of microsoft to place ads in the start menu.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:10">
-<p><a href="https://threatpost.com/high-risk-vlc-media-player-bugs/147503/">But not no-risk</a>. My hope is that by scaring you and providing OS reinstallation guides you&rsquo;ll reinstall your OS every few years and I won&rsquo;t have to crowdfund hardware replacements for your mined laptop gpu.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>A package manager downloads, installs, uninstalls, and updates software for you. Entering e.g. <code>choco install firefox audacity vlc qbittorrent</code> in <em>admin</em> powershell installs these apps; <code>choco uninstall audacity</code> will uninstall audacity only if chocolatey installed it; <code>choco upgrade all</code> updates every chocolatey-managed app on your machine at once. Anyone allergic to powershell can use Chocolatey GUI, which is pretty mediocre. Package managers only manage apps they installed, so they&rsquo;re best configured right after a full wipe. This is how linux handles software, grafted onto windows.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:11">
-<p>Thepiratebay has a reputation for viruses, and site VIPs are not to be trusted&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>rip what.cd&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:12">
-<p>By default, swarms serve seemingly random chunks of files. Sequential downloading orders those chunks first -&gt; last. This isn&rsquo;t default behavior because <a href="https://web.archive.org/web/20230315012054/https://wiki.vuze.com/w/Sequential_downloading_is_bad">it isn&rsquo;t healthy for swarms</a>&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://threatpost.com/high-risk-vlc-media-player-bugs/147503/">But not no-risk</a>. My hope is that by scaring you and providing OS reinstallation guides you&rsquo;ll reinstall your OS every few years and I won&rsquo;t have to crowdfund hardware replacements for your mined laptop gpu.&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:13">
-<p>Technically not a torrent tracker (&ldquo;legal miracle&rdquo;?) because it hosts links to direct downloads rather than peer-to-peer downloads&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref3:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Thepiratebay has a reputation for viruses, and site VIPs are not to be trusted&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:14">
-<p>VMs are operating-systems-inside-operating-systems that are slower than normal OSes, but if your VM gets a virus, you don&rsquo;t exactly care. <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> is what most people use, but I rarely deal with them and they&rsquo;re complicated to setup securely. Good for something like pirated photoshop, ableton, older games, <del>installing BonziBuddy, Monkey, Gator, and Prody Parrot to watch them duke it out,</del> etc.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>By default, swarms serve seemingly random chunks of files. Sequential downloading orders those chunks first -&gt; last. This isn&rsquo;t default behavior because <a href="https://web.archive.org/web/20230315012054/https://wiki.vuze.com/w/Sequential_downloading_is_bad">it isn&rsquo;t healthy for swarms</a>&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:15">
-<p>Usually: eastern European genius cohorts too mentally unstable to emigrate for the wages befitting their cybersecurity niche. Uncommonly: skilled, elitist, anarchist remnants of the 90&rsquo;s warez scene.&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Technically not a torrent tracker (&ldquo;legal miracle&rdquo;?) because it hosts links to direct downloads rather than peer-to-peer downloads&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref3:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:16">
-<p>Append <code>filetype:pdf</code> to a search to only return direct links to pdfs, for example&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>VMs are operating-systems-inside-operating-systems that are slower than normal OSes, but if your VM gets a virus, you don&rsquo;t exactly care. <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> is what most people use, but I rarely deal with them and they&rsquo;re complicated to setup securely. Good for something like pirated photoshop, ableton, older games, <del>installing BonziBuddy, Monkey, Gator, and Prody Parrot to watch them duke it out,</del> etc.&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:17">
+<p>Usually: eastern European genius cohorts too mentally unstable to emigrate for the wages befitting their cybersecurity niche. Uncommonly: skilled, elitist, anarchist remnants of the 90&rsquo;s warez scene.&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:18">
+<p>Append <code>filetype:pdf</code> to a search to only return direct links to pdfs, for example&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:19">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
