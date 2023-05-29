@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Quatloo</title>
+    <title>Tags on quatloo</title>
     <link>http://quatl.ooo/tags/</link>
-    <description>Recent content in Tags on Quatloo</description>
+    <description>Recent content in Tags on quatloo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Not &amp;copy; 2023 Avery Lawrence</copyright><atom:link href="http://quatl.ooo/tags/index.xml" rel="self" type="application/rss+xml" />

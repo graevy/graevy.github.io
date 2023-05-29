@@ -1,6 +1,6 @@
 baseURL = 'http://quatl.ooo/'
 languageCode = 'en-us'
-title = 'Quatloo'
+title = 'quatloo'
 theme = 'devise'
 relativeURLs = true
 enableEmoji = true
