@@ -6,7 +6,7 @@ draft: false
 
 #### Problem
 
-The Missouri Attorney General's office maintained a page ([html backup](https://raw.githubusercontent.com/graevy/graevy.github.io/main/static/missouri.html)) for reporting "Transgender concerns" after the state passed legislation banning gender-affirming care.
+The Missouri Attorney General's office maintained a page ([html backup](https://raw.githubusercontent.com/graevy/graevy.github.io/main/resources/missouri.html)) for reporting "Transgender concerns" after the state passed legislation banning gender-affirming care.
 
 #### Solution
 
