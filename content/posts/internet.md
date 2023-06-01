@@ -6,9 +6,30 @@ draft: false
 
 This is a harm reduction guide for my friends who risk malware and surveillance, mostly while stealing things on the internet, but also just by browsing unhygenically.
 
-Last updated: May 14 2023 (please [email me](mailto:avry@pm.me) with suggestions or updates)
+### <a name="navigation"></a>Navigation:
+- [Browser](#browser)
+- [Searching tips](#searching)
+- [Tor](#tor)
+- [VPNs](#vpns)
+- [Piracy](#piracy)
+    - [tl;dr](#tl;dr)
+    - [overview](#overview)
+    - [legality](#legality)
+    - [viruses](#viruses)
+    - [clients](#clients)
+    - [trackers](#trackers)
+    - [Where do I pirate \_\_\_\_\_?](#where)
+        - [windows](#windows)
+        - [music](#music)
+        - [video](#video)
+        - [apps](#apps)
+        - [software](#software)
+        - [games](#games)
+        - [books](#books)
 
-# Browser
+Last updated: May 31 2023 (please [email me](mailto:avry@pm.me) with suggestions or updates)
+
+# <a name="browser"></a>[Browser](#navigation)
 
 Chrome is phasing out privacy features and adblockers, and browser monopolies are bad[^19]. Please switch to firefox; it's the most popular [open source](https://opensource.com/resources/what-open-source) chromium alternative. Keep your old browser for when an addon[^20] or chromium-centered-webdev breaks a page.
 
@@ -27,7 +48,7 @@ For better-than-chrome multitasking, [increasing `browser.low_commit_space_thres
 
 Mozilla maintains [a page](https://support.mozilla.org/en-US/kb/switching-chrome-firefox) on switching from chrome to firefox.
 
-# Searching tips
+# <a name="searching"></a>[Searching tips](#navigation)
 
 There's a lot of misinformation and advertising in search results because of Search Engine Optimization, AI-generated content, and a lack of financial incentive to fix the problem. Search engines have a general syntax:
 - `"vegan" restaurants` will only return results containing the keyword `vegan`
@@ -43,26 +64,26 @@ For ***approximate*** knowledge that isn't monetized, instruction-tasked LLMs li
 
 [Archive.org](https://archive.org/) saves old webpages. To find the link below, I searched `darknetmarkets 2022 site:reddit.com`, looked for the first banned subreddit I could find, put its URL into the internet archive, retrieved an old version of the site, and found links in its sidebar.
 
-# TOR/VPNs and the darkweb
+# <a name="tor"></a>[TOR/VPNs and the darkweb](#navigation)
 
 [The Onion Router](https://www.torproject.org/download/) bounces your connection around dozens of different anonymous nodes before reaching an endpoint. This is a [generally](https://web.archive.org/web/20220821150904/https://arstechnica.com/information-technology/2013/09/majority-of-tor-crypto-keys-could-be-broken-by-nsa-researcher-says/) [secure](https://web.archive.org/web/20230122181201/https://gizmodo.com/fbi-tor-ip-address-muhammed-momtaz-al-azhari-isis-1849975153) way to access the internet, but is slow. Make sure you [properly configure](https://tb-manual.torproject.org/running-tor-browser/) TOR. [Tails](https://tails.boum.org/) is a portable linux distribution that pre-configures TOR, if you're both knowledgeable and paranoid.
 
-VPNs are a node between user and destination. You connect to a website (destination) through a middleman, so the site can't see [your IP address](https://whatismyip.org/). Any VPN service with an ad budget is selling your [valuable](https://web.archive.org/web/20230224200913/https://www.statista.com/topics/1464/big-data/#topicOverview) data to remain competitive. PrivateInternetAccess & NordVPN also explicitly cooperate with states. [Mullvad](https://mullvad.net/en/) is a frequently recommended vpn service.
+<a name="vpns"></a>VPNs are a node between user and destination. You connect to a website (destination) through a middleman, so the site can't see [your IP address](https://whatismyip.org/). Any VPN service with an ad budget is selling your [valuable](https://web.archive.org/web/20230224200913/https://www.statista.com/topics/1464/big-data/#topicOverview) data to remain competitive. PrivateInternetAccess & NordVPN also explicitly cooperate with states. [Mullvad](https://mullvad.net/en/) is a frequently recommended vpn service.
 
 Darknet markets come and go all the time. At the moment, https://darknet.markets/ has a lot of links[^17]. You can only use these links in a TOR browser. Monero is the current anonymous cryptocurrency of choice; Bitcoin is more traceable.
 
-# <a name="piracy"></a>Piracy
+# <a name="piracy"></a>[Piracy](#navigation)
 
 Here are overviews of content-specific internet piracy ecosystems. Full resources at [freemediaheckyeah](https://freemediaheckyeah.pages.dev/beginners-guide/) or [the piracy subreddit](https://old.reddit.com/r/piracy/)
 
-### TL;DR?
+### <a name="tl;dr"></a>[TL;DR?](#navigation)
 
 - Download [qBittorrent](https://www.qbittorrent.org/) and enable search engine from the view menu
     - Mobile users: choose a [client](#clients) that supports searching or read on
 - Get [games](https://fitgirl-repacks.site) and [software](https://w14.monkrus.ws/) from these links; don't torrent them
-- Ignore ISP emails
+- Ignore ISP emails. Pay for a [VPN](#vpns) if you get too many.
 
-### Explanation of torrenting
+### <a name="overview"></a>[Explanation of torrenting](#navigation)
 
 - Other people have copies of files you want
 - You get `bits`[^11] of the files from whoever has them and is online
@@ -72,7 +93,7 @@ Here are overviews of content-specific internet piracy ecosystems. Full resource
 - These links and files are typically hosted on websites called `torrent trackers`
 - Torrent trackers try to prevent users from uploading viruses
 
-### Torrenting's legality
+### <a name="legality"></a>[Torrenting's legality](#navigation)
 
 - Torrenting is only illegal when copyrighted data is exchanged, therefore:
     - the torrent software is itself perfectly legal,
@@ -82,7 +103,7 @@ Here are overviews of content-specific internet piracy ecosystems. Full resource
 - Your `ISP` can nag you to stop torrenting, but they have a financial incentive to continue service and minimally legally comply
     - Never reply to these nags; you provide a paper trail. Only the lowest hanging fruit gets imprisoned
 
-### Viruses and torrenting
+### <a name="viruses"></a>[Viruses and torrenting](#navigation)
 
 Here are the popular[^15] reasons people make viruses for torrents. From most to least common:
 
@@ -107,7 +128,7 @@ Some tips:
     - `facebook.co`, `facebook.net`, etc. are *not* the same websites as `facebook.com`, and can appear *identical*, down to the styling of the page or the URL you click: [facebook.com](https://notfacebook.com)
     - `facebook.com.market` is a subdomain of `com.market`. Don't fall for this one; it's embarassing; I'll judge you
 
-### <a name="clients"></a>What torrent client should I use?
+### <a name="clients"></a>[What torrent client should I use?](#navigation)
 
 - [Transmission](https://transmissionbt.com/) is open source, cross platform, and beginner friendly
 - [qBittorrent](https://www.qbittorrent.org/) is open source and cross platform
@@ -116,7 +137,7 @@ Some tips:
 
 Use a different torrent tracker for whatever content you're downloading. The best general purpose tracker is [1337x](https://1337x.to), then whatever's on reddit's [piracy megathread](https://www.reddit.com/r/Piracy/wiki/megathread/).
 
-### <a name="trackers"></a>What torrent tracker should I use?
+### <a name="trackers"></a>[What torrent tracker should I use?](#navigation)
 
 For general-purpose:
 - [1337x](https://1337x.to) first,
@@ -125,9 +146,9 @@ For general-purpose:
 
 Each section below has individual recommendations.
 
-## Where do I pirate \_\_\_\_\_?
+## <a name="where"></a>[Where do I pirate \_\_\_\_\_?](#navigation)
 
-### Windows
+### <a name="windows"></a>[Windows](#navigation)
 
 This is a lot less risky than it used to be because most cracks now use microsoft's windows images. To crack an active windows installation, go to [this github](https://github.com/massgravel/Microsoft-Activation-Scripts)[^9] and follow the instructions (you want to use HWID). Remember to open powershell/terminal *as an administrator*.
 
@@ -140,7 +161,7 @@ To install windows:
 - An example tron command for a `tron.bat` file downloaded to `C:\Users\a\Downloads\Tron` on a fresh machine is `C:\Users\a\Downloads\Tron\tron.bat -a -sa -sd -scc -v` (skipping antivirus scans, defrag, and cookies). Run this in cmd as an administrator.
 - Crack windows using the *admin* powershell github commands in the [link](https://github.com/massgravel/Microsoft-Activation-Scripts) above
 
-### Music
+### <a name="music"></a>[Music](#navigation)
 
 It's hard to get a virus from downloading music. [rutracker](https://rutracker.org) is my favorite public tracker for music[^16]; you need to make an account and the whole website is russian so a translation browser extension is a good idea. [Soulseek](https://www.slsknet.org/) has a good english-language selection but it's kindof closed off from the rest of the torrent ecosystem. 
 
@@ -148,7 +169,7 @@ You're probably looking for a cracked spotify app in Apps below. [revanced](http
 
 For desktops, [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases) downloads youtube media, and just using the web version of spotify with ublock origin on firefox should block its ads.
 
-### Video
+### <a name="video"></a>[Video](#navigation)
 
 The majority of torrenting. Low risk[^10]; media doesn't need elevated permissions. Go to your [public tracker of choice](#trackers). Private trackers have the best selections; those typically involve being invited and passing a screening process.
 
@@ -180,21 +201,21 @@ Remux: A video format that refers to a high-quality video that has been copied f
 SD: Stands for "standard definition."
 ```
 
-### Apps
+### <a name="apps"></a>[Apps](#navigation)
 
 Android users: get illicit APKs from [mobilism](https://forum.mobilism.org/index.php)[^1]. This ecosystem's pretty seedy. [f-droid](https://f-droid.org/) is a package manager like the google play store, except it only has free open source apps. F-droid's app is notoriously buggy so try some frontends like Neo Store or Droid-ify.
 
 Apple users: jailbreaking is outside the scope of this guide. [sideloaded](https://www.reddit.com/r/sideloaded/) is a community for loading custom apps that don't require jailbreaking.
 
-### Software
+### <a name="software"></a>[Software](#navigation)
 
 This is the riskiest thing you can torrent. [m0nkrus](https://w14.monkrus.ws/)' repacks are reputable. Otherwise, find torrents on a public tracker and roll the dice. Use a [virtual machine](https://www.virtualbox.org/wiki/Downloads)[^4] for one-shot tasks; that's also beyond the scope of this guide.
 
-### Games
+### <a name="games"></a>[Games](#navigation)
 
 Don't torrent these off of trackers; there's a bounty ecosystem where people donate to reputable game crackers[^12]. Two of the most reputable crackers are [fitgirl](https://fitgirl-repacks.site)[^1] and [dodi](https://dodi-repacks.site)[^1]. If they don't have what you're looking for, go search [the CrackWatch subreddit](https://old.reddit.com/r/CrackWatch) to find a reputable cracker who does.
 
-### Books/academic papers
+### <a name="books"></a>[Books/academic papers](#navigation)
 
 [libgen](https://gen.lib.rus.ec) is the best[^1]. [Myanonamouse](https://www.myanonamouse.net/) is a good private tracker for books that will let you in after a technical interview. The [piracy megathread](https://www.reddit.com/r/Piracy/wiki/megathread/reading_material_and_elearning) maintains a list of book trackers; these are always coming and going. A filetype search[^3] with pdf, mobi, epub, etc. extensions is a last resort.
 
