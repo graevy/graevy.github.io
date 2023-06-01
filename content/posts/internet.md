@@ -6,7 +6,7 @@ draft: false
 
 This is a harm reduction guide for my friends who risk malware and surveillance, mostly while stealing things on the internet, but also just by browsing unhygenically.
 
-### <a name="navigation"></a>Navigation:
+### <a name="navigation"></a>Navigation
 - [Browser](#browser)
 - [Searching tips](#searching)
 - [Tor](#tor)
@@ -100,8 +100,10 @@ Here are overviews of content-specific internet piracy ecosystems. Full resource
     - the torrent tracker is legal[^14] because it doesn't host any copyrighted data; only references to it.
 - Exchanging files reveals your `IP address` unless you use a `VPN` or `proxy`;
 - Copyright holders can join the swarm and notify your Internet Service Provider
-- Your `ISP` can nag you to stop torrenting, but they have a financial incentive to continue service and minimally legally comply
-    - Never reply to these nags; you provide a paper trail. Only the lowest hanging fruit gets imprisoned
+- Your `ISP` or a copyright holder can nag you, but non-monopolies have a financial incentive to continue service and minimally legally comply
+    - Get a VPN after a few nags
+    - Never reply to these nags; you strengthen a case by identifying yourself
+    - Letters/fines vary by jurisdiction. US, Germany, & UK are the worst[^23]
 
 ### <a name="viruses"></a>[Viruses and torrenting](#navigation)
 
@@ -270,6 +272,8 @@ Have some junk text to make footnotes better[^50]
 
 [^21]: [Bitwarden](https://bitwarden.com/), or most password managers that aren't lastpass, are more secure services.
 
-[^22]: The `of` parameter should point to the block device location e.g. `/dev/sda`, not one of its partitions.
+[^22]: The `of` parameter should point to the block device location e.g. `/dev/sda`, not one of its partitions e.g. `/dev/sda1`
+
+[^23]: While most sources about torrenting risk are trying to sell VPNs, the US effectively maintains [a list](https://ustr.gov/sites/default/files/USTR-2016-Special-301-Report.pdf) of the easiest places to violate copyright law
 
 [^50]: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
