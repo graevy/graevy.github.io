@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Not &amp;copy; 2023 Avery Lawrence</copyright>
-    <lastBuildDate>Thu, 27 Apr 2023 03:41:24 -0700</lastBuildDate><atom:link href="http://quatl.ooo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Jun 2023 03:07:37 -0700</lastBuildDate><atom:link href="http://quatl.ooo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hotspot</title>
+      <link>http://quatl.ooo/posts/hotspot/</link>
+      <pubDate>Thu, 01 Jun 2023 03:07:37 -0700</pubDate>
+      
+      <guid>http://quatl.ooo/posts/hotspot/</guid>
+      <description>Problem My phone&amp;rsquo;s rom, grapheneOS, permits tethering, but my carrier bans it1. So, my carrier blocks anything I tether.
+There are 5 vectors I&amp;rsquo;ve been able to identify for tether detection:
+Packet TTL Phone defaults are configured to expose tether status to carriers. MAC address fingerprinting. Local networking doesn&amp;rsquo;t normally expose MAC addresses but DHCP requests can. TCP/IP stack fingerprinting. Default implementations vary by OS Deep packet inspection. Mobile devices don&amp;rsquo;t connect to e.</description>
+    </item>
+    
     <item>
       <title>Missouri</title>
       <link>http://quatl.ooo/posts/missouri/</link>
@@ -41,7 +52,7 @@ First Hurdle The casings are different; the old one has clips on the side for di
     </item>
     
     <item>
-      <title>Internet harm reduction</title>
+      <title>internet harm reduction</title>
       <link>http://quatl.ooo/posts/internet/</link>
       <pubDate>Mon, 20 Feb 2023 20:41:32 -0800</pubDate>
       

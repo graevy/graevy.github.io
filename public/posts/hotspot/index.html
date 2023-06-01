@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en-us"><head>
+    <title>quatloo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+
+    
+    <link rel="icon" type= image/x-icon href= /favicon.ico>
+
+    
+    
+    
+    <link rel="stylesheet" href="../../css/theme.min.css">
+
+    
+    
+    
+
+    
+</head>
+<body>
+        <div id="content" class="mx-auto"><header class="container mt-sm-5 mt-4 mb-4 mt-xs-1">
+    <div class="row">
+        <div class="col-sm-4 col-12 text-sm-right text-center pt-sm-4">
+            <a href="../../" class="text-decoration-none">
+                <img id="home-image" class="rounded-circle"
+                    
+                        
+                            src="../../graevy.png"
+                        
+                    
+                />
+            </a>
+        </div>
+        <div class="col-sm-8 col-12 text-sm-left text-center">
+            <h2 class="m-0 mb-2 mt-4">
+                <a href="../../" class="text-decoration-none">
+                    
+                        graevy
+                    
+                </a>
+            </h2>
+            <p class="text-muted mb-1">
+                
+                    Wetware Developer
+                
+            </p>
+            <ul id="nav-links" class="list-inline mb-2">
+                
+                
+                    <li class="list-inline-item">
+                        <a class="badge badge-white " href="../../posts/" title="Posts">Posts</a>
+                    </li>
+                
+                    <li class="list-inline-item">
+                        <a class="badge badge-white " href="../../resume/resume.pdf" title="CV">Hire me (pdf)</a>
+                    </li>
+                
+            </ul>
+            <ul id="nav-social" class="list-inline">
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="https://github.com/graevy" target="_blank">
+                            <i class="fab fa-github fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="https://www.linkedin.com/in/avery-mallet-lawrence/" target="_blank">
+                            <i class="fab fa-linkedin-in fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="mailto:avry@pm.me" target="_blank">
+                            <i class="fas fa-at fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+    <hr />
+</header>
+<div class="container">
+    <div class="pl-sm-4 ml-sm-5">
+        <h1 id="problem">Problem</h1>
+<p>My phone&rsquo;s rom, grapheneOS, permits tethering, but my carrier bans it<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. So, my carrier blocks anything I tether.</p>
+<p>There are 5 vectors I&rsquo;ve been able to identify for tether detection:</p>
+<ol>
+<li>Packet TTL</li>
+<li>Phone defaults are configured to expose tether status to carriers.</li>
+<li>MAC address fingerprinting. Local networking doesn&rsquo;t normally expose MAC addresses but DHCP requests can.</li>
+<li>TCP/IP stack fingerprinting. Default implementations vary by OS</li>
+<li>Deep packet inspection. Mobile devices don&rsquo;t connect to e.g. a windows update server</li>
+</ol>
+<h1 id="solution">Solution</h1>
+<ol>
+<li>Incrementing the default packet TTL on my desktop/laptop spoofs my phone&rsquo;s TTL.</li>
+<li>Variables stored in <code>/system/build.prop</code>. Specifically, <code>tether_dun_required</code> needs to be <code>0</code>, and <code>net.tethering.noprovisioning</code> needs to equal <code>true</code>. You need root access now or during the OS build step to edit /system. I don&rsquo;t think this can be addressed on iOS.</li>
+<li>I believe that using a VPN fixes MAC address fingerprinting in the sense that a carrier can&rsquo;t effectively segregate packets. I don&rsquo;t know why this isn&rsquo;t exposing me.</li>
+<li>Too inconsistent to be the sole reason to block packets; I ignored this</li>
+<li>A VPN fixes this easily</li>
+</ol>
+<p>So now I&rsquo;m pushing this post on my desktop from my phone&rsquo;s hotspot<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. I don&rsquo;t know how many of these fixes are actually necessary; that probably varies by carrier. After setting up a VPN<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>, incrementing TTL, editing <code>build.prop</code> vars, and rebooting my desktop, it worked.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>unless I pay extra. America doesn&rsquo;t even have net neutrality&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Comcast doesn&rsquo;t provide 100% uptime, so the redundancy is nice.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>$15/mo cheaper than the hotspot premium&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+            </div>
+        </div><footer class="text-center pb-1">
+    <small class="text-muted">
+        
+            Not &copy; 2023 Avery Lawrence
+        
+        <br>
+        Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a>, <a href="https://github.com/austingebauer/devise" target="_blank">Devise</a>
+    </small>
+</footer>
+</body>
+</html>
