@@ -62,3 +62,8 @@ copyright = "Not &copy; 2023 Avery Lawrence"
   [[params.social]]
     fa_icon = "fas fa-at fa-1x"
     href = "mailto:avry@pm.me"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
