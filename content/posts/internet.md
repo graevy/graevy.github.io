@@ -74,7 +74,7 @@ Darknet markets come and go all the time. At the moment, https://darknet.markets
 
 # <a name="piracy"></a>[Piracy](#navigation)
 
-Here are overviews of content-specific internet piracy ecosystems. Full resources at [freemediaheckyeah](https://freemediaheckyeah.pages.dev/beginners-guide/) or [the piracy subreddit](https://old.reddit.com/r/piracy/)
+Here are overviews of content-specific internet piracy ecosystems. Full resources at [freemediaheckyeah](https://fmhy.pages.dev/beginners-guide/) or [the piracy subreddit](https://old.reddit.com/r/piracy/)
 
 ### <a name="tl;dr"></a>[TL;DR?](#navigation)
 
