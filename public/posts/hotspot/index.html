@@ -87,23 +87,21 @@
     <div class="pl-sm-4 ml-sm-5">
         <h1 id="problem">Problem</h1>
 <p>My phone&rsquo;s rom, grapheneOS, permits tethering, but my carrier bans it<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. So, my carrier blocks anything I tether.</p>
-<p>There are 5 vectors I&rsquo;ve been able to identify for tether detection:</p>
+<p>There are 4 vectors I&rsquo;ve read about for tether detection<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>:</p>
 <ol>
 <li>Packet TTL</li>
 <li>Phone defaults are configured to expose tether status to carriers.</li>
-<li>MAC address fingerprinting. Local networking doesn&rsquo;t normally expose MAC addresses but DHCP requests can.</li>
 <li>TCP/IP stack fingerprinting. Default implementations vary by OS</li>
 <li>Deep packet inspection. Mobile devices don&rsquo;t connect to e.g. a windows update server</li>
 </ol>
 <h1 id="solution">Solution</h1>
 <ol>
 <li>Incrementing the default packet TTL on my desktop/laptop spoofs my phone&rsquo;s TTL.</li>
-<li>Variables stored in <code>/system/build.prop</code>. Specifically, <code>tether_dun_required</code> needs to be <code>0</code>, and <code>net.tethering.noprovisioning</code> needs to equal <code>true</code>. You need root access now or during the OS build step to edit /system. I don&rsquo;t think this can be addressed on iOS.</li>
-<li>I believe that using a VPN fixes MAC address fingerprinting in the sense that a carrier can&rsquo;t effectively segregate packets. I don&rsquo;t know why this isn&rsquo;t exposing me.</li>
+<li>Variables stored in <code>/system/build.prop</code>. Specifically, <code>tether_dun_required</code> needs to be <code>0</code>, and <code>net.tethering.noprovisioning</code> needs to equal <code>true</code>. You need root access now or during the OS build step to edit <code>/system</code>. I don&rsquo;t think this can be addressed on iOS.</li>
 <li>Too inconsistent to be the sole reason to block packets; I ignored this</li>
 <li>A VPN fixes this easily</li>
 </ol>
-<p>So now I&rsquo;m pushing this post on my desktop from my phone&rsquo;s hotspot<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. I don&rsquo;t know how many of these fixes are actually necessary; that probably varies by carrier. After setting up a VPN<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>, incrementing TTL, editing <code>build.prop</code> vars, and rebooting my desktop, it worked.</p>
+<p>So now I&rsquo;m pushing this post on my desktop from my phone&rsquo;s hotspot<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. I don&rsquo;t know how many of these fixes are actually necessary; that probably varies by carrier. I succeeded after setting up a VPN<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>, incrementing TTL, editing <code>build.prop</code> vars, and rebooting my desktop.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -111,10 +109,13 @@
 <p>unless I pay extra. America doesn&rsquo;t even have net neutrality&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>Comcast doesn&rsquo;t provide 100% uptime, so the redundancy is nice.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>from stackoverflow and xda-developers&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>$15/mo cheaper than the hotspot premium&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Comcast doesn&rsquo;t provide 100% uptime, so the redundancy is nice.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>$15/mo cheaper than the hotspot premium&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>

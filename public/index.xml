@@ -7,16 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Not &amp;copy; 2023 Avery Lawrence</copyright>
-    <lastBuildDate>Thu, 01 Jun 2023 03:07:37 -0700</lastBuildDate><atom:link href="http://quatl.ooo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Jun 2023 01:07:37 -0700</lastBuildDate><atom:link href="http://quatl.ooo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>hotspot</title>
       <link>http://quatl.ooo/posts/hotspot/</link>
-      <pubDate>Thu, 01 Jun 2023 03:07:37 -0700</pubDate>
+      <pubDate>Thu, 01 Jun 2023 01:07:37 -0700</pubDate>
       
       <guid>http://quatl.ooo/posts/hotspot/</guid>
       <description>Problem My phone&amp;rsquo;s rom, grapheneOS, permits tethering, but my carrier bans it1. So, my carrier blocks anything I tether.
-There are 5 vectors I&amp;rsquo;ve been able to identify for tether detection:
-Packet TTL Phone defaults are configured to expose tether status to carriers. MAC address fingerprinting. Local networking doesn&amp;rsquo;t normally expose MAC addresses but DHCP requests can. TCP/IP stack fingerprinting. Default implementations vary by OS Deep packet inspection. Mobile devices don&amp;rsquo;t connect to e.</description>
+There are 4 vectors I&amp;rsquo;ve read about for tether detection2:
+Packet TTL Phone defaults are configured to expose tether status to carriers. TCP/IP stack fingerprinting. Default implementations vary by OS Deep packet inspection. Mobile devices don&amp;rsquo;t connect to e.g. a windows update server Solution Incrementing the default packet TTL on my desktop/laptop spoofs my phone&amp;rsquo;s TTL.</description>
     </item>
     
     <item>
