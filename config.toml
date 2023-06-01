@@ -41,6 +41,7 @@ copyright = "Not &copy; 2023 Avery Lawrence"
   header_title = "graevy"                    # Your header title
   header_subtitle = "Wetware Developer"      # Your header subtitle
   home_image = "graevy.png"                  # Path to header image starting from the static directory
+  favicon = "/favicon.ico"                   # Path to favicon image starting from the static directory
   recent_posts = 5                           # Max amount of recent posts to show
   mainSections = ["posts", "post", "blog"]   # Main sections to include in recent posts
   [params.style]                             # CSS style overrides
