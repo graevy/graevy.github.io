@@ -37,8 +37,10 @@ finding a sufficiently large dataset of gps-valid missouri addresses and writing
       <pubDate>Tue, 28 Mar 2023 04:33:25 -0700</pubDate>
       
       <guid>http://quatl.ooo/posts/migration/</guid>
-      <description>After my digitalocean team dissolved, I migrated from a $4/mo droplet to github pages for free. Truly, I could&amp;rsquo;ve avoided webhooks entirely and saved money in the process. But I did centralize my services and lost privacy, so who&amp;rsquo;s to say. And, I learned all about CNAME records interfering with SSL certs ;-;
-Surprisingly, the build pipeline was the easiest migration component, and actually enabling https was the hardest. I hung on some DNS records until I decided to remove the cloudflare step (obvious in retrospect, but I wonder if I can reintegrate it).</description>
+      <description>After my digitalocean team dissolved, I migrated from a $4/mo droplet to github pages for free. I:
+could&amp;rsquo;ve avoided webhooks entirely saved money in the process But, I:
+centralized my services, lost privacy, can only serve static pages so who&amp;rsquo;s to say.
+Surprisingly, the build pipeline was the easiest migration component, and enabling https was the hardest; CNAME records interfere with SSL certs. I hung on some DNS records until I decided to remove the cloudflare step.</description>
     </item>
     
     <item>
