@@ -10,12 +10,12 @@ copyright = "Not &copy; 2023 Avery Lawrence"
 
 # Main menu items
 [menu]
-  # [[menu.main]]
-  #   identifier = "about"
-  #   name = "About"
-  #   title = "About"
-  #   url = "/about/"
-  #   weight = -110
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    title = "About"
+    url = "/about/"
+    weight = -110
   [[menu.main]]
     identifier = "posts"
     name = "Posts"
@@ -28,12 +28,12 @@ copyright = "Not &copy; 2023 Avery Lawrence"
   #   title = "Categories"
   #   url = "/categories/"
   #   weight = -90
-  [[menu.main]]
-    identifier = "pdf"
-    name = "Hire me (pdf)"
-    title = "CV"
-    url = "/resume/resume.pdf"
-    weight = -80
+  # [[menu.main]]
+  #   identifier = "pdf"
+  #   name = "Hire me (pdf)"
+  #   title = "CV"
+  #   url = "/resume/resume.pdf"
+  #   weight = -80
 
 # Configuration Features
 [params]
