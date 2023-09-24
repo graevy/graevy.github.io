@@ -27,7 +27,7 @@ This is a harm reduction guide for my friends who risk malware and surveillance,
         - [games](#games)
         - [books](#books)
 
-Last updated: May 31 2023 (please [email me](mailto:avry@pm.me) with suggestions or updates)
+Last updated: Sep 23 2023 (please [email me](mailto:avry@pm.me) with suggestions or updates)
 
 # <a name="browser"></a>[Browser](#navigation)
 
@@ -50,7 +50,7 @@ Mozilla maintains [a page](https://support.mozilla.org/en-US/kb/switching-chrome
 
 # <a name="searching"></a>[Searching tips](#navigation)
 
-There's a lot of misinformation and advertising in search results because of Search Engine Optimization, AI-generated content, and a lack of financial incentive to fix the problem. Search engines have a general syntax:
+There's a lot of misinformation and advertising in search results because of Search Engine Optimization, AI-generated content, and [a lack of financial incentive to fix the problem](https://en.wikipedia.org/wiki/Enshittification). Search engines have a general syntax[^24]:
 - `"vegan" restaurants` will only return results containing the keyword `vegan`
 - `restaurants -pinterest -vegan` will only return results that don't contain `vegan` or `pinterest`
 - `restaurants site:michelin.com` will only return results from michelin.com;
@@ -80,7 +80,9 @@ Here are overviews of content-specific internet piracy ecosystems. Full resource
 
 - Download [qBittorrent](https://www.qbittorrent.org/) and enable search engine from the view menu
     - Mobile users: choose a [client](#clients) that supports searching or read on
-- Get [games](https://fitgirl-repacks.site) and [software](https://w14.monkrus.ws/) from these links; don't torrent them
+- Go to the qBittorrent [plugins page](https://github.com/qbittorrent/search-plugins/wiki/Unofficial-search-plugins)
+- Install plugins corresponding to the [most reputable trackers](https://www.reddit.com/r/Piracy/wiki/megathread/all_purpose#wiki_.1F4D1_.279C_torrents) for your desired content
+- Torrent [games](https://fitgirl-repacks.site) and [software](https://w14.monkrus.ws/) from these links; don't search them out
 - Ignore ISP emails. Pay for a [VPN](#vpns) if you get too many.
 
 ### <a name="overview"></a>[Explanation of torrenting](#navigation)
@@ -137,7 +139,7 @@ Some tips:
 - Android: [LibreTorrent](https://f-droid.org/packages/org.proninyaroslav.libretorrent/) is open source. [Torrdroid](https://play.google.com/store/apps/details?id=intelligems.torrdroid) implements searching on top of libretorrent but monetizes the app
 - iOS: [iTorrent](https://github.com/XITRIX/iTorrent/releases) is open source. iTransmission/BitTorrent support searching but monetize.
 
-Use a different torrent tracker for whatever content you're downloading. The best general purpose tracker is [1337x](https://1337x.to), then whatever's on reddit's [piracy megathread](https://www.reddit.com/r/Piracy/wiki/megathread/).
+Use a different torrent tracker for whatever content you're downloading. The best general purpose tracker is [1337x](https://1337x.to)[^25], then whatever's on reddit's [piracy megathread](https://www.reddit.com/r/Piracy/wiki/megathread/).
 
 ### <a name="trackers"></a>[What torrent tracker should I use?](#navigation)
 
@@ -215,13 +217,13 @@ This is the riskiest thing you can torrent. [m0nkrus](https://w14.monkrus.ws/)' 
 
 ### <a name="games"></a>[Games](#navigation)
 
-Don't torrent these off of trackers; there's a bounty ecosystem where people donate to reputable game crackers[^12]. Two of the most reputable crackers are [fitgirl](https://fitgirl-repacks.site)[^1] and [dodi](https://dodi-repacks.site)[^1]. If they don't have what you're looking for, go search [the CrackWatch subreddit](https://old.reddit.com/r/CrackWatch) to find a reputable cracker who does.
+Don't torrent these off of trackers; there's a bounty ecosystem where people donate to reputable game crackers[^12]. Two of the most reputable repackers are [fitgirl](https://fitgirl-repacks.site)[^1] and [dodi](https://dodi-repacks.site)[^1]. If they don't have what you're looking for, go search [the CrackWatch subreddit](https://old.reddit.com/r/CrackWatch) to find a reputable cracker who does.
 
 ### <a name="books"></a>[Books/academic papers](#navigation)
 
 [libgen](https://gen.lib.rus.ec) is the best[^1]. [Myanonamouse](https://www.myanonamouse.net/) is a good private tracker for books that will let you in after a technical interview. The [piracy megathread](https://www.reddit.com/r/Piracy/wiki/megathread/reading_material_and_elearning) maintains a list of book trackers; these are always coming and going. A filetype search[^3] with pdf, mobi, epub, etc. extensions is a last resort.
 
-For papers specifically, check libgen, then [sci-hub](https://sci-hub.se/) (mediocre uptime; blame the lawsuits), then [academictorrents](https://academictorrents.com/), then the [piracy megathread](https://www.reddit.com/r/Piracy/wiki/megathread/reading_material_and_elearning), then...just email paper authors and they'll usually send you a copy. You might be able to find a non-paywalled copy on google scholar. Extensions like Bypass Paywalls Clean or Unpaywall have historically been bad at papers.
+For papers specifically, check [libgen](https://gen.lib.rus.ec), then [sci-hub](https://sci-hub.se/) (mediocre uptime; blame the lawsuits), then [academictorrents](https://academictorrents.com/), then the [piracy megathread](https://www.reddit.com/r/Piracy/wiki/megathread/reading_material_and_elearning), then...just email paper authors and they'll usually send you a copy. You might be able to find a non-paywalled copy on google scholar. Extensions like Bypass Paywalls Clean or Unpaywall have historically been bad at papers.
 
 Have some junk text to make footnotes better[^50]
 
@@ -252,7 +254,7 @@ Have some junk text to make footnotes better[^50]
 
 [^11]: Hence "bit-torrent protocol"
 
-[^12]: Usually: eastern European genius cohorts too mentally unstable to emigrate for the wages befitting their cybersecurity niche. Uncommonly: skilled, elitist, anarchist remnants of the 90's warez scene.
+[^12]: Usually: unstable eastern European genius cohorts bereft of the wages befitting their cybersecurity niche. Uncommonly: skilled but elitist remnants of the 90's warez scene. "Repackers" package cracked software; the repacker is not doing the work of cracking, but they serve as a nice frontend and offer features like multi-language support, compression, etc.
 
 [^13]: It should be noted that historically this was kindof a symbiotic relationship. You save money, someone gets a botnet member (you usually never noticed), everyone wins. If you caught too many botnets, you'd reinstall your OS, and your PC would be fast again. Currently, crypto mining and online payment proliferation incentivize targeting your credentials/silicon.
 
@@ -275,5 +277,9 @@ Have some junk text to make footnotes better[^50]
 [^22]: The `of` parameter should point to the block device location e.g. `/dev/sda`, not one of its partitions e.g. `/dev/sda1`
 
 [^23]: While most sources about torrenting risk are trying to sell VPNs, the US effectively maintains [a list](https://ustr.gov/sites/default/files/USTR-2016-Special-301-Report.pdf) of the easiest places to violate copyright law
+
+[^24]: Search giants have been steadily eroding our ability to quote search for some time now. We're between free search giants right now, as was the case when google began to usurp yahoo. [Kagi](https://kagi.com/) is the new hotness, but it's paid. Otherwise you're stuck with search syntax and LLMs.
+
+[^25]: 1337x is, as of the time of writing, scandalously refusing to ban a repacker who keeps putting miners in game repacks. There are no good trackers.
 
 [^50]: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
