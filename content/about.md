@@ -7,8 +7,12 @@ draft: false
 
 """
 
-Description: Fine cave-aged Vermont cheddar. I love my partners, my friends, dogs, a good view, computers, chess, and terrible science fiction. I care about you.
+Fine cave-aged Vermont cheddar. I love my partners, my friends, piano, dogs, a good view, computers, chess, and terrible science fiction. I care about you.
 
-Returns: Gender[they, them]
+Args:
+    location (str): seattle
+    pronouns (str): they/them
 
+Returns:
+    me (Person)
 """

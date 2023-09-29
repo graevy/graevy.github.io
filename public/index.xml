@@ -23,9 +23,9 @@
       
       <guid>http://quatl.ooo/about/</guid>
       <description>&amp;quot;&amp;quot;&amp;quot;
-Description: Fine cave-aged Vermont cheddar. I love my partners, my friends, dogs, a good view, computers, chess, and terrible science fiction. I care about you.
-Returns: Gender[they, them]
-&amp;quot;&amp;quot;&amp;quot;</description>
+Fine cave-aged Vermont cheddar. I love my partners, my friends, piano, dogs, a good view, computers, chess, and terrible science fiction. I care about you.
+Args: location (str): seattle pronouns (str): they/them
+Returns: me (Person) &amp;quot;&amp;quot;&amp;quot;</description>
     </item>
     
     <item>
