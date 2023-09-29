@@ -221,9 +221,9 @@ Don't torrent these off of trackers; there's a bounty ecosystem where people don
 
 ### <a name="books"></a>[Books/academic papers](#navigation)
 
-[libgen](https://gen.lib.rus.ec) is the best[^1]. [Myanonamouse](https://www.myanonamouse.net/) is a good private tracker for books that will let you in after a technical interview. The [piracy megathread](https://www.reddit.com/r/Piracy/wiki/megathread/reading_material_and_elearning) maintains a list of book trackers; these are always coming and going. A filetype search[^3] with pdf, mobi, epub, etc. extensions is a last resort.
+[libgen](https://libgen.rs) is the best[^1]. [Myanonamouse](https://www.myanonamouse.net/) is a good private tracker for books that will let you in after a technical interview. The [piracy megathread](https://www.reddit.com/r/Piracy/wiki/megathread/reading_material_and_elearning) maintains a list of book trackers; these are always coming and going. A filetype search[^3] with pdf, mobi, epub, etc. extensions is a last resort.
 
-For papers specifically, check [libgen](https://gen.lib.rus.ec), then [sci-hub](https://sci-hub.se/) (mediocre uptime; blame the lawsuits), then [academictorrents](https://academictorrents.com/), then the [piracy megathread](https://www.reddit.com/r/Piracy/wiki/megathread/reading_material_and_elearning), then...just email paper authors and they'll usually send you a copy. You might be able to find a non-paywalled copy on google scholar. Extensions like Bypass Paywalls Clean or Unpaywall have historically been bad at papers.
+For papers specifically, check [libgen](https://libgen.rs), then [sci-hub](https://sci-hub.se/) (mediocre uptime; blame the lawsuits), then [academictorrents](https://academictorrents.com/), then the [piracy megathread](https://www.reddit.com/r/Piracy/wiki/megathread/reading_material_and_elearning), then...just email paper authors and they'll usually send you a copy. You might be able to find a non-paywalled copy on google scholar. Extensions like Bypass Paywalls Clean or Unpaywall have historically been bad at papers.
 
 Have some junk text to make footnotes better[^50]
 
