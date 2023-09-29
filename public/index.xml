@@ -22,10 +22,7 @@
       <pubDate>Sun, 18 Jun 2023 04:00:51 -0700</pubDate>
       
       <guid>http://quatl.ooo/about/</guid>
-      <description>&amp;quot;&amp;quot;&amp;quot;
-Fine cave-aged Vermont cheddar. I love my partners, my friends, piano, dogs, a good view, computers, chess, and terrible science fiction. I care about you.
-Args: location (str): seattle pronouns (str): they/them
-Returns: me (Person) &amp;quot;&amp;quot;&amp;quot;</description>
+      <description>&amp;#34;&amp;#34;&amp;#34;Fine cave-aged Vermont cheddar;I love my community, piano, dogs, computers, chess, and terrible science fiction.Args:location (str): seattlepronouns (str): they/themReturns:Person&amp;#34;&amp;#34;&amp;#34; </description>
     </item>
     
     <item>
