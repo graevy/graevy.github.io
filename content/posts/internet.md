@@ -31,7 +31,7 @@ Last updated: Sep 23 2023 (please [email me](mailto:avry@pm.me) with suggestions
 
 # <a name="browser"></a>[Browser](#navigation)
 
-Chrome is phasing out privacy features and adblockers, and browser monopolies are bad[^19]. Please switch to firefox; it's the most popular [open source](https://opensource.com/resources/what-open-source) chromium alternative. Keep your old browser for when an addon[^20] or chromium-centered-webdev breaks a page.
+Chrome is [phasing out privacy features](https://web.archive.org/web/20231009113102/https://arstechnica.com/gadgets/2023/09/googles-widely-opposed-ad-platform-the-privacy-sandbox-launches-in-chrome/) and adblockers, and browser monopolies are bad[^19]. Please switch to firefox; it's the most popular [open source](https://opensource.com/resources/what-open-source) chromium alternative. Keep your old browser for when an addon[^20] or chromium-centered-webdev breaks a page.
 
 Firefox addons I recommend[^7] in order:
 - [Ublock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
@@ -109,16 +109,7 @@ Here are overviews of content-specific internet piracy ecosystems. Full resource
 
 ### <a name="viruses"></a>[Viruses and torrenting](#navigation)
 
-Here are the popular[^15] reasons people make viruses for torrents. From most to least common:
-
-1. To get your credentials.
-    - Common. Hidden malware that waits for you to login somewhere and records it.
-2. To leverage your hardware to provide value. Either your pc starts mining cryptocurrency, you inadvertently participate in a [botnet](https://www.malwarebytes.com/botnet), or both[^13]
-    - Common because target diversity is great for botnets and people who torrent games usually have good mining GPUs
-3. To install ransomware: holding your files hostage until a ransom is paid.
-    - Rare because distributing ransomware quickly gets you banned from any decent tracker, individuals rarely pay out, and that level of system access is hard to obtain
-
-So we're really only worried about 1 and 2; the goal of someone poisoning torrents is to go undetected. Either wipe your drive periodically or have a dedicated machine for torrented games/software.
+The typical targets on your computer are your credentials, its ability to mine cryptocurrency or participate in a [botnet](https://www.malwarebytes.com/botnet), and your willingness to pay ransom for your files. Most viruses try to remain undetected; if you take risks torrenting, either wipe your drive periodically or maintain a dedicated machine for torrenting.
 
 Some tips:
 
@@ -256,11 +247,7 @@ Have some junk text to make footnotes better[^50]
 
 [^12]: Usually: unstable eastern European genius cohorts bereft of the wages befitting their cybersecurity niche. Uncommonly: skilled but elitist remnants of the 90's warez scene. "Repackers" package cracked software; the repacker is not doing the work of cracking, but they serve as a nice frontend and offer features like multi-language support, compression, etc.
 
-[^13]: It should be noted that historically this was kindof a symbiotic relationship. You save money, someone gets a botnet member (you usually never noticed), everyone wins. If you caught too many botnets, you'd reinstall your OS, and your PC would be fast again. Currently, crypto mining and online payment proliferation incentivize targeting your credentials/silicon.
-
 [^14]: Some jurisdictions obligate the torrent tracker to remove illegal content references. This is a flimsy legal argument with a major corporate backing; creative ccTLDs (.to, .cr, .vu...) make this difficult to enforce. In the absence of jurisdiction, vested interests will DDoS trackers to weaken their reliability.
-
-[^15]: Source: my ass. See also: [white hats](https://en.wikipedia.org/wiki/White_hat_(computer_security)), "because they can", [cyberpunk conspiracies using you as a transmission vector](https://en.wikipedia.org/wiki/Stuxnet)
 
 [^16]: rip what.cd
 
@@ -274,12 +261,12 @@ Have some junk text to make footnotes better[^50]
 
 [^21]: [Bitwarden](https://bitwarden.com/), or most password managers that aren't lastpass, are more secure services.
 
-[^22]: The `of` parameter should point to the block device location e.g. `/dev/sda`, not one of its partitions e.g. `/dev/sda1`
+[^22]: The `of` parameter should point to the block device location e.g. `/dev/sda`, not one of its partitions e.g. `/dev/sda1`. block size defaults to 16k, which seriously throttles the operation, and I honestly forget what `conv=fsync` does.
 
-[^23]: While most sources about torrenting risk are trying to sell VPNs, the US effectively maintains [a list](https://ustr.gov/sites/default/files/USTR-2016-Special-301-Report.pdf) of the easiest places to violate copyright law
+[^23]: While most sources about torrenting risk are trying to sell VPNs, the US effectively maintains [a list](https://ustr.gov/sites/default/files/USTR-2016-Special-301-Report.pdf) of the easiest places to violate copyright law!
 
 [^24]: Search giants have been steadily eroding our ability to quote search for some time now. We're between free search giants right now, as was the case when google began to usurp yahoo. [Kagi](https://kagi.com/) is the new hotness, but it's paid. Otherwise you're stuck with search syntax and LLMs.
 
-[^25]: 1337x is, as of the time of writing, scandalously refusing to ban a repacker who keeps putting miners in game repacks. There are no good trackers.
+[^25]: 1337x is, as of the time of writing, scandalously refusing to ban a repacker who keeps putting crypto miners in game repacks. There are no good trackers.
 
 [^50]: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
