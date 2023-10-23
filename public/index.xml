@@ -6,7 +6,16 @@
     <description>Recent content on quatloo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 30 Jul 2023 22:52:10 -0700</lastBuildDate><atom:link href="http://quatl.ooo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 22 Oct 2023 20:14:09 -0700</lastBuildDate><atom:link href="http://quatl.ooo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ccna</title>
+      <link>http://quatl.ooo/posts/ccna_pt1/</link>
+      <pubDate>Sun, 22 Oct 2023 20:14:09 -0700</pubDate>
+      
+      <guid>http://quatl.ooo/posts/ccna_pt1/</guid>
+      <description>Background I&amp;rsquo;m half finished with this CCNA course, and it&amp;rsquo;s been a missing piece. A few months ago I was working on a PR for ss14 and someone in the discord told me to implement device networking to mesh some devices instead of the bitmask I wrote, and in retrospect, this was obvious. I&amp;rsquo;d just learned helplessness with the word &amp;ldquo;networking&amp;rdquo;. And so much of tech is confidence; we can&amp;rsquo;t learn it all; we just need to know how to learn.</description>
+    </item>
+    
     <item>
       <title>ss14</title>
       <link>http://quatl.ooo/posts/ss14/</link>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en-us"><head>
+    <title>quatloo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+
+    
+    <link rel="icon" type= image/x-icon href= /favicon.ico>
+
+    
+    
+    
+    <link rel="stylesheet" href="../../css/theme.min.css">
+
+    
+    
+    
+
+    
+</head>
+<body>
+        <div id="content" class="mx-auto"><header class="container mt-sm-5 mt-4 mb-4 mt-xs-1">
+    <div class="row">
+        
+        <div class="col-12 text-center">
+        
+            <h2 class="m-0 mb-2 mt-4">
+                <a href="../../" class="text-decoration-none">
+                    
+                        graevy
+                    
+                </a>
+            </h2>
+            <p class="text-muted mb-1">
+                
+                    Wetware Developer
+                
+            </p>
+            <ul id="nav-links" class="list-inline mb-2">
+                
+                
+                    <li class="list-inline-item">
+                        <a class="badge badge-white " href="../../about/" title="About">About</a>
+                    </li>
+                
+                    <li class="list-inline-item">
+                        <a class="badge badge-white " href="../../posts/" title="Posts">All Posts</a>
+                    </li>
+                
+            </ul>
+            <ul id="nav-social" class="list-inline">
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="https://github.com/graevy" target="_blank">
+                            <i class="fab fa-github fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="mailto:avry@pm.me" target="_blank">
+                            <i class="fas fa-at fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+    <hr />
+</header><div class="container">
+    <div class="pl-sm-4 ml-sm-5">
+        <h3 id="background">Background</h3>
+<p>I&rsquo;m half finished with this CCNA course, and it&rsquo;s been a missing piece. A few months ago I was working on a PR for ss14 and someone in the discord told me to implement device networking to mesh some devices instead of the <a href="https://github.com/space-wizards/space-station-14/blob/6b340ab2f685b35f7ad41cb6bd78df3056c6d156/Content.Server/Shuttles/Components/RemoteShuttleTimerComponent.cs">bitmask I wrote</a>, and in retrospect, this was obvious. I&rsquo;d just learned helplessness with the word &ldquo;networking&rdquo;. And so much of tech is confidence; we can&rsquo;t learn it all; we just need to know how to learn.</p>
+<p>So I detoured for the CCNA cert. It&rsquo;s comprehensive, marketable, and concrete. I went through something similar with radio a few years ago.</p>
+<h3 id="vlans-subnetting-and-hosting">VLANs, Subnetting, and Hosting</h3>
+<p>This detour coincided with setting up <a href="https://devhack.net/">devhack</a>&rsquo;s network, with some quirks:</p>
+<ul>
+<li>We were allocated a /29 subnet despite not paying for it</li>
+<li>Most of the hardware is old and donated</li>
+<li>Being a hackerspace, the config should be transparent</li>
+</ul>
+<p>This first point was really strange. Obviously the initial reaction was &ldquo;hey, six usable addresses!&rdquo; but the reality of the situation is that our ISP probably reactivated an old configuration for our shared office space and they would probably catch it on the next billing cycle, or when other tenants setup networking<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>The second is still a major pain point, and I&rsquo;m obviously in over my head. We settled on 6 VLANs to start, 2 switches (1 layer 3), and 2 SSIDs. The day after my course covered VLANs. Our L3 switch had other plans:
+<img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/vrf.jpg" alt="vrf">
+but we&rsquo;re getting there.</p>
+<p>And the third is an unexpected boon deviating from cisco&rsquo;s standard. I get my setup criticized by professional network engineers, and now I&rsquo;m leading an RSA workshop this week. :D</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/rsa.jpeg" alt="rsa"></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>As of October 2023, they haven&rsquo;t&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+            </div>
+        </div><footer class="text-center pb-1">
+    <small class="text-muted">
+        Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a>, <a href="https://github.com/austingebauer/devise" target="_blank">Devise</a>
+    </small>
+</footer>
+</body>
+</html>
