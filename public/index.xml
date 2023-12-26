@@ -6,146 +6,105 @@
     <description>Recent content on quatloo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Oct 2023 20:14:09 -0700</lastBuildDate><atom:link href="http://quatl.ooo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 22 Oct 2023 20:14:09 -0700</lastBuildDate>
+    <atom:link href="http://quatl.ooo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ccna</title>
       <link>http://quatl.ooo/posts/ccna_pt1/</link>
       <pubDate>Sun, 22 Oct 2023 20:14:09 -0700</pubDate>
-      
       <guid>http://quatl.ooo/posts/ccna_pt1/</guid>
       <description>Background I&amp;rsquo;m half finished with this CCNA course, and it&amp;rsquo;s been a missing piece. A few months ago I was working on a PR for ss14 and someone in the discord told me to implement device networking to mesh some devices instead of the bitmask I wrote, and in retrospect, this was obvious. I&amp;rsquo;d just learned helplessness with the word &amp;ldquo;networking&amp;rdquo;. And so much of tech is confidence; we can&amp;rsquo;t learn it all; we just need to know how to learn.</description>
     </item>
-    
     <item>
       <title>ss14</title>
       <link>http://quatl.ooo/posts/ss14/</link>
       <pubDate>Sun, 30 Jul 2023 22:52:10 -0700</pubDate>
-      
       <guid>http://quatl.ooo/posts/ss14/</guid>
       <description>Space Station 14 Is a vehicle for improvised comedy videogame fork of a 2001 atmospherics simulator. It&amp;rsquo;s like a multiplayer Rimworld, with the complexity of Dwarf Fortress1. Twelve years ago I&amp;rsquo;d play as an uncannily helpful mime, an alcoholic detective, or usually a micro-managing chief medical officer. Rounds last 1-3 hours, involve 10-100 players, 0-3 admins functioning as dungeon masters, and a subset of players designated as antagonists ranging from xenomorph queen to corporate spy.</description>
     </item>
-    
     <item>
       <title>About</title>
       <link>http://quatl.ooo/about/</link>
       <pubDate>Sun, 18 Jun 2023 04:00:51 -0700</pubDate>
-      
       <guid>http://quatl.ooo/about/</guid>
       <description>&amp;#34;&amp;#34;&amp;#34; Fine cave-aged Vermont cheddar; I love my community, piano, dogs, computers, chess, and terrible science fiction. Args: location (str): seattle pronouns (str): they/them Returns: Person &amp;#34;&amp;#34;&amp;#34; </description>
     </item>
-    
     <item>
       <title>hotspot</title>
       <link>http://quatl.ooo/posts/hotspot/</link>
       <pubDate>Thu, 01 Jun 2023 01:07:37 -0700</pubDate>
-      
       <guid>http://quatl.ooo/posts/hotspot/</guid>
-      <description>Problem My phone&amp;rsquo;s rom, grapheneOS, permits tethering, but my carrier bans it1. So, my carrier blocks anything I tether.
-There are 4 vectors I&amp;rsquo;ve read about for tether detection2:
-Packet TTL Phone defaults are configured to expose tether status to carriers. TCP/IP stack fingerprinting. Default implementations vary by OS Deep packet inspection. Mobile devices don&amp;rsquo;t connect to e.g. a windows update server Solution Incrementing the default packet TTL on my desktop/laptop spoofs my phone&amp;rsquo;s TTL.</description>
+      <description>Problem My phone&amp;rsquo;s rom, grapheneOS, permits tethering, but my carrier bans it1. So, my carrier blocks anything I tether.&#xA;There are 4 vectors I&amp;rsquo;ve read about for tether detection2:&#xA;Packet TTL Phone defaults are configured to expose tether status to carriers. TCP/IP stack fingerprinting. Default implementations vary by OS Deep packet inspection. Mobile devices don&amp;rsquo;t connect to e.g. a windows update server Solution Incrementing the default packet TTL on my desktop/laptop spoofs my phone&amp;rsquo;s TTL.</description>
     </item>
-    
     <item>
       <title>Missouri</title>
       <link>http://quatl.ooo/posts/missouri/</link>
       <pubDate>Thu, 27 Apr 2023 03:41:24 -0700</pubDate>
-      
       <guid>http://quatl.ooo/posts/missouri/</guid>
-      <description>Problem The Missouri Attorney General&amp;rsquo;s office maintained a page (html backup) for reporting &amp;ldquo;Transgender concerns&amp;rdquo; after the state passed legislation banning gender-affirming care.
-Solution An overzealous noise generator which probably got an IP filtered very quickly. Still, the form was taken down, so I&amp;rsquo;ll call that a victory.
-Contribution Localize the junk address data to Missouri by:
-finding a sufficiently large dataset of gps-valid missouri addresses and writing an original algorithm utilizing my 1337 programming skills: also a quick and dirty script for feasible missouri phone #s Commentary I was the first contributor!</description>
+      <description>Problem The Missouri Attorney General&amp;rsquo;s office maintained a page (html backup) for reporting &amp;ldquo;Transgender concerns&amp;rdquo; after the state passed legislation banning gender-affirming care.&#xA;Solution An overzealous noise generator which probably got an IP filtered very quickly. Still, the form was taken down, so I&amp;rsquo;ll call that a victory.&#xA;Contribution Localize the junk address data to Missouri by:&#xA;finding a sufficiently large dataset of gps-valid missouri addresses and writing an original algorithm utilizing my 1337 programming skills: also a quick and dirty script for feasible missouri phone #s Commentary I was the first contributor!</description>
     </item>
-    
     <item>
       <title>migration</title>
       <link>http://quatl.ooo/posts/migration/</link>
       <pubDate>Tue, 28 Mar 2023 04:33:25 -0700</pubDate>
-      
       <guid>http://quatl.ooo/posts/migration/</guid>
-      <description>After my digitalocean team dissolved, I migrated from a $4/mo droplet to github pages for free. I:
-could&amp;rsquo;ve avoided webhooks entirely saved money in the process But, I:
-centralized my services, lost privacy, can only serve static pages so who&amp;rsquo;s to say.
-Surprisingly, the build pipeline was the easiest migration component, and enabling https was the hardest; CNAME records interfere with SSL certs. I hung on some DNS records until I decided to remove the cloudflare step.</description>
+      <description>After my digitalocean team dissolved, I migrated from a $4/mo droplet to github pages for free. I:&#xA;could&amp;rsquo;ve avoided webhooks entirely saved money in the process But, I:&#xA;centralized my services, lost privacy, can only serve static pages so who&amp;rsquo;s to say.&#xA;Surprisingly, the build pipeline was the easiest migration component, and enabling https was the hardest; CNAME records interfere with SSL certs. I hung on some DNS records until I decided to remove the cloudflare step.</description>
     </item>
-    
     <item>
       <title>batteries</title>
       <link>http://quatl.ooo/posts/batteries/</link>
       <pubDate>Tue, 07 Mar 2023 18:00:21 -0800</pubDate>
-      
       <guid>http://quatl.ooo/posts/batteries/</guid>
-      <description>Background We went for a capacity upgrade (51 -&amp;gt; 62Wh) when swapping out my friend&amp;rsquo;s old laptop battery. Dell bios does not like the non-dell battery; the idea is to graft the old battery&amp;rsquo;s management system (BMS) onto the new battery.
-First Hurdle The casings are different; the old one has clips on the side for disassembly and the new one is pure adhesive. Solution: destroy the new case1 and use the old one to store the four-phone-batteries-in-a-trenchcoat rig.</description>
+      <description>Background We went for a capacity upgrade (51 -&amp;gt; 62Wh) when swapping out my friend&amp;rsquo;s old laptop battery. Dell bios does not like the non-dell battery; the idea is to graft the old battery&amp;rsquo;s management system (BMS) onto the new battery.&#xA;First Hurdle The casings are different; the old one has clips on the side for disassembly and the new one is pure adhesive. Solution: destroy the new case1 and use the old one to store the four-phone-batteries-in-a-trenchcoat rig.</description>
     </item>
-    
     <item>
       <title>internet harm reduction</title>
       <link>http://quatl.ooo/posts/internet/</link>
       <pubDate>Mon, 20 Feb 2023 20:41:32 -0800</pubDate>
-      
       <guid>http://quatl.ooo/posts/internet/</guid>
-      <description>This is a harm reduction guide for my friends who risk malware and surveillance, mostly while stealing things on the internet, but also just by browsing unhygenically.
-Navigation Browser Searching tips Tor VPNs Piracy tl;dr overview legality viruses clients trackers Where do I pirate _____? windows music video apps software games books Last updated: Sep 23 2023 (please email me with suggestions or updates)
-Browser Chrome is phasing out privacy features and adblockers, and browser monopolies are bad1.</description>
+      <description>This is a harm reduction guide for my friends who risk malware and surveillance, mostly while stealing things on the internet, but also just by browsing unhygenically.&#xA;Navigation Browser Searching tips Tor VPNs Piracy tl;dr overview legality viruses clients trackers Where do I pirate _____? windows music video apps software games books Last updated: Sep 23 2023 (please email me with suggestions or updates)&#xA;Browser Chrome is phasing out privacy features and adblockers, and browser monopolies are bad1.</description>
     </item>
-    
     <item>
       <title>motherboards</title>
       <link>http://quatl.ooo/posts/motherboards/</link>
       <pubDate>Tue, 07 Feb 2023 18:53:07 -0800</pubDate>
-      
       <guid>http://quatl.ooo/posts/motherboards/</guid>
-      <description>Background Every week I host an open source meetup in Seattle. My friends are always bringing in project laptops to fix up, dual boot linux with, whatever. There&amp;rsquo;s a light-hearted atmosphere, food, people coming and going.
-The Problem You can do everything right when e.g. replacing a battery, and end up breaking the motherboard. ASD wristbands and bags, step-by-step manufacturer-supplied teardown instructions, magnetic isolation, the works; the board still undergoes a lot of physical stress in some replacements.</description>
+      <description>Background Every week I host an open source meetup in Seattle. My friends are always bringing in project laptops to fix up, dual boot linux with, whatever. There&amp;rsquo;s a light-hearted atmosphere, food, people coming and going.&#xA;The Problem You can do everything right when e.g. replacing a battery, and end up breaking the motherboard. ASD wristbands and bags, step-by-step manufacturer-supplied teardown instructions, magnetic isolation, the works; the board still undergoes a lot of physical stress in some replacements.</description>
     </item>
-    
     <item>
       <title>gopro</title>
       <link>http://quatl.ooo/posts/gopro/</link>
       <pubDate>Fri, 27 Jan 2023 00:00:30 -0800</pubDate>
-      
       <guid>http://quatl.ooo/posts/gopro/</guid>
-      <description>Gopro GPS Metadata My startup contract (non-software) is about to end, so this is a good time for a writeup on the software I wrote to help me do field testing.
-In short, we were given gopro cameras to supplement field testing with video, but there was no quantitative positional data accompanying those tests. After poking around, I learned that GoPros do record GPX data (GPS XML), but extract it with either an unsupported 2017 desktop app or a paid phone app that didn&amp;rsquo;t give me files.</description>
+      <description>Gopro GPS Metadata My startup contract (non-software) is about to end, so this is a good time for a writeup on the software I wrote to help me do field testing.&#xA;In short, we were given gopro cameras to supplement field testing with video, but there was no quantitative positional data accompanying those tests. After poking around, I learned that GoPros do record GPX data (GPS XML), but extract it with either an unsupported 2017 desktop app or a paid phone app that didn&amp;rsquo;t give me files.</description>
     </item>
-    
     <item>
       <title>font</title>
       <link>http://quatl.ooo/posts/font/</link>
       <pubDate>Thu, 26 Jan 2023 00:27:20 -0800</pubDate>
-      
       <guid>http://quatl.ooo/posts/font/</guid>
       <description>Liberation Mono Surprisingly, the devise theme doesn&amp;rsquo;t appear to have a way to change your main font. I forked it and submitted a PR. I hope I never touch css again. Soon the site will be less new, and functional enough; I can slow down. I&amp;rsquo;ll write a summary of the gopro metadata project first, because the process was pretty sloppy.</description>
     </item>
-    
     <item>
       <title>aoc22</title>
       <link>http://quatl.ooo/posts/aoc22/</link>
       <pubDate>Wed, 25 Jan 2023 16:52:32 -0800</pubDate>
-      
       <guid>http://quatl.ooo/posts/aoc22/</guid>
       <description>Background Back in November I told my friends I&amp;rsquo;d do advent of code with them this year. I was going to do it entirely in Rust, because I kept talking about how much I wanted to learn more Rust to actually use it for systems programming. I fell a bit behind, caught up some days, and promised I&amp;rsquo;d catch up when I had more free time over the holidays. String processing was a little weird, but manageable; I spent evenings sipping tea and staring at std::vec::Vec and std::str to replicate the kind of pythonic 10-line algorithms I usually write for leetcode problems.</description>
     </item>
-    
     <item>
       <title>pipelines</title>
       <link>http://quatl.ooo/posts/pipelines/</link>
       <pubDate>Wed, 25 Jan 2023 14:09:41 -0800</pubDate>
-      
       <guid>http://quatl.ooo/posts/pipelines/</guid>
-      <description>Source to Deploy, directly I had enough free time to throw together this project site over the holidays. Without any real networking knowledge, I snagged on basics for hours; the worst by far1 was the webhooks. Ultimately, the 3 guides I referenced didn&amp;rsquo;t mention that network points and nodes (?) have their own rules for port forwarding:
-Cloudflare has a very short whitelist2, Most distros, and particularly webhost distro images (I imagine), require port whitelisting through iptables/nftables backends typically managed with ufw Basically, any point along the source -&amp;gt; browser pipe can block you.</description>
+      <description>Source to Deploy, directly I had enough free time to throw together this project site over the holidays. Without any real networking knowledge, I snagged on basics for hours; the worst by far1 was the webhooks. Ultimately, the 3 guides I referenced didn&amp;rsquo;t mention that network points and nodes (?) have their own rules for port forwarding:&#xA;Cloudflare has a very short whitelist2, Most distros, and particularly webhost distro images (I imagine), require port whitelisting through iptables/nftables backends typically managed with ufw Basically, any point along the source -&amp;gt; browser pipe can block you.</description>
     </item>
-    
     <item>
       <title>Hello World</title>
       <link>http://quatl.ooo/posts/hello-world/</link>
       <pubDate>Thu, 22 Dec 2022 19:54:08 -0800</pubDate>
-      
       <guid>http://quatl.ooo/posts/hello-world/</guid>
       <description>it lives and hopefully can document whatever I&amp;rsquo;m working on so I can link my projects &amp;gt;.&amp;lt;</description>
     </item>
-    
   </channel>
 </rss>

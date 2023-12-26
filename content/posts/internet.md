@@ -160,9 +160,9 @@ To install windows:
 
 It's hard to get a virus from downloading music. [rutracker](https://rutracker.org) is my favorite public tracker for music[^16]; you need to make an account and the whole website is russian so a translation browser extension is a good idea. [Soulseek](https://www.slsknet.org/) has a good english-language selection but it's kindof closed off from the rest of the torrent ecosystem. 
 
-You're probably looking for a cracked spotify app in Apps below. [revanced](https://revanced.io/)/[newpipe](https://newpipe.net/) will handle youtube. These projects come and go.
+For phones: you're probably looking for a cracked spotify app in Apps below. [revanced](https://revanced.io/)/[newpipe](https://newpipe.net/) will handle youtube. These projects come and go.
 
-For desktops, [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases) downloads youtube media, and just using the web version of spotify with ublock origin on firefox should block its ads.
+For desktops, [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases) downloads youtube media, and just using the web version of spotify with ublock origin on firefox should block its ads, but if you want, [here's a cracked windows spotify github](https://github.com/mrpond/BlockTheSpot/releases)
 
 ### <a name="video"></a>[Video](#navigation)
 
