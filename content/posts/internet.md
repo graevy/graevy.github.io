@@ -36,11 +36,11 @@ Chrome is [phasing out privacy features](https://web.archive.org/web/20231009113
 Firefox addons I recommend[^7] in order:
 - [Ublock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
 - [I still don't care about cookies](https://addons.mozilla.org/en-US/firefox/addon/istilldontcareaboutcookies/) (manages cookie pop-ups)
+- [Wayback Machine](https://addons.mozilla.org/en-US/firefox/addon/wayback-machine_new) (right-click internet archive retrieval to bypass paywalls and fight [link rot](https://en.wikipedia.org/wiki/Link_rot))
 - [SponsorBlock](https://addons.mozilla.org/en-US/firefox/addon/sponsorblock/) (skips youtube sponsored segments)
 - [Alternative Player for Twitch.tv](https://addons.mozilla.org/en-US/firefox/addon/twitch_5/) (hides, not blocks, ads)
 - [Link Cleaner+](https://addons.mozilla.org/en-US/firefox/addon/link-cleaner-plus/) (removes tracking data from URLs)
 - [Tab Session Manager](https://addons.mozilla.org/en-US/firefox/addon/tab-session-manager/)
-- [Bypass Paywalls Clean](https://gitlab.com/magnolia1234/bypass-paywalls-firefox-clean) (Bypasses certain news website paywalls. Can't be installed regularly due to DMCA violation[^18]. Download the xpi release and open it with firefox)
 
 Firefox accounts have a password sync[^21] feature between devices which also tracks public password database leaks. Use the Secure Password Generator addon for whenever firefox's generator doesn't recognize a password field. Access your logins in the address bar with `about:logins`.
 
@@ -145,7 +145,7 @@ Each section below has individual recommendations.
 
 ### <a name="windows"></a>[Windows](#navigation)
 
-This is a lot less risky than it used to be because most cracks now use microsoft's windows images. To crack an active windows installation, go to [this github](https://github.com/massgravel/Microsoft-Activation-Scripts)[^9] and follow the instructions (you want to use HWID). Remember to open powershell/terminal *as an administrator*.
+This is a lot less risky than it used to be because most cracks now use microsoft's windows images. To crack an active windows installation, follow [these instructions](https://github.com/massgravel/Microsoft-Activation-Scripts)[^9] (you want to use HWID). Remember to open powershell/terminal *as an administrator*.
 
 To install windows:
 - Get latest windows image from microsoft ([10](https://www.microsoft.com/en-us/software-download/windows10ISO) [11](https://www.microsoft.com/en-us/software-download/windows11/))
@@ -166,7 +166,7 @@ For desktops, [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases) downloads yout
 
 ### <a name="video"></a>[Video](#navigation)
 
-The majority of torrenting. Low risk[^10]; media doesn't need elevated permissions. Go to your [public tracker of choice](#trackers). Private trackers have the best selections; those typically involve being invited and passing a screening process.
+The majority of torrenting. Low risk[^10]; media doesn't need elevated permissions. Go to your [public tracker of choice](#trackers)[^18]. Private trackers have the best selections; those typically involve being invited and passing a screening process.
 
 When starting a new torrent, downloading in "sequential order" or similar lets you functionally stream video[^8]. You only need to download about 5-10% of a video before you can play it if your connection is fast enough. Use [VLC](https://www.videolan.org/) or [MPC-HC](https://github.com/clsid2/mpc-hc/releases) to watch videos.
 
@@ -253,7 +253,7 @@ Have some junk text to make footnotes better[^50]
 
 [^17]: For actually good links, find darkweb forums and lurk until you understand the current ecosystem.
 
-[^18]: That's how you know it's good.
+[^18]: Tracker mirrors are preferred. Thepiratebay has bad uptime from DDoS attacks; [thepiratebay10](https://thepiratebay10.org) does not.
 
 [^19]: A chrome monopoly lets it direct the whole internet, like [that time](https://www.howtogeek.com/724441/what-is-googles-floc-and-how-will-it-track-you-online/) they failed to assert their proprietary cookie alternative, or when they [tried again](https://www.wired.com/story/google-floc-cookies-chrome-topics/), or when [they sped up pages that implemented their tracking links](https://www.theverge.com/23711172/google-amp-accelerated-mobile-pages-search-publishers-lawsuit)...and this is only with a ~65% market share
 
