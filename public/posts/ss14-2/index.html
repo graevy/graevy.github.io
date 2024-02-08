@@ -71,37 +71,39 @@
     <div class="pl-sm-4 ml-sm-5">
         <p>I finished this feature PR for ss14 kindof recently. I took <a href="https://github.com/space-wizards/space-station-14/pull/19471">these timers</a> that I made in August and <a href="https://github.com/space-wizards/space-station-14/pull/24189">finished the job</a>. This post isn&rsquo;t about the feature, but something I wasn&rsquo;t able to properly articulate until I talked to some other devs:</p>
 <h3 id="organizational-scaling">Organizational Scaling</h3>
-<p>The ss14 project has existed for like 4 years in my mind, which means it&rsquo;s considerably older. <code>curl -s https://api.github.com/repos/space-wizards/space-station-14 | grep 'created_at' | cut -d: -f2-</code> returns <code>2017-05-22T01:57:51Z</code>, so almost 7 years before the repo warranted its own github account<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. My august PR was <code>19471</code>; my january PR was <code>24189</code>; there have been <code>4718</code> github items in the previous 5 months, and 19000 in the previous ~6 years; simplified: +20% dev activity over 6 months.</p>
-<p>Why? The players, and therefore devs, are switching to 14 from 13. It&rsquo;s not at feature parity with the original game yet, but the positives from a 15-year-hindsight refactor are outweighing the negatives. An explosion doesn&rsquo;t crash the server. It&rsquo;s on Steam, not Byond. The ss14 discord rotates through pride icons; ss13 servers are 4chan communities. The reasons aren&rsquo;t important.</p>
-<p><a href="https://github.com/metalgearsloth?tab=overview&amp;from=2024-01-01&amp;to=2024-01-31">Sloth</a> does most of the code review. Last month, Sloth reviewed 178 ss14 PRs, and <em>opened</em> 138. The most recent <a href="https://hackmd.io/wkphXM0bSpOO2WjWiDLGpw">maintainer meeting notes</a> are pretty telling. He&rsquo;s not in charge of the project officially<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, but he is doing <em>the most</em> work, and he is the most responsive PM to help requests, so <em><strong>the devs see him that way</strong></em>. He&rsquo;s the defacto head/principal developer, if you&rsquo;re inclined to form such hierarchies. So why is he opening nearly 5 PRs per day himself? Short answer: probably, he enjoys it.</p>
+<p>The ss14 project has existed for like 4 years in my mind, which means it&rsquo;s considerably older. <code>curl -s https://api.github.com/repos/space-wizards/space-station-14 | grep 'created_at' </code> gives <code>2017-05-22T01:57:51Z</code>, so almost 7 years before the repo warranted its own github account<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. My august PR was <code>19471</code>; my january PR was <code>24189</code>; there have been <code>4718</code> github items in the previous 5 months, and <code>19000</code> in the previous ~6 years; simplified: +20% dev activity over 6 months.</p>
+<p>Why? The reasons aren&rsquo;t important. The players, and therefore devs, are switching to 14 from 13. It&rsquo;s not at feature parity with the original game yet, but the positives from a 15-year-hindsight refactor are outweighing the negatives. An explosion doesn&rsquo;t crash the server. It&rsquo;s on Steam, not Byond. The ss14 discord rotates through pride icons; ss13 servers are 4chan communities.</p>
+<p>Our case study, Casey, does most of the code review. Last month, Casey reviewed 178 ss14 PRs, and <em>opened</em> 138. The most recent <a href="https://hackmd.io/wkphXM0bSpOO2WjWiDLGpw">maintainer meeting notes</a> are pretty telling. He&rsquo;s not in charge of the project officially<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, but he is doing <em>the most</em> work, and he is the most responsive PM to help requests, so <em><strong>the devs see him that way</strong></em>. He&rsquo;s the defacto head/principal developer, if you&rsquo;re inclined to form such hierarchies. So why is he opening nearly 5 PRs per day himself? Short answer: probably, he enjoys it.</p>
 <h3 id="long-answer">Long Answer:</h3>
 <p>There aren&rsquo;t a dozen maintainers closing the issue/PR backlog<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>; just some PMs who&rsquo;ve deemed closing it a waste of limited resources<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. They&rsquo;re aware of the growth problem. They&rsquo;ve just minted junior (as in under 18) maintainers, and added a <code>#pr-review-request</code> channel, for contributors to request peer review, in theory offloading some mounting review work. PMs would tell you there aren&rsquo;t enough qualified contributors to deputize as maintainers. Why?<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></p>
-<p>I&rsquo;ve posted about <a href="https://quatl.ooo/posts/ss14/">my demoralizing ss14 new developer experience</a>. Since that time I&rsquo;ve sporadically browsed the help channel, submitted PRs that weren&rsquo;t bulldozed, and met some nice people! I have some Thoughts.</p>
-<p>SS14&rsquo;s development necessitates a lack of trust between project manager and potential-maintainer beyond the average open source project:</p>
+<p>I&rsquo;ve posted about <a href="https://quatl.ooo/posts/ss14/">my demoralizing ss14 new developer experience</a>. Since that time I&rsquo;ve sporadically browsed the help channel, submitted PRs that weren&rsquo;t bulldozed, and met some nice people!</p>
+<p>I have some Thoughts.</p>
+<p>SS14&rsquo;s development necessitates? a lack of trust between project manager and potential-maintainer beyond the average open source project:</p>
 <ul>
 <li>Open source games attract a lot of first-time devs</li>
 <li>ECS architecture, client-server architecture, and an event bus &ndash; all new to most intermediate non-game devs</li>
 <li>In-house game engine necessitates further project-specific knowledge</li>
 <li>SS14 itself is dwarf-fortress levels of complicated<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></li>
-<li>Being an obscure videogame with a high learning curve, contributors are unusually passionate<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> about balance and feature updates</li>
+<li>Being an obscure videogame with a high learning curve, users are unusually &ldquo;passionate&rdquo;<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> about balance and feature updates</li>
 <li>Inadequate<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> public relations between unpaid developers and entitled community causes friction</li>
 </ul>
 <p>As a result, SS14&rsquo;s codebase becomes unapproachable:</p>
 <ul>
 <li>The above barriers to entry coupled with open source accessibility mean lots of dev churn</li>
-<li>Old devs recognize the futility of spoonfeeding the average new dev, thereby sequestering knowledge</li>
+<li>Old devs recognize the futility of spoonfeeding the average new dev, sequestering knowledge</li>
 </ul>
-<p>Devs tend to want to implement features over e.g. documentation, code review, and helping new devs. SS14 just skews more in that direction due to some unique properties. The community is also half(?) Russian, but they have almost no project representation<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></p>
+<p>Devs tend to want to implement features over e.g. documentation, code review, and helping new devs. SS14 just skews more in that direction due to some unique properties. The community is also half(?) Russian, but they have almost no project representation<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>.</p>
 <p>So, new maintainers aren&rsquo;t cultivated, and the &ldquo;leads&rdquo; contentedly open 5 PRs a day. &lt;/Long answer&gt;.</p>
-<p>Last week I asked Sloth for a new thing to work on &ldquo;that wasn&rsquo;t waiting on anything else&rdquo;. I&rsquo;m not gonna post the DMs, that feels weird. I felt like he wasn&rsquo;t used to being asked the question. He said &ldquo;not sure&rdquo;, I clarified, he gave me a few things, and then DMed me an hour later, and then 2 days(!) later, with ideas.</p>
+<p>Last week I asked Casey for a new thing to work on &ldquo;that wasn&rsquo;t waiting on anything else&rdquo;. I felt like he wasn&rsquo;t used to being asked the question. He said &ldquo;not sure&rdquo;, I clarified, he gave me a few things, and then DMed me an hour later, and then 2 days<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> later, with ideas.</p>
 <h4 id="takeaways">Takeaways</h4>
-<p>Some subset of devs will respond to poor documentation by writing good documentation. Some leads will respond to review backlog by minting maintainers. This is ultimately a self-correcting problem, there&rsquo;s just growing pains in organizational scaling, a lag that burns everyone.</p>
+<p>What happens if/when Casey burns out? As above, so below. Putting Casey in this position raises our <a href="https://en.wikipedia.org/wiki/Bus_factor">bus factor</a>, and churns our senior devs like our intimidated juniors. One of many scale-mitigating factors.</p>
+<p>Some subset of devs will respond to poor documentation by writing good documentation. Some leads will respond to review backlog by delegating maintainers. This is ultimately a self-correcting problem, there&rsquo;s just growing pains in organizational scaling, a lag that burns everyone.</p>
 <ul>
 <li>The barrier to editing docs needs to be tiny. It&rsquo;s open source. Maintainers should step in after a contributor identifies a docs problem, instead of having to review all docs changes.</li>
 <li>New devs need guidelines for getting information. Which docs to start with, where to ask when docs come up short, and when is DMing justified? Clearly delineate spoonfeeding so maintainers don&rsquo;t burn out overextending.</li>
 <li>Dev hats need to be granular, self-assignable, toggleable. &ldquo;I don&rsquo;t answer questions in DMs&rdquo;, &ldquo;Ask me engine questions&rdquo;, &ldquo;Don&rsquo;t ask me to review PRs&rdquo; etc. components on top of &ldquo;Project Manager&rdquo; or &ldquo;Junior Developer&rdquo; roles.</li>
 </ul>
-<p>I don&rsquo;t think this would help a corporate project, because there is a commons-tragedy in appearing the most productive, but in open source this isn&rsquo;t a requirement.</p>
+<p>I don&rsquo;t think this would help a corporate project as much, because there is a commons-tragedy in appearing productive during layoff season. But it&rsquo;s on my mind now.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -109,7 +111,7 @@
 <p>Enough ss13 rewrites have failed to dub them victims of the &ldquo;ss13 curse&rdquo;, so the <em>idea</em> of ss14 is definitely older.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>That&rsquo;s a 4?-way &ldquo;wizard&rdquo; title he&rsquo;s excluded from by virtue of, presumably, not being there in 2017.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>That&rsquo;s a 4?-way &ldquo;wizard&rdquo; title he&rsquo;s excluded from by virtue of, presumably, not being there in 2017. There&rsquo;s a reason old IRC channels don&rsquo;t do these titles.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
 <p>At time of writing, this is 2500 issues and 230 PRs. Of these, I&rsquo;m guessing 1/3 are either still relevant or unique. And the backlog isn&rsquo;t just growing; it&rsquo;s accelerating.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
@@ -124,13 +126,16 @@
 <p>I played ss13 for about 4 years and I never even learned all the mechanics.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:7">
-<p>i.e. frothing at the mouth to nerf whatever killed them last round&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>i.e. frothing at the mouth to nerf whatever killed them last round. And also sending death threats to the devs. Not getting into that here&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:8">
 <p><a href="https://www.youtube.com/@Liltenhead">Liltenhead</a> is the closest thing to a communications department that ss14 has&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:9">
 <p>That I know of. I have no idea how to approach language barriers in source code. I&rsquo;d have to go ask the Russian devs, I guess.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>This stuck with me. He&rsquo;s stretched thin; why would he be thinking about this 2 days later?&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>

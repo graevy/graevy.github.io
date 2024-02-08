@@ -13,7 +13,7 @@
       <link>http://quatl.ooo/posts/ss14-2/</link>
       <pubDate>Sun, 04 Feb 2024 21:24:49 -0800</pubDate>
       <guid>http://quatl.ooo/posts/ss14-2/</guid>
-      <description>I finished this feature PR for ss14 kindof recently. I took these timers that I made in August and finished the job. This post isn&amp;rsquo;t about the feature, but something I wasn&amp;rsquo;t able to properly articulate until I talked to some other devs:&#xA;Organizational Scaling The ss14 project has existed for like 4 years in my mind, which means it&amp;rsquo;s considerably older. curl -s https://api.github.com/repos/space-wizards/space-station-14 | grep &#39;created_at&#39; | cut -d: -f2- returns 2017-05-22T01:57:51Z, so almost 7 years before the repo warranted its own github account1.</description>
+      <description>I finished this feature PR for ss14 kindof recently. I took these timers that I made in August and finished the job. This post isn&amp;rsquo;t about the feature, but something I wasn&amp;rsquo;t able to properly articulate until I talked to some other devs:&#xA;Organizational Scaling The ss14 project has existed for like 4 years in my mind, which means it&amp;rsquo;s considerably older. curl -s https://api.github.com/repos/space-wizards/space-station-14 | grep &#39;created_at&#39; gives 2017-05-22T01:57:51Z, so almost 7 years before the repo warranted its own github account1.</description>
     </item>
     <item>
       <title>ccna</title>
@@ -34,7 +34,7 @@
       <link>http://quatl.ooo/about/</link>
       <pubDate>Sun, 18 Jun 2023 04:00:51 -0700</pubDate>
       <guid>http://quatl.ooo/about/</guid>
-      <description>&amp;#34;&amp;#34;&amp;#34;&#xD;Fine cave-aged Vermont cheddar;&#xD;I love my community, piano, dogs, computers, chess, and terrible science fiction.&#xD;Args:&#xD;location (str): seattle&#xD;pronouns (str): they/them&#xD;Returns:&#xD;Person&#xD;&amp;#34;&amp;#34;&amp;#34; </description>
+      <description>&amp;#34;&amp;#34;&amp;#34; Fine cave-aged Vermont cheddar; I love my community, piano, dogs, computers, chess, and terrible science fiction. Args: location (str): seattle pronouns (str): they/them Returns: Person &amp;#34;&amp;#34;&amp;#34; </description>
     </item>
     <item>
       <title>hotspot</title>
