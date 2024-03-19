@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en-us"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <title>quatloo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+
+    
+    <link rel="icon" type= image/x-icon href= /favicon.ico>
+
+    
+    
+    
+    <link rel="stylesheet" href="../../css/theme.min.css">
+
+    
+    
+    
+
+    
+</head>
+<body>
+        <div id="content" class="mx-auto"><header class="container mt-sm-5 mt-4 mb-4 mt-xs-1">
+    <div class="row">
+        
+        <div class="col-12 text-center">
+        
+            <h2 class="m-0 mb-2 mt-4">
+                <a href="../../" class="text-decoration-none">
+                    
+                        graevy
+                    
+                </a>
+            </h2>
+            <p class="text-muted mb-1">
+                
+                    Wetware Developer
+                
+            </p>
+            <ul id="nav-links" class="list-inline mb-2">
+                
+                
+                    <li class="list-inline-item">
+                        <a class="badge badge-white " href="../../about/" title="About">About</a>
+                    </li>
+                
+                    <li class="list-inline-item">
+                        <a class="badge badge-white " href="../../posts/" title="Posts">All Posts</a>
+                    </li>
+                
+            </ul>
+            <ul id="nav-social" class="list-inline">
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="https://github.com/graevy" target="_blank">
+                            <i class="fab fa-github fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="mailto:avry@pm.me" target="_blank">
+                            <i class="fas fa-at fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+    <hr />
+</header><div class="container">
+    <div class="pl-sm-4 ml-sm-5">
+        <p>This is a step-by-step guide to rooting your phone properly, recited largely from memory, because people keep going to me for this.</p>
+<p>This is intermediate difficulty; we&rsquo;ll be using a terminal (powershell on windows). You&rsquo;ll have to retrieve some information about your phone and your desired ROM that I can&rsquo;t easily help you get. If it doesn&rsquo;t work, bring your phone to open hack night so we can fix it.</p>
+<h3 id="proscons-of-rooting">Pros/Cons of rooting</h3>
+<p>The Good:</p>
+<ul>
+<li>custom ROMs (lineage, graphene, copperhead, etc)</li>
+<li>debloating (cannot state how nice this is, especially on battery life)</li>
+<li>degoogling</li>
+<li>root-only package managers and apps</li>
+<li>extending your phone&rsquo;s end of life</li>
+<li>location spoofing</li>
+<li>if your hardware supports it: FM/AM radio, Fun With IR<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
+<li>actually being able to use a file manager on android</li>
+<li><a href="https://quatl.ooo/posts/hotspot/">free hotspotting</a></li>
+</ul>
+<p>The Bad:</p>
+<ul>
+<li>the cat-and-mouse game of root detection and Magisk</li>
+<li>apps (particularly banking) finding out you&rsquo;re rooted</li>
+<li>degoogling</li>
+<li>the people who thanklessly maintain your ROM</li>
+<li>larger attack surface of most roms</li>
+</ul>
+<p>The Ugly:</p>
+<ul>
+<li>bricking your phone</li>
+<li>random crashes, slowdowns, etc</li>
+</ul>
+<h3 id="oem-unlocking3">OEM Unlocking<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></h3>
+<p>If you didn&rsquo;t buy a phone specifically for rooting, this might become much more annoying/impossible based on these results:</p>
+<ul>
+<li>Go to settings -&gt; About phone</li>
+<li>Tap the build number button like 8 times (I&rsquo;m not trolling you) to unlock developer options</li>
+<li>Go to developer options and see if there&rsquo;s an OEM unlocking toggle.</li>
+<li>While you&rsquo;re here, enable USB debugging. Also, change the animation speeds to 0.5x, thank me later</li>
+</ul>
+<p>If it&rsquo;s an easy toggle, great. If it&rsquo;s greyed-out, you typically have to get an unlock code from your phone manufacturer (this is as annoying as it sounds). If it doesn&rsquo;t exist, you probably can&rsquo;t root the phone. Go to <a href="https://xda-developers.com">xda-developers</a>, find your phone subforum, and see if anyone has posted about rooting it. In ye olden days (a decade ago, when I first started rooting my phones), you typically had to use some privilege-escalation linux kernel vulnerability to unlock a bootloader, and if your phone is old enough, this is doable, good luck.</p>
+<h3 id="choosing-a-phone-os">Choosing a phone OS</h3>
+<p>If you have a pixel, you can choose a secure OS like <a href="https://grapheneos.org/install/">GrapheneOS</a> (my choice), <a href="https://copperhead.co/android/docs/">Copperhead</a>, or <a href="https://calyxos.org/docs/guide/device-support/">CalyxOS</a> (has some motorola/fairphone support!). Otherwise, you want <a href="https://wiki.lineageos.org/devices/">Lineage</a><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>, maybe <a href="https://crdroid.net/downloads">crDroid</a> or something else <a href="https://en.wikipedia.org/wiki/List_of_custom_Android_distributions">listed here</a> that is both open source and still developed. Another option might be decent; I haven&rsquo;t reviewed them in awhile, but LineageOS has a very big community, which you will have to rely on if you encounter The Ugly<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
+<p>Important note: your phone model is weird. Phones with the same name can have different model numbers, using a different carrier can give you a different model number (which would be relevant when flashing a radio partition for example), etc.; you need to exactly determine your phone&rsquo;s model number to check device compatibility.</p>
+<h3 id="connecting-a-pc-to-a-phone">Connecting a pc to a phone</h3>
+<p>You will want android debug bridge <a href="https://developer.android.com/tools/releases/platform-tools">here</a> (or through your package manager) and a computer-&gt;phone usb cable. If you haven&rsquo;t already, enable USB debugging in your phone&rsquo;s developer options, and accept whatever pairing prompt comes up when you plug it in<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. Verify your connectivity by running <code>adb</code><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> in your terminal.</p>
+<p>Now you have to get into your phone&rsquo;s bootloader interface. The next two paragraphs are two ways to do that.</p>
+<p>Run <code>adb -d reboot bootloader</code><sup id="fnref1:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> in your terminal.</p>
+<p>Turn it off. Turn it on holding both the power and volume down buttons. On some old phones, this will be reversed. Some phones won&rsquo;t register the state of the volume down button if it&rsquo;s held during this entire process, and will require you to repress it once the screen turns on. You&rsquo;ll generally be greeted by a black screen with some jank text on it, maybe a logo if you&rsquo;re lucky, with a rudimentary menu navigable by the 3 buttons. You might have to navigate this menu until you encounter a state labeled <code>bootloader</code> or <code>fastboot</code>. If this screen says <code>recovery</code> and you can&rsquo;t navigate out of it, you&rsquo;re actually in the wrong boot mode! There might be no text at all<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>.</p>
+<p>Verify that you&rsquo;re connected to the phone&rsquo;s bootloader interface on your pc by opening a terminal and running <code>fastboot devices</code><sup id="fnref2:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>.</p>
+<h3 id="flashing8">Flashing<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup></h3>
+<p>You&rsquo;re probably gonna lose all data on your phone if we proceed. This is the scary step, too. Are you emotionally prepared for that?</p>
+<p>Every ROM has a different MO for flashing, and you need to find your ROM&rsquo;s installation guide (<a href="https://wiki.lineageos.org/devices/">Lineage</a> <a href="https://grapheneos.org/install/web">Graphene</a> <a href="https://copperhead.co/android/docs/install/">Copperhead</a>). Some might use second party tools like samsung Odin, Lineage specifically flashes the recovery partition and then <code>adb sideload</code>s a <code>.zip</code> for the recovery partition to use. The problem is that there are many different partitions you might have to flash, and any mistake has big consequences:</p>
+<ul>
+<li><code>system</code> is the one we care about the most, that&rsquo;s where our ROM goes.</li>
+<li><code>radio</code> is our modem, and some ROMs will want to flash that partition.</li>
+<li><code>recovery</code> is the partition that helps you rebuild your phone when it breaks; some roms will flash it.</li>
+<li>Some will even flash <code>boot</code>, the partition your phone is booted into right now. <em><strong><code>Flashing your bootloader manually is how you brick a phone.</code></strong></em></li>
+</ul>
+<p><code>fastboot flashing unlock</code> is the bootloader unlock toggle, and iirc the phone data wipe. <code>fastboot flash &lt;partition&gt; &lt;uncompressed file&gt;</code> is how you  flash specific partitions.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>The first time I rooted my phone (a galaxy note 4 &ndash; I miss it dearly), I installed a truly universal remote and spent the next week disabling public TVs&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>AKA bootloader unlocking, NOT carrier unlocking. Carrier unlocking means you can use the phone on any carrier (but you will probably want to check band compatibility for a phone from a separate region). OEM unlocking means the Original Equipment Manufacturer can unlock your bootloader.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>FKA CyanogenMod, the oldest game in town&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>I have never unrecoverably bricked a phone, or known anyone who has. I haven&rsquo;t personally dealt with random crashes, but I&rsquo;ve seen them&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>iirc this isn&rsquo;t necessary because pairing is automatically accepted in the next step, but some phones are so picky.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>For windows command prompt specifically, you&rsquo;ll have to find the adb executable, typically installed in <code>C:\Android\sdk\platform-tools\</code>. Press the windows key, search for <code>adb</code>, right click it and open file location to check. Then navigate to it in command prompt using <code>cd C:\path\to\adb\executable\parent\folder</code>, THEN you can run adb/fastboot commands.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>One time, I opened this menu, and was greeted with a glitched noise texture reminiscent of GPU failure. It still worked, though. Thankfully LG doesn&rsquo;t make phones anymore&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p>Overwriting. The etymology is kindof fun. On most computers (and some phones), flash memory refers to a tiny standalone ssd, like a usb drive. Fast compared to hdds, and you write to it with bursts of relatively high voltage, hence &ldquo;flashing&rdquo;. Nowadays we use the same tech for ssds, nand flash memory.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+            </div>
+        </div><footer class="text-center pb-1">
+    <small class="text-muted">
+        Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a>, <a href="https://github.com/austingebauer/devise" target="_blank">Devise</a>
+    </small>
+</footer>
+</body>
+</html>
