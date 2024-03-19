@@ -27,7 +27,7 @@ This is a harm reduction guide for my friends who risk malware and surveillance,
         - [games](#games)
         - [books](#books)
 
-Last updated: Sep 23 2023 (please [email me](mailto:avry@pm.me) with suggestions or updates)
+Last updated: Sep 23 2023 (please [email me](mailto:avry@pm.me) [or text/telegram if you have it] with suggestions/etc.)
 
 # <a name="browser"></a>[Browser](#navigation)
 
@@ -145,7 +145,9 @@ Each section below has individual recommendations.
 
 ### <a name="windows"></a>[Windows](#navigation)
 
-This is a lot less risky than it used to be because most cracks now use microsoft's windows images. To crack an active windows installation, follow [these instructions](https://github.com/massgravel/Microsoft-Activation-Scripts)[^9] (you want to use HWID). Remember to open powershell/terminal *as an administrator*.
+This is a lot less risky than it used to be because most cracks now use microsoft's windows images. To crack an active windows installation, follow [these instructions](https://github.com/massgravel/Microsoft-Activation-Scripts)[^9] (you want to use HWID). Remember to:
+- open powershell/terminal *as an administrator*
+- install without an internet connection (and therefore don't create a microsoft account)
 
 To install windows:
 - Get latest windows image from microsoft ([10](https://www.microsoft.com/en-us/software-download/windows10ISO) [11](https://www.microsoft.com/en-us/software-download/windows11/))
