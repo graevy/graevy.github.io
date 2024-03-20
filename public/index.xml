@@ -13,7 +13,7 @@
       <link>http://quatl.ooo/posts/roms/</link>
       <pubDate>Tue, 19 Mar 2024 13:52:11 -0700</pubDate>
       <guid>http://quatl.ooo/posts/roms/</guid>
-      <description>This is a step-by-step guide to customizing your android phone properly, recited largely from memory, because people keep going to me for this.&#xA;This is intermediate difficulty; we&amp;rsquo;ll be using a terminal (powershell on windows). You&amp;rsquo;ll have to retrieve some information about your phone and your desired rom that I can&amp;rsquo;t easily help you get. If it doesn&amp;rsquo;t work, bring your phone to open hack night so we can fix it.</description>
+      <description>This is a step-by-step educational guide to accompany a custom rom installation guide for your android phone.&#xA;Intermediate difficulty; we&amp;rsquo;ll be using a terminal (powershell on windows). You&amp;rsquo;ll have to retrieve some information about your phone and your desired rom that I can&amp;rsquo;t easily help you get. If you&amp;rsquo;re stuck, bring your phone to open hack night so we can fix it.&#xA;Pros/Cons of customizing android The Good:&#xA;debloating (cannot overemphasize this, especially wrt battery life) degoogling extending your phone&amp;rsquo;s end-of-life free hotspotting and other miscellaneous perks the smug, immaculate vibes of a post-adversarial user-OS relationship The Bad:</description>
     </item>
     <item>
       <title>ss14 2</title>
@@ -41,7 +41,7 @@
       <link>http://quatl.ooo/about/</link>
       <pubDate>Sun, 18 Jun 2023 04:00:51 -0700</pubDate>
       <guid>http://quatl.ooo/about/</guid>
-      <description>&amp;#34;&amp;#34;&amp;#34;&#xD;Fine cave-aged Vermont cheddar;&#xD;I love my community, piano, dogs, computers, chess, and terrible science fiction.&#xD;Args:&#xD;location (str): seattle&#xD;pronouns (str): they/them&#xD;Returns:&#xD;Person&#xD;&amp;#34;&amp;#34;&amp;#34; </description>
+      <description>&amp;#34;&amp;#34;&amp;#34; Fine cave-aged Vermont cheddar; I love my community, piano, dogs, computers, chess, and terrible science fiction. Args: location (str): seattle pronouns (str): they/them Returns: Person &amp;#34;&amp;#34;&amp;#34; </description>
     </item>
     <item>
       <title>hotspot</title>

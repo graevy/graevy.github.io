@@ -69,12 +69,12 @@
     <hr />
 </header><div class="container">
     <div class="pl-sm-4 ml-sm-5">
-        <p>This is a step-by-step guide to customizing your android phone properly, recited largely from memory, because people keep going to me for this.</p>
-<p>This is intermediate difficulty; we&rsquo;ll be using a terminal (powershell on windows). You&rsquo;ll have to retrieve some information about your phone and your desired rom that I can&rsquo;t easily help you get. If it doesn&rsquo;t work, bring your phone to open hack night so we can fix it.</p>
+        <p>This is a step-by-step educational guide to accompany a custom rom installation guide for your android phone.</p>
+<p>Intermediate difficulty; we&rsquo;ll be using a terminal (powershell on windows). You&rsquo;ll have to retrieve some information about your phone and your desired rom that I can&rsquo;t easily help you get. If you&rsquo;re stuck, bring your phone to open hack night so we can fix it.</p>
 <h3 id="proscons-of-customizing-android">Pros/Cons of customizing android</h3>
 <p>The Good:</p>
 <ul>
-<li>debloating (cannot overstate how nice this is, especially on battery life)</li>
+<li>debloating (cannot overemphasize this, especially wrt battery life)</li>
 <li>degoogling</li>
 <li>extending your phone&rsquo;s end-of-life</li>
 <li><a href="https://quatl.ooo/posts/hotspot/">free hotspotting</a> and other miscellaneous perks</li>
@@ -94,8 +94,8 @@
 </ul>
 <p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/boot-loops.jpg" alt=""></p>
 <h3 id="whats-rootingshould-i-stay-rooted">What&rsquo;s rooting/Should I stay rooted?</h3>
-<p>Phone manufacturers don&rsquo;t easily give you full (root) access to your phone. You can break things easily, it&rsquo;s a security nightmare<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, and you can remove their data collection/bloatware. If you break things correctly, you can edit your device firmware<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, culminating in a custom OS.</p>
-<p>After we&rsquo;ve patched together our new OS, we then decide whether or not it&rsquo;s worth exposing root to ourselves/our apps.</p>
+<p>Phone manufacturers don&rsquo;t easily give you full (root) access to your phone. You can break things easily, it&rsquo;s a security nightmare<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, and you can remove their data collection/bloatware. If you ask nicely, or sometimes force your way in, you can edit your operating system via your device firmware<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<p>After patching together our edited OS, we must decide whether to expose root access to our apps/our self.</p>
 <p>Reasons to stay rooted:</p>
 <ul>
 <li>root-only package managers and apps
@@ -117,7 +117,10 @@
 <li>the perpetual cat-and-mouse game of root detection and Magisk<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></li>
 <li>larger attack surface<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
 </ul>
-<h3 id="bootloader-unlocking3">Bootloader Unlocking<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></h3>
+<h3 id="choosing-a-rom">Choosing a rom</h3>
+<p>Some secure roms aren&rsquo;t intended to be rooted. For reasons<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>, these are almost exclusively made for Pixel phones. If you have a Pixel, you can choose between <a href="https://grapheneos.org/install/">GrapheneOS</a> (my choice), <a href="https://copperhead.co/android/docs/">Copperhead</a>, or <a href="https://calyxos.org/docs/guide/device-support/">CalyxOS</a> (has some motorola/fairphone support!).</p>
+<p>Otherwise, you want <a href="https://wiki.lineageos.org/devices/">Lineage</a><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, maybe <a href="https://crdroid.net/downloads">crDroid</a> or something else <a href="https://en.wikipedia.org/wiki/List_of_custom_Android_distributions">listed here</a> that is both open source and still developed. Another option might be decent; I haven&rsquo;t reviewed them in awhile, but LineageOS has a very big community, which you will have to rely on if you encounter The Ugly<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>.</p>
+<h3 id="bootloader-unlocking3">Bootloader Unlocking<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup></h3>
 <p>If you didn&rsquo;t buy a phone specifically for this, this might become much more annoying/&ldquo;impossible&rdquo; based on these results:</p>
 <ul>
 <li>Go to settings -&gt; About phone</li>
@@ -126,45 +129,41 @@
 <li>While you&rsquo;re here, enable USB debugging. Also, change the <code>animation scale</code>s to 0.5x, thank me later</li>
 </ul>
 <p>If it&rsquo;s an easy toggle, great. If it&rsquo;s greyed-out, you typically have to get an unlock code from your phone manufacturer and insert it via fastboot (this is as annoying as it sounds). If it&rsquo;s not there, you probably can&rsquo;t root the phone. Go to <a href="https://xda-developers.com">xda-developers</a>, find your phone subforum, and see if anyone has posted about rooting it. In ye olden days (a decade ago, when I first started rooting my phones), you typically had to use some privilege-escalation linux kernel vulnerability to unlock a bootloader, and if your phone is old enough, this is doable, good luck.</p>
-<h3 id="choosing-a-rom">Choosing a rom</h3>
-<p>Some secure roms aren&rsquo;t intended to be rooted. For reasons I won&rsquo;t get into<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, these are almost exclusively made for Pixel phones. If you have a Pixel, you can choose between <a href="https://grapheneos.org/install/">GrapheneOS</a> (my choice), <a href="https://copperhead.co/android/docs/">Copperhead</a>, or <a href="https://calyxos.org/docs/guide/device-support/">CalyxOS</a> (has some motorola/fairphone support!).</p>
-<p>Otherwise, you want <a href="https://wiki.lineageos.org/devices/">Lineage</a><sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>, maybe <a href="https://crdroid.net/downloads">crDroid</a> or something else <a href="https://en.wikipedia.org/wiki/List_of_custom_Android_distributions">listed here</a> that is both open source and still developed. Another option might be decent; I haven&rsquo;t reviewed them in awhile, but LineageOS has a very big community, which you will have to rely on if you encounter The Ugly<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>.</p>
 <h3 id="connecting-a-pc-to-a-phone">Connecting a pc to a phone</h3>
 <p>You will want android debug bridge <a href="https://developer.android.com/tools/releases/platform-tools">here</a> (or through your package manager) and a computer-&gt;phone usb cable. If you haven&rsquo;t already, enable USB debugging in your phone&rsquo;s developer options, and accept whatever pairing prompt comes up when you plug it in<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>. Verify your connectivity by running <code>adb devices</code><sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> in your terminal.</p>
 <h3 id="getting-your-exact-model">Getting your exact model</h3>
-<p>Phones with the same name can have different model numbers. You should exactly determine your phone&rsquo;s model number, by going to <code>settings</code> -&gt; <code>about phone</code> and looking for <code>model number</code> or <code>regulatory labels</code> or similar. This screen tells me I have the model <code>GD1YQ</code>.</p>
-<p>I also usually go to <a href="https://gsmarena.com">gsmarena</a> and search for my phone, and expand the network section like so:</p>
-<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/pixel-models.png" alt=""></p>
-<p>The Pixel 5 (redfin) actually has 2 submodels, <code>GD1YQ</code> and <code>GTT9Q</code>. If my rom was far from stock android and I was flashing radio firmware, this would be very important.</p>
-<h3 id="accessing-the-bootloader-interface">Accessing the bootloader interface</h3>
+<p>Phones with the same name can have different model numbers. You should exactly determine your phone&rsquo;s model number, by going to <code>settings</code> -&gt; <code>about phone</code> and looking for <code>model number</code> or <code>regulatory labels</code> or similar. My Pixel has model <code>GD1YQ</code>.<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup></p>
+<h3 id="accessing-your-phones-bootloader-interface">Accessing your phone&rsquo;s bootloader interface</h3>
 <p>You can either do this from your pc or from your phone:</p>
 <ul>
 <li>
-<p>Run <code>adb -d reboot bootloader</code><sup id="fnref1:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> in your terminal.</p>
+<p>PC: Run <code>adb -d reboot bootloader</code><sup id="fnref1:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> in your terminal.</p>
 </li>
 <li>
-<p>Turn your phone off. Turn it on holding both the power and volume down buttons. On some old phones, this will be reversed. Some phones won&rsquo;t register the state of the volume down button if it&rsquo;s held during this entire process, and will require you to repress it once the screen turns on. You&rsquo;ll generally be greeted by a black screen with some jank text on it, maybe a logo if you&rsquo;re lucky, with a rudimentary menu navigable by the 3 buttons. You might have to navigate this menu until you encounter a state labeled <code>bootloader</code> or <code>fastboot</code>. If this screen says <code>recovery</code> and you can&rsquo;t navigate out of it, you&rsquo;re actually in the wrong boot mode! There might be no text at all<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>.</p>
+<p>Phone: Turn your phone off. Turn it on holding both the power and volume down buttons. On some old phones, this will be reversed. Some phones won&rsquo;t register the state of the volume down button if it&rsquo;s held during this entire process, and will require you to repress it once the screen turns on. You&rsquo;ll generally be greeted by a black screen with some jank text on it, maybe a logo if you&rsquo;re lucky, with a rudimentary menu navigable by the 3 buttons. You might have to navigate this menu until you encounter a state labeled <code>bootloader</code> or <code>fastboot</code>. If this screen says <code>recovery</code> and you can&rsquo;t navigate out of it, you&rsquo;re actually in the wrong boot mode! There might be no text at all<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup>.</p>
 </li>
 </ul>
 <p>Verify that you&rsquo;re connected to the phone&rsquo;s bootloader interface on your pc by opening a terminal and running <code>fastboot devices</code><sup id="fnref2:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>.</p>
-<h3 id="flashing8">Flashing<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup></h3>
+<h3 id="flashing8">Flashing<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup></h3>
 <p>You&rsquo;ll lose all data on your phone if we proceed. This is the scary step, too. Are you emotionally prepared for that?</p>
-<p>Every rom has a different MO for flashing, and you need to find your rom&rsquo;s installation guide (<a href="https://wiki.lineageos.org/devices/">Lineage [device specific]</a> <a href="https://grapheneos.org/install/web">Graphene</a> <a href="https://copperhead.co/android/docs/install/">Copperhead</a>). Some might use first-party tools like samsung Odin, many (including Lineage) specifically flash the recovery partition and then <code>adb sideload</code> a <code>.zip</code> for the recovery partition to use. The problem is that there are many different partitions you might have to flash, and any mistake has big consequences:</p>
+<p>Every rom has a different MO for flashing, and you need to find your rom&rsquo;s installation guide (<a href="https://wiki.lineageos.org/devices/">Lineage [device specific]</a> <a href="https://grapheneos.org/install/web">Graphene</a> <a href="https://copperhead.co/android/docs/install/">Copperhead</a>). Some might use first-party tools like samsung Odin, many (including Lineage) specifically flash the recovery partition and then <code>adb sideload</code> a <code>.zip</code> for the recovery partition to use. The problem is that there are many different partitions you might have to flash or wipe:</p>
 <ul>
-<li><code>system</code> stores our rom. A bad flash here will probably boot-loop your phone, nothing serious.</li>
-<li><code>radio</code> is our modem, and some roms will want to flash that partition. I suspect your kernel would be upset with a bad radio partition</li>
-<li><code>recovery</code> is the partition that helps you rebuild your phone when it breaks; some roms will flash it. Breaking this doesn&rsquo;t matter much because you can recover from your bootloader/pc (via <code>fastboot flash</code>). I highly recommend <a href="https://twrp.me/Devices/">TWRP</a>, though you should clarify the version you want to flash plays well with your rom (don&rsquo;t use it with the secure Pixel roms).</li>
-<li>Some will flash <code>bootloader</code>, the partition your phone is booted into right now. <em><strong><code>A bad bootloader flash is how you brick a phone.</code></strong></em>; the bootloader can rescue all other partitions.</li>
-<li><code>kernel</code> usually has its own partition, but a popular ROM isn&rsquo;t usually going to require a custom linux kernel. A bad kernel won&rsquo;t brick your phone, but you&rsquo;ll probably boot-loop or crash frequently.</li>
+<li>Some will flash <code>boot</code>, the partition your phone is booted into right now. <em><strong><code>A bad bootloader flash is how you brick a phone.</code></strong></em>; the bootloader can rescue all other partitions (via <code>fastboot flash</code>).</li>
+<li><code>system</code> stores most of what constitutes our rom. A bad flash here will probably boot-loop your phone</li>
+<li><code>data</code> stores our user data; installed apps, settings, etc.</li>
+<li><code>cache</code><sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup> can be wiped safely</li>
+<li><code>radio</code>: some roms will want to flash it.</li>
+<li><code>recovery</code> is the partition that helps you rebuild your phone when it breaks; some roms will flash it. I highly recommend <a href="https://twrp.me/Devices/">TWRP</a>, though you should clarify the version you want to flash plays well with your rom (don&rsquo;t use it with the secure Pixel roms).</li>
+<li><code>kernel</code>: user-friendly roms aren&rsquo;t usually going to require a custom linux kernel. The wrong kernel won&rsquo;t brick your phone, but you&rsquo;ll probably boot-loop or crash frequently.</li>
 </ul>
-<p>You can backup a partition using <code>dd</code>, e.g. <code>adb shell dd if=/dev/find/your/phone/blockdevice/path/&lt;partition&gt; | adb exec-out dd of=&lt;partition&gt;.img</code></p>
+<p>You can backup a partition using <code>dd</code>, e.g. <code>adb shell su -c dd if=/dev/find/your/phone/blockdevice/path/&lt;partition&gt; &gt; &lt;partition&gt;.img</code> to your pc.</p>
 <p>Pretty much every ROM installation goes like this:</p>
 <ul>
 <li>OEM unlocking and USB debugging (as root if the toggle is available) need to be enabled as per the <code>OEM Unlocking</code> section above</li>
-<li><code>fastboot flashing unlock</code> is another safeguard, and <em><strong><code>also the phone data wipe</code></strong></em>.</li>
+<li><code>fastboot flashing unlock</code> is another safeguard, and <em><strong><code>also the data partition wipe</code></strong></em>.</li>
 <li><code>fastboot flash &lt;partition&gt; &lt;uncompressed file&gt;</code> flashes a specific partition. Most ROMs will bundle this in a script of some kind, for aforementioned &ldquo;don&rsquo;t brick your phone&rdquo; reasons. After flashing a few partitions in your guide, you&rsquo;ll be done.</li>
 </ul>
-<p>So why all the disclaimers? It&rsquo;s very easy to get the wrong firmware (things-to-flash) for your phone. My Pixel 5 has the single <code>redfin</code> release, which is nice and easy to remember. There are 15 different model numbers for my LG V20, some of which overlap, and some of which don&rsquo;t. Flashing <code>LG V20 H918</code> instead of <code>LG V20 H915</code> firmware could potentially brick a phone.</p>
+<p>So why all the disclaimers? It&rsquo;s very easy to get the wrong firmware (things-to-flash) for your phone. There are 15 different model numbers for my LG V20, some of which overlap, and some of which don&rsquo;t. Blindly flashing <code>LG V20 H918</code> instead of <code>LG V20 H915</code> firmware could potentially brick a phone!</p>
 <h3 id="re-lock-your-bootloader">Re-lock your bootloader?</h3>
 <p>Once you re-lock your bootloader in fastboot, unlocking it again will wipe your phone. In the interrim, you can decide whether or not to expose root to yourself and your apps by installing&hellip;</p>
 <h3 id="magisk">Magisk</h3>
@@ -183,6 +182,8 @@
 </ul>
 <h3 id="re-lock-your-bootloader-1">Re-lock your bootloader!</h3>
 <p>Go back into the bootloader interface (<code>adb -d reboot bootloader</code>) and <code>fastboot flashing lock</code> it. Then <code>fastboot reboot</code>, go to your developer options and disable OEM unlocking. Then disable developer options. Then throw your phone into a lake.</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/pixel-models.png" alt=""></p>
+<p>The Pixel 5 (redfin) has 2 submodels, <code>GD1YQ</code> and <code>GTT9Q</code>. This shows how models differ in radio firmware, exactly which carriers my phone could use via band compatibility, what region my phone actually belongs to etc., and if my rom was far from stock android, and I was flashing radio firmware&hellip;</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -190,7 +191,7 @@
 <p>A rogue app could go from being able to aggressively monetize you to being able to destroy your phone, among other concerns&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>ROM stands for read-only memory. Device firmware used to be unwriteable after being manufactured. Now, rom just refers to the firmware. In the context of phones, anyway. You can think of a rom like detailing on the android OS; a kind of aftermarket set of modifications&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>ROM stands for read-only memory. Device firmware used to be unwriteable after being manufactured. Now, phone roms just refers to firmware edits. Think of installing a rom like detailing the android OS; an aftermarket set of modifications.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
 <p>The first time I rooted my phone (a galaxy note 4 &ndash; I miss it dearly), I installed a truly universal remote and spent the next week disabling public TVs&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
@@ -199,16 +200,16 @@
 <p>Keeping root means giving apps access to root. However, we don&rsquo;t want every app to have root access, so we control who gets what. However, android will still attempt to notify apps if the user has root access. Banking apps are notorious for refusing to work if android snitches on you. So we have to play this constant game of trying to hide the fact that we have root from android, which seems impossible, but then you remember, we have complete root access. Anyway, we&rsquo;ve been winning this game for the past few years, but it was pretty dire like 5 years ago.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p>AKA bootloader unlocking, NOT carrier unlocking. Carrier unlocking means you can use the phone on any carrier (but you will probably want to check band compatibility for a phone from a separate region). OEM unlocking means the Original Equipment Manufacturer can unlock your bootloader.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Google makes it easy to hack on Pixels with easy bootloader unlocking. The Pixel rom is very close to stock android, making it easier to produce. Pixels from I believe the 3 onward have additional security features from the Titan M chip: secure boot, a secure partition, hardware-based encryption, etc.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
-<p>Just kidding. Google makes it easy to hack on pixels, and also, the pixel rom is very close to stock android, making it easier to produce. Pixels from I believe the 3 onward have additional security features from the Titan M chip: secure boot, a secure partition, hardware-based encryption, etc.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>FKA CyanogenMod, the oldest game in town&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:7">
-<p>FKA CyanogenMod, the oldest game in town&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>I have never unrecoverably bricked a phone, or known anyone who has. I haven&rsquo;t personally dealt with random crashes, but I&rsquo;ve seen them&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:8">
-<p>I have never unrecoverably bricked a phone, or known anyone who has. I haven&rsquo;t personally dealt with random crashes, but I&rsquo;ve seen them&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>AKA bootloader unlocking, NOT carrier unlocking. Carrier unlocking means you can use the phone on any carrier (but you will probably want to check band compatibility for a phone from a separate region). OEM unlocking means the Original Equipment Manufacturer can unlock your bootloader.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:9">
 <p>iirc this isn&rsquo;t necessary because pairing is automatically accepted in the next step, but some phones are so picky.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
@@ -217,10 +218,16 @@
 <p>For windows command prompt specifically, you&rsquo;ll have to find the adb executable, typically installed in <code>C:\Android\sdk\platform-tools\</code>. Press the windows key, search for <code>adb</code>, right click it and open file location to check. Then navigate to it in command prompt using <code>cd C:\path\to\adb\executable\parent\folder</code>, THEN you can run adb/fastboot commands.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:11">
-<p>One time, I opened this menu, and was greeted with a glitched noise texture reminiscent of GPU failure. It still worked, though. Thankfully LG doesn&rsquo;t make phones anymore&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>I also usually sanity-check at <a href="https://gsmarena.com">gsmarena</a> and search for my phone, and expand the network section like so:&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:12">
-<p>Overwriting. The etymology is kindof fun. On most computers (and some phones), flash memory refers to a tiny standalone ssd, like a usb drive. Fast compared to hdds, and you write to it with bursts of relatively high voltage, hence &ldquo;flashing&rdquo;. Nowadays we use the same tech for ssds, nand flash memory.&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>One time, I opened this menu, and was greeted with a glitched noise texture reminiscent of GPU failure. It still worked, though. Thankfully LG doesn&rsquo;t make phones anymore&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:13">
+<p>Overwriting. The etymology is kindof fun. On most computers (and some phones), flash memory refers to a tiny standalone ssd, like a usb drive. Fast compared to hdds, and you write to it with bursts of relatively high voltage, hence &ldquo;flashing&rdquo;. Nowadays we use the same tech for ssds, nand flash memory.&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:14">
+<p>You may also encounter the <code>dalvik cache</code> or the <code>ART cache</code>. These can also generally be safely wiped. Dalvik is the old VM that apps used to run in. ART (android runtime) replaced it a long time ago, instead generating bytecode from apps to load them faster.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>

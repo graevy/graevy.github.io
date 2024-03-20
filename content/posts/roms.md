@@ -4,14 +4,14 @@ date: 2024-03-19T13:52:11-07:00
 draft: false
 ---
 
-This is a step-by-step guide to customizing your android phone properly, recited largely from memory, because people keep going to me for this.
+This is a step-by-step educational guide to accompany a custom rom installation guide for your android phone.
 
-This is intermediate difficulty; we'll be using a terminal (powershell on windows). You'll have to retrieve some information about your phone and your desired rom that I can't easily help you get. If it doesn't work, bring your phone to open hack night so we can fix it.
+Intermediate difficulty; we'll be using a terminal (powershell on windows). You'll have to retrieve some information about your phone and your desired rom that I can't easily help you get. If you're stuck, bring your phone to open hack night so we can fix it.
 
 ### Pros/Cons of customizing android
 
 The Good:
-- debloating (cannot overstate how nice this is, especially on battery life)
+- debloating (cannot overemphasize this, especially wrt battery life)
 - degoogling
 - extending your phone's end-of-life
 - [free hotspotting](https://quatl.ooo/posts/hotspot/) and other miscellaneous perks
@@ -31,9 +31,9 @@ The Ugly:
 
 ### What's rooting/Should I stay rooted?
 
-Phone manufacturers don't easily give you full (root) access to your phone. You can break things easily, it's a security nightmare[^10], and you can remove their data collection/bloatware. If you break things correctly, you can edit your device firmware[^11], culminating in a custom OS.
+Phone manufacturers don't easily give you full (root) access to your phone. You can break things easily, it's a security nightmare[^10], and you can remove their data collection/bloatware. If you ask nicely, or sometimes force your way in, you can edit your operating system via your device firmware[^11].
 
-After we've patched together our new OS, we then decide whether or not it's worth exposing root to ourselves/our apps.
+After patching together our edited OS, we must decide whether to expose root access to our apps/our self.
 
 Reasons to stay rooted:
 - root-only package managers and apps
@@ -48,6 +48,12 @@ Reasons to not stay rooted:
 - the perpetual cat-and-mouse game of root detection and Magisk[^13]
 - larger attack surface[^10]
 
+### Choosing a rom
+
+Some secure roms aren't intended to be rooted. For reasons[^12], these are almost exclusively made for Pixel phones. If you have a Pixel, you can choose between [GrapheneOS](https://grapheneos.org/install/) (my choice), [Copperhead](https://copperhead.co/android/docs/), or [CalyxOS](https://calyxos.org/docs/guide/device-support/) (has some motorola/fairphone support!).
+
+Otherwise, you want [Lineage](https://wiki.lineageos.org/devices/)[^2], maybe [crDroid](https://crdroid.net/downloads) or something else [listed here](https://en.wikipedia.org/wiki/List_of_custom_Android_distributions) that is both open source and still developed. Another option might be decent; I haven't reviewed them in awhile, but LineageOS has a very big community, which you will have to rely on if you encounter The Ugly[^4].
+
 ### Bootloader Unlocking[^3]
 
 If you didn't buy a phone specifically for this, this might become much more annoying/"impossible" based on these results:
@@ -59,34 +65,21 @@ If you didn't buy a phone specifically for this, this might become much more ann
 
 If it's an easy toggle, great. If it's greyed-out, you typically have to get an unlock code from your phone manufacturer and insert it via fastboot (this is as annoying as it sounds). If it's not there, you probably can't root the phone. Go to [xda-developers](https://xda-developers.com), find your phone subforum, and see if anyone has posted about rooting it. In ye olden days (a decade ago, when I first started rooting my phones), you typically had to use some privilege-escalation linux kernel vulnerability to unlock a bootloader, and if your phone is old enough, this is doable, good luck.
 
-### Choosing a rom
-
-Some secure roms aren't intended to be rooted. For reasons I won't get into[^12], these are almost exclusively made for Pixel phones. If you have a Pixel, you can choose between [GrapheneOS](https://grapheneos.org/install/) (my choice), [Copperhead](https://copperhead.co/android/docs/), or [CalyxOS](https://calyxos.org/docs/guide/device-support/) (has some motorola/fairphone support!).
-
-Otherwise, you want [Lineage](https://wiki.lineageos.org/devices/)[^2], maybe [crDroid](https://crdroid.net/downloads) or something else [listed here](https://en.wikipedia.org/wiki/List_of_custom_Android_distributions) that is both open source and still developed. Another option might be decent; I haven't reviewed them in awhile, but LineageOS has a very big community, which you will have to rely on if you encounter The Ugly[^4].
-
 ### Connecting a pc to a phone
 
 You will want android debug bridge [here](https://developer.android.com/tools/releases/platform-tools) (or through your package manager) and a computer->phone usb cable. If you haven't already, enable USB debugging in your phone's developer options, and accept whatever pairing prompt comes up when you plug it in[^5]. Verify your connectivity by running `adb devices`[^6] in your terminal.
 
 ### Getting your exact model
 
-Phones with the same name can have different model numbers. You should exactly determine your phone's model number, by going to `settings` -> `about phone` and looking for `model number` or `regulatory labels` or similar. This screen tells me I have the model `GD1YQ`.
+Phones with the same name can have different model numbers. You should exactly determine your phone's model number, by going to `settings` -> `about phone` and looking for `model number` or `regulatory labels` or similar. My Pixel has model `GD1YQ`.[^15] 
 
-I also usually go to [gsmarena](https://gsmarena.com) and search for my phone, and expand the network section like so:
-
-![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/pixel-models.png)
-
-The Pixel 5 (redfin) actually has 2 submodels, `GD1YQ` and `GTT9Q`. If my rom was far from stock android and I was flashing radio firmware, this would be very important.
-
-
-### Accessing the bootloader interface
+### Accessing your phone's bootloader interface
 
 You can either do this from your pc or from your phone:
 
-- Run `adb -d reboot bootloader`[^6] in your terminal.
+- PC: Run `adb -d reboot bootloader`[^6] in your terminal.
 
-- Turn your phone off. Turn it on holding both the power and volume down buttons. On some old phones, this will be reversed. Some phones won't register the state of the volume down button if it's held during this entire process, and will require you to repress it once the screen turns on. You'll generally be greeted by a black screen with some jank text on it, maybe a logo if you're lucky, with a rudimentary menu navigable by the 3 buttons. You might have to navigate this menu until you encounter a state labeled `bootloader` or `fastboot`. If this screen says `recovery` and you can't navigate out of it, you're actually in the wrong boot mode! There might be no text at all[^7].
+- Phone: Turn your phone off. Turn it on holding both the power and volume down buttons. On some old phones, this will be reversed. Some phones won't register the state of the volume down button if it's held during this entire process, and will require you to repress it once the screen turns on. You'll generally be greeted by a black screen with some jank text on it, maybe a logo if you're lucky, with a rudimentary menu navigable by the 3 buttons. You might have to navigate this menu until you encounter a state labeled `bootloader` or `fastboot`. If this screen says `recovery` and you can't navigate out of it, you're actually in the wrong boot mode! There might be no text at all[^7].
 
 Verify that you're connected to the phone's bootloader interface on your pc by opening a terminal and running `fastboot devices`[^6].
 
@@ -94,21 +87,23 @@ Verify that you're connected to the phone's bootloader interface on your pc by o
 
 You'll lose all data on your phone if we proceed. This is the scary step, too. Are you emotionally prepared for that?
 
-Every rom has a different MO for flashing, and you need to find your rom's installation guide ([Lineage [device specific]](https://wiki.lineageos.org/devices/) [Graphene](https://grapheneos.org/install/web) [Copperhead](https://copperhead.co/android/docs/install/)). Some might use first-party tools like samsung Odin, many (including Lineage) specifically flash the recovery partition and then `adb sideload` a `.zip` for the recovery partition to use. The problem is that there are many different partitions you might have to flash, and any mistake has big consequences:
-- `system` stores our rom. A bad flash here will probably boot-loop your phone, nothing serious.
-- `radio` is our modem, and some roms will want to flash that partition. I suspect your kernel would be upset with a bad radio partition
-- `recovery` is the partition that helps you rebuild your phone when it breaks; some roms will flash it. Breaking this doesn't matter much because you can recover from your bootloader/pc (via `fastboot flash`). I highly recommend [TWRP](https://twrp.me/Devices/), though you should clarify the version you want to flash plays well with your rom (don't use it with the secure Pixel roms).
-- Some will flash `bootloader`, the partition your phone is booted into right now. ***`A bad bootloader flash is how you brick a phone.`***; the bootloader can rescue all other partitions.
-- `kernel` usually has its own partition, but a popular ROM isn't usually going to require a custom linux kernel. A bad kernel won't brick your phone, but you'll probably boot-loop or crash frequently.
+Every rom has a different MO for flashing, and you need to find your rom's installation guide ([Lineage [device specific]](https://wiki.lineageos.org/devices/) [Graphene](https://grapheneos.org/install/web) [Copperhead](https://copperhead.co/android/docs/install/)). Some might use first-party tools like samsung Odin, many (including Lineage) specifically flash the recovery partition and then `adb sideload` a `.zip` for the recovery partition to use. The problem is that there are many different partitions you might have to flash or wipe:
+- Some will flash `boot`, the partition your phone is booted into right now. ***`A bad bootloader flash is how you brick a phone.`***; the bootloader can rescue all other partitions (via `fastboot flash`).
+- `system` stores most of what constitutes our rom. A bad flash here will probably boot-loop your phone
+- `data` stores our user data; installed apps, settings, etc.
+- `cache`[^14] can be wiped safely
+- `radio`: some roms will want to flash it.
+- `recovery` is the partition that helps you rebuild your phone when it breaks; some roms will flash it. I highly recommend [TWRP](https://twrp.me/Devices/), though you should clarify the version you want to flash plays well with your rom (don't use it with the secure Pixel roms).
+- `kernel`: user-friendly roms aren't usually going to require a custom linux kernel. The wrong kernel won't brick your phone, but you'll probably boot-loop or crash frequently.
 
-You can backup a partition using `dd`, e.g. `adb shell dd if=/dev/find/your/phone/blockdevice/path/<partition> | adb exec-out dd of=<partition>.img`
+You can backup a partition using `dd`, e.g. `adb shell su -c dd if=/dev/find/your/phone/blockdevice/path/<partition> > <partition>.img` to your pc.
 
 Pretty much every ROM installation goes like this:
 - OEM unlocking and USB debugging (as root if the toggle is available) need to be enabled as per the `OEM Unlocking` section above
-- `fastboot flashing unlock` is another safeguard, and ***`also the phone data wipe`***.
+- `fastboot flashing unlock` is another safeguard, and ***`also the data partition wipe`***.
 - `fastboot flash <partition> <uncompressed file>` flashes a specific partition. Most ROMs will bundle this in a script of some kind, for aforementioned "don't brick your phone" reasons. After flashing a few partitions in your guide, you'll be done.
 
-So why all the disclaimers? It's very easy to get the wrong firmware (things-to-flash) for your phone. My Pixel 5 has the single `redfin` release, which is nice and easy to remember. There are 15 different model numbers for my LG V20, some of which overlap, and some of which don't. Flashing `LG V20 H918` instead of `LG V20 H915` firmware could potentially brick a phone.
+So why all the disclaimers? It's very easy to get the wrong firmware (things-to-flash) for your phone. There are 15 different model numbers for my LG V20, some of which overlap, and some of which don't. Blindly flashing `LG V20 H918` instead of `LG V20 H915` firmware could potentially brick a phone!
 
 ### Re-lock your bootloader?
 
@@ -152,8 +147,16 @@ Go back into the bootloader interface (`adb -d reboot bootloader`) and `fastboot
 
 [^10]: A rogue app could go from being able to aggressively monetize you to being able to destroy your phone, among other concerns
 
-[^11]: ROM stands for read-only memory. Device firmware used to be unwriteable after being manufactured. Now, rom just refers to the firmware. In the context of phones, anyway. You can think of a rom like detailing on the android OS; a kind of aftermarket set of modifications
+[^11]: ROM stands for read-only memory. Device firmware used to be unwriteable after being manufactured. Now, phone roms just refers to firmware edits. Think of installing a rom like detailing the android OS; an aftermarket set of modifications.
 
-[^12]: Just kidding. Google makes it easy to hack on pixels, and also, the pixel rom is very close to stock android, making it easier to produce. Pixels from I believe the 3 onward have additional security features from the Titan M chip: secure boot, a secure partition, hardware-based encryption, etc.
+[^12]: Google makes it easy to hack on Pixels with easy bootloader unlocking. The Pixel rom is very close to stock android, making it easier to produce. Pixels from I believe the 3 onward have additional security features from the Titan M chip: secure boot, a secure partition, hardware-based encryption, etc.
 
 [^13]: Keeping root means giving apps access to root. However, we don't want every app to have root access, so we control who gets what. However, android will still attempt to notify apps if the user has root access. Banking apps are notorious for refusing to work if android snitches on you. So we have to play this constant game of trying to hide the fact that we have root from android, which seems impossible, but then you remember, we have complete root access. Anyway, we've been winning this game for the past few years, but it was pretty dire like 5 years ago.
+
+[^14]: You may also encounter the `dalvik cache` or the `ART cache`. These can also generally be safely wiped. Dalvik is the old VM that apps used to run in. ART (android runtime) replaced it a long time ago, instead generating bytecode from apps to load them faster.
+
+[^15]: I also usually sanity-check at [gsmarena](https://gsmarena.com) and search for my phone, and expand the network section like so:
+
+![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/pixel-models.png)
+
+The Pixel 5 (redfin) has 2 submodels, `GD1YQ` and `GTT9Q`. This shows how models differ in radio firmware, exactly which carriers my phone could use via band compatibility, what region my phone actually belongs to etc., and if my rom was far from stock android, and I was flashing radio firmware...
