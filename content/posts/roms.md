@@ -120,9 +120,9 @@ If you're going to flash [TWRP](https://twrp.me/Devices/) as a recovery, do it n
 
 The Magisk guide doesn't tell you how to get a `boot.img` copy. Getting `init_boot.img` works much the same way, just ignore the suffix syntax.
 - Find out if you have `init_boot.img` by running `adb shell su -c find /dev -type f -name 'init_boot*' 2>/dev/null`.
-- If nothing, check for a normal boot image with `adb shell su -c find /dev -type f -name 'boot*' 2>/dev/null`.
-- If either of these commands gives you multiple `_a` and `_b` images, determine which is the current active boot image slot[^20] with `adb shell getprop ro.boot.slot_suffix`.
-- So to recap, use any `init_boot` images before regular `boot` images, and if you have multiple `init_boot` or `boot` images with `_a`/`_b` suffixes, use the active one.
+- If nothing, check for a regular `boot.img` with `adb shell su -c find /dev -type f -name 'boot*' 2>/dev/null`.
+- If either of these commands give you multiple `_a` and `_b` images, determine the current active boot image slot[^20] with `adb shell getprop ro.boot.slot_suffix`.
+- So to recap, `init_boot` takes priority over regular `boot` images, and if you have multiple `init_boot` or `boot` images with `_a`/`_b` suffixes, use the active one.
 - Use the full filepath, including optional suffix, in `adb shell su -c dd if=<the live boot image> of=/wherever/you/want/to/dump/boot.img`[^18]
 - Now you can patch the image you grabbed using the Magisk app and continue with its own guide
 

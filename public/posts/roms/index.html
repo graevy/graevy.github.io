@@ -173,9 +173,9 @@
 <p>The Magisk guide doesn&rsquo;t tell you how to get a <code>boot.img</code> copy. Getting <code>init_boot.img</code> works much the same way, just ignore the suffix syntax.</p>
 <ul>
 <li>Find out if you have <code>init_boot.img</code> by running <code>adb shell su -c find /dev -type f -name 'init_boot*' 2&gt;/dev/null</code>.</li>
-<li>If nothing, check for a normal boot image with <code>adb shell su -c find /dev -type f -name 'boot*' 2&gt;/dev/null</code>.</li>
-<li>If either of these commands gives you multiple <code>_a</code> and <code>_b</code> images, determine which is the current active boot image slot<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup> with <code>adb shell getprop ro.boot.slot_suffix</code>.</li>
-<li>So to recap, use any <code>init_boot</code> images before regular <code>boot</code> images, and if you have multiple <code>init_boot</code> or <code>boot</code> images with <code>_a</code>/<code>_b</code> suffixes, use the active one.</li>
+<li>If nothing, check for a regular <code>boot.img</code> with <code>adb shell su -c find /dev -type f -name 'boot*' 2&gt;/dev/null</code>.</li>
+<li>If either of these commands give you multiple <code>_a</code> and <code>_b</code> images, determine the current active boot image slot<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup> with <code>adb shell getprop ro.boot.slot_suffix</code>.</li>
+<li>So to recap, <code>init_boot</code> takes priority over regular <code>boot</code> images, and if you have multiple <code>init_boot</code> or <code>boot</code> images with <code>_a</code>/<code>_b</code> suffixes, use the active one.</li>
 <li>Use the full filepath, including optional suffix, in <code>adb shell su -c dd if=&lt;the live boot image&gt; of=/wherever/you/want/to/dump/boot.img</code><sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup></li>
 <li>Now you can patch the image you grabbed using the Magisk app and continue with its own guide</li>
 </ul>
