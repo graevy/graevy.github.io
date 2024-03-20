@@ -6,7 +6,7 @@ draft: false
 
 This is a step-by-step educational guide to accompany a custom rom installation guide for your android phone.
 
-Intermediate difficulty; we'll be using a terminal (powershell on windows). You'll have to retrieve some information about your phone and your desired rom that I can't easily help you get. If you're stuck, bring your phone to open hack night so we can fix it.
+Intermediate difficulty; we'll be using a terminal (powershell[^6] on windows). You'll have to retrieve some information about your phone and your desired rom that I can't easily help you get. If you're stuck, bring your phone to open hack night so we can fix it.
 
 ### Pros/Cons of customizing android
 
@@ -63,25 +63,25 @@ If you didn't buy a phone specifically for this, this might become much more ann
 - Go to developer options (under `system` settings) and see if there's an `OEM unlocking` toggle.
 - While you're here, enable USB debugging
 
-If it's an easy toggle, great. If it's greyed-out, you typically have to get an unlock code from your phone manufacturer and insert it via fastboot (this is as annoying as it sounds). If it's not there, you probably can't root the phone. Go to [xda-developers](https://xda-developers.com), find your phone subforum, and see if anyone has posted about rooting it. In ye olden days (a decade ago, when I first started rooting my phones), you typically had to use some privilege-escalation linux kernel vulnerability to unlock a bootloader, and if your phone is old enough, this is doable, good luck.
+If `OEM Unlocking` is greyed-out, you might have to get an unlock code from your phone manufacturer and insert it via `fastboot` (this is as annoying as it sounds). Otherwise, you probably can't proceed. Go to [xda-developers](https://xda-developers.com), find your phone subforum, and see if anyone has posted about rooting it. In ye olden days (a decade ago, when I first started rooting my phones), you typically had to use some privilege-escalation linux kernel vulnerability to unlock a bootloader. Good luck!
 
 ### Connecting a pc to a phone
 
-You will want android debug bridge [here](https://developer.android.com/tools/releases/platform-tools) (or through your package manager) and a computer->phone usb cable. If you haven't already, enable USB debugging in your phone's developer options, and accept whatever pairing prompt comes up when you plug it in[^5]. Verify your connectivity by running `adb devices`[^6] in your terminal.
+Get [android debug bridge](https://developer.android.com/tools/releases/platform-tools) (or via package manager) and a computer->phone usb cable. If you haven't already, enable USB debugging in `developer options`, and accept whatever pairing prompt comes up when you plug it in[^5]. Verify your connectivity by running `adb devices` in your terminal.
 
 ### Getting your exact model
 
-Phones with the same name can have different model numbers. You should exactly determine your phone's model number, by going to `settings` -> `about phone` and looking for `model number` or `regulatory labels` or similar. My Pixel has model `GD1YQ`.[^15] 
+Phones with the same name can have different model numbers. You should exactly determine your phone's model number. `settings` -> `about phone`, look for `model number` or `regulatory labels` or similar. My Pixel 5 has model `GD1YQ`.[^15] 
 
 ### Accessing your phone's bootloader interface
 
 You can either do this from your pc or from your phone:
 
-- PC: Run `adb -d reboot bootloader`[^6] in your terminal.
+- PC: Run `adb -d reboot bootloader` in your terminal.
 
 - Phone: Turn your phone off. Turn it on holding both the power and volume down buttons. On some old phones, this will be reversed. Some phones won't register the state of the volume down button if it's held during this entire process, and will require you to repress it once the screen turns on. You'll generally be greeted by a black screen with some jank text on it, maybe a logo if you're lucky, with a rudimentary menu navigable by the 3 buttons. You might have to navigate this menu until you encounter a state labeled `bootloader` or `fastboot`. If this screen says `recovery` and you can't navigate out of it, you're actually in the wrong boot mode! There might be no text at all[^7].
 
-Verify that you're connected to the phone's bootloader interface on your pc by opening a terminal and running `fastboot devices`[^6].
+Verify that you're connected to the phone's bootloader interface on your pc by opening a terminal and running `fastboot devices`.
 
 ### Flashing[^8]
 
@@ -93,31 +93,34 @@ Every rom has a different MO for flashing, and you need to find your rom's insta
 - `data` stores our user data; installed apps, settings, etc.
 - `cache`[^14] can be wiped safely
 - `radio`: some roms will want to flash it.
-- `recovery` is the partition that helps you rebuild your phone when it breaks; some roms will flash it. I highly recommend [TWRP](https://twrp.me/Devices/), though you should clarify the version you want to flash plays well with your rom (don't use it with the secure Pixel roms).
+- `recovery` is the partition that helps you rebuild your phone when it breaks; most roms will flash it. I highly recommend [TWRP](https://twrp.me/Devices/), though you should check version compatibility with your rom (and don't use it with the secure Pixel roms).
 - `kernel`: user-friendly roms aren't usually going to require a custom linux kernel. The wrong kernel won't brick your phone, but you'll probably boot-loop or crash frequently.
 
-You can backup a partition using `dd`, e.g. `adb shell su -c dd if=/dev/find/your/phone/blockdevice/path/<partition> > <partition>.img` to your pc.
+You can backup a partition[^17] using `dd`, e.g. `adb shell su -c dd if=/dev/path/to/<partition> > <partition>.img` to your pc.
 
 Pretty much every ROM installation goes like this:
 - OEM unlocking and USB debugging (as root if the toggle is available) need to be enabled as per the `OEM Unlocking` section above
 - `fastboot flashing unlock` is another safeguard, and ***`also the data partition wipe`***.
 - `fastboot flash <partition> <uncompressed file>` flashes a specific partition. Most ROMs will bundle this in a script of some kind, for aforementioned "don't brick your phone" reasons. After flashing a few partitions in your guide, you'll be done.
 
-So why all the disclaimers? It's very easy to get the wrong firmware (things-to-flash) for your phone. There are 15 different model numbers for my LG V20, some of which overlap, and some of which don't. Blindly flashing `LG V20 H918` instead of `LG V20 H915` firmware could potentially brick a phone!
+So why all the disclaimers? It's very easy to get the wrong firmware (things-to-flash) for your phone. There are 15 different model numbers for my LG V20, only some of which overlap all firmware. Blindly flashing `LG V20 H918` firmware instead of `LG V20 H915` could brick, and you wouldn't be able to tell without checking.
 
 ### Re-lock your bootloader?
 
-Once you re-lock your bootloader in fastboot, unlocking it again will wipe your phone. In the interrim, you can decide whether or not to expose root to yourself and your apps by installing...
+Once you re-lock your bootloader in fastboot, unlocking it again will wipe your phone. In the interrim, you can decide whether or not to expose root to yourself and your apps by installing Magisk.
+
+Again, if you're using one of the secure Pixel roms, you don't want to keep root, and usually they won't let you anyway.
 
 ### Magisk
 
-You can get Magisk [here](https://github.com/topjohnwu/Magisk/releases). It's a neat little program to manage which apps on your phone get root access, or more importantly, which apps can see that you have root access. It has its own [guide](https://topjohnwu.github.io/Magisk/install.html). If you don't have boot ramdisk, keeping root becomes very tedious and I personally wouldn't bother.
+You can get Magisk [here](https://github.com/topjohnwu/Magisk/releases). It's a neat little program to manage which apps on your phone get root access, or more importantly, which apps can see that *you* have root access. It has its own [guide](https://topjohnwu.github.io/Magisk/install.html). If you don't have boot ramdisk, keeping root becomes very tedious and I personally wouldn't bother.
+
 
 If you're going to flash [TWRP](https://twrp.me/Devices/) as a recovery, do it now, and try to sideload the Magisk `.apk` after renaming it to a `.zip`, to skip this next part.
 
 The Magisk guide doesn't tell you how to get a `boot.img` copy. Getting `init_boot.img` works much the same way, just ignore the suffix syntax.
 - First find out if you have `init_boot.img` by running `adb shell su -c find /dev -type f -name init_boot.img 2>/dev/null`. If you have one, `adb shell su -c dd if=<the file you just found> of=/wherever/you/want/to/dump/init_boot.img` should get you your image-to-patch.
-- If you don't have `init_boot.img`, my TL;DR is `adb shell su -c dd if=/dev/block/by-name/boot$(adb shell getprop ro.boot.slot_suffix) of=/wherever/you/want/to/dump/boot.img` and has worked on every phone I've tested. An explanation:
+- If you don't have `init_boot.img`, my TL;DR is `adb shell su -c dd if=/dev/block/by-name/boot$(adb shell getprop ro.boot.slot_suffix) of=/wherever/you/want/to/dump/boot.img`[^18] and has worked on every phone I've tested. An explanation:
     - Firstly, your boot image is almost always linked in `/dev/block/by-name/<boot or something>`. If it's not there, you're going to have to poke around. I would run `adb shell su -c find /dev -type f -name 'boot*' 2>/dev/null` to just search all the devices that start with `boot`.
     - Secondly, a lot of android phones these days have an A/B booting system; there are actually 2 boot images, and only one is live, and the other receives updates, and then they switch. `adb shell getprop ro.boot.slot_suffix` is the idiomatic way to determine if A or B is live (we want the live one). If that doesn't work, enter your bootloader interface again and run `fastboot getvar current-slot` (sometimes it's also just displayed in the bootloader interface UI).
 - Now you can patch the image you grabbed using the Magisk app and continue with its own guide
@@ -137,7 +140,7 @@ Go back into the bootloader interface (`adb -d reboot bootloader`) and `fastboot
 
 [^5]: iirc this isn't necessary because pairing is automatically accepted in the next step, but some phones are so picky.
 
-[^6]: For windows command prompt specifically, you'll have to find the adb executable, typically installed in `C:\Android\sdk\platform-tools\`. Press the windows key, search for `adb`, right click it and open file location to check. Then navigate to it in command prompt using `cd C:\path\to\adb\executable\parent\folder`, THEN you can run adb/fastboot commands.
+[^6]: For windows command prompt specifically, you'll have to find the adb executable after installing it, typically installed in `C:\Android\sdk\platform-tools\`. Press the windows key, search for `adb`, right click it and open file location to check. Then navigate to it in command prompt using `cd C:\path\to\adb\executable\parent\folder`, THEN you can run adb/fastboot commands.
 
 [^7]: One time, I opened this menu, and was greeted with a glitched noise texture reminiscent of GPU failure. It still worked, though. Thankfully LG doesn't make phones anymore
 
@@ -162,3 +165,7 @@ Go back into the bootloader interface (`adb -d reboot bootloader`) and `fastboot
 ![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/pixel-models.png)
 
 The Pixel 5 (redfin) has 2 submodels, `GD1YQ` and `GTT9Q`. This shows how models differ in radio firmware, exactly which carriers my phone could use via band compatibility, what region my phone actually belongs to etc., and if my rom was far from stock android, and I was flashing radio firmware...
+
+[^17]: You aren't necessarily rooted right now. While you can overwrite existing partitions, some images don't provide root debugging. You can test by running `adb root`, or `adb shell` followed by `su`. If root debugging isn't an option in `developer options`, you could try TWRP (download the twrp img, and then boot into it with `fastboot boot <img>`). Some phone OEMs provide tools for this exact reason, and you could always disassemble the phone to directly access the chips if you reeeeally wanted the images, I guess?
+
+[^18]: You'll probably want to dump the boot image in userspace to delete it easily later. Almost always `/storage/emulated/0/`
