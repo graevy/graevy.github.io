@@ -161,11 +161,11 @@ Go back into the bootloader interface (`adb -d reboot bootloader`) and `fastboot
 
 [^15]: I also usually sanity-check at [gsmarena](https://gsmarena.com) and search for my phone, and expand the network section like so:
 
-[^16]: Also, change each `animation scale` to 0.5x, oh my god, it's so smooth.
-
 ![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/pixel-models.png)
 
 The Pixel 5 (redfin) has 2 submodels, `GD1YQ` and `GTT9Q`. This shows how models differ in radio firmware, exactly which carriers my phone could use via band compatibility, what region my phone actually belongs to etc., and if my rom was far from stock android, and I was flashing radio firmware...
+
+[^16]: Also, change each `animation scale` to 0.5x, oh my god, it's so smooth.
 
 [^17]: You aren't necessarily rooted right now. While you can overwrite existing partitions, some images don't provide root debugging. You can test by running `adb root`, or `adb shell` followed by `su`. If root debugging isn't an option in `developer options`, you could try TWRP (download the twrp img, and then boot into it with `fastboot boot <img>`). Some phone OEMs provide tools for this exact reason, and you could always disassemble the phone to directly access the chips if you reeeeally wanted the images, I guess?
 
