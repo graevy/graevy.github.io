@@ -119,10 +119,11 @@ You can get Magisk [here](https://github.com/topjohnwu/Magisk/releases). It's a 
 If you're going to flash [TWRP](https://twrp.me/Devices/) as a recovery, do it now, and try to sideload the Magisk `.apk` after renaming it to a `.zip`, to skip this next part.
 
 The Magisk guide doesn't tell you how to get a `boot.img` copy. Getting `init_boot.img` works much the same way, just ignore the suffix syntax.
-- First find out if you have `init_boot.img` by running `adb shell su -c find /dev -type f -name init_boot.img 2>/dev/null`. If you have one, `adb shell su -c dd if=<the file you just found> of=/wherever/you/want/to/dump/init_boot.img` should get you your image-to-patch.
-- If you don't have `init_boot.img`, my TL;DR is `adb shell su -c dd if=/dev/block/by-name/boot$(adb shell getprop ro.boot.slot_suffix) of=/wherever/you/want/to/dump/boot.img`[^18] and has worked on every phone I've tested. An explanation:
-    - Firstly, your boot image is almost always linked in `/dev/block/by-name/<boot or something>`. If it's not there, you're going to have to poke around. I would run `adb shell su -c find /dev -type f -name 'boot*' 2>/dev/null` to just search all the devices that start with `boot`.
-    - Secondly, a lot of android phones these days have an A/B booting system; there are actually 2 boot images, and only one is live, and the other receives updates, and then they switch. `adb shell getprop ro.boot.slot_suffix` is the idiomatic way to determine if A or B is live (we want the live one). If that doesn't work, enter your bootloader interface again and run `fastboot getvar current-slot` (sometimes it's also just displayed in the bootloader interface UI).
+- Find out if you have `init_boot.img` by running `adb shell su -c find /dev -type f -name 'init_boot*' 2>/dev/null`.
+- If nothing, check for a normal boot image with `adb shell su -c find /dev -type f -name 'boot*' 2>/dev/null`.
+- If either of these commands gives you multiple `_a` and `_b` images, determine which is the current active boot image slot[^20] with `adb shell getprop ro.boot.slot_suffix`.
+- So to recap, use any `init_boot` images before regular `boot` images, and if you have multiple `init_boot` or `boot` images with `_a`/`_b` suffixes, use the active one.
+- Use the full filepath, including optional suffix, in `adb shell su -c dd if=<the live boot image> of=/wherever/you/want/to/dump/boot.img`[^18]
 - Now you can patch the image you grabbed using the Magisk app and continue with its own guide
 
 ### Re-lock your bootloader!
@@ -171,3 +172,5 @@ The Pixel 5 (redfin) has 2 submodels, `GD1YQ` and `GTT9Q`. This shows how models
 [^18]: You'll probably want to dump the boot image in userspace to delete it easily later. Almost always `/storage/emulated/0/`
 
 [^19]: ![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/familiarity.png)
+
+[^20]: Android phones these days usually have an A/B booting system; there are actually 2 boot images, and only one is live, and the other receives updates, and then they switch. `adb shell getprop ro.boot.slot_suffix` is the idiomatic way to determine if A or B is live (we want the live one). If that doesn't work, enter your bootloader interface again and run `fastboot getvar current-slot` (sometimes it's also just displayed in the bootloader interface UI).

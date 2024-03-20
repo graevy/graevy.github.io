@@ -172,17 +172,15 @@
 <p>If you&rsquo;re going to flash <a href="https://twrp.me/Devices/">TWRP</a> as a recovery, do it now, and try to sideload the Magisk <code>.apk</code> after renaming it to a <code>.zip</code>, to skip this next part.</p>
 <p>The Magisk guide doesn&rsquo;t tell you how to get a <code>boot.img</code> copy. Getting <code>init_boot.img</code> works much the same way, just ignore the suffix syntax.</p>
 <ul>
-<li>First find out if you have <code>init_boot.img</code> by running <code>adb shell su -c find /dev -type f -name init_boot.img 2&gt;/dev/null</code>. If you have one, <code>adb shell su -c dd if=&lt;the file you just found&gt; of=/wherever/you/want/to/dump/init_boot.img</code> should get you your image-to-patch.</li>
-<li>If you don&rsquo;t have <code>init_boot.img</code>, my TL;DR is <code>adb shell su -c dd if=/dev/block/by-name/boot$(adb shell getprop ro.boot.slot_suffix) of=/wherever/you/want/to/dump/boot.img</code><sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup> and has worked on every phone I&rsquo;ve tested. An explanation:
-<ul>
-<li>Firstly, your boot image is almost always linked in <code>/dev/block/by-name/&lt;boot or something&gt;</code>. If it&rsquo;s not there, you&rsquo;re going to have to poke around. I would run <code>adb shell su -c find /dev -type f -name 'boot*' 2&gt;/dev/null</code> to just search all the devices that start with <code>boot</code>.</li>
-<li>Secondly, a lot of android phones these days have an A/B booting system; there are actually 2 boot images, and only one is live, and the other receives updates, and then they switch. <code>adb shell getprop ro.boot.slot_suffix</code> is the idiomatic way to determine if A or B is live (we want the live one). If that doesn&rsquo;t work, enter your bootloader interface again and run <code>fastboot getvar current-slot</code> (sometimes it&rsquo;s also just displayed in the bootloader interface UI).</li>
-</ul>
-</li>
+<li>Find out if you have <code>init_boot.img</code> by running <code>adb shell su -c find /dev -type f -name 'init_boot*' 2&gt;/dev/null</code>.</li>
+<li>If nothing, check for a normal boot image with <code>adb shell su -c find /dev -type f -name 'boot*' 2&gt;/dev/null</code>.</li>
+<li>If either of these commands gives you multiple <code>_a</code> and <code>_b</code> images, determine which is the current active boot image slot<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup> with <code>adb shell getprop ro.boot.slot_suffix</code>.</li>
+<li>So to recap, use any <code>init_boot</code> images before regular <code>boot</code> images, and if you have multiple <code>init_boot</code> or <code>boot</code> images with <code>_a</code>/<code>_b</code> suffixes, use the active one.</li>
+<li>Use the full filepath, including optional suffix, in <code>adb shell su -c dd if=&lt;the live boot image&gt; of=/wherever/you/want/to/dump/boot.img</code><sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup></li>
 <li>Now you can patch the image you grabbed using the Magisk app and continue with its own guide</li>
 </ul>
 <h3 id="re-lock-your-bootloader-1">Re-lock your bootloader!</h3>
-<p>Go back into the bootloader interface (<code>adb -d reboot bootloader</code>) and <code>fastboot flashing lock</code> it. Then <code>fastboot reboot</code>, go to your developer options and disable OEM unlocking<sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup>. Then disable developer options. Then throw your phone into a lake.</p>
+<p>Go back into the bootloader interface (<code>adb -d reboot bootloader</code>) and <code>fastboot flashing lock</code> it. Then <code>fastboot reboot</code>, go to your developer options and disable OEM unlocking<sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup>. Then disable developer options. Then throw your phone into a lake.</p>
 <p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/pixel-models.png" alt=""></p>
 <p>The Pixel 5 (redfin) has 2 submodels, <code>GD1YQ</code> and <code>GTT9Q</code>. This shows how models differ in radio firmware, exactly which carriers my phone could use via band compatibility, what region my phone actually belongs to etc., and if my rom was far from stock android, and I was flashing radio firmware&hellip;</p>
 <div class="footnotes" role="doc-endnotes">
@@ -237,10 +235,13 @@
 <p>You aren&rsquo;t necessarily rooted right now. While you can overwrite existing partitions, some images don&rsquo;t provide root debugging. You can test by running <code>adb root</code>, or <code>adb shell</code> followed by <code>su</code>. If root debugging isn&rsquo;t an option in <code>developer options</code>, you could try TWRP (download the twrp img, and then boot into it with <code>fastboot boot &lt;img&gt;</code>). Some phone OEMs provide tools for this exact reason, and you could always disassemble the phone to directly access the chips if you reeeeally wanted the images, I guess?&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:17">
-<p>You&rsquo;ll probably want to dump the boot image in userspace to delete it easily later. Almost always <code>/storage/emulated/0/</code>&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Android phones these days usually have an A/B booting system; there are actually 2 boot images, and only one is live, and the other receives updates, and then they switch. <code>adb shell getprop ro.boot.slot_suffix</code> is the idiomatic way to determine if A or B is live (we want the live one). If that doesn&rsquo;t work, enter your bootloader interface again and run <code>fastboot getvar current-slot</code> (sometimes it&rsquo;s also just displayed in the bootloader interface UI).&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:18">
-<p>Also, change each <code>animation scale</code> to 0.5x, oh my god, it&rsquo;s so smooth.&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>You&rsquo;ll probably want to dump the boot image in userspace to delete it easily later. Almost always <code>/storage/emulated/0/</code>&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:19">
+<p>Also, change each <code>animation scale</code> to 0.5x, oh my god, it&rsquo;s so smooth.&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
