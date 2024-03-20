@@ -88,13 +88,13 @@ Verify that you're connected to the phone's bootloader interface on your pc by o
 You'll lose all data on your phone if we proceed. This is the scary step, too. Are you emotionally prepared for that?
 
 Every rom has a different MO for flashing, and you need to find your rom's installation guide ([Lineage [device specific]](https://wiki.lineageos.org/devices/) [Graphene](https://grapheneos.org/install/web) [Copperhead](https://copperhead.co/android/docs/install/)). Some might use first-party tools like samsung Odin, many (including Lineage) specifically flash the recovery partition and then `adb sideload` a `.zip` for the recovery partition to use. The problem is that there are many different partitions you might have to flash or wipe:
-- Some will flash `boot`, the partition your phone is booted into right now. ***`A bad bootloader flash is how you brick a phone.`***; the bootloader can rescue all other partitions (via `fastboot flash`).
-- `system` stores most of what constitutes our rom. A bad flash here will probably boot-loop your phone
-- `data` stores our user data; installed apps, settings, etc.
-- `cache`[^14] can be wiped safely
-- `radio`: some roms will want to flash it.
+- Most will flash `boot`, the partition your phone is booted into right now. ***`A bad bootloader flash is how you brick a phone`***; the bootloader can rescue all other partitions (via `fastboot flash`). There are some tools, usually first-party, to recover from brick, but don't count on them.
+- `system` stores most of what constitutes our rom. A bad flash here will probably boot-loop your phone.
+- `data` stores our user data; installed apps, settings, etc. we won't flash this, but guides may have you wipe it.
+- `cache`[^14] can almost always be wiped safely.
+- `radio`: (or modem) some niche roms will want to flash it, particularly for carrier-locked phones.
 - `recovery` is the partition that helps you rebuild your phone when it breaks; most roms will flash it. I highly recommend [TWRP](https://twrp.me/Devices/), though you should check version compatibility with your rom (and don't use it with the secure Pixel roms).
-- `kernel`: user-friendly roms aren't usually going to require a custom linux kernel. The wrong kernel won't brick your phone, but you'll probably boot-loop or crash frequently.
+- `kernel`: user-friendly roms aren't usually going to require a custom linux kernel. A bad flash would probably boot-loop or crash frequently.
 
 You can backup a partition[^17] using `dd`, e.g. `adb shell su -c dd if=/dev/path/to/<partition> > <partition>.img` to your pc.
 

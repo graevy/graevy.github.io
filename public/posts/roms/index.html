@@ -148,13 +148,13 @@
 <p>You&rsquo;ll lose all data on your phone if we proceed. This is the scary step, too. Are you emotionally prepared for that?</p>
 <p>Every rom has a different MO for flashing, and you need to find your rom&rsquo;s installation guide (<a href="https://wiki.lineageos.org/devices/">Lineage [device specific]</a> <a href="https://grapheneos.org/install/web">Graphene</a> <a href="https://copperhead.co/android/docs/install/">Copperhead</a>). Some might use first-party tools like samsung Odin, many (including Lineage) specifically flash the recovery partition and then <code>adb sideload</code> a <code>.zip</code> for the recovery partition to use. The problem is that there are many different partitions you might have to flash or wipe:</p>
 <ul>
-<li>Some will flash <code>boot</code>, the partition your phone is booted into right now. <em><strong><code>A bad bootloader flash is how you brick a phone.</code></strong></em>; the bootloader can rescue all other partitions (via <code>fastboot flash</code>).</li>
-<li><code>system</code> stores most of what constitutes our rom. A bad flash here will probably boot-loop your phone</li>
-<li><code>data</code> stores our user data; installed apps, settings, etc.</li>
-<li><code>cache</code><sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup> can be wiped safely</li>
-<li><code>radio</code>: some roms will want to flash it.</li>
+<li>Most will flash <code>boot</code>, the partition your phone is booted into right now. <em><strong><code>A bad bootloader flash is how you brick a phone</code></strong></em>; the bootloader can rescue all other partitions (via <code>fastboot flash</code>). There are some tools, usually first-party, to recover from brick, but don&rsquo;t count on them.</li>
+<li><code>system</code> stores most of what constitutes our rom. A bad flash here will probably boot-loop your phone.</li>
+<li><code>data</code> stores our user data; installed apps, settings, etc. we won&rsquo;t flash this, but guides may have you wipe it.</li>
+<li><code>cache</code><sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup> can almost always be wiped safely.</li>
+<li><code>radio</code>: (or modem) some niche roms will want to flash it, particularly for carrier-locked phones.</li>
 <li><code>recovery</code> is the partition that helps you rebuild your phone when it breaks; most roms will flash it. I highly recommend <a href="https://twrp.me/Devices/">TWRP</a>, though you should check version compatibility with your rom (and don&rsquo;t use it with the secure Pixel roms).</li>
-<li><code>kernel</code>: user-friendly roms aren&rsquo;t usually going to require a custom linux kernel. The wrong kernel won&rsquo;t brick your phone, but you&rsquo;ll probably boot-loop or crash frequently.</li>
+<li><code>kernel</code>: user-friendly roms aren&rsquo;t usually going to require a custom linux kernel. A bad flash would probably boot-loop or crash frequently.</li>
 </ul>
 <p>You can backup a partition<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup> using <code>dd</code>, e.g. <code>adb shell su -c dd if=/dev/path/to/&lt;partition&gt; &gt; &lt;partition&gt;.img</code> to your pc.</p>
 <p>Pretty much every ROM installation goes like this:</p>
