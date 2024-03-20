@@ -6,8 +6,15 @@
     <description>Recent content on quatloo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Feb 2024 21:24:49 -0800</lastBuildDate>
+    <lastBuildDate>Tue, 19 Mar 2024 13:52:11 -0700</lastBuildDate>
     <atom:link href="http://quatl.ooo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>rooting</title>
+      <link>http://quatl.ooo/posts/rooting/</link>
+      <pubDate>Tue, 19 Mar 2024 13:52:11 -0700</pubDate>
+      <guid>http://quatl.ooo/posts/rooting/</guid>
+      <description>This is a step-by-step guide to rooting your phone properly, recited largely from memory, because people keep going to me for this.&#xA;This is intermediate difficulty; we&amp;rsquo;ll be using a terminal (powershell on windows). You&amp;rsquo;ll have to retrieve some information about your phone and your desired ROM that I can&amp;rsquo;t easily help you get. If it doesn&amp;rsquo;t work, bring your phone to open hack night so we can fix it.</description>
+    </item>
     <item>
       <title>ss14 2</title>
       <link>http://quatl.ooo/posts/ss14-2/</link>
@@ -34,7 +41,7 @@
       <link>http://quatl.ooo/about/</link>
       <pubDate>Sun, 18 Jun 2023 04:00:51 -0700</pubDate>
       <guid>http://quatl.ooo/about/</guid>
-      <description>&amp;#34;&amp;#34;&amp;#34; Fine cave-aged Vermont cheddar; I love my community, piano, dogs, computers, chess, and terrible science fiction. Args: location (str): seattle pronouns (str): they/them Returns: Person &amp;#34;&amp;#34;&amp;#34; </description>
+      <description>&amp;#34;&amp;#34;&amp;#34;&#xD;Fine cave-aged Vermont cheddar;&#xD;I love my community, piano, dogs, computers, chess, and terrible science fiction.&#xD;Args:&#xD;location (str): seattle&#xD;pronouns (str): they/them&#xD;Returns:&#xD;Person&#xD;&amp;#34;&amp;#34;&amp;#34; </description>
     </item>
     <item>
       <title>hotspot</title>

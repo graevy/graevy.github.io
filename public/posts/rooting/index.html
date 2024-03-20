@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-us"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<html lang="en-us"><head>
     <title>quatloo</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -95,36 +95,54 @@
 <p>The Ugly:</p>
 <ul>
 <li>bricking your phone</li>
+<li>boot-looping your phone</li>
 <li>random crashes, slowdowns, etc</li>
 </ul>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/boot-loops.jpg" alt=""></p>
 <h3 id="oem-unlocking3">OEM Unlocking<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></h3>
 <p>If you didn&rsquo;t buy a phone specifically for rooting, this might become much more annoying/impossible based on these results:</p>
 <ul>
 <li>Go to settings -&gt; About phone</li>
-<li>Tap the build number button like 8 times (I&rsquo;m not trolling you) to unlock developer options</li>
+<li>Tap the build number button like 8 times (I&rsquo;m not trolling you) to unlock developer options. It&rsquo;s under <code>system</code> settings</li>
 <li>Go to developer options and see if there&rsquo;s an OEM unlocking toggle.</li>
 <li>While you&rsquo;re here, enable USB debugging. Also, change the animation speeds to 0.5x, thank me later</li>
 </ul>
-<p>If it&rsquo;s an easy toggle, great. If it&rsquo;s greyed-out, you typically have to get an unlock code from your phone manufacturer (this is as annoying as it sounds). If it doesn&rsquo;t exist, you probably can&rsquo;t root the phone. Go to <a href="https://xda-developers.com">xda-developers</a>, find your phone subforum, and see if anyone has posted about rooting it. In ye olden days (a decade ago, when I first started rooting my phones), you typically had to use some privilege-escalation linux kernel vulnerability to unlock a bootloader, and if your phone is old enough, this is doable, good luck.</p>
+<p>If it&rsquo;s an easy toggle, great. If it&rsquo;s greyed-out, you typically have to get an unlock code from your phone manufacturer and insert it via fastboot (this is as annoying as it sounds). If it doesn&rsquo;t exist, you probably can&rsquo;t root the phone. Go to <a href="https://xda-developers.com">xda-developers</a>, find your phone subforum, and see if anyone has posted about rooting it. In ye olden days (a decade ago, when I first started rooting my phones), you typically had to use some privilege-escalation linux kernel vulnerability to unlock a bootloader, and if your phone is old enough, this is doable, good luck.</p>
 <h3 id="choosing-a-phone-os">Choosing a phone OS</h3>
 <p>If you have a pixel, you can choose a secure OS like <a href="https://grapheneos.org/install/">GrapheneOS</a> (my choice), <a href="https://copperhead.co/android/docs/">Copperhead</a>, or <a href="https://calyxos.org/docs/guide/device-support/">CalyxOS</a> (has some motorola/fairphone support!). Otherwise, you want <a href="https://wiki.lineageos.org/devices/">Lineage</a><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>, maybe <a href="https://crdroid.net/downloads">crDroid</a> or something else <a href="https://en.wikipedia.org/wiki/List_of_custom_Android_distributions">listed here</a> that is both open source and still developed. Another option might be decent; I haven&rsquo;t reviewed them in awhile, but LineageOS has a very big community, which you will have to rely on if you encounter The Ugly<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
 <p>Important note: your phone model is weird. Phones with the same name can have different model numbers, using a different carrier can give you a different model number (which would be relevant when flashing a radio partition for example), etc.; you need to exactly determine your phone&rsquo;s model number to check device compatibility.</p>
 <h3 id="connecting-a-pc-to-a-phone">Connecting a pc to a phone</h3>
 <p>You will want android debug bridge <a href="https://developer.android.com/tools/releases/platform-tools">here</a> (or through your package manager) and a computer-&gt;phone usb cable. If you haven&rsquo;t already, enable USB debugging in your phone&rsquo;s developer options, and accept whatever pairing prompt comes up when you plug it in<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. Verify your connectivity by running <code>adb</code><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> in your terminal.</p>
-<p>Now you have to get into your phone&rsquo;s bootloader interface. The next two paragraphs are two ways to do that.</p>
+<p>Now you have to get into your phone&rsquo;s bootloader interface. The next two bullets are two ways to do that.</p>
+<ul>
+<li>
 <p>Run <code>adb -d reboot bootloader</code><sup id="fnref1:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> in your terminal.</p>
-<p>Turn it off. Turn it on holding both the power and volume down buttons. On some old phones, this will be reversed. Some phones won&rsquo;t register the state of the volume down button if it&rsquo;s held during this entire process, and will require you to repress it once the screen turns on. You&rsquo;ll generally be greeted by a black screen with some jank text on it, maybe a logo if you&rsquo;re lucky, with a rudimentary menu navigable by the 3 buttons. You might have to navigate this menu until you encounter a state labeled <code>bootloader</code> or <code>fastboot</code>. If this screen says <code>recovery</code> and you can&rsquo;t navigate out of it, you&rsquo;re actually in the wrong boot mode! There might be no text at all<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>.</p>
+</li>
+<li>
+<p>Turn your phone off. Turn it on holding both the power and volume down buttons. On some old phones, this will be reversed. Some phones won&rsquo;t register the state of the volume down button if it&rsquo;s held during this entire process, and will require you to repress it once the screen turns on. You&rsquo;ll generally be greeted by a black screen with some jank text on it, maybe a logo if you&rsquo;re lucky, with a rudimentary menu navigable by the 3 buttons. You might have to navigate this menu until you encounter a state labeled <code>bootloader</code> or <code>fastboot</code>. If this screen says <code>recovery</code> and you can&rsquo;t navigate out of it, you&rsquo;re actually in the wrong boot mode! There might be no text at all<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>.</p>
+</li>
+</ul>
 <p>Verify that you&rsquo;re connected to the phone&rsquo;s bootloader interface on your pc by opening a terminal and running <code>fastboot devices</code><sup id="fnref2:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>.</p>
 <h3 id="flashing8">Flashing<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup></h3>
 <p>You&rsquo;re probably gonna lose all data on your phone if we proceed. This is the scary step, too. Are you emotionally prepared for that?</p>
-<p>Every ROM has a different MO for flashing, and you need to find your ROM&rsquo;s installation guide (<a href="https://wiki.lineageos.org/devices/">Lineage</a> <a href="https://grapheneos.org/install/web">Graphene</a> <a href="https://copperhead.co/android/docs/install/">Copperhead</a>). Some might use second party tools like samsung Odin, Lineage specifically flashes the recovery partition and then <code>adb sideload</code>s a <code>.zip</code> for the recovery partition to use. The problem is that there are many different partitions you might have to flash, and any mistake has big consequences:</p>
+<p>Every ROM has a different MO for flashing, and you need to find your ROM&rsquo;s installation guide (<a href="https://wiki.lineageos.org/devices/">Lineage [device specific]</a> <a href="https://grapheneos.org/install/web">Graphene</a> <a href="https://copperhead.co/android/docs/install/">Copperhead</a>). Some might use first-party tools like samsung Odin, many (including Lineage) specifically flash the recovery partition and then <code>adb sideload</code> a <code>.zip</code> for the recovery partition to use. The problem is that there are many different partitions you might have to flash, and any mistake has big consequences:</p>
 <ul>
-<li><code>system</code> is the one we care about the most, that&rsquo;s where our ROM goes.</li>
-<li><code>radio</code> is our modem, and some ROMs will want to flash that partition.</li>
-<li><code>recovery</code> is the partition that helps you rebuild your phone when it breaks; some roms will flash it.</li>
-<li>Some will even flash <code>boot</code>, the partition your phone is booted into right now. <em><strong><code>Flashing your bootloader manually is how you brick a phone.</code></strong></em></li>
+<li><code>system</code> stores our ROM. A bad flash here will probably boot-loop your phone, nothing serious.</li>
+<li><code>radio</code> is our modem, and some ROMs will want to flash that partition. I suspect your kernel would be upset with a bad radio partition</li>
+<li><code>recovery</code> is the partition that helps you rebuild your phone when it breaks; some roms will flash it. Breaking this doesn&rsquo;t matter much because you can recover from your pc (via <code>fastboot flash</code>). I reflash my recovery all the time. I highly recommend <a href="https://twrp.me/Devices/">TWRP</a>, though you should clarify the version you want to flash plays well with your ROM.</li>
+<li>Some will flash <code>bootloader</code>, the partition your phone is booted into right now. <em><strong><code>A bad bootloader flash is how you brick a phone.</code></strong></em> This is because the bootloader can flash all other partitions.</li>
+<li><code>kernel</code> usually has its own partition, but a popular ROM isn&rsquo;t usually going to require a custom linux kernel. A bad kernel won&rsquo;t brick your phone, but you&rsquo;ll probably boot-loop or crash frequently.</li>
 </ul>
-<p><code>fastboot flashing unlock</code> is the bootloader unlock toggle, and iirc the phone data wipe. <code>fastboot flash &lt;partition&gt; &lt;uncompressed file&gt;</code> is how you  flash specific partitions.</p>
+<p>Pretty much every ROM installation goes like this:</p>
+<ul>
+<li>OEM unlocking and USB debugging (as root if the toggle is available) need to be enabled as per the <code>OEM Unlocking</code> section above</li>
+<li><code>fastboot flashing unlock</code> is another safeguard, and iirc the phone data wipe.</li>
+<li><code>fastboot flash &lt;partition&gt; &lt;uncompressed file&gt;</code> flashes a specific partition. Most ROMs will bundle this in a script of some kind, for aforementioned &ldquo;don&rsquo;t brick your phone&rdquo; reasons. After flashing a few partitions in your guide, you&rsquo;ll be done.</li>
+<li>after the flashing is done, you should <code>fastboot flashing lock</code> your bootloader, then disable OEM unlocking from developer options.</li>
+</ul>
+<p>So why all the disclaimers? It&rsquo;s very easy to get the wrong firmware (things-to-flash) for your phone. My Pixel 5 has the single <code>redfin</code> release, which is nice and easy to remember. There are 15 different model numbers for my LG V20, some of which overlap, and some of which don&rsquo;t. Flashing <code>LG V20 H918</code> instead of <code>LG V20 H915</code> firmware could potentially brick a phone, and this kind of thing is a nightmare for tech support to handle.</p>
+<h3 id="magisk">Magisk</h3>
+<p>You can get Magisk <a href="https://github.com/topjohnwu/Magisk/releases">here</a>. It&rsquo;s a neat little program to manage which apps on your phone get root access, or more importantly, which apps can see that you have root access. It has its own little guide, typically involving sideloading, so it&rsquo;s best to get it done now.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
