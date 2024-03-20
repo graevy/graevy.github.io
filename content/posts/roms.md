@@ -61,7 +61,7 @@ If you didn't buy a phone specifically for this, this might become much more ann
 - Go to settings -> About phone
 - Tap the build number button like 8 times (I'm not trolling you) to unlock developer options
 - Go to developer options (under `system` settings) and see if there's an `OEM unlocking` toggle.
-- While you're here, enable USB debugging. Also, change the `animation scale`s to 0.5x, thank me later
+- While you're here, enable USB debugging
 
 If it's an easy toggle, great. If it's greyed-out, you typically have to get an unlock code from your phone manufacturer and insert it via fastboot (this is as annoying as it sounds). If it's not there, you probably can't root the phone. Go to [xda-developers](https://xda-developers.com), find your phone subforum, and see if anyone has posted about rooting it. In ye olden days (a decade ago, when I first started rooting my phones), you typically had to use some privilege-escalation linux kernel vulnerability to unlock a bootloader, and if your phone is old enough, this is doable, good luck.
 
@@ -124,7 +124,7 @@ The Magisk guide doesn't tell you how to get a `boot.img` copy. Getting `init_bo
 
 ### Re-lock your bootloader!
 
-Go back into the bootloader interface (`adb -d reboot bootloader`) and `fastboot flashing lock` it. Then `fastboot reboot`, go to your developer options and disable OEM unlocking. Then disable developer options. Then throw your phone into a lake.
+Go back into the bootloader interface (`adb -d reboot bootloader`) and `fastboot flashing lock` it. Then `fastboot reboot`, go to your developer options and disable OEM unlocking[^16]. Then disable developer options. Then throw your phone into a lake.
 
 
 [^1]: The first time I rooted my phone (a galaxy note 4 -- I miss it dearly), I installed a truly universal remote and spent the next week disabling public TVs
@@ -156,6 +156,8 @@ Go back into the bootloader interface (`adb -d reboot bootloader`) and `fastboot
 [^14]: You may also encounter the `dalvik cache` or the `ART cache`. These can also generally be safely wiped. Dalvik is the old VM that apps used to run in. ART (android runtime) replaced it a long time ago, instead generating bytecode from apps to load them faster.
 
 [^15]: I also usually sanity-check at [gsmarena](https://gsmarena.com) and search for my phone, and expand the network section like so:
+
+[^16]: Also, change each `animation scale` to 0.5x, oh my god, it's so smooth.
 
 ![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/pixel-models.png)
 

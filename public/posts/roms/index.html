@@ -126,7 +126,7 @@
 <li>Go to settings -&gt; About phone</li>
 <li>Tap the build number button like 8 times (I&rsquo;m not trolling you) to unlock developer options</li>
 <li>Go to developer options (under <code>system</code> settings) and see if there&rsquo;s an <code>OEM unlocking</code> toggle.</li>
-<li>While you&rsquo;re here, enable USB debugging. Also, change the <code>animation scale</code>s to 0.5x, thank me later</li>
+<li>While you&rsquo;re here, enable USB debugging</li>
 </ul>
 <p>If it&rsquo;s an easy toggle, great. If it&rsquo;s greyed-out, you typically have to get an unlock code from your phone manufacturer and insert it via fastboot (this is as annoying as it sounds). If it&rsquo;s not there, you probably can&rsquo;t root the phone. Go to <a href="https://xda-developers.com">xda-developers</a>, find your phone subforum, and see if anyone has posted about rooting it. In ye olden days (a decade ago, when I first started rooting my phones), you typically had to use some privilege-escalation linux kernel vulnerability to unlock a bootloader, and if your phone is old enough, this is doable, good luck.</p>
 <h3 id="connecting-a-pc-to-a-phone">Connecting a pc to a phone</h3>
@@ -181,7 +181,7 @@
 <li>Now you can patch the image you grabbed using the Magisk app and continue with its own guide</li>
 </ul>
 <h3 id="re-lock-your-bootloader-1">Re-lock your bootloader!</h3>
-<p>Go back into the bootloader interface (<code>adb -d reboot bootloader</code>) and <code>fastboot flashing lock</code> it. Then <code>fastboot reboot</code>, go to your developer options and disable OEM unlocking. Then disable developer options. Then throw your phone into a lake.</p>
+<p>Go back into the bootloader interface (<code>adb -d reboot bootloader</code>) and <code>fastboot flashing lock</code> it. Then <code>fastboot reboot</code>, go to your developer options and disable OEM unlocking<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>. Then disable developer options. Then throw your phone into a lake.</p>
 <p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/pixel-models.png" alt=""></p>
 <p>The Pixel 5 (redfin) has 2 submodels, <code>GD1YQ</code> and <code>GTT9Q</code>. This shows how models differ in radio firmware, exactly which carriers my phone could use via band compatibility, what region my phone actually belongs to etc., and if my rom was far from stock android, and I was flashing radio firmware&hellip;</p>
 <div class="footnotes" role="doc-endnotes">
@@ -228,6 +228,9 @@
 </li>
 <li id="fn:14">
 <p>You may also encounter the <code>dalvik cache</code> or the <code>ART cache</code>. These can also generally be safely wiped. Dalvik is the old VM that apps used to run in. ART (android runtime) replaced it a long time ago, instead generating bytecode from apps to load them faster.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:15">
+<p>Also, change each <code>animation scale</code> to 0.5x, oh my god, it&rsquo;s so smooth.&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
