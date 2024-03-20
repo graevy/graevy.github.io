@@ -160,9 +160,7 @@ Go back into the bootloader interface (`adb -d reboot bootloader`) and `fastboot
 [^14]: You may also encounter the `dalvik cache` or the `ART cache`. These can also generally be safely wiped. Dalvik is the old VM that apps used to run in. ART (android runtime) replaced it a long time ago, instead generating bytecode from apps to load them faster.
 
 [^15]: I also usually sanity-check at [gsmarena](https://gsmarena.com) and search for my phone, and expand the network section like so:
-
 ![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/pixel-models.png)
-
 The Pixel 5 (redfin) has 2 submodels, `GD1YQ` and `GTT9Q`. This shows how models differ in radio firmware, exactly which carriers my phone could use via band compatibility, what region my phone actually belongs to etc., and if my rom was far from stock android, and I was flashing radio firmware...
 
 [^16]: Also, change each `animation scale` to 0.5x, oh my god, it's so smooth.
