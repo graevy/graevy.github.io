@@ -4,7 +4,7 @@ date: 2024-03-19T13:52:11-07:00
 draft: false
 ---
 
-This is a step-by-step guide to ~~smugly link whenver someone asks me to root their phone~~ installing a custom for your android phone.
+This is a step-by-step guide to ~~smugly link whenver someone asks me to root their phone~~ installing a custom rom for your android phone.
 
 Intermediate difficulty[^19]; we'll be using a terminal (powershell[^6] on windows). You'll have to retrieve some information about your phone and your desired rom that I can't easily help you get. If you're stuck, bring your phone to open hack night so we can fix it.
 
