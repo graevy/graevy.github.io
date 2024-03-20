@@ -4,9 +4,9 @@ date: 2024-03-19T13:52:11-07:00
 draft: false
 ---
 
-This is a step-by-step educational guide to accompany a custom rom installation guide for your android phone.
+This is a step-by-step guide to ~~smugly link whenver someone asks me to root their phone~~ installing a custom for your android phone.
 
-Intermediate difficulty; we'll be using a terminal (powershell[^6] on windows). You'll have to retrieve some information about your phone and your desired rom that I can't easily help you get. If you're stuck, bring your phone to open hack night so we can fix it.
+Intermediate difficulty[^19]; we'll be using a terminal (powershell[^6] on windows). You'll have to retrieve some information about your phone and your desired rom that I can't easily help you get. If you're stuck, bring your phone to open hack night so we can fix it.
 
 ### Pros/Cons of customizing android
 
@@ -169,3 +169,5 @@ The Pixel 5 (redfin) has 2 submodels, `GD1YQ` and `GTT9Q`. This shows how models
 [^17]: You aren't necessarily rooted right now. While you can overwrite existing partitions, some images don't provide root debugging. You can test by running `adb root`, or `adb shell` followed by `su`. If root debugging isn't an option in `developer options`, you could try TWRP (download the twrp img, and then boot into it with `fastboot boot <img>`). Some phone OEMs provide tools for this exact reason, and you could always disassemble the phone to directly access the chips if you reeeeally wanted the images, I guess?
 
 [^18]: You'll probably want to dump the boot image in userspace to delete it easily later. Almost always `/storage/emulated/0/`
+
+[^19]: ![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/familiarity.png)
