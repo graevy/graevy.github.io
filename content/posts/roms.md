@@ -87,19 +87,16 @@ Verify that you're connected to the phone's bootloader interface on your pc by o
 
 You'll lose all data on your phone if we proceed. This is the scary step, too. Are you emotionally prepared for that?
 
-Every rom has a different MO for flashing, and you need to find your rom's installation guide ([Lineage [device specific]](https://wiki.lineageos.org/devices/) [Graphene](https://grapheneos.org/install/web) [Copperhead](https://copperhead.co/android/docs/install/)). Some might use first-party tools like samsung Odin, many (including Lineage) specifically flash the recovery partition and then `adb sideload` a `.zip` for the recovery partition to use. The problem is that there are many different partitions you might have to flash or wipe:
-- Most will flash `boot`, the partition your phone is booted into right now. ***`A bad bootloader flash is how you brick a phone`***; the bootloader can rescue all other partitions (via `fastboot flash`). There are some tools, usually first-party, to recover from brick, but don't count on them.
+Every rom has a different MO for flashing, and you need to find your rom's installation guide ([Lineage](https://wiki.lineageos.org/devices/) [Graphene](https://grapheneos.org/install/web) [Copperhead](https://copperhead.co/android/docs/install/) [Calyx](https://calyxos.org/install/)). Most use a script, some might use first-party tools like samsung Odin, many just flash the recovery partition and then package the other partitions like an android update. A non-exhaustive[^14] list of partitions you might have to flash:
+- Most will flash `boot`, the partition your phone is booted into right now. ***`A bad bootloader flash is how you brick a phone`***; the bootloader can rescue all other partitions (via `fastboot flash`). There are tools, usually first-party, to recover from brick, but don't count on them.
 - `system` stores most of what constitutes our rom. A bad flash here will probably boot-loop your phone.
-- `data` stores our user data; installed apps, settings, etc. we won't flash this, but guides may have you wipe it.
-- `cache`[^14] can almost always be wiped safely.
-- `radio`: (or modem) some niche roms will want to flash it, particularly for carrier-locked phones.
 - `recovery` is the partition that helps you rebuild your phone when it breaks; most roms will flash it. I highly recommend [TWRP](https://twrp.me/Devices/), though you should check version compatibility with your rom (and don't use it with the secure Pixel roms).
 - `kernel`: user-friendly roms aren't usually going to require a custom linux kernel. A bad flash would probably boot-loop or crash frequently.
 
 You can backup a partition[^17] using `dd`, e.g. `adb shell su -c dd if=/dev/path/to/<partition> > <partition>.img` to your pc.
 
-Pretty much every ROM installation goes like this:
-- OEM unlocking and USB debugging (as root if the toggle is available) need to be enabled as per the `OEM Unlocking` section above
+Pretty much every rom installation goes like this:
+- OEM unlocking and USB debugging need to be enabled
 - `fastboot flashing unlock` is another safeguard, and ***`also the data partition wipe`***.
 - `fastboot flash <partition> <uncompressed file>` flashes a specific partition. Most ROMs will bundle this in a script of some kind, for aforementioned "don't brick your phone" reasons. After flashing a few partitions in your guide, you'll be done.
 
@@ -115,8 +112,7 @@ Again, if you're using one of the secure Pixel roms, you don't want to keep root
 
 You can get Magisk [here](https://github.com/topjohnwu/Magisk/releases). It's a neat little program to manage which apps on your phone get root access, or more importantly, which apps can see that *you* have root access. It has its own [guide](https://topjohnwu.github.io/Magisk/install.html). If you don't have boot ramdisk, keeping root becomes very tedious and I personally wouldn't bother.
 
-
-If you're going to flash [TWRP](https://twrp.me/Devices/) as a recovery, do it now, and try to sideload the Magisk `.apk` after renaming it to a `.zip`, to skip this next part.
+If you're going to flash [TWRP](https://twrp.me/Devices/) as a recovery, do it now, and try to sideload[^21] the Magisk `.apk` after renaming it to a `.zip`, to skip this next part.
 
 The Magisk guide doesn't tell you how to get a `boot.img` copy. Getting `init_boot.img` works much the same way, just ignore the suffix syntax.
 - Find out if you have `init_boot.img` by running `adb shell su -c find /dev -type f -name 'init_boot*' 2>/dev/null`.
@@ -157,7 +153,11 @@ Go back into the bootloader interface (`adb -d reboot bootloader`) and `fastboot
 
 [^13]: Keeping root means giving apps access to root. However, we don't want every app to have root access, so we control who gets what. However, android will still attempt to notify apps if the user has root access. Banking apps are notorious for refusing to work if android snitches on you. So we have to play this constant game of trying to hide the fact that we have root from android, which seems impossible, but then you remember, we have complete root access. Anyway, we've been winning this game for the past few years, but it was pretty dire like 5 years ago.
 
-[^14]: You may also encounter the `dalvik cache` or the `ART cache`. These can also generally be safely wiped. Dalvik is the old VM that apps used to run in. ART (android runtime) replaced it a long time ago, instead generating bytecode from apps to load them faster.
+[^14]:
+- `data` stores our user data; installed apps, settings, etc. we won't flash this, but guides may have you wipe it.
+- if wiping `cache` breaks something, it deserves to be broken. You may also encounter `dalvik cache` or `ART cache`. These can also generally be safely wiped. Dalvik is the old VM that apps used to run in. ART (android runtime) replaced it a long time ago, instead generating bytecode from apps to load them faster.
+- `radio`: (or modem) some niche roms will want to flash it, particularly for carrier-locked phones.
+- `misc` mostly stores settings related to other partitions. I've never touched it.
 
 [^15]: I also usually sanity-check at [gsmarena](https://gsmarena.com) and search for my phone, and expand the network section like so:
 ![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/pixel-models.png)
@@ -165,10 +165,12 @@ The Pixel 5 (redfin) has 2 submodels, `GD1YQ` and `GTT9Q`. This shows how models
 
 [^16]: Also, change each `animation scale` to 0.5x, oh my god, it's so smooth.
 
-[^17]: You aren't necessarily rooted right now. While you can overwrite existing partitions, some images don't provide root debugging. You can test by running `adb root`, or `adb shell` followed by `su`. If root debugging isn't an option in `developer options`, you could try TWRP (download the twrp img, and then boot into it with `fastboot boot <img>`). Some phone OEMs provide tools for this exact reason, and you could always disassemble the phone to directly access the chips if you reeeeally wanted the images, I guess?
+[^17]: You aren't necessarily rooted right now. While you can overwrite existing partitions, some images don't provide root debugging. You can test by running `adb root`, or `adb shell` followed by `su`. If root debugging isn't an option in `developer options`, you could try TWRP (download the twrp img, and then boot into it with `fastboot boot <img>`). You can try your luck downloading stock firmware for your phone (check [xda](https://xda-developers.com)), but obviously you can't get e.g. your data partition. Some phone OEMs provide tools for this exact reason, and you could always disassemble the phone to directly access the chips if you reeeeally wanted the images, I guess?
 
-[^18]: You'll probably want to dump the boot image in userspace to delete it easily later. Almost always `/storage/emulated/0/`
+[^18]: You'll probably want to dump the boot image in userspace (almost always `/storage/emulated/0/`) to delete it easily later.
 
 [^19]: ![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/familiarity.png)
 
 [^20]: Android phones these days usually have an A/B booting system; there are actually 2 boot images, and only one is live, and the other receives updates, and then they switch. `adb shell getprop ro.boot.slot_suffix` is the idiomatic way to determine if A or B is live (we want the live one). If that doesn't work, enter your bootloader interface again and run `fastboot getvar current-slot` (sometimes it's also just displayed in the bootloader interface UI).
+
+[^21]: TWRP's UI has `sideload` in a submenu somewhere. You start sideloading on the phone, then you `adb sideload <file.zip>` from your pc.
