@@ -73,13 +73,13 @@
 <p>Back in November I told my friends I&rsquo;d do advent of code with them this year. I was going to do it entirely in Rust, because I kept talking about how much I wanted to learn more Rust to actually use it for systems programming. I fell a bit behind, caught up some days, and promised I&rsquo;d catch up when I had more free time over the holidays. String processing was a little weird, but manageable; I spent evenings sipping tea and staring at <code>std::vec::Vec</code> and <code>std::str</code> to replicate the kind of pythonic 10-line algorithms I usually write for <a href="https://github.com/graevy/leetcode">leetcode problems</a>.</p>
 <p>Single files for a rust repository are a little problematic to debug, so it&rsquo;d be easier to just <a href="https://github.com/graevy/aoc22/blob/main/Cargo.toml">show you</a> what I settled on for a structure.</p>
 <p>And then I hit day 7, a <a href="https://adventofcode.com/2022/day/7">graphing problem</a> and I learned I didn&rsquo;t understand a few key concepts. And it snowballed. And about 2 weeks of hour-a-day study produced 9 attempts before a success.</p>
-<h3 id="lessons-from-graph-problems-in-rust">Lessons from graph problems in Rust</h3>
+<h3 id="lessons-from-circular-graph-problems-in-rust">Lessons from circular graph problems in Rust</h3>
 <ul>
 <li>
-<p>A mutable reference <em>excludes</em> <em>all</em> other references to an object; the compiler can&rsquo;t point to a mutating object and also guarantee that its fields etc. won&rsquo;t change. This was a really basic thing to miss that just hadn&rsquo;t come up yet.</p>
+<p>A mutable reference <em>excludes</em> <em>all</em> other references to an object; the compiler can&rsquo;t point to a mutating object and also guarantee safe member access. This was a really basic thing to miss that just hadn&rsquo;t come up yet.</p>
 </li>
 <li>
-<p>Parent-child referencing is notoriously difficult because of <a href="https://doc.rust-lang.org/reference/interior-mutability.html">interior mutability</a>; if I want to edit a struct field in Child, references to Child have to be mutable; Child&rsquo;s children can&rsquo;t reference Child because Child is mutably referenced.
+<p>Parent-child referencing is notoriously difficult because of <a href="https://doc.rust-lang.org/reference/interior-mutability.html">interior mutability</a>; if I want to edit Child, I need a mutable reference, preventing Child&rsquo;s children from referencing  Child.
 If Parent instead owns (and doesn&rsquo;t reference) Child, multiple children of the same parent will still run into reference exclusion.
 And also, Parent must outlive Child, preventing some constant-time removal operations. Yay.</p>
 </li>
@@ -87,19 +87,19 @@ And also, Parent must outlive Child, preventing some constant-time removal opera
 <p>There are 4 solutions to this that I&rsquo;m aware of:</p>
 <ol>
 <li>
-<p>A weak pointer in Rust is like a regular pointer in other languages. It&rsquo;s like an <code>Option&lt;pointer&gt;</code>, and by treating it this way, we can do interior mutability (mutating an object &ldquo;referenced&rdquo; immutably). This is widely taught as a solution, and involves <code>Rc&lt;RefCell&lt;Obj&gt;&gt;</code> typing (use a type alias with deref derivations).</p>
+<p>A weak pointer in Rust is like a regular pointer in other languages. It&rsquo;s like an <code>Option&lt;pointer&gt;</code>, and by treating it this way, we can do interior mutability (mutating an object &ldquo;referenced&rdquo; immutably). This is widely taught as a solution, and involves <code>Rc&lt;RefCell&lt;Obj&gt;&gt;</code> typing (use a type alias with deref derivations). While memory <em>safe</em>, it can leak due to circular referencing if you aren&rsquo;t careful.</p>
 </li>
 <li>
-<p>The parents and children are just dumped into a compound data structure like a vec or a hashset and the actual graph just indexes that structure. This is the most common; it&rsquo;s sort-of unsafe because indices have no guarantees. You can address this with:</p>
+<p>The parents and children are just dumped into a compound data structure like a vec and the actual graph just indexes that structure. This is the most common because it&rsquo;s the easiest. It&rsquo;s unsafe because the indices have no guarantees. You can address this with:</p>
 </li>
 <li>
-<p>Arenas (append-only compound data structures) can neatly handle the parent-children lifetime issues present in graph structures, but only if the contents won&rsquo;t mutate.</p>
+<p>Arenas (append-only compound data structures) can neatly handle parent-children lifetime issues present in circular graph structures, <em>but only if the contents won&rsquo;t mutate</em>.</p>
 </li>
 <li>
-<p>Just use <code>UnsafeCell</code> and deal with unsafe rust. Admit defeat.</p>
+<p>Just use <code>UnsafeCell</code> and deal with unsafe rust. Admit defeat. At least <code>unsafe</code> is a good warning; vec indexing isn&rsquo;t.</p>
 </li>
 </ol>
-<p>Graph structures have a reputation in the rust community, and I&rsquo;m definitely not the first person to run into this. I probably also got some things wrong. Three other things stuck with me:</p>
+<p>So there is no idiom; no universal best-practice. Graph structures have a reputation in the rust community, and I&rsquo;m definitely not the first person to run into this. I probably also got some things wrong. Three other things stuck with me:</p>
 <ol>
 <li>
 <p>Scope ends with a <code>}</code>. That&rsquo;s it; that&rsquo;s when the values are dropped.</p>
@@ -111,7 +111,7 @@ And also, Parent must outlive Child, preventing some constant-time removal opera
 <p><code>Impl</code>s require lifetime parameters because methods are attached to objects like children are attached to parents in graph structures.</p>
 </li>
 </ol>
-<p>To get to this point, I had to read half of The Book. I burnt out on advent and went and built this website as another project to learn about networks (and dove in over my head again).</p>
+<p>To get to this point, I had to read half of The Book. I burnt out on advent and went and built this website as another project to study Ops (and dove in over my head again).</p>
 
     </div>
 
