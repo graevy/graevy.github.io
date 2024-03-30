@@ -4,7 +4,7 @@ date: 2024-03-19T13:52:11-07:00
 draft: false
 ---
 
-This is a step-by-step guide to ~~smugly link whenver someone asks me to root their phone~~ installing a custom rom for your android phone.
+This is a step-by-step guide to ~~smugly link whenver someone asks me to root their phone~~ installing a custom rom for your android phone (or tablet!).
 
 Intermediate difficulty[^19]; we'll be using a terminal (powershell[^6] on windows). You'll have to retrieve some information about your phone and your desired rom that I can't easily help you get. If you're stuck, bring your phone to open hack night so we can fix it.
 
@@ -131,7 +131,7 @@ Go back into the bootloader interface (`adb -d reboot bootloader`) and `fastboot
 
 [^2]: FKA CyanogenMod, the oldest game in town
 
-[^3]: AKA bootloader unlocking, NOT carrier unlocking. Carrier unlocking means you can use the phone on any carrier (but you will probably want to check band compatibility for a phone from a separate region). OEM unlocking means the Original Equipment Manufacturer can unlock your bootloader.
+[^3]: NOT carrier unlocking. Carrier unlocking means you can use the phone on any carrier (but you will probably want to check band compatibility for a phone from a separate region). OEM unlocking means the Original Equipment Manufacturer permits bootloader unlocking.
 
 [^4]: I have never unrecoverably bricked a phone, or known anyone who has. I haven't personally dealt with random crashes, but I've seen them
 
