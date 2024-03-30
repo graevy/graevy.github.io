@@ -63,7 +63,7 @@ If you didn't buy a phone specifically for this, this might become much more ann
 - Go to developer options (under `system` settings) and see if there's an `OEM unlocking` toggle.
 - While you're here, enable USB debugging
 
-If `OEM Unlocking` is greyed-out, you might have to get an unlock code from your phone manufacturer and insert it via `fastboot` (this is as annoying as it sounds). Otherwise, you probably can't proceed. Go to [xda-developers](https://xda-developers.com), find your phone subforum, and see if anyone has posted about rooting it. In ye olden days (a decade ago, when I first started rooting my phones), you typically had to use some privilege-escalation linux kernel vulnerability to unlock a bootloader. Good luck!
+If `OEM Unlocking` is greyed-out, you might have to get an unlock code from your phone manufacturer and insert it via `fastboot` (this is as annoying as it sounds). Otherwise, you probably can't proceed. Go to [xda-developers](https://xda-developers.com), find your phone subforum, and see if anyone has posted about rooting it. In ye olden days (a decade ago[^22], when I first started rooting my phones), you typically had to use some privilege-escalation linux kernel vulnerability to unlock a bootloader. Good luck!
 
 ### Connecting a pc to a phone
 
@@ -170,3 +170,5 @@ The Pixel 5 (redfin) has 2 submodels, `GD1YQ` and `GTT9Q`. This shows how models
 [^20]: Android phones these days usually have an A/B booting system; there are actually 2 boot images, and only one is live, and the other receives updates, and then they switch. `adb shell getprop ro.boot.slot_suffix` is the idiomatic way to determine if A or B is live (we want the live one). If that doesn't work, enter your bootloader interface again and run `fastboot getvar current-slot` (sometimes it's also just displayed in the bootloader interface UI).
 
 [^21]: TWRP's UI has `sideload` in a submenu somewhere. You start sideloading on the phone, then you `adb sideload <file.zip>` from your pc.
+
+[^22]: The "golden age" of android rooting is probably from a bit after 2010 until about 2015. In that era, android lacked features that root access could implement. Phones often had removeable batteries and a bunch of unused hardware (aforementioned FM/AM radio, IR blasters, etc). Touchwiz was standard on a lot of phones and it was atrocious. Phones had worse hardware and were seriously bogged down by bloatware. Small communities  cropped up for each popular phone model. Gradually, the market settled, rooting became streamlined, and android phones became feature complete, companies stopped experimenting with hardware, and Samsung learned how to make a decent launcher.
