@@ -90,7 +90,7 @@ You'll lose all data on your phone if we proceed. This is the scary step, too. A
 Every rom has a different MO for flashing, and you need to find your rom's installation guide ([Lineage](https://wiki.lineageos.org/devices/) [Graphene](https://grapheneos.org/install/web) [Copperhead](https://copperhead.co/android/docs/install/) [Calyx](https://calyxos.org/install/)). Most use a script, some might use first-party tools like samsung Odin, many just flash the recovery partition and then package the other partitions like an android update. A non-exhaustive[^14] list of partitions you might have to flash:
 - Most will flash `boot`, the partition your phone is booted into right now. ***`A bad bootloader flash is how you brick a phone`***; the bootloader can rescue all other partitions (via `fastboot flash`). There are tools, usually first-party, to recover from brick, but don't count on them.
 - `system` stores most of what constitutes our rom. A bad flash here will probably boot-loop your phone.
-- `recovery` is the partition that helps you rebuild your phone when it breaks; most roms will flash it. I highly recommend [TWRP](https://twrp.me/Devices/), though you should check version compatibility with your rom (and don't use it with the secure Pixel roms).
+- `recovery` is the partition that helps you rebuild your phone when it breaks; most roms will flash it. I like [TWRP](https://twrp.me/Devices/), though it's not secure (avoid it on the Pixel roms), and you should check version compatibility with your rom.
 - `kernel`: user-friendly roms aren't usually going to require a custom linux kernel. A bad flash would probably boot-loop or crash frequently.
 
 You can backup a partition[^17] using `dd`, e.g. `adb shell su -c dd if=/dev/path/to/<partition> > <partition>.img` to your pc.
@@ -110,7 +110,7 @@ Again, if you're using one of the secure Pixel roms, you don't want to keep root
 
 ### Magisk
 
-You can get Magisk [here](https://github.com/topjohnwu/Magisk/releases). It's a neat little program to manage which apps on your phone get root access, or more importantly, which apps can see that *you* have root access. It has its own [guide](https://topjohnwu.github.io/Magisk/install.html). If you don't have boot ramdisk, keeping root becomes very tedious and I personally wouldn't bother.
+You can get Magisk [here](https://github.com/topjohnwu/Magisk/releases). It's a neat little platform to manage which apps on your phone get root, or more importantly, which apps can see that *you* have root. It has its own [guide](https://topjohnwu.github.io/Magisk/install.html). If you don't have boot ramdisk, keeping root becomes very tedious and I personally wouldn't bother.
 
 If you're going to flash [TWRP](https://twrp.me/Devices/) as a recovery, do it now, and try to sideload[^21] the Magisk `.apk` after renaming it to a `.zip`, to skip this next part.
 
@@ -118,9 +118,9 @@ The Magisk guide doesn't tell you how to get a `boot.img` copy. Getting `init_bo
 - Find out if you have `init_boot.img` by running `adb shell su -c find /dev -type f -name 'init_boot*' 2>/dev/null`.
 - If nothing, check for a regular `boot.img` with `adb shell su -c find /dev -type f -name 'boot*' 2>/dev/null`.
 - If either of these commands give you multiple `_a` and `_b` images, determine the current active boot image slot[^20] with `adb shell getprop ro.boot.slot_suffix`.
-- So to recap, `init_boot` takes priority over regular `boot` images, and if you have multiple `init_boot` or `boot` images with `_a`/`_b` suffixes, use the active one.
+- So to recap, `init_boot` takes priority over regular `boot` images, and if you have multiple `init_boot` or `boot` images with `_a`/`_b` suffixes, copy the active one:
 - Use the full filepath, including optional suffix, in `adb shell su -c dd if=<the live boot image> of=/wherever/you/want/to/dump/boot.img`[^18]
-- Now you can patch the image you grabbed using the Magisk app and continue with its own guide
+- Patch this image with the Magisk app and continue with [Magisk's guide](https://topjohnwu.github.io/Magisk/install.html)
 
 ### Re-lock your bootloader!
 
@@ -137,7 +137,7 @@ Go back into the bootloader interface (`adb -d reboot bootloader`) and `fastboot
 
 [^5]: iirc this isn't necessary because pairing is automatically accepted in the next step, but some phones are so picky.
 
-[^6]: For windows command prompt specifically, you'll have to find the adb executable after installing it, typically installed in `C:\Android\sdk\platform-tools\`. Press the windows key, search for `adb`, right click it and open file location to check. Then navigate to it in command prompt using `cd C:\path\to\adb\executable\parent\folder`, THEN you can run adb/fastboot commands.
+[^6]: For command prompt (not powershell), you'll have to find the adb executable after installing it, typically installed in `C:\Android\sdk\platform-tools\`. Press the windows key, search for `adb`, right click it and open file location to check. Ensure you aren't staring at a shortcut instead of the actual file. Then navigate to it in command prompt using `cd C:\path\to\adb\executable\parent\folder`, THEN you can run adb/fastboot commands.
 
 [^7]: One time, I opened this menu, and was greeted with a glitched noise texture reminiscent of GPU failure. It still worked, though. Thankfully LG doesn't make phones anymore
 
@@ -153,11 +153,7 @@ Go back into the bootloader interface (`adb -d reboot bootloader`) and `fastboot
 
 [^13]: Keeping root means giving apps access to root. However, we don't want every app to have root access, so we control who gets what. However, android will still attempt to notify apps if the user has root access. Banking apps are notorious for refusing to work if android snitches on you. So we have to play this constant game of trying to hide the fact that we have root from android, which seems impossible, but then you remember, we have complete root access. Anyway, we've been winning this game for the past few years, but it was pretty dire like 5 years ago.
 
-[^14]:
-- `data` stores our user data; installed apps, settings, etc. we won't flash this, but guides may have you wipe it.
-- if wiping `cache` breaks something, it deserves to be broken. You may also encounter `dalvik cache` or `ART cache`. These can also generally be safely wiped. Dalvik is the old VM that apps used to run in. ART (android runtime) replaced it a long time ago, instead generating bytecode from apps to load them faster.
-- `radio`: (or modem) some niche roms will want to flash it, particularly for carrier-locked phones.
-- `misc` mostly stores settings related to other partitions. I've never touched it.
+[^14]:<br>- `data` stores our user data; installed apps, settings, etc. we won't flash this, but guides may have you wipe it.<br>- if wiping `cache` breaks something, it deserves to be broken. You may also encounter `dalvik cache` or `ART cache`. These can also generally be safely wiped. Dalvik is the old VM that apps used to run in. ART (android runtime) replaced it a long time ago, instead generating bytecode from apps to load them faster.<br>- `radio`: (or modem) some niche roms will want to flash it, particularly for carrier-locked phones.<br>- `misc` mostly stores settings related to other partitions. I've never touched it.
 
 [^15]: I also usually sanity-check at [gsmarena](https://gsmarena.com) and search for my phone, and expand the network section like so:
 ![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/pixel-models.png)
