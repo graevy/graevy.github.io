@@ -21,12 +21,12 @@ enableRobotsTXT = true
   #   title = "Categories"
   #   url = "/categories/"
   #   weight = -90
-  [[menu.main]]
-    identifier = "about"
-    name = "About"
-    title = "About"
-    url = "/about/"
-    weight = -80
+  # [[menu.main]]
+  #   identifier = "about"
+  #   name = "About"
+  #   title = "About"
+  #   url = "/about/"
+  #   weight = -80
   # [[menu.main]]
   #   identifier = "pdf"
   #   name = "Hire me (pdf)"
@@ -62,6 +62,9 @@ enableRobotsTXT = true
   [[params.social]]
     fa_icon = "fas fa-at fa-1x"
     href = "mailto:avry@pm.me"
+  [[params.social]]
+    fa_icon = "fas fa-address-card fa-1x"
+    href = "/about/"
 
 [markup]
   [markup.goldmark]
