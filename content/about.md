@@ -7,13 +7,10 @@ draft: false
 ```
 """
 Fine cave-aged Vermont cheddar;
-I love my community, piano, dogs, computers, chess, and terrible science fiction.
+Community, piano, dogs, computers, chess, and shlocky sci fi.
 
 Args:
     location (str): seattle
     pronouns (str): they/them
-
-Returns:
-    Person
 """
 ```

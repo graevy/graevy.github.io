@@ -10,29 +10,29 @@ enableRobotsTXT = true
 # Main menu items
 [menu]
   [[menu.main]]
-    identifier = "about"
-    name = "About"
-    title = "About"
-    url = "/about/"
-    weight = -110
-  [[menu.main]]
     identifier = "posts"
     name = "All Posts"
     title = "Posts"
     url = "/posts/"
     weight = -100
-  # [[menu.main]]
-  #   identifier = "categories"
-  #   name = "Categories"
-  #   title = "Categories"
-  #   url = "/categories/"
-  #   weight = -90
-  # [[menu.main]]
+  [[menu.main]]
+    identifier = "categories"
+    name = "Categories"
+    title = "Categories"
+    url = "/categories/"
+    weight = -90
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    title = "About"
+    url = "/about/"
+    weight = -80
+  [[menu.main]]
   #   identifier = "pdf"
   #   name = "Hire me (pdf)"
   #   title = "CV"
   #   url = "/resume/resume.pdf"
-  #   weight = -80
+  #   weight = -70
 
 # Configuration Features
 [params]
