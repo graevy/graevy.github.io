@@ -109,7 +109,7 @@ Here are overviews of content-specific internet piracy ecosystems. Full resource
 
 ### <a name="viruses"></a>[Viruses and torrenting](#navigation)
 
-The typical targets on your computer are your credentials, its ability to mine cryptocurrency or participate in a [botnet](https://www.malwarebytes.com/botnet), and your willingness to pay ransom for your files. Most viruses try to remain undetected; if you take risks torrenting, either wipe your drive periodically or maintain a dedicated machine for torrenting.
+The typical targets on your computer are your credentials, its ability to mine cryptocurrency or participate in a [botnet](https://www.malwarebytes.com/botnet), and your willingness to pay ransom for it. Most viruses try to remain undetected; if you take risks torrenting, either wipe your drive periodically or maintain a dedicated machine for torrenting.
 
 Some tips:
 
@@ -154,7 +154,7 @@ To install windows:
 - Take a thumb drive and either [rufus](https://rufus.ie/en/) (windows), Disk Utility (mac), or something like `dd if=/path/to/iso of=/path/to/usb conv=fsync bs=8M`[^22] (linux) to make an installation USB
 - Reboot with the USB plugged in. You will usually have to [enter your BIOS](https://www.wikihow.com/Enter-BIOS) (or boot menu), typically by holding down the f2 (or f8, f12, insert, delete...) key, booting from the USB or changing your boot order to prioritize it.
 - Install Windows. Select Pro or Pro N (Pro N is the EU-compliant version with less bloat, but you'll want to install the Windows Media Feature Pack yourself)
-- I recommend [tronscript](https://old.reddit.com/r/tronscript) for debloating[^5] and [chocolatey](https://chocolatey.org) for package managing[^6]
+- I recommend [tronscript](https://old.reddit.com/r/tronscript) or [winutil](https://github.com/ChrisTitusTech/winutil) for debloating[^5] and [chocolatey](https://chocolatey.org) for package managing[^6]
 - An example tron command for a `tron.bat` file downloaded to `C:\Users\a\Downloads\Tron` on a fresh machine is `C:\Users\a\Downloads\Tron\tron.bat -a -sa -sd -scc -v` (skipping antivirus scans, defrag, and cookies). Run this in cmd as an administrator.
 - Crack windows using the *admin* powershell github commands in the [link](https://github.com/massgravel/Microsoft-Activation-Scripts) above
 
@@ -164,7 +164,7 @@ It's hard to get a virus from downloading music. [rutracker](https://rutracker.o
 
 For phones: you're probably looking for a cracked spotify app in Apps below. [revanced](https://revanced.io/)/[newpipe](https://newpipe.net/) will handle youtube. These projects come and go.
 
-For desktops, [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases) downloads youtube media, and just using the web version of spotify with ublock origin on firefox should block its ads, but if you want, [here's a cracked windows spotify github](https://github.com/mrpond/BlockTheSpot/releases)
+For desktops, [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases) downloads youtube media, and just using the web version of spotify with ublock origin on firefox should block its ads, but if you want, [here's a cracked windows spotify github](https://github.com/mrpond/BlockTheSpot/releases), [another](https://github.com/SpotX-Official/SpotX), and [one for macos/linux](https://github.com/SpotX-Official/SpotX-Bash).
 
 ### <a name="video"></a>[Video](#navigation)
 
@@ -172,7 +172,7 @@ The majority of torrenting. Low risk[^10]; media doesn't need elevated permissio
 
 When starting a new torrent, downloading in "sequential order" or similar lets you functionally stream video[^8]. You only need to download about 5-10% of a video before you can play it if your connection is fast enough. Use [VLC](https://www.videolan.org/) or [MPC-HC](https://github.com/clsid2/mpc-hc/releases) to watch videos.
 
-I asked chatGPT: "provide a glossary of terms (such as "x265", or "5.1", or "BRRip") used to describe video hosted on torrent trackers" and received this response before it was cut off due to length:
+I asked chatGPT: "provide a glossary of terms (such as "x265", or "5.1", or "BRRip") used to describe video hosted on torrent trackers" and received this truncated response:
 
 ```
 Sure, here's a glossary of terms commonly used to describe video hosted on torrent trackers:
@@ -214,9 +214,13 @@ Don't torrent these off of trackers; there's a bounty ecosystem where people don
 
 ### <a name="books"></a>[Books/academic papers](#navigation)
 
-[libgen](https://libgen.rs) is the best[^1]. [Myanonamouse](https://www.myanonamouse.net/) is a good private tracker for books that will let you in after a technical interview. The [piracy megathread](https://www.reddit.com/r/Piracy/wiki/megathread/reading_material_and_elearning) maintains a list of book trackers; these are always coming and going. A filetype search[^3] with pdf, mobi, epub, etc. extensions is a last resort.
+Currently, my first stop is [Anna's Archive](https://annas-archive.org/), an open-source search engine for many book trackers. The [piracy megathread](https://www.reddit.com/r/Piracy/wiki/megathread/reading_material_and_elearning) maintains a list of book trackers. [Libgen](https://libgen.rs) is generally the best book tracker[^1]. 
 
-For papers specifically, check [libgen](https://libgen.rs), then [sci-hub](https://sci-hub.se/) (mediocre uptime; blame the lawsuits), then [academictorrents](https://academictorrents.com/), then the [piracy megathread](https://www.reddit.com/r/Piracy/wiki/megathread/reading_material_and_elearning), then...just email paper authors and they'll usually send you a copy. You might be able to find a non-paywalled copy on google scholar. Extensions like Bypass Paywalls Clean or Unpaywall have historically been bad at papers.
+[Myanonamouse](https://www.myanonamouse.net/) is a good private tracker for books that will let you in after a technical interview. 
+
+A pdf/mobi/epub/etc filetype search[^3] is a good last resort.
+
+For papers specifically, Anna's indexed [sci-hub](https://sci-hub.se/) before the lawsuits stalled it. [Academictorrents](https://academictorrents.com/) is solid, then...just email paper authors and they'll usually send you a copy. You might be able to find a non-paywalled copy on google scholar. Extensions like Bypass Paywalls Clean or Unpaywall have historically been bad at papers.
 
 Have some junk text to make footnotes better[^50]
 

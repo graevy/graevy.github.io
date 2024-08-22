@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en-us"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <title>quatloo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+
+    
+    <link rel="icon" type= image/x-icon href= /favicon.ico>
+
+    
+    
+    
+    <link rel="stylesheet" href="../../css/theme.min.css">
+
+    
+    
+    
+
+    
+  
+
+
+</head>
+<body>
+        <div id="content" class="mx-auto"><header class="container mt-sm-5 mt-4 mb-4 mt-xs-1">
+    <div class="row">
+        
+        <div class="col-12 text-center">
+        
+            <h2 class="m-0 mb-2 mt-4">
+                <a href="../../posts/" class="text-decoration-none">
+                    
+                        graevy
+                    
+                </a>
+            </h2>
+            <p class="text-muted mb-1">
+                
+                    Wetware Developer
+                
+            </p>
+            <ul id="nav-links" class="list-inline mb-2">
+                
+                
+            </ul>
+            <ul id="nav-social" class="list-inline">
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="https://github.com/graevy" target="_blank">
+                            <i class="fab fa-github fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="mailto:avry@pm.me" target="_blank">
+                            <i class="fas fa-at fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="../../about/" target="_blank">
+                            <i class="fas fa-address-card fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+    <hr />
+</header><div class="container">
+    <div class="pl-sm-4 ml-sm-5">
+        <p>So I co-founded a <a href="https://devhack.net">hackerspace</a> with 2 friends about a year ago, which has only really been operational for about 5(?) months. Things are somewhat stable; we&rsquo;re covering about 2/3 of our operating costs already, so we feel comfortable calling it a success. I&rsquo;m gonna try to distill the early wisdom before I lose the perspective.</p>
+<h3 id="too-many-cooks-the-hackerspace-volunteer-contribution-model">Too Many Cooks: The Hackerspace Volunteer Contribution Model</h3>
+<p>The demographic that frequents a hackerspace is financially and emotionally invested in tech. Contributors are very enthusiastic about contributing<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, but flakey. Volunteer output ebbs and flows according to passion, on-call status, the job market, etc.; we are the first chore that gets dropped when you&rsquo;re burnt out. The first thing to understand about coordinating nerds to bootstrap infrastructure for free is that we aren&rsquo;t remotely consistent.</p>
+<p>When we dumped our first 2u on the floor of the server room, before we even had racks, we had Proxmox. It&rsquo;s a simple hypervisor, and most of our services are still guests on that 2u; while I&rsquo;m going to speak at length about its many flaws, I don&rsquo;t think starting with Proxmox was a mistake.</p>
+<p>Before we had settled on responsibilities, over the course of 2 nights, one of our members:</p>
+<ul>
+<li>setup Proxmox</li>
+<li>hacked together a door opener<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> with a telegram bot and a relay</li>
+<li>configured an IoT network to house said relay</li>
+<li>disappeared without documenting anything, and hasn&rsquo;t returned</li>
+</ul>
+<p>A microcosm. Especially during the first few months, where we met sporadically to vivify a hastily evacuated<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> WeWork hub. I will spare you the tedium of leasing, furniture acquisition<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>, and access control; nothing technological was occurring for the first 3 months, and by then, we&rsquo;d learned the heat was broken.</p>
+<h3 id="how-i-accidentally-got-put-in-charge-of-infrastructure">How I accidentally got put in charge of infrastructure</h3>
+<p>Devhack resembled a sort of commercial freezer during the first winter, and rewilding the 50-degree sterile office environment was my first charge. Of the 3 of us, I alone expressed aesthetic concerns, and being the least technological, I was the obvious choice to theme and layout the space<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/battery/shibari.jpg" alt=""></p>
+<p>This didn&rsquo;t last. I made obvious decisions about space usage, sourced a dozen posters and contracted furniture, but I was also the only underemployee; I had the most free time.</p>
+<p>We&rsquo;d host an open hack night, and the other two would have obligations. A was on call, B was taking a mental health break from tech, A was working late, B went on an extended European burnout-vacation, etc.; I was the only consistent event host. As people settled into their roles, the need for a dedicated event host dissolved<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, but every Thursday from about 5pm-1am, I took care of the space.</p>
+<p>Being consistent and a co-founder caused people to ask me to give them access to/build/coordinate something. Most of them would assume I knew everything about our projects<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>. I&rsquo;m not some savant; I just had like 20 hours a week to complete tasks like &ldquo;give the printer a CUPS container we can send files to so we don&rsquo;t need drivers on each machine&rdquo; or &ldquo;find out why the nodes can&rsquo;t talk to each other&rdquo; or &ldquo;proxmox HA&rdquo; or &ldquo;make auth happen&rdquo;. I failed about half of these tasks.</p>
+<h3 id="anarchy-state-and-utopia">Anarchy, State, and Utopia</h3>
+<p>Volunteer churn resulted in, best-case, a lot of half-finished and duplicated work. Half a dozen people with hypervisor admin access kept intermittently stepping on each other. Flakey services cause hasty fixes cause flakey services. Mediawiki documentation stopgaps the problem, but service interdependency propagates downtime.</p>
+<p>We debated, for several months, what would replace our hell. We decided that &ldquo;version control for filesystems&rdquo; was kindof possible with declarative IaC. In lieu of a test env, being able to regenerate infrastructure off a git repo and a shell script would at least spare us extended downtime with the nuclear option. Aforementioned employee #1 European vacation left devhack&rsquo;s infra design to me, the SRE with no experience. I asked the half-dozen homelab enthusiasts for advice and got as many different answers, so I spent awhile reading about bare-metal devops stacks on reddit. Ultimately, two things became clear to me:</p>
+<ol>
+<li>Kubernetes, being declarative, scalable, over-engineered, and popular, is the perfect choice for enthusiasts with colocation hosting ambitions</li>
+<li>Whatever kubernetes is built on top of needs to be sufficiently declarative to rebuild everything from a git repo</li>
+</ol>
+<p>One of the <a href="https://github.com/1lann">professionals</a> had a Terraform -&gt; Kubernetes stack that he used for everything and was willing to teach me, so that was an easy decision. Unfortunately, he was moving end-of-month, so he did what he could for about 3 weeks. Chuie laid the foundation that I still creatively break and reform to this day. Thanks!</p>
+<p>To generate the images for each machine in the space, I thought I&rsquo;d use Packer; same language, nice interoperability. I lost a week trying to wrangle Packer and Terraform on our servers. These tools are made for cloud infrastructure. People suggested Chef, Ansible, MaaS&hellip;I wasn&rsquo;t going to add more complexity. Our images are made by fetching the latest Debian netinst iso and repacking it with <a href="https://github.com/graevy/debhack/blob/main/repack_mbr.sh">my script</a><sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> to bundle a Debian <code>preseed.cfg</code> for unattended installation. Then, a Terraform<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup> provisioner takes the installation and customizes it per-machine. Good enough; I&rsquo;ll trade Debian lock-in<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> for simplicity.</p>
+<p>It took three months or so to get the cluster to an acceptable state. I must thank <a href="https://github.com/thefinn93">Finn</a> for picking me up where I stalled (cluster networking) and guiding us toward best-practices. Our biggest delays:</p>
+<ul>
+<li>Renumbering the network about halfway through</li>
+<li>Multiple switch configuration editors causing cluster inter-VLAN routing failures</li>
+<li>The wiki dying after migrating its VM because Proxmox does not play well with NixOS</li>
+</ul>
+<p>The cluster is at least fully operational now. There&rsquo;s a lot of k8s-specific boilerplate, which we don&rsquo;t think we can protect our members from. They don&rsquo;t have to interact with Terraform. Good enough for now.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>particularly in the greenfield stage&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>the devhack door has become a sort of biblical horror, perhaps deserving of its own blogpost.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>the plants were left to die of thirst, the utility closet wasn&rsquo;t traversable, the heat didn&rsquo;t work, etc.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>most of our stuff came from the UW surplus store, friends, and their trucks. Hard to beat $5 whiteboards&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>and in theory, learn by osmosis.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>I&rsquo;m writing this from <a href="https://toorcamp.org">ToorCamp</a> with the other 2. Tomorrow will be the first time one of us has not run open hack night.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>This is a great way to develop Imposter Syndrome, by the way&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p>This is a surprisingly complicated process. Distro installation images are usually read-only, and you have to supply initrd + kernel commandline options, and debugging requires doing this in a VM&hellip;&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p>Hashicorp closed-sourced Terraform, so I moved us to OpenTofu, which is the same, for now.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>Devhack tradition dictates one must take a shot every time one installs debian. One of our members built an <a href="https://github.com/Kansattica/DebianWomanEdition">eternal debian installation</a>. It has broken one hard drive and one cd drive thus far.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+            </div>
+        </div><footer class="text-center pb-1">
+    <small class="text-muted">
+        Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a>, <a href="https://github.com/austingebauer/devise" target="_blank">Devise</a>
+    </small>
+</footer>
+</body>
+</html>

@@ -2,62 +2,65 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://quatl.ooo/posts/</loc>
-    <lastmod>2024-05-26T03:55:01-07:00</lastmod>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2024-08-09T04:31:43-07:00</lastmod>
   </url><url>
-    <loc>http://quatl.ooo/</loc>
-    <lastmod>2024-05-26T03:55:01-07:00</lastmod>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2024-08-09T04:31:43-07:00</lastmod>
   </url><url>
-    <loc>http://quatl.ooo/posts/roms/</loc>
+    <loc>http://localhost:1313/posts/devhack-1/</loc>
+    <lastmod>2024-06-26T01:40:22-07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/roms/</loc>
     <lastmod>2024-03-19T13:52:11-07:00</lastmod>
   </url><url>
-    <loc>http://quatl.ooo/posts/ss14-2/</loc>
+    <loc>http://localhost:1313/posts/ss14-2/</loc>
     <lastmod>2024-02-04T21:24:49-08:00</lastmod>
   </url><url>
-    <loc>http://quatl.ooo/posts/ccna_pt1/</loc>
+    <loc>http://localhost:1313/posts/ccna_pt1/</loc>
     <lastmod>2023-10-22T20:14:09-07:00</lastmod>
   </url><url>
-    <loc>http://quatl.ooo/posts/ss14/</loc>
+    <loc>http://localhost:1313/posts/ss14/</loc>
     <lastmod>2023-07-30T22:52:10-07:00</lastmod>
   </url><url>
-    <loc>http://quatl.ooo/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
     <lastmod>2023-06-18T04:00:51-07:00</lastmod>
   </url><url>
-    <loc>http://quatl.ooo/posts/hotspot/</loc>
+    <loc>http://localhost:1313/posts/hotspot/</loc>
     <lastmod>2023-06-01T01:07:37-07:00</lastmod>
   </url><url>
-    <loc>http://quatl.ooo/posts/missouri/</loc>
+    <loc>http://localhost:1313/posts/missouri/</loc>
     <lastmod>2023-04-27T03:41:24-07:00</lastmod>
   </url><url>
-    <loc>http://quatl.ooo/posts/migration/</loc>
+    <loc>http://localhost:1313/posts/migration/</loc>
     <lastmod>2023-03-28T04:33:25-07:00</lastmod>
   </url><url>
-    <loc>http://quatl.ooo/posts/batteries/</loc>
+    <loc>http://localhost:1313/posts/batteries/</loc>
     <lastmod>2023-03-07T18:00:21-08:00</lastmod>
   </url><url>
-    <loc>http://quatl.ooo/posts/internet/</loc>
+    <loc>http://localhost:1313/posts/internet/</loc>
     <lastmod>2023-02-20T20:41:32-08:00</lastmod>
   </url><url>
-    <loc>http://quatl.ooo/posts/motherboards/</loc>
+    <loc>http://localhost:1313/posts/motherboards/</loc>
     <lastmod>2023-02-07T18:53:07-08:00</lastmod>
   </url><url>
-    <loc>http://quatl.ooo/posts/gopro/</loc>
+    <loc>http://localhost:1313/posts/gopro/</loc>
     <lastmod>2023-01-27T00:00:30-08:00</lastmod>
   </url><url>
-    <loc>http://quatl.ooo/posts/font/</loc>
+    <loc>http://localhost:1313/posts/font/</loc>
     <lastmod>2023-01-26T00:27:20-08:00</lastmod>
   </url><url>
-    <loc>http://quatl.ooo/posts/aoc22/</loc>
+    <loc>http://localhost:1313/posts/aoc22/</loc>
     <lastmod>2023-01-25T16:52:32-08:00</lastmod>
   </url><url>
-    <loc>http://quatl.ooo/posts/pipelines/</loc>
+    <loc>http://localhost:1313/posts/pipelines/</loc>
     <lastmod>2023-01-25T14:09:41-08:00</lastmod>
   </url><url>
-    <loc>http://quatl.ooo/posts/hello-world/</loc>
+    <loc>http://localhost:1313/posts/hello-world/</loc>
     <lastmod>2022-12-22T19:54:08-08:00</lastmod>
   </url><url>
-    <loc>http://quatl.ooo/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
   </url><url>
-    <loc>http://quatl.ooo/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
   </url>
 </urlset>
