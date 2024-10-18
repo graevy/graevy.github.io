@@ -97,7 +97,7 @@ Here are overviews of content-specific internet piracy ecosystems. Full resource
 
 ### <a name="legality"></a>[Torrenting's legality](#navigation)
 
-- Torrenting is only illegal when copyrighted data is exchanged, therefore:
+- In every jurisdiction I'm aware of, torrenting is only illegal when copyrighted data is exchanged, therefore:
     - the torrent software is itself perfectly legal,
     - the torrent tracker is legal[^14] because it doesn't host any copyrighted data; only references to it.
 - Exchanging files reveals your `IP address` unless you use a `VPN` or `proxy`;
