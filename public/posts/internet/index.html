@@ -18,6 +18,9 @@
     
 
     
+  
+
+
 </head>
 <body>
         <div id="content" class="mx-auto"><header class="container mt-sm-5 mt-4 mb-4 mt-xs-1">
@@ -96,10 +99,10 @@
 </ul>
 </li>
 </ul>
-<p>Last updated: Sep 23 2023 (please <a href="mailto:avry@pm.me">email me</a> [or text/telegram if you have it] with suggestions/etc.)</p>
+<p>Last updated: Jan 4 2025 (please <a href="mailto:avry@pm.me">email me</a> [or text/telegram if you have it] with suggestions/etc.)</p>
 <h1 id="a-namebrowserabrowsernavigation"><a name="browser"></a><a href="#navigation">Browser</a></h1>
-<p>Chrome is <a href="https://web.archive.org/web/20231009113102/https://arstechnica.com/gadgets/2023/09/googles-widely-opposed-ad-platform-the-privacy-sandbox-launches-in-chrome/">phasing out privacy features</a> and adblockers, and browser monopolies are bad<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Please switch to firefox; it&rsquo;s the most popular <a href="https://opensource.com/resources/what-open-source">open source</a> chromium alternative. Keep your old browser for when an addon<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> or chromium-centered-webdev breaks a page.</p>
-<p>Firefox addons I recommend<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> in order:</p>
+<p>Chrome <a href="https://web.archive.org/web/20231009113102/https://arstechnica.com/gadgets/2023/09/googles-widely-opposed-ad-platform-the-privacy-sandbox-launches-in-chrome/">phased out privacy features</a> and adblockers. Browser monopolies are bad<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Please switch to firefox; it&rsquo;s the most popular <a href="https://opensource.com/resources/what-open-source">open source</a> chromium alternative. Mozilla maintains <a href="https://support.mozilla.org/en-US/kb/switching-chrome-firefox">a page</a> on switching from chrome to firefox. Keep your old browser for when an addon<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> or chromium-centered-webdev breaks a page.</p>
+<p>Firefox addons I recommend<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> for most people:</p>
 <ul>
 <li><a href="https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/">Ublock Origin</a></li>
 <li><a href="https://addons.mozilla.org/en-US/firefox/addon/istilldontcareaboutcookies/">I still don&rsquo;t care about cookies</a> (manages cookie pop-ups)</li>
@@ -107,13 +110,11 @@
 <li><a href="https://addons.mozilla.org/en-US/firefox/addon/sponsorblock/">SponsorBlock</a> (skips youtube sponsored segments)</li>
 <li><a href="https://addons.mozilla.org/en-US/firefox/addon/twitch_5/">Alternative Player for Twitch.tv</a> (hides, not blocks, ads)</li>
 <li><a href="https://addons.mozilla.org/en-US/firefox/addon/link-cleaner-plus/">Link Cleaner+</a> (removes tracking data from URLs)</li>
-<li><a href="https://addons.mozilla.org/en-US/firefox/addon/tab-session-manager/">Tab Session Manager</a></li>
 </ul>
-<p>Firefox accounts have a password sync<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> feature between devices which also tracks public password database leaks. Use the Secure Password Generator addon for whenever firefox&rsquo;s generator doesn&rsquo;t recognize a password field. Access your logins in the address bar with <code>about:logins</code>.</p>
+<p>If you aren&rsquo;t going to use a password manager, firefox accounts have a password sync feature between devices. Use the Secure Password Generator addon for whenever firefox&rsquo;s generator doesn&rsquo;t recognize a password field. Access your logins in the address bar at <code>about:logins</code>.</p>
 <p>For better-than-chrome multitasking, <a href="https://web.archive.org/web/20230216193845/https://dev.to/msugakov/taking-firefox-memory-usage-under-control-on-linux-4b02">increasing <code>browser.low_commit_space_threshold_mb</code> makes firefox unload unused tabs</a>.</p>
-<p>Mozilla maintains <a href="https://support.mozilla.org/en-US/kb/switching-chrome-firefox">a page</a> on switching from chrome to firefox.</p>
 <h1 id="a-namesearchingasearching-tipsnavigation"><a name="searching"></a><a href="#navigation">Searching tips</a></h1>
-<p>There&rsquo;s a lot of misinformation and advertising in search results because of Search Engine Optimization, AI-generated content, and <a href="https://en.wikipedia.org/wiki/Enshittification">a lack of financial incentive to fix the problem</a>. Search engines have a general syntax<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>:</p>
+<p>There&rsquo;s a lot of misinformation and advertising in search results because of Search Engine Optimization, AI-generated content, and <a href="https://en.wikipedia.org/wiki/Enshittification">a lack of financial incentive to fix the problem</a>. Search engines have a general syntax<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>:</p>
 <ul>
 <li><code>&quot;vegan&quot; restaurants</code> will only return results containing the keyword <code>vegan</code></li>
 <li><code>restaurants -pinterest -vegan</code> will only return results that don&rsquo;t contain <code>vegan</code> or <code>pinterest</code></li>
@@ -121,43 +122,44 @@
 <li><code>&quot;vegan&quot; restaurants -expensive site:michelin.com</code> will give you michelin.com articles containing the word vegan about restaurants that don&rsquo;t have expensive anywhere in their body or title.</li>
 </ul>
 <p>Sitesearching reddit (appending <code>site:reddit.com</code>) is a common tactic to find unsponsored product reviews, but advertisers always adapt.</p>
-<p>For <em><strong>approximate</strong></em> knowledge that isn&rsquo;t monetized, instruction-tasked LLMs like chatGPT are a great way to search for things, because they&rsquo;re trained on the internet. I just searched &ldquo;what is the purpose of magnetic eye shadow pallette&rdquo;; I only saw ads. Here is a dialogue I just had with chatGPT:</p>
-<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/eyeshadow.png" alt=""></p>
+<p>For <em><strong>approximate</strong></em> knowledge that isn&rsquo;t monetized yet, instruction-tasked LLMs like chatGPT are a great way to search for things, because they&rsquo;re trained on the (2023) internet.</p>
 <p><a href="https://archive.org/">Archive.org</a> saves old webpages. To find the link below, I searched <code>darknetmarkets 2022 site:reddit.com</code>, looked for the first banned subreddit I could find, put its URL into the internet archive, retrieved an old version of the site, and found links in its sidebar.</p>
 <h1 id="a-nametoratorvpns-and-the-darkwebnavigation"><a name="tor"></a><a href="#navigation">TOR/VPNs and the darkweb</a></h1>
-<p><a href="https://www.torproject.org/download/">The Onion Router</a> bounces your connection around dozens of different anonymous nodes before reaching an endpoint. This is a <a href="https://web.archive.org/web/20220821150904/https://arstechnica.com/information-technology/2013/09/majority-of-tor-crypto-keys-could-be-broken-by-nsa-researcher-says/">generally</a> <a href="https://web.archive.org/web/20230122181201/https://gizmodo.com/fbi-tor-ip-address-muhammed-momtaz-al-azhari-isis-1849975153">secure</a> way to access the internet, but is slow. Make sure you <a href="https://tb-manual.torproject.org/running-tor-browser/">properly configure</a> TOR. <a href="https://tails.boum.org/">Tails</a> is a portable linux distribution that pre-configures TOR, if you&rsquo;re both knowledgeable and paranoid.</p>
-<p><a name="vpns"></a>VPNs are a node between user and destination. You connect to a website (destination) through a middleman, so the site can&rsquo;t see <a href="https://whatismyip.org/">your IP address</a>. Any VPN service with an ad budget is selling your <a href="https://web.archive.org/web/20230224200913/https://www.statista.com/topics/1464/big-data/#topicOverview">valuable</a> data to remain competitive. PrivateInternetAccess &amp; NordVPN also explicitly cooperate with states. <a href="https://mullvad.net/en/">Mullvad</a> is a frequently recommended vpn service.</p>
-<p>Darknet markets come and go all the time. At the moment, <a href="https://darknet.markets/">https://darknet.markets/</a> has a lot of links<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>. You can only use these links in a TOR browser. Monero is the current anonymous cryptocurrency of choice; Bitcoin is more traceable.</p>
+<p><a href="https://www.torproject.org/download/">The Onion Router</a> bounces your connection around dozens of different anonymous nodes before reaching an endpoint. This is a <a href="https://web.archive.org/web/20220821150904/https://arstechnica.com/information-technology/2013/09/majority-of-tor-crypto-keys-could-be-broken-by-nsa-researcher-says/">generally</a> <a href="https://web.archive.org/web/20230122181201/https://gizmodo.com/fbi-tor-ip-address-muhammed-momtaz-al-azhari-isis-1849975153">secure</a> way to access the internet, but is slow. Make sure you <a href="https://tb-manual.torproject.org/running-tor-browser/">properly configure</a> TOR. <a href="https://tails.boum.org/">Tails</a> is a portable linux distribution that pre-configures TOR, if you&rsquo;re both knowledgeable and paranoid. Torrenting over TOR is very disrespectful.</p>
+<p><a name="vpns"></a>VPNs are a node between user and destination. You (user) connect to a website (destination) through a middleman (node), so the site can&rsquo;t see <a href="https://whatismyip.org/">your IP address</a>. Any VPN service with an ad budget is selling your <a href="https://web.archive.org/web/20230224200913/https://www.statista.com/topics/1464/big-data/#topicOverview">valuable</a> data to remain competitive. PrivateInternetAccess &amp; NordVPN also explicitly cooperate with states. <a href="https://reddit.com/r/VPNReviews">/r/VPNReviews</a> can help you pick a VPN; make sure it allows P2P downloading if you&rsquo;re torrenting.</p>
+<p>Darknet markets come and go all the time. <a href="https://web.archive.org/web/20231208161046/https://darknet.markets/">Here</a> is a snapshot of darknet markets from 2023<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. You can only use these links in a TOR browser. Monero is the current anonymous cryptocurrency of choice; Bitcoin is more traceable.</p>
 <h1 id="a-namepiracyapiracynavigation"><a name="piracy"></a><a href="#navigation">Piracy</a></h1>
 <p>Here are overviews of content-specific internet piracy ecosystems. Full resources at <a href="https://fmhy.pages.dev/beginners-guide/">freemediaheckyeah</a> or <a href="https://old.reddit.com/r/piracy/">the piracy subreddit</a></p>
 <h3 id="a-nametldratldrnavigation"><a name="tl;dr"></a><a href="#navigation">TL;DR?</a></h3>
 <ul>
 <li>Download <a href="https://www.qbittorrent.org/">qBittorrent</a> and enable search engine from the view menu
 <ul>
-<li>Mobile users: choose a <a href="#clients">client</a> that supports searching or read on</li>
+<li>Mobile users: choose a <a href="#clients">client</a> and read the sections on trackers so you know how to search</li>
 </ul>
 </li>
 <li>Go to the qBittorrent <a href="https://github.com/qbittorrent/search-plugins/wiki/Unofficial-search-plugins">plugins page</a></li>
 <li>Install plugins corresponding to the <a href="https://www.reddit.com/r/Piracy/wiki/megathread/all_purpose#wiki_.1F4D1_.279C_torrents">most reputable trackers</a> for your desired content</li>
-<li>Torrent <a href="https://fitgirl-repacks.site">games</a> and <a href="https://w14.monkrus.ws/">software</a> from these links; don&rsquo;t search them out</li>
+<li>Download <a href="https://fitgirl-repacks.site">games</a> and <a href="https://w14.monkrus.ws/">software</a> from these links; don&rsquo;t search them out</li>
 <li>Ignore ISP emails. Pay for a <a href="#vpns">VPN</a> if you get too many.</li>
 </ul>
 <h3 id="a-nameoverviewaexplanation-of-torrentingnavigation"><a name="overview"></a><a href="#navigation">Explanation of torrenting</a></h3>
 <ul>
 <li>Other people have copies of files you want</li>
-<li>You get <code>bits</code><sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> of the files from whoever has them and is online</li>
+<li>You get <code>bits</code><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> of the files from whoever has them and is online</li>
 <li>Many small downloads sum to a <code>torrent</code> of data</li>
-<li>A <code>torrent client</code> connects you to <code>the swarm</code>: clients who are currently uploading/downloading those files</li>
-<li>Swarm joining instructions are inside a <code>magnet link</code> or a <code>torrent file</code></li>
-<li>These links and files are typically hosted on websites called <code>torrent trackers</code></li>
+<li>A <code>torrent client</code> connects you to <code>the swarm</code>: others who are currently uploading/downloading those files</li>
+<li>Swarm joining instructions are inside a <code>magnet link</code> or a <code>torrent file</code>. Open these with your torrent client</li>
+<li>These links and files are hosted on websites called <code>torrent trackers</code></li>
 <li>Torrent trackers try to prevent users from uploading viruses</li>
+<li>After finishing a download, your swarm position moves from <code>leech</code> to <code>seed</code></li>
 </ul>
+<p>Seed your torrents, especially if they&rsquo;re obscure.</p>
 <h3 id="a-namelegalityatorrentings-legalitynavigation"><a name="legality"></a><a href="#navigation">Torrenting&rsquo;s legality</a></h3>
 <ul>
 <li>In every jurisdiction I&rsquo;m aware of, torrenting is only illegal when copyrighted data is exchanged, therefore:
 <ul>
 <li>the torrent software is itself perfectly legal,</li>
-<li>the torrent tracker is legal<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> because it doesn&rsquo;t host any copyrighted data; only references to it.</li>
+<li>the torrent tracker is legal<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> because it doesn&rsquo;t host any copyrighted data; only references to it.</li>
 </ul>
 </li>
 <li>Exchanging files reveals your <code>IP address</code> unless you use a <code>VPN</code> or <code>proxy</code>;</li>
@@ -166,12 +168,12 @@
 <ul>
 <li>Get a VPN after a few nags</li>
 <li>Never reply to these nags; you strengthen a case by identifying yourself</li>
-<li>Letters/fines vary by jurisdiction. US, Germany, &amp; UK are the worst<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></li>
+<li>Letters/fines vary by jurisdiction. US, Germany, &amp; UK are the worst<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup></li>
 </ul>
 </li>
 </ul>
 <h3 id="a-namevirusesaviruses-and-torrentingnavigation"><a name="viruses"></a><a href="#navigation">Viruses and torrenting</a></h3>
-<p>The typical targets on your computer are your credentials, its ability to mine cryptocurrency or participate in a <a href="https://www.malwarebytes.com/botnet">botnet</a>, and your willingness to pay ransom for it. Most viruses try to remain undetected; if you take risks torrenting, either wipe your drive periodically or maintain a dedicated machine for torrenting.</p>
+<p>The typical targets on your computer are your credentials, its ability to mine cryptocurrency or participate in a <a href="https://www.malwarebytes.com/botnet">botnet</a>, and your willingness to pay ransom for your files. Most viruses try to remain undetected; if you take risks torrenting, either wipe your drive periodically or maintain a dedicated machine for torrenting.</p>
 <p>Some tips:</p>
 <ul>
 <li>Torrented media rarely contain viruses; torrented programs often contain viruses</li>
@@ -180,7 +182,7 @@
 <li>Trackers also usually have comments sections for each torrent</li>
 </ul>
 </li>
-<li>The most popular torrent for a new tv show release usually has a copyright agent in the swarm</li>
+<li>The most popular torrent for a new media release usually has a copyright agent in the swarm who will log your IP</li>
 <li>Free antiviruses aren&rsquo;t really better than OS defaults e.g. Windows Defender</li>
 <li>If you want to take a chance on a file, scan it with <a href="https://virustotal.com">virustotal</a></li>
 <li>Wikipedia software articles usually have a link to their homepage to prevent you from getting phished:
@@ -192,23 +194,22 @@
 </ul>
 <h3 id="a-nameclientsawhat-torrent-client-should-i-usenavigation"><a name="clients"></a><a href="#navigation">What torrent client should I use?</a></h3>
 <ul>
-<li><a href="https://transmissionbt.com/">Transmission</a> is open source, cross platform, and beginner friendly</li>
-<li><a href="https://www.qbittorrent.org/">qBittorrent</a> is open source and cross platform</li>
-<li>Android: <a href="https://f-droid.org/packages/org.proninyaroslav.libretorrent/">LibreTorrent</a> is open source. <a href="https://play.google.com/store/apps/details?id=intelligems.torrdroid">Torrdroid</a> implements searching on top of libretorrent but monetizes the app</li>
-<li>iOS: <a href="https://github.com/XITRIX/iTorrent/releases">iTorrent</a> is open source. iTransmission/BitTorrent support searching but monetize.</li>
+<li>Win/mac/linux: <a href="https://transmissionbt.com/">Transmission</a> or <a href="https://www.qbittorrent.org/">qBittorrent</a> (my rec)</li>
+<li>Android: <a href="https://f-droid.org/packages/org.proninyaroslav.libretorrent/">LibreTorrent</a></li>
+<li>iOS: <a href="https://github.com/XITRIX/iTorrent/releases">iTorrent</a></li>
 </ul>
-<p>Use a different torrent tracker for whatever content you&rsquo;re downloading. The best general purpose tracker is <a href="https://1337x.to">1337x</a><sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>, then whatever&rsquo;s on reddit&rsquo;s <a href="https://www.reddit.com/r/Piracy/wiki/megathread/">piracy megathread</a>.</p>
 <h3 id="a-nametrackersawhat-torrent-tracker-should-i-usenavigation"><a name="trackers"></a><a href="#navigation">What torrent tracker should I use?</a></h3>
 <p>For general-purpose:</p>
 <ul>
 <li><a href="https://1337x.to">1337x</a> first,</li>
-<li><a href="https://thepiratebay.org">thepiratebay</a> second (but watch out<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>),</li>
+<li><a href="https://thepiratebay.org">thepiratebay</a> second (but watch out<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>),</li>
 <li>whatever is <a href="#piracy">linked</a> above third.</li>
 </ul>
 <p>Each section below has individual recommendations.</p>
+<p>Torrent sites get attacked/seized or migrate often. Consult a <a href="https://knaben.info/">proxy list</a><sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> if a site is down. For example, <code>thepiratebay.org</code> goes down all the time, so 10 years ago I would use <a href="https://thepiratebay.xyz">thepiratebay.xyz</a> before it died, now I mostly use <a href="https://thepiratebay10.org">thepiratebay10.org</a>.</p>
 <h2 id="a-namewhereawhere-do-i-pirate-_____navigation"><a name="where"></a><a href="#navigation">Where do I pirate _____?</a></h2>
 <h3 id="a-namewindowsawindowsnavigation"><a name="windows"></a><a href="#navigation">Windows</a></h3>
-<p>This is a lot less risky than it used to be because most cracks now use microsoft&rsquo;s windows images. To crack an active windows installation, follow <a href="https://github.com/massgravel/Microsoft-Activation-Scripts">these instructions</a><sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup> (you want to use HWID). Remember to:</p>
+<p>This is a lot less risky than it used to be because most cracks now use microsoft&rsquo;s windows images. To crack an active windows installation, follow <a href="https://github.com/massgravel/Microsoft-Activation-Scripts">these instructions</a><sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup> (you want to use HWID). Remember to:</p>
 <ul>
 <li>open powershell/terminal <em>as an administrator</em></li>
 <li>install without an internet connection (and therefore don&rsquo;t create a microsoft account)</li>
@@ -216,20 +217,23 @@
 <p>To install windows:</p>
 <ul>
 <li>Get latest windows image from microsoft (<a href="https://www.microsoft.com/en-us/software-download/windows10ISO">10</a> <a href="https://www.microsoft.com/en-us/software-download/windows11/">11</a>)</li>
-<li>Take a thumb drive and either <a href="https://rufus.ie/en/">rufus</a> (windows), Disk Utility (mac), or something like <code>dd if=/path/to/iso of=/path/to/usb conv=fsync bs=8M</code><sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup> (linux) to make an installation USB</li>
+<li>Take a thumb drive and either <a href="https://rufus.ie/en/">rufus</a> (windows), Disk Utility (mac), or something like <code>dd if=/path/to/iso of=/path/to/usb conv=fsync bs=8M</code><sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup> (linux) to make an installation USB</li>
 <li>Reboot with the USB plugged in. You will usually have to <a href="https://www.wikihow.com/Enter-BIOS">enter your BIOS</a> (or boot menu), typically by holding down the f2 (or f8, f12, insert, delete&hellip;) key, booting from the USB or changing your boot order to prioritize it.</li>
 <li>Install Windows. Select Pro or Pro N (Pro N is the EU-compliant version with less bloat, but you&rsquo;ll want to install the Windows Media Feature Pack yourself)</li>
-<li>I recommend <a href="https://old.reddit.com/r/tronscript">tronscript</a> or <a href="https://github.com/ChrisTitusTech/winutil">winutil</a> for debloating<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup> and <a href="https://chocolatey.org">chocolatey</a> for package managing<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup></li>
+<li>I recommend <a href="https://old.reddit.com/r/tronscript">tronscript</a> or <a href="https://github.com/ChrisTitusTech/winutil">winutil</a> for debloating<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup> and <a href="https://chocolatey.org">chocolatey</a> for package managing<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup></li>
 <li>An example tron command for a <code>tron.bat</code> file downloaded to <code>C:\Users\a\Downloads\Tron</code> on a fresh machine is <code>C:\Users\a\Downloads\Tron\tron.bat -a -sa -sd -scc -v</code> (skipping antivirus scans, defrag, and cookies). Run this in cmd as an administrator.</li>
 <li>Crack windows using the <em>admin</em> powershell github commands in the <a href="https://github.com/massgravel/Microsoft-Activation-Scripts">link</a> above</li>
 </ul>
 <h3 id="a-namemusicamusicnavigation"><a name="music"></a><a href="#navigation">Music</a></h3>
-<p>It&rsquo;s hard to get a virus from downloading music. <a href="https://rutracker.org">rutracker</a> is my favorite public tracker for music<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup>; you need to make an account and the whole website is russian so a translation browser extension is a good idea. <a href="https://www.slsknet.org/">Soulseek</a> has a good english-language selection but it&rsquo;s kindof closed off from the rest of the torrent ecosystem.</p>
+<p>It&rsquo;s hard to get a virus from downloading music. <a href="https://rutracker.org">rutracker</a> is my favorite public tracker for music<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>. <a href="https://www.slsknet.org/">Soulseek</a> has a good english-language selection but it&rsquo;s kindof closed off from the rest of the torrent ecosystem.</p>
 <p>For phones: you&rsquo;re probably looking for a cracked spotify app in Apps below. <a href="https://revanced.io/">revanced</a>/<a href="https://newpipe.net/">newpipe</a> will handle youtube. These projects come and go.</p>
 <p>For desktops, <a href="https://github.com/yt-dlp/yt-dlp/releases">yt-dlp</a> downloads youtube media, and just using the web version of spotify with ublock origin on firefox should block its ads, but if you want, <a href="https://github.com/mrpond/BlockTheSpot/releases">here&rsquo;s a cracked windows spotify github</a>, <a href="https://github.com/SpotX-Official/SpotX">another</a>, and <a href="https://github.com/SpotX-Official/SpotX-Bash">one for macos/linux</a>.</p>
+<p>If you&rsquo;re new to downloading your own music, put everything in a music folder, and make playlists inside your music player. I use <a href="https://www.foobar2000.org/download">foobar2000</a> because it&rsquo;s very customizable.</p>
 <h3 id="a-namevideoavideonavigation"><a name="video"></a><a href="#navigation">Video</a></h3>
-<p>The majority of torrenting. Low risk<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup>; media doesn&rsquo;t need elevated permissions. Go to your <a href="#trackers">public tracker of choice</a><sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup>. Private trackers have the best selections; those typically involve being invited and passing a screening process.</p>
-<p>When starting a new torrent, downloading in &ldquo;sequential order&rdquo; or similar lets you functionally stream video<sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup>. You only need to download about 5-10% of a video before you can play it if your connection is fast enough. Use <a href="https://www.videolan.org/">VLC</a> or <a href="https://github.com/clsid2/mpc-hc/releases">MPC-HC</a> to watch videos.</p>
+<p>The majority of torrenting. Low risk<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup>; media doesn&rsquo;t need to e.g. install anything. Go to your <a href="#trackers">public tracker of choice</a><sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup>. Private trackers have the best selections; those typically involve being invited and passing a screening process.</p>
+<p>Use <a href="https://www.videolan.org/">VLC</a> or <a href="https://github.com/clsid2/mpc-hc/releases">MPC-HC</a> to watch videos.</p>
+<p>When starting a new torrent, downloading in &ldquo;sequential order&rdquo; or similar lets you functionally stream video<sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup>. You only need to download about 5-10% of a video before you can play it if your connection is fast enough.</p>
+<p>For subtitles, VLC has a submenu (under View -&gt; VLSub) to automate this: use <a href="https://opensubtitles.org">OpenSubtitles</a>, sort by number of downloads, move the file into the same directory as your video, then Subtitle -&gt; Add Track. You might have to go into Tools -&gt; Track Synchronization to sync subtitle delay/speed.</p>
 <p>I asked chatGPT: &ldquo;provide a glossary of terms (such as &ldquo;x265&rdquo;, or &ldquo;5.1&rdquo;, or &ldquo;BRRip&rdquo;) used to describe video hosted on torrent trackers&rdquo; and received this truncated response:</p>
 <pre tabindex="0"><code>Sure, here&#39;s a glossary of terms commonly used to describe video hosted on torrent trackers:
 
@@ -253,14 +257,14 @@ Remux: A video format that refers to a high-quality video that has been copied f
 
 SD: Stands for &#34;standard definition.&#34;
 </code></pre><h3 id="a-nameappsaappsnavigation"><a name="apps"></a><a href="#navigation">Apps</a></h3>
-<p>Android users: get illicit APKs from <a href="https://forum.mobilism.org/index.php">mobilism</a><sup id="fnref:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup>. This ecosystem&rsquo;s pretty seedy. <a href="https://f-droid.org/">f-droid</a> is a package manager like the google play store, except it only has free open source apps. F-droid&rsquo;s app is notoriously buggy so try some frontends like Neo Store or Droid-ify.</p>
+<p>Android users: get illicit APKs from <a href="https://forum.mobilism.org/index.php">mobilism</a><sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup>. This ecosystem&rsquo;s pretty seedy. <a href="https://f-droid.org/">f-droid</a> is a package manager like the google play store, except it only has free open source apps. F-droid&rsquo;s app is&hellip;bad, so try some frontends like <a href="https://github.com/NeoApplications/Neo-Store/releases">Neo Store</a> or <a href="https://github.com/Droid-ify/client/releases">Droid-ify</a><sup id="fnref:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup>.</p>
 <p>Apple users: jailbreaking is outside the scope of this guide. <a href="https://www.reddit.com/r/sideloaded/">sideloaded</a> is a community for loading custom apps that don&rsquo;t require jailbreaking.</p>
 <h3 id="a-namesoftwareasoftwarenavigation"><a name="software"></a><a href="#navigation">Software</a></h3>
 <p>This is the riskiest thing you can torrent. <a href="https://w14.monkrus.ws/">m0nkrus</a>&rsquo; repacks are reputable. Otherwise, find torrents on a public tracker and roll the dice. Use a <a href="https://www.virtualbox.org/wiki/Downloads">virtual machine</a><sup id="fnref:21"><a href="#fn:21" class="footnote-ref" role="doc-noteref">21</a></sup> for one-shot tasks; that&rsquo;s also beyond the scope of this guide.</p>
 <h3 id="a-namegamesagamesnavigation"><a name="games"></a><a href="#navigation">Games</a></h3>
-<p>Don&rsquo;t torrent these off of trackers; there&rsquo;s a bounty ecosystem where people donate to reputable game crackers<sup id="fnref:22"><a href="#fn:22" class="footnote-ref" role="doc-noteref">22</a></sup>. Two of the most reputable repackers are <a href="https://fitgirl-repacks.site">fitgirl</a><sup id="fnref1:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup> and <a href="https://dodi-repacks.site">dodi</a><sup id="fnref2:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup>. If they don&rsquo;t have what you&rsquo;re looking for, go search <a href="https://old.reddit.com/r/CrackWatch">the CrackWatch subreddit</a> to find a reputable cracker who does.</p>
+<p>Don&rsquo;t torrent these off of trackers; there&rsquo;s a bounty ecosystem where people donate to reputable game crackers<sup id="fnref:22"><a href="#fn:22" class="footnote-ref" role="doc-noteref">22</a></sup>. Two of the most reputable repackers are <a href="https://fitgirl-repacks.site">fitgirl</a><sup id="fnref1:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup> and <a href="https://dodi-repacks.site">dodi</a><sup id="fnref2:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup>. If they don&rsquo;t have what you&rsquo;re looking for, go search <a href="https://old.reddit.com/r/CrackWatch">the CrackWatch subreddit</a> to find a reputable cracker who does.</p>
 <h3 id="a-namebooksabooksacademic-papersnavigation"><a name="books"></a><a href="#navigation">Books/academic papers</a></h3>
-<p>Currently, my first stop is <a href="https://annas-archive.org/">Anna&rsquo;s Archive</a>, an open-source search engine for many book trackers. The <a href="https://www.reddit.com/r/Piracy/wiki/megathread/reading_material_and_elearning">piracy megathread</a> maintains a list of book trackers. <a href="https://libgen.rs">Libgen</a> is generally the best book tracker<sup id="fnref3:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup>.</p>
+<p>My first stop is <a href="https://annas-archive.org/">Anna&rsquo;s Archive</a>, an open-source search engine for many book trackers. The <a href="https://www.reddit.com/r/Piracy/wiki/megathread/reading_material_and_elearning">piracy megathread</a> maintains a list of book trackers. <a href="https://libgen.rs">Libgen</a> is generally the best book tracker<sup id="fnref3:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup>.</p>
 <p><a href="https://www.myanonamouse.net/">Myanonamouse</a> is a good private tracker for books that will let you in after a technical interview.</p>
 <p>A pdf/mobi/epub/etc filetype search<sup id="fnref:23"><a href="#fn:23" class="footnote-ref" role="doc-noteref">23</a></sup> is a good last resort.</p>
 <p>For papers specifically, Anna&rsquo;s indexed <a href="https://sci-hub.se/">sci-hub</a> before the lawsuits stalled it. <a href="https://academictorrents.com/">Academictorrents</a> is solid, then&hellip;just email paper authors and they&rsquo;ll usually send you a copy. You might be able to find a non-paywalled copy on google scholar. Extensions like Bypass Paywalls Clean or Unpaywall have historically been bad at papers.</p>
@@ -283,55 +287,55 @@ SD: Stands for &#34;standard definition.&#34;
 </ul>
 &#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></li>
 <li id="fn:4">
-<p><a href="https://bitwarden.com/">Bitwarden</a>, or most password managers that aren&rsquo;t lastpass, are more secure services.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Search giants have been steadily eroding our ability to quote search for some time now. We&rsquo;re between free search giants right now, as was the case when google began to usurp yahoo. <a href="https://kagi.com/">Kagi</a> is the new hotness, but it&rsquo;s paid. Otherwise you&rsquo;re stuck with search syntax and LLMs.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p>Search giants have been steadily eroding our ability to quote search for some time now. We&rsquo;re between free search giants right now, as was the case when google began to usurp yahoo. <a href="https://kagi.com/">Kagi</a> is the new hotness, but it&rsquo;s paid. Otherwise you&rsquo;re stuck with search syntax and LLMs.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>For actually good links, find darkweb forums and lurk until you understand the current ecosystem.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
-<p>For actually good links, find darkweb forums and lurk until you understand the current ecosystem.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Hence &ldquo;bit-torrent protocol&rdquo;&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:7">
-<p>Hence &ldquo;bit-torrent protocol&rdquo;&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Some jurisdictions obligate the torrent tracker to remove illegal content references. This is a flimsy legal argument with a major corporate backing; creative ccTLDs (.to, .cr, .vu&hellip;) make this difficult to enforce. In the absence of jurisdiction, vested interests will DDoS trackers to weaken their reliability.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:8">
-<p>Some jurisdictions obligate the torrent tracker to remove illegal content references. This is a flimsy legal argument with a major corporate backing; creative ccTLDs (.to, .cr, .vu&hellip;) make this difficult to enforce. In the absence of jurisdiction, vested interests will DDoS trackers to weaken their reliability.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>While most sources about torrenting risk are trying to sell VPNs, the US effectively maintains <a href="https://ustr.gov/sites/default/files/USTR-2016-Special-301-Report.pdf">a list</a> of the easiest places to violate copyright law!&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:9">
-<p>While most sources about torrenting risk are trying to sell VPNs, the US effectively maintains <a href="https://ustr.gov/sites/default/files/USTR-2016-Special-301-Report.pdf">a list</a> of the easiest places to violate copyright law!&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Thepiratebay has a reputation for viruses, and site VIPs are not to be trusted&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:10">
-<p>1337x is, as of the time of writing, scandalously refusing to ban a repacker who keeps putting crypto miners in game repacks. There are no good trackers.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>This guide is a pointer to a proxy list, which is a pointer to a proxy, which is a pointer to a tracker, which is a pointer to a swarm, which is a pointer to seeds, who have files.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:11">
-<p>Thepiratebay has a reputation for viruses, and site VIPs are not to be trusted&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Github is actually owned by microsoft; this page is functionally a github canary. <a href="https://web.archive.org/web/20230515185526/https://github.com/massgravel/Microsoft-Activation-Scripts">Here</a>&rsquo;s an archive.org link.&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:12">
-<p>Github is actually owned by microsoft; this page is functionally a github canary. <a href="https://web.archive.org/web/20230515185526/https://github.com/massgravel/Microsoft-Activation-Scripts">Here</a>&rsquo;s an archive.org link.&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>The <code>of</code> parameter should point to the block device location e.g. <code>/dev/sda</code>, not one of its partitions e.g. <code>/dev/sda1</code>. block size defaults to 16k, which seriously throttles the operation, and I honestly forget what <code>conv=fsync</code> does.&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:13">
-<p>The <code>of</code> parameter should point to the block device location e.g. <code>/dev/sda</code>, not one of its partitions e.g. <code>/dev/sda1</code>. block size defaults to 16k, which seriously throttles the operation, and I honestly forget what <code>conv=fsync</code> does.&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Bloatware refers to unwanted bundled software (PUPs); debloating is the process of removing bloatware, often complicated by e.g. the financial incentive of microsoft to place ads in the start menu.&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:14">
-<p>Bloatware refers to unwanted bundled software (PUPs); debloating is the process of removing bloatware, often complicated by e.g. the financial incentive of microsoft to place ads in the start menu.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>A package manager downloads, installs, uninstalls, and updates software for you. Entering e.g. <code>choco install firefox audacity vlc qbittorrent</code> in <em>admin</em> powershell installs these apps; <code>choco uninstall audacity</code> will uninstall audacity only if chocolatey installed it; <code>choco upgrade all</code> updates every chocolatey-managed app on your machine at once. Anyone allergic to powershell can use Chocolatey GUI, which is pretty mediocre. Package managers only manage apps they installed, so they&rsquo;re best configured right after a full wipe. This is how linux handles software, grafted onto windows.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:15">
-<p>A package manager downloads, installs, uninstalls, and updates software for you. Entering e.g. <code>choco install firefox audacity vlc qbittorrent</code> in <em>admin</em> powershell installs these apps; <code>choco uninstall audacity</code> will uninstall audacity only if chocolatey installed it; <code>choco upgrade all</code> updates every chocolatey-managed app on your machine at once. Anyone allergic to powershell can use Chocolatey GUI, which is pretty mediocre. Package managers only manage apps they installed, so they&rsquo;re best configured right after a full wipe. This is how linux handles software, grafted onto windows.&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>rip what.cd. You will want to make an account for rutracker, and also get a translating browser extension (firefox is starting to do this on its own now).&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:16">
-<p>rip what.cd&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://threatpost.com/high-risk-vlc-media-player-bugs/147503/">But not no-risk</a>. My hope is that by scaring you and providing OS reinstallation guides you&rsquo;ll reinstall your OS every few years and I won&rsquo;t have to crowdfund hardware replacements for your mined laptop gpu.&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:17">
-<p><a href="https://threatpost.com/high-risk-vlc-media-player-bugs/147503/">But not no-risk</a>. My hope is that by scaring you and providing OS reinstallation guides you&rsquo;ll reinstall your OS every few years and I won&rsquo;t have to crowdfund hardware replacements for your mined laptop gpu.&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Tracker mirrors are preferred. Thepiratebay has bad uptime from DDoS attacks; <a href="https://thepiratebay10.org">thepiratebay10</a> does not.&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:18">
-<p>Tracker mirrors are preferred. Thepiratebay has bad uptime from DDoS attacks; <a href="https://thepiratebay10.org">thepiratebay10</a> does not.&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>By default, swarms serve seemingly random chunks of files. Sequential downloading orders those chunks first -&gt; last. This isn&rsquo;t default behavior because <a href="https://web.archive.org/web/20230315012054/https://wiki.vuze.com/w/Sequential_downloading_is_bad">it isn&rsquo;t healthy for swarms</a>&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:19">
-<p>By default, swarms serve seemingly random chunks of files. Sequential downloading orders those chunks first -&gt; last. This isn&rsquo;t default behavior because <a href="https://web.archive.org/web/20230315012054/https://wiki.vuze.com/w/Sequential_downloading_is_bad">it isn&rsquo;t healthy for swarms</a>&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Technically not a torrent tracker (&ldquo;legal miracle&rdquo;?) because it hosts links to direct downloads rather than peer-to-peer downloads&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref3:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:20">
-<p>Technically not a torrent tracker (&ldquo;legal miracle&rdquo;?) because it hosts links to direct downloads rather than peer-to-peer downloads&#160;<a href="#fnref:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref3:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>If it isn&rsquo;t clear. You have to download the .apk file and open it in your file manager to install these. If you&rsquo;ve never done this before, you also have to go into your settings to allow installation of apps from &ldquo;unknown sources&rdquo; or similar.&#160;<a href="#fnref:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:21">
 <p>VMs are operating-systems-inside-operating-systems that are slower than normal OSes, but if your VM gets a virus, you don&rsquo;t exactly care. <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> is what most people use, but I rarely deal with them and they&rsquo;re complicated to setup securely. Good for something like pirated photoshop, ableton, older games, <del>installing BonziBuddy, Monkey, Gator, and Prody Parrot to watch them duke it out,</del> etc.&#160;<a href="#fnref:21" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
