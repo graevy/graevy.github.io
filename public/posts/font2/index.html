@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-us"><head>
+    <title>quatloo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+
+    
+    <link rel="icon" type= image/x-icon href= /favicon.ico>
+
+    
+    
+    
+    <link rel="stylesheet" href="../../css/theme.min.css">
+
+    
+    
+    
+
+    
+</head>
+<body>
+        <div id="content" class="mx-auto"><header class="container mt-sm-5 mt-4 mb-4 mt-xs-1">
+    <div class="row">
+        
+        <div class="col-12 text-center">
+        
+            <h2 class="m-0 mb-2 mt-4">
+                <a href="../../posts/" class="text-decoration-none">
+                    
+                        graevy
+                    
+                </a>
+            </h2>
+            <p class="text-muted mb-1">
+                
+                    Wetware Developer
+                
+            </p>
+            <ul id="nav-links" class="list-inline mb-2">
+                
+                
+            </ul>
+            <ul id="nav-social" class="list-inline">
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="https://github.com/graevy" target="_blank">
+                            <i class="fab fa-github fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="mailto:avry@pm.me" target="_blank">
+                            <i class="fas fa-at fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="../../about/" target="_blank">
+                            <i class="fas fa-address-card fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+    <hr />
+</header><div class="container">
+    <div class="pl-sm-4 ml-sm-5">
+        <p>When I moved from arch to nixos, I switched from X to Wayland, and decided also to switch status bars from i3status to i3status-rust, because I wasn&rsquo;t insufferable enough. I wanted to have fun little icons for my statusbar that look like this:</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/battery/statusbar.jpg" alt="statusbar"></p>
+<p>So I went to go find a font! First I went with noto emoji. Emoji had issues:</p>
+<ul>
+<li>they&rsquo;re a little colorful, and I don&rsquo;t want to draw attention to my statusbar</li>
+<li>they don&rsquo;t really map to the icons I want to use. I&rsquo;d have to make some pretty serious compromises.</li>
+<li>for the icons I do want to use, they sometimes aren&rsquo;t granular enough, i.e. there aren&rsquo;t enough battery charge-state emojis</li>
+</ul>
+<p>So then I went hunting for fonts. Nerdfonts has the best free selection, fontawesome as well. Including them in nix&rsquo;s configuration was frustrating, and ultimately required pulling in far more glyphs than I actually wanted to use.</p>
+<p>Then we came to the next problem: rendering priority! If I wanted to use a font with a glyph for a charging battery, well, an emoji exists to represent that concept. And the unicode codepoint, which is inside the emoji space in this nerdfont, for that monocolored glyph, is going to be rendered by an emoji font first and a regular font second. And since many of these fonts are using the emoji codepoint space but aren&rsquo;t registered as emoji fonts, well, some of your icons become emojis and some of them don&rsquo;t. I could probably have taken a nerdfont and set its metadata as an emoji font, but then it would be used to render emoji elsewhere&hellip;Great.</p>
+<p>So I just made my own font. <a href="https://github.com/graevy/newfont">I repacked JetBrainsMono Regular</a> with a fontforge python script. I grabbed some svgs<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. This was faster than anything else I tried.</p>
+<p>The quickest hack was to use the unicode private use area for each glyph, even the ones that basically rendered an emoji, because of the aforementioned font-preference issue. I spent more time learning how to properly use a nix shell and integrating the new font from github declaratively than scripting.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>svgrepo.com had the best solution. My girlfriend also made the battery icons &lt;3&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+            </div>
+        </div><footer class="text-center pb-1">
+    <small class="text-muted">
+        Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a>, <a href="https://github.com/austingebauer/devise" target="_blank">Devise</a>
+    </small>
+</footer>
+</body>
+</html>
