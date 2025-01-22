@@ -78,7 +78,7 @@ Here are overviews of content-specific internet piracy ecosystems. Full resource
     - Mobile users: choose a [client](#clients) and read the sections on trackers so you know how to search
 - Go to the qBittorrent [plugins page](https://github.com/qbittorrent/search-plugins/wiki/Unofficial-search-plugins)
 - Install plugins corresponding to the [most reputable trackers](https://www.reddit.com/r/Piracy/wiki/megathread/all_purpose#wiki_.1F4D1_.279C_torrents) for your desired content
-- Download [games](https://fitgirl-repacks.site) and [software](https://w14.monkrus.ws/) from these links; don't search them out
+- Download [games](https://fitgirl-repacks.site) and [software](https://w16.monkrus.ws/) from these links; don't search them out
 - Ignore ISP emails. Pay for a [VPN](#vpns) if you get too many.
 
 ### <a name="overview"></a>[Explanation of torrenting](#navigation)
