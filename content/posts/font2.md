@@ -1,7 +1,7 @@
 ---
 title: "Font2"
 date: 2025-02-08T21:11:51-08:00
-draft: false
+draft: true
 ---
 
 When I moved from arch to nixos, I switched from X to Wayland, and decided also to switch status bars from i3status to i3status-rust, because I wasn't insufferable enough. I wanted to have fun little icons for my statusbar that look like this:
