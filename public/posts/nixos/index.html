@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en-us"><head>
+    <title>quatloo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+
+    
+    <link rel="icon" type= image/x-icon href= /favicon.ico>
+
+    
+    
+    
+    <link rel="stylesheet" href="../../css/theme.min.css">
+
+    
+    
+    
+
+    
+</head>
+<body>
+        <div id="content" class="mx-auto"><header class="container mt-sm-5 mt-4 mb-4 mt-xs-1">
+    <div class="row">
+        
+        <div class="col-12 text-center">
+        
+            <h2 class="m-0 mb-2 mt-4">
+                <a href="../../posts/" class="text-decoration-none">
+                    
+                        graevy
+                    
+                </a>
+            </h2>
+            <p class="text-muted mb-1">
+                
+                    Wetware Developer
+                
+            </p>
+            <ul id="nav-links" class="list-inline mb-2">
+                
+                
+            </ul>
+            <ul id="nav-social" class="list-inline">
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="https://github.com/graevy" target="_blank">
+                            <i class="fab fa-github fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="mailto:avry@pm.me" target="_blank">
+                            <i class="fas fa-at fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="../../about/" target="_blank">
+                            <i class="fas fa-address-card fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+    <hr />
+</header><div class="container">
+    <div class="pl-sm-4 ml-sm-5">
+        <p>Did a bunch of projects without posting about them. Gonna batch-release these</p>
+<h4 id="what-is-nixos">What is nixos</h4>
+<p>NixOS is:</p>
+<ul>
+<li>the concept of <a href="https://web.archive.org/web/0/https://jonathanlorimer.dev/posts/nix-thesis.html">nix itself</a></li>
+<li>your <a href="https://github.com/graevy/nixos">configuration.nix file(s)</a></li>
+<li><code>sudo nixos-rebuild switch</code></li>
+<li><code>sudo nixos-collect-garbage -d</code></li>
+<li>the occasional <code>flake.nix</code> and <code>nix-develop</code></li>
+<li>sometimes running <code>nix-shell -p &lt;some package i want to test&gt;</code></li>
+<li>whatever you settle on for misc tooling, for me the <code>nix-search</code> and <code>nix-inspect</code> packages</li>
+</ul>
+<p>That&rsquo;s it. That&rsquo;s the whole thing. Don&rsquo;t believe anyone else. I would never lie to you.</p>
+<h4 id="why">Why</h4>
+<p>To further the declarative obsession. Because I&rsquo;ve been using the same distro for more than 2 years. Because strange women lying in ponds kept telling me to try it.</p>
+<h4 id="what-happened">What happened</h4>
+<p>The classic dual-boot<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>-and-replace-old-OS strategy, so there weren&rsquo;t any huge headaches. It took me like a month of hour-a-day reading/tweaking<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> to reach feature parity with my arch installation, so you&rsquo;re in for that if you try it.</p>
+<p>There were a few blockers:</p>
+<ul>
+<li>I moved from X to wayland in the middle of this, so lots of trying out new tooling (i.e. i3-&gt;sway)</li>
+<li>Versioning is pretty messy. nix-channel can track state accidentally, some packages need you to bring in unstable nixos, etc.</li>
+<li>Okay, so this was an edge case. I had to remove some packages, which declaratively basically entails editing <code>configuration.nix</code> and then <code>sudo nix-collect-garbage -d &amp;&amp; sudo nixos-rebuild switch</code><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. Some of them contained symlink loops to their parent dirs, so nix refused to delete them from <code>/nix/store</code>, and they were load-bearing for existing derivations. That was a nightmare. There was some solution to manually remove them via <code>nix-store</code> but it was poorly documented (recurring theme for nixos) so I just reinstalled the OS. That may seem a little extreme, but I had to left-expand the partition anyway, and the whole point of nixos really is to manage your installation declaratively, so it&rsquo;s a good exercise to see what needs to get added to the declaration.</li>
+</ul>
+<h4 id="my-takes">My takes</h4>
+<p>It&rsquo;s good. Unified configuration in a single dir. I&rsquo;m bought-in now, costs completely sunk, which is its own problem.</p>
+<p>Flakes. Bad ux. I don&rsquo;t currently see a use for them beyond &ldquo;nix-shell but version-pinned&rdquo;, which is what I want out of a <code>shell.nix</code> file anyway, I think<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>? And for that purpose, it&rsquo;s a huge amount of boilerplate in a really annoying domain-specific language. I&rsquo;m sure people who use them more fluently have better uses for them, and I might get there eventually. For all my critiques, I do use them.</p>
+<p>NixOS integrates very well with systemd, which I wasn&rsquo;t expecting. I&rsquo;m not really writing my own unit files often, but you can&rsquo;t rely on the abstraction. There&rsquo;s a larger pattern of NixOS&rsquo; native configs not being granular enough. For instance: defining a service that doesn&rsquo;t start automatically on boot requires <a href="https://github.com/graevy/nixos/blob/64d256aa0fe7b5005a7206c2fed2933c1f647754/configuration.nix#L271C1-L275C43">a slight hack</a> where I would really just like <code>services.thing.enabled = true</code> and <code>services.thing.auto = false</code>, and to not have to manually write unitfiles. Truthfully in the spirit of open source I should add the feature to <code>services</code>myself, but I&rsquo;ve heard many nightmare stories from my hackspace friends about trying to get NixOS PRs merged.</p>
+<p>A lot of people complain about massive <code>/nix/store</code>s, and I don&rsquo;t get it. Yes, it frequently stores unnecessary versions that simpler package managers don&rsquo;t have to. This stops things from breaking. My <code>/nix/store</code> is about 58Gb<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>, containing 18.2Gb of package versions which <em>might</em> be deduplicated using <code>apt</code> instead<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>. But I can&rsquo;t help but think that every deduplication case involves trusting backward compatibility. I find NixOS absolutely worth it even on smaller ssds. Maybe the worst-case of <code>/nix/store</code> is a disk hog, but I haven&rsquo;t seen it.</p>
+<p>When you leave the happy path, it&rsquo;s awful. The documentation is sparse<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>, you have to hack to get anything done, in a system that does not want you to create state. The NixOS equivalent of a &ldquo;linux evening&rdquo; fixing something that broke gets inverted: spend 3 hours building something that won&rsquo;t break, where normal users often simply <code>apt install</code>. I honestly think most nixpkgs maintainers are just people who went down a hole and had to build a package about it. Come for the determinism, stay for the buy-in?</p>
+<p>What does NixOS offer? ultimately, lightweight portability:</p>
+<ul>
+<li>easy environmental CI/CD by regenerating old versions of the OS. A great alternative to heavy system backup/restore, but not great for stateful objects, which aren&rsquo;t usually things that break during upgrades, so, great feature!</li>
+<li>nix shells/flakes are great solutions to the problem of development/build determinism that are, again, solved more heavily (but more completely) by containerization.</li>
+</ul>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>or quad-boot, you know, nobody&rsquo;s judging anybody here&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>I did read about a third of Dolstra&rsquo;s thesis. I would legitimately recommend reading about the evaluator, that section is what made Nix make sense for me.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>See? I didn&rsquo;t lie to you&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>You can version pin via specific commit hashes, I tried it once, don&rsquo;t bother, just use flakes.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>I did not garbage-collect before checking, but I did somewhat recently move to 25.05 and then gc.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>I&rsquo;m just saying, my arch install had 5 active versions of electron required by various different packages, and my <code>/nix/store</code> contains 4 at the moment. While <code>/nix/store</code> contains version bloat, NixOS neatly collates your packages; you rarely end up with more than you need, whereas conventional package managers tend to bloat over time, even with pruning orphans.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>The NixOS wiki is often just a trap. Like, it&rsquo;s not maintained well, and frequently out of date, apparently unassociated with the NixOS project? There are two of them, nixos.wiki and wiki.nixos.org, and the unofficial one, nixos.wiki, is the older one that everyone uses? My guess is that they kept getting criticized for having poor documentation and decided to build a competitor to the arch wiki, but they&rsquo;ve moved too late, and now it&rsquo;ll take a decade to sort itself out.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+            </div>
+        </div><footer class="text-center pb-1">
+    <small class="text-muted">
+        Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a>, <a href="https://github.com/austingebauer/devise" target="_blank">Devise</a>
+    </small>
+</footer>
+</body>
+</html>

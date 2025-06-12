@@ -37,6 +37,13 @@
       <description>&lt;h3 id=&#34;problem&#34;&gt;Problem&lt;/h3&gt;&#xA;&lt;p&gt;HDR is too good. Darks are too dark and brights are too bright. Subtitles are white, and therefore too bright in dark scenes. You can render them grey, but, then they&amp;rsquo;re unnecessarily dark in bright scenes, and bright in dark scenes.&lt;/p&gt;&#xA;&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;&#xA;&lt;p&gt;I wrote a &lt;a href=&#34;https://github.com/graevy/greyer&#34;&gt;script&lt;/a&gt; that reads a video file concurrently with an SRT file. The SRT file contains time indicies of each rendered subtitle. I navigate to the &lt;code&gt;start_time&lt;/code&gt; in ffmpeg, determine its &lt;em&gt;luminance&lt;/em&gt;, and adjust the &lt;em&gt;color&lt;/em&gt; of the SRT entry accordingly.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>nixos</title>
+      <link>http://quatl.ooo/posts/nixos/</link>
+      <pubDate>Sat, 08 Feb 2025 18:32:36 -0800</pubDate>
+      <guid>http://quatl.ooo/posts/nixos/</guid>
+      <description>&lt;p&gt;Did a bunch of projects without posting about them. Gonna batch-release these&lt;/p&gt;&#xA;&lt;h4 id=&#34;what-is-nixos&#34;&gt;What is nixos&lt;/h4&gt;&#xA;&lt;p&gt;NixOS is:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;the concept of &lt;a href=&#34;https://web.archive.org/web/0/https://jonathanlorimer.dev/posts/nix-thesis.html&#34;&gt;nix itself&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;your &lt;a href=&#34;https://github.com/graevy/nixos&#34;&gt;configuration.nix file(s)&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;sudo nixos-rebuild switch&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;sudo nixos-collect-garbage -d&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;the occasional &lt;code&gt;flake.nix&lt;/code&gt; and &lt;code&gt;nix-develop&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;sometimes running &lt;code&gt;nix-shell -p &amp;lt;some package i want to test&amp;gt;&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;whatever you settle on for misc tooling, for me the &lt;code&gt;nix-search&lt;/code&gt; and &lt;code&gt;nix-inspect&lt;/code&gt; packages&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;That&amp;rsquo;s it. That&amp;rsquo;s the whole thing. Don&amp;rsquo;t believe anyone else. I would never lie to you.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>devhack 1</title>
       <link>http://quatl.ooo/posts/devhack-1/</link>
       <pubDate>Wed, 26 Jun 2024 01:40:22 -0700</pubDate>
