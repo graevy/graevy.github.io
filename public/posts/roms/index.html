@@ -92,9 +92,9 @@
 </ul>
 <p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/boot-loops.jpg" alt=""></p>
 <h3 id="whats-rootingshould-i-stay-rooted">What&rsquo;s rooting/Should I stay rooted?</h3>
-<p>Phone manufacturers don&rsquo;t easily give you full (root) access to your phone. You can break things easily, it&rsquo;s a security nightmare<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>, and you can remove their data collection/bloatware. If you ask nicely, or sometimes force your way in, you can edit your operating system via your device firmware<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
+<p>Phone manufacturers don&rsquo;t easily give you full (root) access to your phone. Most people don&rsquo;t care, you can break things easily, it&rsquo;s a security nightmare<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>, and you can remove their spyware/bloatware. If you ask nicely, or sometimes force your way in, you can edit your operating system via your device firmware<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
 <p>After patching together our edited OS, we must decide whether to expose root access to our apps/our self.</p>
-<p>Reasons to stay rooted:</p>
+<p>Reasons to root:</p>
 <ul>
 <li>root-only package managers and apps
 <ul>
@@ -118,7 +118,7 @@
 <h3 id="choosing-a-rom">Choosing a rom</h3>
 <p>Some secure roms aren&rsquo;t intended to be rooted. For reasons<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>, these are almost exclusively made for Pixel phones. If you have a Pixel, you can choose between <a href="https://grapheneos.org/install/">GrapheneOS</a> (my choice), <a href="https://copperhead.co/android/docs/">Copperhead</a>, or <a href="https://calyxos.org/docs/guide/device-support/">CalyxOS</a> (has some motorola/fairphone support!).</p>
 <p>Otherwise, you want <a href="https://wiki.lineageos.org/devices/">Lineage</a><sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>, maybe <a href="https://crdroid.net/downloads">crDroid</a> or something else <a href="https://en.wikipedia.org/wiki/List_of_custom_Android_distributions">listed here</a> that is both open source and still developed. Another option might be decent; I haven&rsquo;t reviewed them in awhile, but LineageOS has a very big community, which you will have to rely on if you encounter The Ugly<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>.</p>
-<h3 id="bootloader-unlocking3">Bootloader Unlocking<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></h3>
+<h3 id="bootloader-unlocking">Bootloader Unlocking<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></h3>
 <p>If you didn&rsquo;t buy a phone specifically for this, this might become much more annoying/&ldquo;impossible&rdquo; based on these results:</p>
 <ul>
 <li>Go to settings -&gt; About phone</li>
@@ -142,16 +142,16 @@
 </li>
 </ul>
 <p>Verify that you&rsquo;re connected to the phone&rsquo;s bootloader interface on your pc by opening a terminal and running <code>fastboot devices</code>.</p>
-<h3 id="flashing8">Flashing<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup></h3>
+<h3 id="flashing">Flashing<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup></h3>
 <p>You&rsquo;ll lose all data on your phone if we proceed. This is the scary step, too. Are you emotionally prepared for that?</p>
 <p>Every rom has a different MO for flashing, and you need to find your rom&rsquo;s installation guide (<a href="https://wiki.lineageos.org/devices/">Lineage</a> <a href="https://grapheneos.org/install/web">Graphene</a> <a href="https://copperhead.co/android/docs/install/">Copperhead</a> <a href="https://calyxos.org/install/">Calyx</a>). Most use a script, some might use first-party tools like samsung Odin, many just flash the recovery partition and then package the other partitions like an android update. A non-exhaustive<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup> list of partitions you might have to flash:</p>
 <ul>
 <li>Most will flash <code>boot</code>, the partition your phone is booted into right now. <em><strong><code>A bad bootloader flash is how you brick a phone</code></strong></em>; the bootloader can rescue all other partitions (via <code>fastboot flash</code>). There are tools, usually first-party, to recover from brick, but don&rsquo;t count on them.</li>
 <li><code>system</code> stores most of what constitutes our rom. A bad flash here will probably boot-loop your phone.</li>
-<li><code>recovery</code> is the partition that helps you rebuild your phone when it breaks; most roms will flash it. I like <a href="https://twrp.me/Devices/">TWRP</a>, though it&rsquo;s not secure (avoid it on the Pixel roms), and you should check version compatibility with your rom.</li>
+<li><code>recovery</code> is the partition that helps you rebuild your phone when it breaks; most roms will flash it. I like <a href="https://twrp.me/Devices/">TWRP</a>, though it&rsquo;s not secure (avoid it on the secure Pixel roms like Graphene), and you should check version compatibility with your rom.</li>
 <li><code>kernel</code>: user-friendly roms aren&rsquo;t usually going to require a custom linux kernel. A bad flash would probably boot-loop or crash frequently.</li>
 </ul>
-<p>You can backup a partition<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup> using <code>dd</code>, e.g. <code>adb shell su -c dd if=/dev/path/to/&lt;partition&gt; &gt; &lt;partition&gt;.img</code> to your pc.</p>
+<p>You can backup a partition<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup> using <code>dd</code> if rooted, e.g. <code>adb shell su -c dd if=/dev/path/to/&lt;partition&gt; &gt; &lt;partition&gt;.img</code> to your pc.</p>
 <p>Pretty much every rom installation goes like this:</p>
 <ul>
 <li>OEM unlocking and USB debugging need to be enabled</li>
@@ -163,6 +163,7 @@
 <p>Once you re-lock your bootloader in fastboot, unlocking it again will wipe your phone. In the interrim, you can decide whether or not to expose root to yourself and your apps by installing Magisk.</p>
 <p>Again, if you&rsquo;re using one of the secure Pixel roms, you don&rsquo;t want to keep root, and usually they won&rsquo;t let you anyway.</p>
 <h3 id="magisk">Magisk</h3>
+<p>Only for rooted phones.</p>
 <p>You can get Magisk <a href="https://github.com/topjohnwu/Magisk/releases">here</a>. It&rsquo;s a neat little platform to manage which apps on your phone get root, or more importantly, which apps can see that <em>you</em> have root. It has its own <a href="https://topjohnwu.github.io/Magisk/install.html">guide</a>. If you don&rsquo;t have boot ramdisk, keeping root becomes very tedious and I personally wouldn&rsquo;t bother.</p>
 <p>If you&rsquo;re going to flash <a href="https://twrp.me/Devices/">TWRP</a> as a recovery, do it now, and try to sideload<sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup> the Magisk <code>.apk</code> after renaming it to a <code>.zip</code>, to skip this next part.</p>
 <p>The Magisk guide doesn&rsquo;t tell you how to get a <code>boot.img</code> copy. Getting <code>init_boot.img</code> works much the same way, just ignore the suffix syntax.</p>
@@ -195,7 +196,7 @@
 <p>The first time I rooted my phone (a galaxy note 4 &ndash; I miss it dearly), I installed a truly universal remote and spent the next week disabling public TVs&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
-<p>Keeping root means giving apps access to root. However, we don&rsquo;t want every app to have root access, so we control who gets what. However, android will still attempt to notify apps if the user has root access. Banking apps are notorious for refusing to work if android snitches on you. So we have to play this constant game of trying to hide the fact that we have root from android, which seems impossible, but then you remember, we have complete root access. Anyway, we&rsquo;ve been winning this game for the past few years, but it was pretty dire like 5 years ago.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>We&rsquo;re losing right now because of hardware attestation. Keeping root means giving apps access to root. However, we don&rsquo;t want every app to have root access, so we control who gets what. However, android will still attempt to notify apps if the user has root access. Banking apps are notorious for refusing to work if android snitches on you. So we have to play this constant game of trying to hide the fact that we have root, which seems impossible, but then you remember, we have complete access.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:7">
 <p>Google makes it easy to hack on Pixels with easy bootloader unlocking. The Pixel rom is very close to stock android, making it easier to produce. Pixels from I believe the 3 onward have additional security features from the Titan M chip: secure boot, a secure partition, hardware-based encryption, etc.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
@@ -230,13 +231,13 @@ The Pixel 5 (redfin) has 2 submodels, <code>GD1YQ</code> and <code>GTT9Q</code>.
 <p><br>- <code>data</code> stores our user data; installed apps, settings, etc. we won&rsquo;t flash this, but guides may have you wipe it.<br>- if wiping <code>cache</code> breaks something, it deserves to be broken. You may also encounter <code>dalvik cache</code> or <code>ART cache</code>. These can also generally be safely wiped. Dalvik is the old VM that apps used to run in. ART (android runtime) replaced it a long time ago, instead generating bytecode from apps to load them faster.<br>- <code>radio</code>: (or modem) some niche roms will want to flash it, particularly for carrier-locked phones.<br>- <code>misc</code> mostly stores settings related to other partitions. I&rsquo;ve never touched it.&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:17">
-<p>You aren&rsquo;t necessarily rooted right now. While you can overwrite existing partitions, some images don&rsquo;t provide root debugging. You can test by running <code>adb root</code>, or <code>adb shell</code> followed by <code>su</code>. If root debugging isn&rsquo;t an option in <code>developer options</code>, you could try TWRP (download the twrp img, and then boot into it with <code>fastboot boot &lt;img&gt;</code>). You can try your luck downloading stock firmware for your phone (check <a href="https://xda-developers.com">xda</a>), but obviously you can&rsquo;t get e.g. your data partition. Some phone OEMs provide tools for this exact reason, and you could always disassemble the phone to directly access the chips if you reeeeally wanted the images, I guess?&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>While you can overwrite existing partitions, some images don&rsquo;t provide root debugging. You can test by running <code>adb root</code>, or <code>adb shell</code> followed by <code>su</code>. If root debugging isn&rsquo;t an option in <code>developer options</code>, you could try backing up via TWRP (download the twrp img, and then boot into it with <code>fastboot boot &lt;img&gt;</code>). You can try your luck downloading stock firmware for your phone (check <a href="https://xda-developers.com">xda</a>), but obviously you can&rsquo;t get e.g. your data partition. Some phone OEMs provide tools for this exact reason, and you could always disassemble the phone to directly access the chips if you reeeeally wanted the images, I guess?&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:18">
 <p>TWRP&rsquo;s UI has <code>sideload</code> in a submenu somewhere. You start sideloading on the phone, then you <code>adb sideload &lt;file.zip&gt;</code> from your pc.&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:19">
-<p>Android phones these days usually have an A/B booting system; there are actually 2 boot images, and only one is live, and the other receives updates, and then they switch. <code>adb shell getprop ro.boot.slot_suffix</code> is the idiomatic way to determine if A or B is live (we want the live one). If that doesn&rsquo;t work, enter your bootloader interface again and run <code>fastboot getvar current-slot</code> (sometimes it&rsquo;s also just displayed in the bootloader interface UI).&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Android phones these days usually have an A/B booting system; there are actually 2 boot images, and only one is live, and the other receives updates, and then they switch. <code>adb shell getprop ro.boot.slot_suffix</code> is the idiomatic way to determine if A or B is live (we want the live one). If that doesn&rsquo;t work, enter your bootloader interface again and run <code>fastboot getvar current-slot</code> (sometimes it&rsquo;s also just displayed in the bootloader UI).&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:20">
 <p>You&rsquo;ll probably want to dump the boot image in userspace (almost always <code>/storage/emulated/0/</code>) to delete it easily later.&#160;<a href="#fnref:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>

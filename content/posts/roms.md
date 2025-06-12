@@ -31,11 +31,11 @@ The Ugly:
 
 ### What's rooting/Should I stay rooted?
 
-Phone manufacturers don't easily give you full (root) access to your phone. You can break things easily, it's a security nightmare[^10], and you can remove their data collection/bloatware. If you ask nicely, or sometimes force your way in, you can edit your operating system via your device firmware[^11].
+Phone manufacturers don't easily give you full (root) access to your phone. Most people don't care, you can break things easily, it's a security nightmare[^10], and you can remove their spyware/bloatware. If you ask nicely, or sometimes force your way in, you can edit your operating system via your device firmware[^11].
 
 After patching together our edited OS, we must decide whether to expose root access to our apps/our self.
 
-Reasons to stay rooted:
+Reasons to root:
 - root-only package managers and apps
     - [xposed modules](https://xdaforums.com/f/xposed-framework-modules.2919/)
     - actually usable android file managers
@@ -90,10 +90,10 @@ You'll lose all data on your phone if we proceed. This is the scary step, too. A
 Every rom has a different MO for flashing, and you need to find your rom's installation guide ([Lineage](https://wiki.lineageos.org/devices/) [Graphene](https://grapheneos.org/install/web) [Copperhead](https://copperhead.co/android/docs/install/) [Calyx](https://calyxos.org/install/)). Most use a script, some might use first-party tools like samsung Odin, many just flash the recovery partition and then package the other partitions like an android update. A non-exhaustive[^14] list of partitions you might have to flash:
 - Most will flash `boot`, the partition your phone is booted into right now. ***`A bad bootloader flash is how you brick a phone`***; the bootloader can rescue all other partitions (via `fastboot flash`). There are tools, usually first-party, to recover from brick, but don't count on them.
 - `system` stores most of what constitutes our rom. A bad flash here will probably boot-loop your phone.
-- `recovery` is the partition that helps you rebuild your phone when it breaks; most roms will flash it. I like [TWRP](https://twrp.me/Devices/), though it's not secure (avoid it on the Pixel roms), and you should check version compatibility with your rom.
+- `recovery` is the partition that helps you rebuild your phone when it breaks; most roms will flash it. I like [TWRP](https://twrp.me/Devices/), though it's not secure (avoid it on the secure Pixel roms like Graphene), and you should check version compatibility with your rom.
 - `kernel`: user-friendly roms aren't usually going to require a custom linux kernel. A bad flash would probably boot-loop or crash frequently.
 
-You can backup a partition[^17] using `dd`, e.g. `adb shell su -c dd if=/dev/path/to/<partition> > <partition>.img` to your pc.
+You can backup a partition[^17] using `dd` if rooted, e.g. `adb shell su -c dd if=/dev/path/to/<partition> > <partition>.img` to your pc.
 
 Pretty much every rom installation goes like this:
 - OEM unlocking and USB debugging need to be enabled
@@ -109,6 +109,8 @@ Once you re-lock your bootloader in fastboot, unlocking it again will wipe your 
 Again, if you're using one of the secure Pixel roms, you don't want to keep root, and usually they won't let you anyway.
 
 ### Magisk
+
+Only for rooted phones.
 
 You can get Magisk [here](https://github.com/topjohnwu/Magisk/releases). It's a neat little platform to manage which apps on your phone get root, or more importantly, which apps can see that *you* have root. It has its own [guide](https://topjohnwu.github.io/Magisk/install.html). If you don't have boot ramdisk, keeping root becomes very tedious and I personally wouldn't bother.
 
@@ -151,7 +153,7 @@ Go back into the bootloader interface (`adb -d reboot bootloader`) and `fastboot
 
 [^12]: Google makes it easy to hack on Pixels with easy bootloader unlocking. The Pixel rom is very close to stock android, making it easier to produce. Pixels from I believe the 3 onward have additional security features from the Titan M chip: secure boot, a secure partition, hardware-based encryption, etc.
 
-[^13]: Keeping root means giving apps access to root. However, we don't want every app to have root access, so we control who gets what. However, android will still attempt to notify apps if the user has root access. Banking apps are notorious for refusing to work if android snitches on you. So we have to play this constant game of trying to hide the fact that we have root from android, which seems impossible, but then you remember, we have complete root access. Anyway, we've been winning this game for the past few years, but it was pretty dire like 5 years ago.
+[^13]: We're losing right now because of hardware attestation. Keeping root means giving apps access to root. However, we don't want every app to have root access, so we control who gets what. However, android will still attempt to notify apps if the user has root access. Banking apps are notorious for refusing to work if android snitches on you. So we have to play this constant game of trying to hide the fact that we have root, which seems impossible, but then you remember, we have complete access.
 
 [^14]:<br>- `data` stores our user data; installed apps, settings, etc. we won't flash this, but guides may have you wipe it.<br>- if wiping `cache` breaks something, it deserves to be broken. You may also encounter `dalvik cache` or `ART cache`. These can also generally be safely wiped. Dalvik is the old VM that apps used to run in. ART (android runtime) replaced it a long time ago, instead generating bytecode from apps to load them faster.<br>- `radio`: (or modem) some niche roms will want to flash it, particularly for carrier-locked phones.<br>- `misc` mostly stores settings related to other partitions. I've never touched it.
 
@@ -161,13 +163,13 @@ The Pixel 5 (redfin) has 2 submodels, `GD1YQ` and `GTT9Q`. This shows how models
 
 [^16]: Also, change each `animation scale` to 0.5x, oh my god, it's so smooth.
 
-[^17]: You aren't necessarily rooted right now. While you can overwrite existing partitions, some images don't provide root debugging. You can test by running `adb root`, or `adb shell` followed by `su`. If root debugging isn't an option in `developer options`, you could try TWRP (download the twrp img, and then boot into it with `fastboot boot <img>`). You can try your luck downloading stock firmware for your phone (check [xda](https://xda-developers.com)), but obviously you can't get e.g. your data partition. Some phone OEMs provide tools for this exact reason, and you could always disassemble the phone to directly access the chips if you reeeeally wanted the images, I guess?
+[^17]: While you can overwrite existing partitions, some images don't provide root debugging. You can test by running `adb root`, or `adb shell` followed by `su`. If root debugging isn't an option in `developer options`, you could try backing up via TWRP (download the twrp img, and then boot into it with `fastboot boot <img>`). You can try your luck downloading stock firmware for your phone (check [xda](https://xda-developers.com)), but obviously you can't get e.g. your data partition. Some phone OEMs provide tools for this exact reason, and you could always disassemble the phone to directly access the chips if you reeeeally wanted the images, I guess?
 
 [^18]: You'll probably want to dump the boot image in userspace (almost always `/storage/emulated/0/`) to delete it easily later.
 
 [^19]: ![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/familiarity.png)
 
-[^20]: Android phones these days usually have an A/B booting system; there are actually 2 boot images, and only one is live, and the other receives updates, and then they switch. `adb shell getprop ro.boot.slot_suffix` is the idiomatic way to determine if A or B is live (we want the live one). If that doesn't work, enter your bootloader interface again and run `fastboot getvar current-slot` (sometimes it's also just displayed in the bootloader interface UI).
+[^20]: Android phones these days usually have an A/B booting system; there are actually 2 boot images, and only one is live, and the other receives updates, and then they switch. `adb shell getprop ro.boot.slot_suffix` is the idiomatic way to determine if A or B is live (we want the live one). If that doesn't work, enter your bootloader interface again and run `fastboot getvar current-slot` (sometimes it's also just displayed in the bootloader UI).
 
 [^21]: TWRP's UI has `sideload` in a submenu somewhere. You start sideloading on the phone, then you `adb sideload <file.zip>` from your pc.
 

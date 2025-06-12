@@ -137,22 +137,22 @@ For general-purpose:
 
 Each section below has individual recommendations.
 
-Torrent sites get attacked/seized or migrate often. Consult a [proxy list](https://knaben.info/)[^26] if a site is down. For example, `thepiratebay.org` goes down all the time, so 10 years ago I would use [thepiratebay.xyz](https://thepiratebay.xyz) before it died, now I mostly use [thepiratebay10.org](https://thepiratebay10.org).
+Torrent sites get attacked/seized or migrate often. Consult a [proxy list](https://knaben.info/)[^26] if a site is down. For example, `thepiratebay.org` goes down all the time, so 10 years ago I would use [thepiratebay.xyz](https://thepiratebay.xyz) before it died, now I mostly use [thepiratebay10.org](https://thepiratebay10.org) for tpb.
 
 ## <a name="where"></a>[Where do I pirate \_\_\_\_\_?](#navigation)
 
 ### <a name="windows"></a>[Windows](#navigation)
 
 This is a lot less risky than it used to be because most cracks now use microsoft's windows images. To crack an active windows installation, follow [these instructions](https://github.com/massgravel/Microsoft-Activation-Scripts)[^9] (you want to use HWID). Remember to:
-- open powershell/terminal *as an administrator*
+- open powershell/terminal *as an administrator* (right click and run as admin)
 - install without an internet connection (and therefore don't create a microsoft account)
 
 To install windows:
-- Get latest windows image from microsoft ([10](https://www.microsoft.com/en-us/software-download/windows10ISO) [11](https://www.microsoft.com/en-us/software-download/windows11/))
+- Get latest *multi-edition* windows image[^29] from microsoft ([10](https://www.microsoft.com/en-us/software-download/windows10ISO) [11](https://www.microsoft.com/en-us/software-download/windows11/)).
 - Take a thumb drive and either [rufus](https://rufus.ie/en/) (windows), Disk Utility (mac), or something like `dd if=/path/to/iso of=/path/to/usb conv=fsync bs=8M`[^22] (linux) to make an installation USB
 - Reboot with the USB plugged in. You will usually have to [enter your BIOS](https://www.wikihow.com/Enter-BIOS) (or boot menu), typically by holding down the f2 (or f8, f12, insert, delete...) key, booting from the USB or changing your boot order to prioritize it.
 - Install Windows. Select Pro or Pro N (Pro N is the EU-compliant version with less bloat, but you'll want to install the Windows Media Feature Pack yourself)
-- I recommend [tronscript](https://old.reddit.com/r/tronscript) or [winutil](https://github.com/ChrisTitusTech/winutil) for debloating[^5] and [chocolatey](https://chocolatey.org) for package managing[^6]
+- I recommend [tronscript](https://old.reddit.com/r/tronscript), [winutil](https://github.com/ChrisTitusTech/winutil), or [reviOS](https://www.revi.cc/docs/) for debloating[^5] and [chocolatey](https://chocolatey.org) for package managing[^6]
 - An example tron command for a `tron.bat` file downloaded to `C:\Users\a\Downloads\Tron` on a fresh machine is `C:\Users\a\Downloads\Tron\tron.bat -a -sa -sd -scc -v` (skipping antivirus scans, defrag, and cookies). Run this in cmd as an administrator.
 - Crack windows using the *admin* powershell github commands in the [link](https://github.com/massgravel/Microsoft-Activation-Scripts) above
 
@@ -164,7 +164,7 @@ For phones: you're probably looking for a cracked spotify app in Apps below. [re
 
 For desktops, [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases) downloads youtube media, and just using the web version of spotify with ublock origin on firefox should block its ads, but if you want, [here's a cracked windows spotify github](https://github.com/mrpond/BlockTheSpot/releases), [another](https://github.com/SpotX-Official/SpotX), and [one for macos/linux](https://github.com/SpotX-Official/SpotX-Bash).
 
-If you're new to downloading your own music, put everything in a music folder, and make playlists inside your music player. I use [foobar2000](https://www.foobar2000.org/download) because it's very customizable.
+If you're new to downloading your own music, put everything in a music folder, and make playlists inside your music player. I recommend[^28] [foobar2000](https://www.foobar2000.org/download) because it's very customizable.
 
 ### <a name="video"></a>[Video](#navigation)
 
@@ -236,9 +236,9 @@ Have some junk text to make footnotes better[^50]
 
 [^3]: Append `filetype:pdf` to a search engine to only return direct links to pdfs
 
-[^4]: VMs are operating-systems-inside-operating-systems that are slower than normal OSes, but if your VM gets a virus, you don't exactly care. [VirtualBox](https://www.virtualbox.org/wiki/Downloads) is what most people use, but I rarely deal with them and they're complicated to setup securely. Good for something like pirated photoshop, ableton, older games, ~~installing BonziBuddy, Monkey, Gator, and Prody Parrot to watch them duke it out,~~ etc.
+[^4]: VMs are operating-systems-inside-operating-systems that are slower than normal OSes, but if your VM gets a virus, you don't exactly care. [VirtualBox](https://www.virtualbox.org/wiki/Downloads) is what most people use. Good for something like pirated photoshop, ableton, older games, ~~installing BonziBuddy, Monkey, Gator, and Prody Parrot to watch them duke it out,~~ etc. Running a VM on your machine requires what is known as a "hypervisor", provided by your VM software, in this case virtualbox. If you're emulating the same OS that you're booted into, there are some performance gains from using e.g. KVM on linux, probably with virt-manager as a frontend. Look up type 1 vs type 2 hypervisors if performance matters; I'm sure Windows has some good software for that too.
 
-[^5]: Bloatware refers to unwanted bundled software (PUPs); debloating is the process of removing bloatware, often complicated by e.g. the financial incentive of microsoft to place ads in the start menu.
+[^5]: Bloatware refers to unwanted bundled software ("potentially unwanted programs" a.k.a. PUPs); debloating is the process of removing bloatware, often complicated by e.g. the financial incentive of microsoft to place ads in the start menu.
 
 [^6]: A package manager downloads, installs, uninstalls, and updates software for you. Entering e.g. `choco install firefox audacity vlc qbittorrent` in *admin* powershell installs these apps; `choco uninstall audacity` will uninstall audacity only if chocolatey installed it; `choco upgrade all` updates every chocolatey-managed app on your machine at once. Anyone allergic to powershell can use Chocolatey GUI, which is pretty mediocre. Package managers only manage apps they installed, so they're best configured right after a full wipe. This is how linux handles software, grafted onto windows.
 
@@ -280,5 +280,9 @@ Have some junk text to make footnotes better[^50]
 [^26]: This guide is a pointer to a proxy list, which is a pointer to a proxy, which is a pointer to a tracker, which is a pointer to a swarm, which is a pointer to seeds, who have files. 
 
 [^27]: If it isn't clear. You have to download the .apk file and open it in your file manager to install these. If you've never done this before, you also have to go into your settings to allow installation of apps from "unknown sources" or similar.
+
+[^28]: I however am completely insane and use VLC as a music player. I make playlists using `kid3-cli`, and use vlc mostly as a file browser that is available on all platforms.
+
+[^29]: If you're unsure about x64/arm: your processor determines which image to get. You probably have an x86-64 processor (this is the "instruction set"), which is coloquially shortened to x64, sometimes a.k.a. amd64. A laptop or tablet might have ARM. 
 
 [^50]: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
