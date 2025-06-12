@@ -1,12 +1,12 @@
 ---
-title: "neovim 1"
+title: "neovim 1 (nixos edition)"
 date: 2025-02-25T22:19:06-08:00
 draft: false
 ---
 
 ### Neovim
 
-[My neovim dotfiles](https://github.com/graevy/dotfiles/tree/nixos/.local/linkedobjs/nvim) are well-cooked now. I got into it initially because:
+[My neovim dotfiles](https://github.com/graevy/dotfiles/tree/nixos/.local/share/nvim) are well-cooked now. I got into it initially because:
 
 - my 2018 laptop has 8gb of ram and LSPs started crashing on larger projects
 - I need fine-grained linter/diagnostic customization to not get distracted by them while coding
@@ -20,7 +20,7 @@ draft: false
 
 There are three major traps I think you can fall into trying to wrangle neovim on nixos:
 
-##### Trying to use NixOS to manage neovim's config (e.g. home-manager's `programs.neovim.plugins`, `nixvim`)
+#### Trying to use NixOS to manage neovim's config (e.g. home-manager's `programs.neovim.plugins`, `nixvim`)
 
 They don't reach feature parity with good neovim tooling, e.g. home-manager doesn't do conditional plugin loading with lazy-nvim[^2]. `nixvim` generates lua configs, and is probably the best tool for this, but [notes](https://github.com/nix-community/nixvim#additional-config) that "Sometimes NixVim won't be able to provide for all your customization needs. In these cases, the extraConfigVim and extraConfigLua options are provided". So the abstraction will leak, especially if you're as opinionated as I am, and there will be lua files and nix files to manage.
 
@@ -31,12 +31,12 @@ Not all NixOS program modules do this. Steam is functionally a package manager f
 The regular neovim config will be portable to other distros; NixOS' bespoke configs won't be. Sometimes my packages don't break their config-space, and their config files should just be ported as inputs[^1].
 
 
-##### Dynamic neovim tooling (`packer`, automatic lsp managers like `mason`)
+#### Dynamic neovim tooling (`packer`, automatic lsp managers like `mason`)
 
 You just end up losing nixos' advantages. Declarative version pinning, non-deterministic packer sync calls, etc...I do see advantage in the simplicity of hybrid environments, but what happens when an imperative install leaks out of neovim? Mason shoves things onto $PATH, and if anything uses those artifacts, and if they update imperatively, those are effectively undeclared dependencies.
 
 
-##### Overcorrecting for simplicity
+#### Overcorrecting for simplicity
 
 You can build features from neovim's popular tooling without the plugins themselves, by way of `autocmd`s and `opts/packadd` on top of `lazy.nvim`. Every time I've reached this point I've ended up replacing an autocmd block with a plugin. At the moment I have two autocmd blocks in my `init.lua`, one is a simple diagnostics toggle and the other is some LLM-slop to lazy-load my LSPs that I haven't finished evaluating. Both are experiments; do I even need to explicitly defer LSP loading, what sort of diagnostic toggle behavior am I looking for...Both should eventually become plugins with time.
 
