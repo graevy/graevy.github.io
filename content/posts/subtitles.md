@@ -18,7 +18,9 @@ I wrote a [script](https://github.com/graevy/greyer) that reads a video file con
 
 Pretty much all video you download is formatted in `yuv420p`. What is `yuv420p`, you ask? Color quantization. It's a lossy transcoding scheme for color. Eyes see brightness more clearly than color. Video may be *encoded* in `h264`, `hevc`, whatever, but the actual video being encoded is in the `yuv420p` format.
 
-We have to talk about those encodings though. How do we encode video? Let's start with the raw. Let's say I film a 2 hour movie in 1080p, 60fps, without any encoding or compression. 1920 times 1080 is about 2 million pixels per frame. 2 hours is 7200 seconds is 432000 frames. 432000 * 2 million is 864 billion pixels. What's in a pixel? Let's say it's just RGB. That's 3 bytes per pixel, so we're sitting north of 2 terabytes. When you download a movie, we can get watchable quality under a gigabyte. How?
+The Y in `yuv` stands for "Luminance". Don't ask me why. U and V are color values. We care about luminance. `yuv420p` groups pixels into 2x2 blocks, in which each of the 4 pixels gets a brightess byte, and each block of 4 pixels gets 1 U and 1 V color byte. Don't ask me why it isn't `yuv411`, which also exists. The `p` stands for "planar", by the way. In RGB, 4 pixels gets 12 bytes (3 per pixel); in YUV, 4 pixels gets 6.
+
+We have to talk about encodings though. How do we encode video? Let's start with the raw. Let's say I film a 2 hour movie in 1080p, 60fps, without any encoding or compression. 1920 times 1080 is about 2 million pixels per frame. 2 hours is 7200 seconds is 432000 frames. 432000 * 2 million is 864 billion pixels. What's in a pixel? Let's say it's just RGB. That's 3 bytes per pixel, so we're sitting north of 2 terabytes. When you download a movie, we can get watchable quality under a gigabyte. How?
 
 Well, firstly, most pixels in video don't change every frame! We only need to record pixels that change. If part of the scene is just black for 2 seconds, then for 119 frames, part of the scene doesn't change, and that region of the screen requires less than 1% of the information of the raw video to render. So what problems exist with this model?
 
@@ -27,10 +29,8 @@ Well, firstly, most pixels in video don't change every frame! We only need to re
 
 There are two relevant tools to address these issues. 
 
-- Color quantization collapses pixels, decreasing color resolution. Pixels are now more likely the exact color between frames.
+- The color quantization of `yuv420p` collapses pixels, decreasing color resolution. Pixels are now more likely the exact color between frames.
 - Whole "i-frames" (a.k.a. key or anchor frames) serve as error-recovery points. Have you ever seen video glitch out for a few seconds, usually with lots of grey boxing and artifacting around moving objects? The decoder lost a few frames, and probably recovered after using an i-frame.
-
-The Y in `yuv` stands for "Luminance". Don't ask me why. U and V are color values. We care about luminance. `yuv420p` groups pixels into 2x2 blocks, in which each of the 4 pixels gets a brightess byte, and each block of 4 pixels gets 1 U and 1 V color byte. Don't ask me why it isn't `yuv411`. The `p` stands for "planar", by the way.
 
 
 ### So how do we get the luminance value for a frame?
