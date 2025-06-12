@@ -1,5 +1,5 @@
 ---
-title: "ccna"
+title: "ccna 1"
 date: 2023-10-22T20:14:09-07:00
 draft: false
 ---

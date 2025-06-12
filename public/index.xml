@@ -9,11 +9,18 @@
     <lastBuildDate>Wed, 11 Jun 2025 18:29:48 -0700</lastBuildDate>
     <atom:link href="http://quatl.ooo/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>ccna_pt2</title>
+      <title>ccna 2</title>
       <link>http://quatl.ooo/posts/ccna_pt2/</link>
       <pubDate>Wed, 11 Jun 2025 18:29:48 -0700</pubDate>
       <guid>http://quatl.ooo/posts/ccna_pt2/</guid>
       <description>&lt;h3 id=&#34;my-ccna-experience&#34;&gt;My CCNA experience&lt;/h3&gt;&#xA;&lt;p&gt;I wrote about being &amp;ldquo;halfway done&amp;rdquo; with the course material like over a year ago, which was true. However. The start of the CCNA is fun. You learn how computer networks work! All the terms you&amp;rsquo;ve absorbed throughout the years start making sense. It&amp;rsquo;s addicting.&lt;/p&gt;&#xA;&lt;p&gt;You have to cram the end of the CCNA. Now that you&amp;rsquo;ve learned routing protocols, you need to memorize their administrative distances. The Cisco iOS syntax quirks. Outdated protocol trivia. Cisco protocols that have been obsoleted by industry adoption of open alternatives: PAgP, HSRP, GLBP, ISL, DTP/VTP, EIGRP, PVST, Rapid PVST+. Oh, the Cisco exams barely cover BGP, the for-all-intents only path-vector minimal-trust routing protocol used to &lt;em&gt;route the internet&lt;/em&gt;. Instead, you get the DSCP codepoint values, FHRP MAC OUIs, WiFi bandwidths, the bandwidth of an E3 vs T3 line! Don&amp;rsquo;t forget Cisco-specific GUI operation.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>neovim 1</title>
+      <link>http://quatl.ooo/posts/neovim-1/</link>
+      <pubDate>Tue, 25 Feb 2025 22:19:06 -0800</pubDate>
+      <guid>http://quatl.ooo/posts/neovim-1/</guid>
+      <description>&lt;h3 id=&#34;neovim&#34;&gt;Neovim&lt;/h3&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/graevy/dotfiles/tree/nixos/.local/linkedobjs/nvim&#34;&gt;My neovim dotfiles&lt;/a&gt; are well-cooked now. I got into it initially because:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;my 2018 laptop has 8gb of ram and LSPs started crashing on larger projects&lt;/li&gt;&#xA;&lt;li&gt;I need fine-grained linter/diagnostic customization to not get distracted by them while coding&lt;/li&gt;&#xA;&lt;li&gt;The UI felt too difficult to customize generally&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;&#xA;&lt;li&gt;I became obsessed with golfing my IDE startup time&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/startuptime.png&#34; alt=&#34;startup&#34;&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;neovim-and-nixos&#34;&gt;Neovim and NixOS&lt;/h3&gt;&#xA;&lt;p&gt;There are three major traps I think you can fall into trying to wrangle neovim on nixos:&lt;/p&gt;</description>
     </item>
     <item>
       <title>font2</title>
@@ -51,7 +58,7 @@
       <description>&lt;p&gt;I finished this feature PR for ss14 kindof recently. I took &lt;a href=&#34;https://github.com/space-wizards/space-station-14/pull/19471&#34;&gt;these timers&lt;/a&gt; that I made in August and &lt;a href=&#34;https://github.com/space-wizards/space-station-14/pull/24189&#34;&gt;finished the job&lt;/a&gt;. This post isn&amp;rsquo;t about the feature, but something I wasn&amp;rsquo;t able to properly articulate until I talked to some other devs:&lt;/p&gt;&#xA;&lt;h3 id=&#34;organizational-scaling&#34;&gt;Organizational Scaling&lt;/h3&gt;&#xA;&lt;p&gt;The ss14 project has existed for like 4 years in my mind, which means it&amp;rsquo;s considerably older. &lt;code&gt;curl -s https://api.github.com/repos/space-wizards/space-station-14 | grep &#39;created_at&#39; &lt;/code&gt; gives &lt;code&gt;2017-05-22T01:57:51Z&lt;/code&gt;, so almost 7 years before the repo warranted its own github account&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. My august PR was &lt;code&gt;19471&lt;/code&gt;; my january PR was &lt;code&gt;24189&lt;/code&gt;; there have been &lt;code&gt;4718&lt;/code&gt; github items in the previous 5 months, and &lt;code&gt;19000&lt;/code&gt; in the previous ~6 years; simplified: +20% dev activity over 6 months.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>ccna</title>
+      <title>ccna 1</title>
       <link>http://quatl.ooo/posts/ccna_pt1/</link>
       <pubDate>Sun, 22 Oct 2023 20:14:09 -0700</pubDate>
       <guid>http://quatl.ooo/posts/ccna_pt1/</guid>

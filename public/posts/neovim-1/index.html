@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en-us"><head>
+    <title>quatloo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+
+    
+    <link rel="icon" type= image/x-icon href= /favicon.ico>
+
+    
+    
+    
+    <link rel="stylesheet" href="../../css/theme.min.css">
+
+    
+    
+    
+
+    
+</head>
+<body>
+        <div id="content" class="mx-auto"><header class="container mt-sm-5 mt-4 mb-4 mt-xs-1">
+    <div class="row">
+        
+        <div class="col-12 text-center">
+        
+            <h2 class="m-0 mb-2 mt-4">
+                <a href="../../posts/" class="text-decoration-none">
+                    
+                        graevy
+                    
+                </a>
+            </h2>
+            <p class="text-muted mb-1">
+                
+                    Wetware Developer
+                
+            </p>
+            <ul id="nav-links" class="list-inline mb-2">
+                
+                
+            </ul>
+            <ul id="nav-social" class="list-inline">
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="https://github.com/graevy" target="_blank">
+                            <i class="fab fa-github fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="mailto:avry@pm.me" target="_blank">
+                            <i class="fas fa-at fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="../../about/" target="_blank">
+                            <i class="fas fa-address-card fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+    <hr />
+</header><div class="container">
+    <div class="pl-sm-4 ml-sm-5">
+        <h3 id="neovim">Neovim</h3>
+<p><a href="https://github.com/graevy/dotfiles/tree/nixos/.local/linkedobjs/nvim">My neovim dotfiles</a> are well-cooked now. I got into it initially because:</p>
+<ul>
+<li>my 2018 laptop has 8gb of ram and LSPs started crashing on larger projects</li>
+<li>I need fine-grained linter/diagnostic customization to not get distracted by them while coding</li>
+<li>The UI felt too difficult to customize generally<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
+<li>I became obsessed with golfing my IDE startup time<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></li>
+</ul>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/startuptime.png" alt="startup"></p>
+<h3 id="neovim-and-nixos">Neovim and NixOS</h3>
+<p>There are three major traps I think you can fall into trying to wrangle neovim on nixos:</p>
+<h5 id="trying-to-use-nixos-to-manage-neovims-config-eg-home-managers-programsneovimplugins-nixvim">Trying to use NixOS to manage neovim&rsquo;s config (e.g. home-manager&rsquo;s <code>programs.neovim.plugins</code>, <code>nixvim</code>)</h5>
+<p>They don&rsquo;t reach feature parity with good neovim tooling, e.g. home-manager doesn&rsquo;t do conditional plugin loading with lazy-nvim<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. <code>nixvim</code> generates lua configs, and is probably the best tool for this, but <a href="https://github.com/nix-community/nixvim#additional-config">notes</a> that &ldquo;Sometimes NixVim won&rsquo;t be able to provide for all your customization needs. In these cases, the extraConfigVim and extraConfigLua options are provided&rdquo;. So the abstraction will leak, especially if you&rsquo;re as opinionated as I am, and there will be lua files and nix files to manage.</p>
+<p>This is an inherent NixOS trade-off. You start with the straightforward declaration <code>programs.neovim.enable = true;</code>. Then there are helpful minor config options e.g. <code>defaultEditor</code>. Then, useful config options that NixOS can reasonably set that tooling can also set e.g. <code>viAlias</code> being also easily inserted in shell configs. Then things are maybe too complicated to implement declaration for, usually programs with package managers, yet NixOS happily supplies the footguns to proceed.</p>
+<p>Not all NixOS program modules do this. Steam is functionally a package manager for games, yet <code>programs.steam</code> doesn&rsquo;t try to offer per-package (per-game) declaration. Steam&rsquo;s total environment is complex<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>, and thus best delegated to steam rather than the NixOS module.</p>
+<p>The regular neovim config will be portable to other distros; NixOS&rsquo; bespoke configs won&rsquo;t be. Sometimes my packages don&rsquo;t break their config-space, and their config files should just be ported as inputs<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
+<h5 id="dynamic-neovim-tooling-packer-automatic-lsp-managers-like-mason">Dynamic neovim tooling (<code>packer</code>, automatic lsp managers like <code>mason</code>)</h5>
+<p>You just end up losing nixos&rsquo; advantages. Declarative version pinning, non-deterministic packer sync calls, etc&hellip;I do see advantage in the simplicity of hybrid environments, but what happens when an imperative install leaks out of neovim? Mason shoves things onto $PATH, and if anything uses those artifacts, and if they update imperatively, those are effectively undeclared dependencies.</p>
+<h5 id="overcorrecting-for-simplicity">Overcorrecting for simplicity</h5>
+<p>You can build features from neovim&rsquo;s popular tooling without the plugins themselves, by way of <code>autocmd</code>s and <code>opts/packadd</code> on top of <code>lazy.nvim</code>. Every time I&rsquo;ve reached this point I&rsquo;ve ended up replacing an autocmd block with a plugin. At the moment I have two autocmd blocks in my <code>init.lua</code>, one is a simple diagnostics toggle and the other is some LLM-slop to lazy-load my LSPs that I haven&rsquo;t finished evaluating. Both are experiments; do I even need to explicitly defer LSP loading, what sort of diagnostic toggle behavior am I looking for&hellip;Both should eventually become plugins with time.</p>
+<p>There are thousands of neovim plugins, and if you&rsquo;re at a point where you&rsquo;re rolling your own, you&rsquo;re either deeeeeeep in the trenches or paranoid about breaking changes on updates. I find the sweet spot to be slightly below 30 plugins<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> &ndash; enough to be a strong IDE, few enough to avoid disastrous updates.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>For instance, I&rsquo;m a horrible person and try to use my IDE as a regular text editor, and so I want to conditionally load basic IDE features like line numbers.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>I did not truly understand the mindset of the dev who found the <code>xz</code> backdoor (because the ssh connections were taking ~500ms longer) until I noticed my neovim startup time occasionally went from ~80ms to ~300ms because, ultimately, I set a power_save profile in <code>tlp</code>. <a href="https://github.com/graevy/dotfiles/blob/c4684353f2df13f4098ae4657a2a1c2cfda60d34/.local/share/nvim/init.lua#L57C1-L62C4">My neo-tree loading</a> is probably the most egregious example&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Workarounds do exist, i.e. defining plugin load order in extraConfig&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Beyond just being very stateful. Per-game declaration means a massive maintenance development surface that, while easily delegable, isn&rsquo;t useful when Steam is right there!&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>Everybody is always going to lug their shell configs with them.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>I&rsquo;m at 22 at the time of writing, and trying to downsize.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+            </div>
+        </div><footer class="text-center pb-1">
+    <small class="text-muted">
+        Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a>, <a href="https://github.com/austingebauer/devise" target="_blank">Devise</a>
+    </small>
+</footer>
+</body>
+</html>
