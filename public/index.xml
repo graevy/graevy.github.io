@@ -9,11 +9,25 @@
     <lastBuildDate>Wed, 11 Jun 2025 18:29:48 -0700</lastBuildDate>
     <atom:link href="http://quatl.ooo/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Ccna_pt2</title>
+      <title>ccna_pt2</title>
       <link>http://quatl.ooo/posts/ccna_pt2/</link>
       <pubDate>Wed, 11 Jun 2025 18:29:48 -0700</pubDate>
       <guid>http://quatl.ooo/posts/ccna_pt2/</guid>
       <description>&lt;h3 id=&#34;my-ccna-experience&#34;&gt;My CCNA experience&lt;/h3&gt;&#xA;&lt;p&gt;I wrote about being &amp;ldquo;halfway done&amp;rdquo; with the course material like over a year ago, which was true. However. The start of the CCNA is fun. You learn how computer networks work! All the terms you&amp;rsquo;ve absorbed throughout the years start making sense. It&amp;rsquo;s addicting.&lt;/p&gt;&#xA;&lt;p&gt;You have to cram the end of the CCNA. Now that you&amp;rsquo;ve learned routing protocols, you need to memorize their administrative distances. The Cisco iOS syntax quirks. Outdated protocol trivia. Cisco protocols that have been obsoleted by industry adoption of open alternatives: PAgP, HSRP, GLBP, ISL, DTP/VTP, EIGRP, PVST, Rapid PVST+. Oh, the Cisco exams barely cover BGP, the for-all-intents only path-vector minimal-trust routing protocol used to &lt;em&gt;route the internet&lt;/em&gt;. Instead, you get the DSCP codepoint values, FHRP MAC OUIs, WiFi bandwidths, the bandwidth of an E3 vs T3 line! Don&amp;rsquo;t forget Cisco-specific GUI operation.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>font2</title>
+      <link>http://quatl.ooo/posts/font2/</link>
+      <pubDate>Sat, 08 Feb 2025 21:11:51 -0800</pubDate>
+      <guid>http://quatl.ooo/posts/font2/</guid>
+      <description>&lt;p&gt;When I moved from arch to nixos, I switched from X to Wayland, and decided also to switch status bars from i3status to i3status-rust, because I wasn&amp;rsquo;t insufferable enough. I wanted to have fun little icons for my statusbar that look like this:&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/statusbar.png&#34; alt=&#34;statusbar&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;So I went to go find a font! First I went with noto emoji. Emoji had issues:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;they&amp;rsquo;re a little colorful, and I don&amp;rsquo;t want to draw attention to my statusbar&lt;/li&gt;&#xA;&lt;li&gt;they don&amp;rsquo;t really map to the icons I want to use. I&amp;rsquo;d have to make some pretty serious compromises.&lt;/li&gt;&#xA;&lt;li&gt;for the icons I do want to use, they sometimes aren&amp;rsquo;t granular enough, i.e. there aren&amp;rsquo;t enough battery charge-state emojis&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;So then I went hunting for fonts. Nerdfonts has the best free selection, fontawesome as well. Including them in nix&amp;rsquo;s configuration was frustrating, and ultimately required pulling in far more glyphs than I actually wanted to use.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>subtitles</title>
+      <link>http://quatl.ooo/posts/subtitles/</link>
+      <pubDate>Sat, 08 Feb 2025 21:11:13 -0800</pubDate>
+      <guid>http://quatl.ooo/posts/subtitles/</guid>
+      <description>&lt;h3 id=&#34;problem&#34;&gt;Problem&lt;/h3&gt;&#xA;&lt;p&gt;HDR is too good. Darks are too dark and brights are too bright. Subtitles are white, and therefore too bright in dark scenes. You can render them grey, but, then they&amp;rsquo;re unnecessarily dark in bright scenes, and bright in dark scenes.&lt;/p&gt;&#xA;&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;&#xA;&lt;p&gt;I wrote a &lt;a href=&#34;https://github.com/graevy/greyer&#34;&gt;script&lt;/a&gt; that reads a video file concurrently with an SRT file. The SRT file contains time indicies of each rendered subtitle. I navigate to the &lt;code&gt;start_time&lt;/code&gt; in ffmpeg, determine its &lt;em&gt;luminance&lt;/em&gt;, and adjust the &lt;em&gt;color&lt;/em&gt; of the SRT entry accordingly.&lt;/p&gt;</description>
     </item>
     <item>
       <title>devhack 1</title>

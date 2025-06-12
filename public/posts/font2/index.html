@@ -68,7 +68,7 @@
 </header><div class="container">
     <div class="pl-sm-4 ml-sm-5">
         <p>When I moved from arch to nixos, I switched from X to Wayland, and decided also to switch status bars from i3status to i3status-rust, because I wasn&rsquo;t insufferable enough. I wanted to have fun little icons for my statusbar that look like this:</p>
-<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/battery/statusbar.jpg" alt="statusbar"></p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/statusbar.png" alt="statusbar"></p>
 <p>So I went to go find a font! First I went with noto emoji. Emoji had issues:</p>
 <ul>
 <li>they&rsquo;re a little colorful, and I don&rsquo;t want to draw attention to my statusbar</li>
@@ -78,7 +78,8 @@
 <p>So then I went hunting for fonts. Nerdfonts has the best free selection, fontawesome as well. Including them in nix&rsquo;s configuration was frustrating, and ultimately required pulling in far more glyphs than I actually wanted to use.</p>
 <p>Then we came to the next problem: rendering priority! If I wanted to use a font with a glyph for a charging battery, well, an emoji exists to represent that concept. And the unicode codepoint, which is inside the emoji space in this nerdfont, for that monocolored glyph, is going to be rendered by an emoji font first and a regular font second. And since many of these fonts are using the emoji codepoint space but aren&rsquo;t registered as emoji fonts, well, some of your icons become emojis and some of them don&rsquo;t. I could probably have taken a nerdfont and set its metadata as an emoji font, but then it would be used to render emoji elsewhere&hellip;Great.</p>
 <p>So I just made my own font. <a href="https://github.com/graevy/newfont">I repacked JetBrainsMono Regular</a> with a fontforge python script. I grabbed some svgs<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. This was faster than anything else I tried.</p>
-<p>The quickest hack was to use the unicode private use area for each glyph, even the ones that basically rendered an emoji, because of the aforementioned font-preference issue. I spent more time learning how to properly use a nix shell and integrating the new font from github declaratively than scripting.</p>
+<p>The quickest hack was to use the unicode private use area for each glyph, even the ones that basically rendered an emoji, because of the aforementioned font-preference issue. I spent more time learning how to properly use a nix shell and integrating the new font from github declaratively than scripting. This still isn&rsquo;t 100%, because the font isn&rsquo;t bitwise reproducible due to some artifacts from hosting this on github (current hypothesis).</p>
+<p>Really, I learned I&rsquo;m too hesitant to roll my own scripts sometimes, too comfortable on the beaten path as my preferences esotericize.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>

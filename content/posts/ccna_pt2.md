@@ -1,5 +1,5 @@
 ---
-title: "Ccna_pt2"
+title: "ccna_pt2"
 date: 2025-06-11T18:29:48-07:00
 draft: false
 ---
