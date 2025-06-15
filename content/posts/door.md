@@ -5,3 +5,5 @@ draft: true
 ---
 
 You've come a long way to hear my story, traveler. Come, sit by the fire, and permit me to regale you with the story of the devhack front door.
+
+It begins, naturally alongside the space itself.

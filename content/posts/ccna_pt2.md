@@ -42,7 +42,7 @@ They gave me this 10-page dry-erasable notepad to write on at the start of the e
 
 - routing administrative distances
 - which protocols are higher or lower (e.g. priority in OSPF is determined by highest values, whereas in spanning-tree it's lowest values)
-- some of the protocol codes, e.g. 802.11s for multiple spanning-tree
+- some of the protocol codes, e.g. `802.11s` for multiple spanning-tree
 - whatever rote-memorization I complained about above
 
 I was comfortable in all of the labs; the Boson labs were much more convoluted, and also all-or-nothing! Exam labs have clearly stated objectives, with clear opportunity for partial credit. My second exam lab I just was missing something in the routing structure and skipped it for time and felt fine about it.
