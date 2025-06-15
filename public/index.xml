@@ -44,13 +44,6 @@
       <description>&lt;p&gt;Did a bunch of projects without posting about them. Gonna batch-release these&lt;/p&gt;&#xA;&lt;h4 id=&#34;what-is-nixos&#34;&gt;What is nixos&lt;/h4&gt;&#xA;&lt;p&gt;NixOS is:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;the concept of &lt;a href=&#34;https://web.archive.org/web/0/https://jonathanlorimer.dev/posts/nix-thesis.html&#34;&gt;nix itself&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;your &lt;a href=&#34;https://github.com/graevy/nixos&#34;&gt;configuration.nix file(s)&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;sudo nixos-rebuild switch&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;sudo nixos-collect-garbage -d&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;the occasional &lt;code&gt;flake.nix&lt;/code&gt; and &lt;code&gt;nix-develop&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;sometimes running &lt;code&gt;nix-shell -p &amp;lt;some package i want to test&amp;gt;&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;whatever you settle on for misc tooling, for me the &lt;code&gt;nix-search&lt;/code&gt; and &lt;code&gt;nix-inspect&lt;/code&gt; packages&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;That&amp;rsquo;s it. That&amp;rsquo;s the whole thing. Don&amp;rsquo;t believe anyone else. I would never lie to you.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Endgames</title>
-      <link>http://quatl.ooo/posts/endgames/</link>
-      <pubDate>Fri, 09 Aug 2024 04:31:43 -0700</pubDate>
-      <guid>http://quatl.ooo/posts/endgames/</guid>
-      <description>&lt;p&gt;If you know me in any capacity, you know I &lt;a href=&#34;https://lichess.org/@/avry&#34;&gt;play chess&lt;/a&gt;. Someone told me a few weeks ago that they &amp;ldquo;knew the rules to chess, even the weird ones&amp;rdquo;, and we embarked on a sort of collaborative chess trivia. Some chess rules pertain to etiquette during the game (no talking, same hand moves piece and hits clock, etc.). We will ignore these. Here are the rules of the board (and not the people around it) in ascending order of obscurity:&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>devhack 1</title>
       <link>http://quatl.ooo/posts/devhack-1/</link>
       <pubDate>Wed, 26 Jun 2024 01:40:22 -0700</pubDate>
