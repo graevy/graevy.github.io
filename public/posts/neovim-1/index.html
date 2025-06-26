@@ -77,31 +77,32 @@
 <p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/startuptime.png" alt="startup"></p>
 <p>I want to share what I&rsquo;ve learned about interoperability.</p>
 <h3 id="cat-and-mouse-declaration">Cat-and-Mouse Declaration</h3>
-<p>NixOS modules for configuring complicated<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> programs require dev work after those programs update, so the modules feature-lag their respective native configs. Neovim serves a good example.</p>
-<p><code>home-manager</code> and <code>nixvim</code>, two third-party<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> NixOS neovim configurations, provide <code>extraConfig</code> embedded lua snippets to inject native neovim configs. <code>nixvim</code> <a href="https://github.com/nix-community/nixvim/blob/f0764db7212003520341ac10ddcee50e9c458a6f/README.md?plain=1#L462">notes</a> &ldquo;Sometimes NixVim won&rsquo;t be able to provide for all your customization needs. In these cases, the <code>extraConfigVim</code> and <code>extraConfigLua</code> options are provided&rdquo;. I read the intention as &ldquo;here&rsquo;s a hackable section for features we haven&rsquo;t yet implemented&rdquo;, but I worry:</p>
+<p>NixOS modules for configuring complicated<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> programs require ongoing maintenance, so the modules feature-lag their respective native configs. Neovim serves a good example.</p>
+<p><code>home-manager</code> and <code>nixvim</code>, two third-party<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> nixos neovim configurations, provide <code>extraConfig</code> embedded lua snippets to inject native neovim configs. <code>nixvim</code> <a href="https://github.com/nix-community/nixvim/blob/f0764db7212003520341ac10ddcee50e9c458a6f/README.md?plain=1#L462">notes</a> &ldquo;Sometimes NixVim won&rsquo;t be able to provide for all your customization needs. In these cases, the <code>extraConfigVim</code> and <code>extraConfigLua</code> options are provided&rdquo;. I read the intention as &ldquo;here&rsquo;s a hackable section for features we haven&rsquo;t yet implemented&rdquo;, but I worry:</p>
 <ul>
 <li>&ldquo;I&rsquo;m going to have to shove everything in here&rdquo;</li>
 <li>&ldquo;now I have TWO config languages&rdquo;</li>
 <li>&ldquo;the abstraction clearly leaks&rdquo;</li>
 <li>and when I see <code>extraConfigLuaPre</code> and <code>extraConfigLuaPost</code>&hellip;</li>
 </ul>
-<p>This hybrid style provides centralization, because everything sits in the NixOS module, but sacrifices:</p>
+<p>Critiquing <code>nixvim</code> purely for being incomplete is unfair, but neovim changes a lot between versions<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>; there will always be <code>extraConfigLua</code>.</p>
+<p>This hybrid config provides centralization, because everything sits in the nixos module, and some access to the nixos build graph, but sacrifices:</p>
 <ul>
 <li>simplicity</li>
-<li>compared to fully committing to NixOS modules, the determinism guarantees (you forfeit the safeguard against configuration drift)</li>
-<li>easy interoperability, should either the NixOS module side or lua side require knowing the other&rsquo;s configs</li>
-<li>portability to other distros<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></li>
+<li>compared to fully committing to nixos modules, the determinism guarantees (you forfeit the safeguard against configuration drift)</li>
+<li>easy interoperability, should either the nixos module side or lua side require knowing the other&rsquo;s configs</li>
+<li>portability to other distros<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></li>
 </ul>
-<p>Most NixOS modules don&rsquo;t try to configure complex programs. Neovim is just the first module with third-party footguns I&rsquo;ve had to justify balking at. Steam, for example, is functionally a package manager for games, yet <code>programs.steam</code> doesn&rsquo;t try to offer per-package declaration. Steam&rsquo;s complex environment is obviously best delegated to steam rather than the tiny NixOS module.</p>
-<p>Why are we so obsessed with reinventing the wheel? Why can&rsquo;t we just treat native configs as version-pinned flake inputs instead of building 200+ contributor projects? Existing opaque to NixOS certainly has its downsides<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>, but I hit my limit here.</p>
-<h3 id="my-three-miscellaneous-tarpits-wrangling-neovim">My three<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> miscellaneous tarpits wrangling Neovim</h3>
+<p>Most nixos modules don&rsquo;t try to configure complex programs. Neovim is just the first module with third-party footguns I&rsquo;ve had to justify balking at. Steam, for example, is functionally a package manager for games, yet <code>programs.steam</code> doesn&rsquo;t try to offer per-package declaration. Steam&rsquo;s complex environment is obviously best delegated to steam rather than the tiny nixos module.</p>
+<p>Why are we so obsessed with reinventing the wheel? Why can&rsquo;t we just treat native configs as version-pinned flake inputs instead of building 200+ contributor projects? Existing opaque to nixos certainly has its downsides<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, but I hit my limit here.</p>
+<h3 id="my-three-miscellaneous-tarpits-wrangling-neovim">My three<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> miscellaneous tarpits wrangling Neovim</h3>
 <h4 id="1-using-someone-elses-bespoke-config">1. Using someone else&rsquo;s bespoke config</h4>
-<p>I did this at first and I couldn&rsquo;t maintain it<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>. Yeah, I can link you <a href="https://github.com/graevy/dotfiles">mine</a>, and you can throw the plugin list and the lua files at an LLM to get the gist. Personally, I have to approach complexity by encountering the problem to understand the solution.</p>
-<p>I definitely document differently now after going through that, with far less assumed knowledge about the ecosystem that code inhabits. At least in open-source.</p>
+<p>I did this at first and I couldn&rsquo;t maintain it<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>. Yeah, I can link you <a href="https://github.com/graevy/dotfiles">mine</a>, and you can throw the plugin list and the lua files at an LLM to get the gist. Personally, I have to approach complexity by encountering the problem a solution solves, so bottom-up works a lot better for me than top-down.</p>
+<p>I definitely document all code differently now after going through that, with far less assumed ecosystem knowledge. At least in open-source.</p>
 <h4 id="2-overcorrecting-for-simplicity">2. Overcorrecting for simplicity</h4>
 <p>I lost some time to this, after rejecting that overengineering for my own.</p>
-<p>You can build features from neovim&rsquo;s popular tooling without the plugins themselves, by way of <code>autocmd</code> and <code>opts/packadd</code> on top of <code>lazy.nvim</code>. Every time I&rsquo;ve reached this point I&rsquo;ve ended up replacing an autocmd block with a plugin. At the moment I have two autocmd blocks in my <code>init.lua</code>, one is a simple diagnostics toggle and the other is some LLM-slop to lazy-load my LSPs that I haven&rsquo;t finished evaluating. Both are experiments; what sort of diagnostic toggle behavior am I looking for, do I even need to explicitly defer LSP loading&hellip;Both should eventually become plugins with time<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>.</p>
-<p>There are thousands of neovim plugins, and if you&rsquo;re at a point where you&rsquo;re rolling your own, you&rsquo;re either deeeeeeep in the trenches or paranoid about breaking changes on updates. I use under 25 plugins<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup> to be an <em>easily maintainable</em> IDE.</p>
+<p>You can build features from neovim&rsquo;s popular tooling without the plugins themselves, by way of <code>autocmd</code> and <code>opts/packadd</code> (on top of <code>lazy.nvim</code> in my case). Every time I&rsquo;ve reached this point I&rsquo;ve ended up replacing an autocmd block with a plugin. At the moment I have two autocmd blocks in my <code>init.lua</code>, one is a simple diagnostics toggle and the other is some LLM-slop to lazy-load my LSPs that I haven&rsquo;t finished evaluating. Both are experiments; what sort of diagnostic toggle behavior am I looking for, do I even need to explicitly defer LSP loading&hellip;Both should eventually become plugins with time<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>.</p>
+<p>There are thousands of neovim plugins, and if you&rsquo;re at a point where you&rsquo;re rolling your own, you&rsquo;re either deeeeeeep in the trenches or paranoid about breaking changes on updates. I use under 25 plugins<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> to be an <em>easily maintainable</em> IDE.</p>
 <h4 id="3-dynamic-neovim-tooling-packer-automatic-lsp-managers-like-mason">3. Dynamic neovim tooling (<code>packer</code>, automatic lsp managers like <code>mason</code>)</h4>
 <p>You just end up losing nixos&rsquo; advantages. Declarative version pinning, non-deterministic packer sync calls, etc&hellip;I do see advantage in the simplicity of hybrid environments, but what happens when an imperative install leaks out of neovim? Mason shoves things onto $PATH, and if anything uses those artifacts, and if they update imperatively, those are effectively undeclared dependencies.</p>
 <p>Anyway, I didn&rsquo;t fall into this one. Mason&rsquo;s aggressive dynamism had me clutching my <code>configuration.nix</code>.</p>
@@ -109,31 +110,34 @@
 <hr>
 <ol>
 <li id="fn:1">
-<p>I did not truly understand the mindset of the dev who found the <code>xz</code> backdoor (because the ssh connections were taking ~500ms longer) until I noticed my neovim startup time occasionally went from ~80ms to ~300ms because, ultimately, I set a power_save profile in <code>tlp</code>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>I did not truly understand the mindset of the dev who found the <code>xz</code> backdoor (because the ssh connections were taking ~500ms longer) until I noticed my neovim startup time occasionally went from ~80ms to ~300ms because, ultimately, I set a <code>power_save</code> profile in <code>tlp</code>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>For mature programs, the threshold for &ldquo;too complicated&rdquo; is maybe &ldquo;has its own packages&rdquo;. The most complex piece of software I would feel comfortable configuring entirely in a NixOS module is probably sway. Neovim changes a lot, varies so much between users&hellip;maybe one day nixvim will get there.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>For mature programs, the threshold for &ldquo;too complicated&rdquo; is maybe &ldquo;has its own packages&rdquo;. The most complex piece of software I would feel comfortable configuring entirely in a nixos module is probably sway. Neovim changes a lot, varies so much between users&hellip;maybe one day nixvim will get there.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>Though home-manager is widely adopted. I will also note here that <code>home-manager</code> doesn&rsquo;t do conditional plugin loading the way <code>lazy.nvim</code> does (though you can specify load order), and thus the feature-lag precludes my IDE boot-golfing.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Though home-manager is widely adopted. I will also note here that <code>home-manager</code> doesn&rsquo;t do conditional plugin loading the way <code>lazy.nvim</code> does (though you can specify load order), and thus the feature-lag precludes my IDE boot-golfing. I consider <code>nixvim</code> more complete, and focus on it here.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
-<p>Nixvim does generate lua configs which you could export. Though it <a href="https://github.com/nix-community/nixvim/discussions/2550">isn&rsquo;t very comprehensive</a>, and I don&rsquo;t want to lose my documentation/code structure. If Neovim ever slows its iteration, NixVim will solve these problems and become better than native configs!&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>With the inclusion of neovim 11 in nixos 25.05 stable, I just migrated my lsp configuration from the <code>nvim-lspconfig</code> to the new native <code>vim.lsp.config</code>, for example. Neovim is still changing quickly.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p>Neovim itself isn&rsquo;t version-pinned, state could persist in the config files themselves, the native config exists outside the build graph&hellip;I mean, this is all compromise.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Nixvim does generate lua configs which you could export. Though it <a href="https://github.com/nix-community/nixvim/discussions/2550">isn&rsquo;t very comprehensive</a>, and I don&rsquo;t want to lose my documentation/code structure. If neovim ever calcifies, nixvim will catch up to become better than native configs, I think.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
-<p>Bonus pit: writing this post, which I&rsquo;ve had to fully rewrite now twice to come close to making my points cleanly. Probably why it&rsquo;s so dense&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Neovim itself isn&rsquo;t version-pinned, state could persist in the config files themselves, the native config exists outside the build graph&hellip;I mean, this is all compromise.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:7">
-<p>If I understood neovim better first, this would&rsquo;ve been much more manageable. I think my first attempt involved cloning someone&rsquo;s 80-plugin config before I knew where the plugin configs were stored or where generic vim options were defined, so maybe I&rsquo;m overreacting.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Bonus pit: writing this post, which I&rsquo;ve had to fully rewrite now twice to come close to making my points cleanly. Probably why it&rsquo;s so dense&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:8">
-<p>This concept of having a hackable codebase section has extended beyond neovim for me now; I no longer shove Rust into my experiments.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>If I understood neovim better first, this would&rsquo;ve been much more manageable. I think my first attempt involved cloning someone&rsquo;s 80-plugin config before I knew where the plugin configs were stored or where generic vim options were defined, so maybe I&rsquo;m overreacting.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:9">
-<p>22 at the time of writing, and trying to downsize. I think as time goes on, I&rsquo;ll understand the system better, update it more easily, and want more features, so I will gradually bloat.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>This concept of having a hackable codebase section has extended beyond neovim for me now; I no longer shove Rust into my experiments.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>22 at the time of writing, and trying to downsize. I think as time goes on, I&rsquo;ll understand the system better, update it more easily, and want more features, so I will gradually bloat.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
