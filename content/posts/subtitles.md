@@ -14,23 +14,29 @@ HDR is too good. Darks are too dark and brights are too bright. Subtitles are wh
 I wrote a [script](https://github.com/graevy/greyer) that reads a video file concurrently with an SRT file. The SRT file contains time indicies of each rendered subtitle. I navigate to the `start_time` in ffmpeg, determine its *luminance*, and adjust the *color* of the SRT entry accordingly.
 
 
-### I learned too much about video formats for this, now you have to, too
+### I learned about video formats for this; now you have to, too
 
-Pretty much all video you download is formatted in `yuv420p`. What is `yuv420p`, you ask? Color quantization. It's a lossy transcoding scheme for color. Eyes see brightness more clearly than color. Video may be *encoded* in `h264`, `hevc`, whatever, but the actual video being encoded is in the `yuv420p` format.
+Pretty much all video you download is formatted in `yuv420p`. What is `yuv420p`? Color quantization. It's a lossy transcoding scheme for color. Eyes see brightness more clearly than color. Video may be *encoded* in `h264`, `hevc`, whatever, but the actual video being encoded is in the `yuv420p` format.
 
-The Y in `yuv` stands for "Luminance". Don't ask me why. U and V are color values. We care about luminance. `yuv420p` groups pixels into 2x2 blocks, in which each of the 4 pixels gets a brightess byte, and each block of 4 pixels gets 1 U and 1 V color byte. Don't ask me why it isn't `yuv411`, which also exists. The `p` stands for "planar", by the way. In RGB, 4 pixels gets 12 bytes (3 per pixel); in YUV, 4 pixels gets 6.
+The Y in `yuv` stands for "Luminance". Don't ask me why. U and V are color values. We care about luminance. `yuv420p` groups pixels into 2x2 blocks, in which each of the 4 pixels gets a brightess byte, and each block of 4 pixels gets 1 U and 1 V color byte. Don't ask me why it isn't `yuv411`[^7]. The `p` stands for "planar", by the way. In RGB, 4 pixels gets 12 bytes (3 per pixel); in `yuv420p`, 4 pixels gets 6.
 
 We have to talk about encodings though. How do we encode video? Let's start with the raw. Let's say I film a 2 hour movie in 1080p, 60fps, without any encoding or compression. 1920 times 1080 is about 2 million pixels per frame. 2 hours is 7200 seconds is 432000 frames. 432000 * 2 million is 864 billion pixels. What's in a pixel? Let's say it's just RGB. That's 3 bytes per pixel, so we're sitting north of 2 terabytes. When you download a movie, we can get watchable quality under a gigabyte. How?
 
-Well, firstly, most pixels in video don't change every frame! We only need to record pixels that change. If part of the scene is just black for 2 seconds, then for 119 frames, part of the scene doesn't change, and that region of the screen requires less than 1% of the information of the raw video to render. So what problems exist with this model?
+- We only need to record pixel blocks that change. If a scene cuts to black for 2 seconds, then for 119 frames, that scene is "temporally redundant", requiring zero data.
 
-- Those dark pixels aren't *truly* dark, are they? It's not the *exact* same color from frame to frame, is it?
-- What happens if I lose a frame or two? Video is often streamed via UDP without error recovery, and we're assuming lossless *transmission*.
+- When blocks *do* change, they usually move across the screen. If a shape moves to a neighboring region, rather than track each region independently, we can just define that motion in a *motion vector*. Now, thanks to *inter-frame prediction*, regions don't require grid-by-grid updates.
+
+- When encoding the video, we can look at the output we just generated and compare it to the input. If it smells bad, we can tune the quantization, include/exclude a motion vector, etc., and try again, machine-learning style. 
+
+What problems exist with these compression scheme?
+
+- Those dark pixels aren't *100%* dark, are they? It's not the *exact* same color from frame to frame, is it?
+- What happens if I lose a frame or two? Video IS often streamed via UDP, after all, and we're assuming lossless *transmission* when we rely only on frame deltas rather than complete rasters.
 
 There are two relevant tools to address these issues. 
 
-- The color quantization of `yuv420p` collapses pixels, decreasing color resolution. Pixels are now more likely the exact color between frames.
-- Whole "i-frames" (a.k.a. key or anchor frames) serve as error-recovery points. Have you ever seen video glitch out for a few seconds, usually with lots of grey boxing and artifacting around moving objects? The decoder lost a few frames, and probably recovered after using an i-frame.
+- The color quantization of `yuv420p` collapses pixels, decreasing color resolution. Pixels are now more likely the exact color between frames. So, as we shrink the color space, compression also gets easier!
+- "i-frames" (a.k.a. key or anchor frames) inserted every ~3 seconds contain full pixel data and serve as error-recovery points. Have you ever seen video glitch out for a few seconds, usually with lots of grey boxing[^8] and artifacting around moving objects? The decoder lost a few frames, and probably recovered after using an i-frame.
 
 
 ### So how do we get the luminance value for a frame?
@@ -79,6 +85,10 @@ As far as I searched[^6], nobody else has bothered trying to automate an open-so
 
 [^4]: you could certainly make the case to me that only the luminance around where the subtitle is actually rendered should be displayed, and that this would be faster to calculate. It just introduces the edge case where the subtitle region happens to be vastly different than the rest of the frames, making them potentially crowded-out. I don't know what that case looks like in practice.
 
-[^5]: if you're wondering, the main video file I used to test the dark-video-with-white-subtitle problem was Silo S02E06. When I initially extracted the Y channels, I thought I did something wrong and clamped them to 6 bits somehow, because the highest value was I think 63. Nope, that was just the brightest frame in the entire episode, which, as the name implies, takes place underground.
+[^5]: if you're wondering, the main video file I used to test the dark-video-with-white-subtitle problem was Silo S02E06. When I initially extracted the Y channels, I thought I did something wrong and clamped them to 6 bits somehow, because the greatest luminance was 63. Nope, that was just the brightest frame in the entire episode, which, as the name implies, takes place underground.
 
 [^6]: about a half-dozen google searches, a github search, a kagi search, even on marginalia, and I think Plex's(?) forums
+
+[^7]: which also exists, by the way
+
+[^8]: if you have to guess a color and you have no information, `#7F7F7F` is your best starting point. Especially as you get more data to average it with.

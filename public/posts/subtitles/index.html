@@ -71,61 +71,78 @@
 <p>HDR is too good. Darks are too dark and brights are too bright. Subtitles are white, and therefore too bright in dark scenes. You can render them grey, but, then they&rsquo;re unnecessarily dark in bright scenes, and bright in dark scenes.</p>
 <h3 id="solution">Solution</h3>
 <p>I wrote a <a href="https://github.com/graevy/greyer">script</a> that reads a video file concurrently with an SRT file. The SRT file contains time indicies of each rendered subtitle. I navigate to the <code>start_time</code> in ffmpeg, determine its <em>luminance</em>, and adjust the <em>color</em> of the SRT entry accordingly.</p>
-<h3 id="i-learned-too-much-about-video-formats-for-this-now-you-have-to-too">I learned too much about video formats for this, now you have to, too</h3>
-<p>Pretty much all video you download is formatted in <code>yuv420p</code>. What is <code>yuv420p</code>, you ask? Color quantization. It&rsquo;s a lossy transcoding scheme for color. Eyes see brightness more clearly than color. Video may be <em>encoded</em> in <code>h264</code>, <code>hevc</code>, whatever, but the actual video being encoded is in the <code>yuv420p</code> format.</p>
-<p>The Y in <code>yuv</code> stands for &ldquo;Luminance&rdquo;. Don&rsquo;t ask me why. U and V are color values. We care about luminance. <code>yuv420p</code> groups pixels into 2x2 blocks, in which each of the 4 pixels gets a brightess byte, and each block of 4 pixels gets 1 U and 1 V color byte. Don&rsquo;t ask me why it isn&rsquo;t <code>yuv411</code>, which also exists. The <code>p</code> stands for &ldquo;planar&rdquo;, by the way. In RGB, 4 pixels gets 12 bytes (3 per pixel); in YUV, 4 pixels gets 6.</p>
+<h3 id="i-learned-about-video-formats-for-this-now-you-have-to-too">I learned about video formats for this; now you have to, too</h3>
+<p>Pretty much all video you download is formatted in <code>yuv420p</code>. What is <code>yuv420p</code>? Color quantization. It&rsquo;s a lossy transcoding scheme for color. Eyes see brightness more clearly than color. Video may be <em>encoded</em> in <code>h264</code>, <code>hevc</code>, whatever, but the actual video being encoded is in the <code>yuv420p</code> format.</p>
+<p>The Y in <code>yuv</code> stands for &ldquo;Luminance&rdquo;. Don&rsquo;t ask me why. U and V are color values. We care about luminance. <code>yuv420p</code> groups pixels into 2x2 blocks, in which each of the 4 pixels gets a brightess byte, and each block of 4 pixels gets 1 U and 1 V color byte. Don&rsquo;t ask me why it isn&rsquo;t <code>yuv411</code><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. The <code>p</code> stands for &ldquo;planar&rdquo;, by the way. In RGB, 4 pixels gets 12 bytes (3 per pixel); in <code>yuv420p</code>, 4 pixels gets 6.</p>
 <p>We have to talk about encodings though. How do we encode video? Let&rsquo;s start with the raw. Let&rsquo;s say I film a 2 hour movie in 1080p, 60fps, without any encoding or compression. 1920 times 1080 is about 2 million pixels per frame. 2 hours is 7200 seconds is 432000 frames. 432000 * 2 million is 864 billion pixels. What&rsquo;s in a pixel? Let&rsquo;s say it&rsquo;s just RGB. That&rsquo;s 3 bytes per pixel, so we&rsquo;re sitting north of 2 terabytes. When you download a movie, we can get watchable quality under a gigabyte. How?</p>
-<p>Well, firstly, most pixels in video don&rsquo;t change every frame! We only need to record pixels that change. If part of the scene is just black for 2 seconds, then for 119 frames, part of the scene doesn&rsquo;t change, and that region of the screen requires less than 1% of the information of the raw video to render. So what problems exist with this model?</p>
 <ul>
-<li>Those dark pixels aren&rsquo;t <em>truly</em> dark, are they? It&rsquo;s not the <em>exact</em> same color from frame to frame, is it?</li>
-<li>What happens if I lose a frame or two? Video is often streamed via UDP without error recovery, and we&rsquo;re assuming lossless <em>transmission</em>.</li>
+<li>
+<p>We only need to record pixel blocks that change. If a scene cuts to black for 2 seconds, then for 119 frames, that scene is &ldquo;temporally redundant&rdquo;, requiring zero data.</p>
+</li>
+<li>
+<p>When blocks <em>do</em> change, they usually move across the screen. If a shape moves to a neighboring region, rather than track each region independently, we can just define that motion in a <em>motion vector</em>. Now, thanks to <em>inter-frame prediction</em>, regions don&rsquo;t require grid-by-grid updates.</p>
+</li>
+<li>
+<p>When encoding the video, we can look at the output we just generated and compare it to the input. If it smells bad, we can tune the quantization, include/exclude a motion vector, etc., and try again, machine-learning style.</p>
+</li>
+</ul>
+<p>What problems exist with these compression scheme?</p>
+<ul>
+<li>Those dark pixels aren&rsquo;t <em>100%</em> dark, are they? It&rsquo;s not the <em>exact</em> same color from frame to frame, is it?</li>
+<li>What happens if I lose a frame or two? Video IS often streamed via UDP, after all, and we&rsquo;re assuming lossless <em>transmission</em> when we rely only on frame deltas rather than complete rasters.</li>
 </ul>
 <p>There are two relevant tools to address these issues.</p>
 <ul>
-<li>The color quantization of <code>yuv420p</code> collapses pixels, decreasing color resolution. Pixels are now more likely the exact color between frames.</li>
-<li>Whole &ldquo;i-frames&rdquo; (a.k.a. key or anchor frames) serve as error-recovery points. Have you ever seen video glitch out for a few seconds, usually with lots of grey boxing and artifacting around moving objects? The decoder lost a few frames, and probably recovered after using an i-frame.</li>
+<li>The color quantization of <code>yuv420p</code> collapses pixels, decreasing color resolution. Pixels are now more likely the exact color between frames. So, as we shrink the color space, compression also gets easier!</li>
+<li>&ldquo;i-frames&rdquo; (a.k.a. key or anchor frames) inserted every ~3 seconds contain full pixel data and serve as error-recovery points. Have you ever seen video glitch out for a few seconds, usually with lots of grey boxing<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> and artifacting around moving objects? The decoder lost a few frames, and probably recovered after using an i-frame.</li>
 </ul>
 <h3 id="so-how-do-we-get-the-luminance-value-for-a-frame">So how do we get the luminance value for a frame?</h3>
 <p>Firstly, we have to get the frame. We have to find the i-frame before the timestamp we want, and perform video decoding until we reach that timestamp. This is expensive.</p>
 <p>We can also just grab the luminance value of the nearest preceding i-frame. While your gut reaction is probably &ldquo;what if a scene transition happens in those few seconds before reaching the frame&rdquo;, consider the perspective of the video encoder:</p>
 <ul>
-<li>An i-frame is necessarily a complete<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> frame, because the decoder needs to use it to recover from loss</li>
-<li>i-frame insertion location is very flexible<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></li>
+<li>An i-frame is necessarily a complete<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> frame, because the decoder needs to use it to recover from loss</li>
+<li>i-frame insertion location is very flexible<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></li>
 <li>scene transitions usually involve changing most pixels, so make great candidate i-frames</li>
 </ul>
-<p>So, when grabbing luminance from the nearest iframe, opting not to decode video up to a precise timestamp is often fine. Further, consider the case where a scene transition occurs <em>while a subtitle is still rendered</em>. The subtitle will remain a potentially annoying brightness value, unless split into multiple renderings of the same subtitle. So there&rsquo;s already an unsolved brightness case involving scene transitions that can&rsquo;t be easily solved<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> without integrating the video player&rsquo;s subtitle renderer.</p>
+<p>So, when grabbing luminance from the nearest iframe, opting not to decode video up to a precise timestamp is often fine. Further, consider the case where a scene transition occurs <em>while a subtitle is still rendered</em>. The subtitle will remain a potentially annoying brightness value, unless split into multiple renderings of the same subtitle. So there&rsquo;s already an unsolved brightness case involving scene transitions that can&rsquo;t be easily solved<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> without integrating the video player&rsquo;s subtitle renderer.</p>
 <p>This was the logic underpinning the <code>--fast</code> option, and in testing I didn&rsquo;t notice any difference using it.</p>
-<p>Regardless, once we&rsquo;re there, we simply have to average the luminance value (the &ldquo;Y-channel&rdquo;) of every 2x2 <code>yuv</code> pixel grid<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. These are all <code>ffmpeg</code> calls that are blessedly abstracted beneath me.</p>
+<p>Regardless, once we&rsquo;re there, we simply have to average the luminance value (the &ldquo;Y-channel&rdquo;) of every 2x2 <code>yuv</code> pixel grid<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>. These are all <code>ffmpeg</code> calls that are blessedly abstracted beneath me.</p>
 <h3 id="what-do-we-do-with-the-luminance-value-of-the-frame">What do we do with the luminance value of the frame?</h3>
 <p>Subtitles&rsquo; luminance should more closely match the frame they inhabit. Darkening subtitles when Y is dark, and brightening them when Y is bright. In practice, since all subtitles are rendered <code>#FFFFFF</code>, I just make them greyer, hence the name. The stupid solution is to just average the 3 channels of <code>#7F7F7F</code>, the RGB color midpoint, with the Y value, which is already a byte. I haven&rsquo;t played with nonlinear interpolation, because the naiive lerp solves the blinding-HDR-subtitle problem pretty well, to be honest.</p>
-<p>I do think there&rsquo;s probably a better non-lerp. I also played with averaging <code>#FFFFFF</code> and frame luminance, but found it to still often be too bright<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. Lerping is typically defined as:</p>
+<p>I do think there&rsquo;s probably a better non-lerp. I also played with averaging <code>#FFFFFF</code> and frame luminance, but found it to still often be too bright<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>. Lerping is typically defined as:</p>
 <p><code>Lerp(x) = a(1-x) + b(x)</code></p>
 <p>where X ∈ [0, 1]. tweaking the exponent like so:</p>
 <p><code>Lerp(x) = a(1-x^2) + b(x^2)</code></p>
 <p>is a (quadratic) nonlinear interpolation. I&rsquo;m guessing it&rsquo;ll look best with a nonlinear interp between extracted-luminance and <code>#FFFFFF</code> at an exponent of around <code>1.5</code>?</p>
 <h3 id="what-now">What Now?</h3>
 <p>I don&rsquo;t consider this project finished because honestly I think it wants to be a VLC plugin. A subtitle post-video-download step is more suited to something like <a href="https://github.com/kaegi/alass">alass</a>, a far more useful project for subtitle display.</p>
-<p>As far as I searched<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, nobody else has bothered trying to automate an open-source solution to this incredibly niche problem.</p>
+<p>As far as I searched<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>, nobody else has bothered trying to automate an open-source solution to this incredibly niche problem.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
-<p>it&rsquo;s not a <em>raw</em> frame, because rgb-&gt;yuv still occurred, but it&rsquo;s extremely close.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>which also exists, by the way&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>most encoders default to 5 seconds maximum between i-frames&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>if you have to guess a color and you have no information, <code>#7F7F7F</code> is your best starting point. Especially as you get more data to average it with.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>this is doable within the SRT format, but it&rsquo;s unclear to me if most renderers would flicker the subtitle, and I didn&rsquo;t bother experimenting in this script.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>it&rsquo;s not a <em>raw</em> frame, because rgb-&gt;yuv still occurred, but it&rsquo;s extremely close.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
-<p>you could certainly make the case to me that only the luminance around where the subtitle is actually rendered should be displayed, and that this would be faster to calculate. It just introduces the edge case where the subtitle region happens to be vastly different than the rest of the frames, making them potentially crowded-out. I don&rsquo;t know what that case looks like in practice.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>most encoders default to 5 seconds maximum between i-frames&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p>if you&rsquo;re wondering, the main video file I used to test the dark-video-with-white-subtitle problem was Silo S02E06. When I initially extracted the Y channels, I thought I did something wrong and clamped them to 6 bits somehow, because the highest value was I think 63. Nope, that was just the brightest frame in the entire episode, which, as the name implies, takes place underground.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>this is doable within the SRT format, but it&rsquo;s unclear to me if most renderers would flicker the subtitle, and I didn&rsquo;t bother experimenting in this script.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
-<p>about a half-dozen google searches, a github search, a kagi search, even on marginalia, and I think Plex&rsquo;s(?) forums&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>you could certainly make the case to me that only the luminance around where the subtitle is actually rendered should be displayed, and that this would be faster to calculate. It just introduces the edge case where the subtitle region happens to be vastly different than the rest of the frames, making them potentially crowded-out. I don&rsquo;t know what that case looks like in practice.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>if you&rsquo;re wondering, the main video file I used to test the dark-video-with-white-subtitle problem was Silo S02E06. When I initially extracted the Y channels, I thought I did something wrong and clamped them to 6 bits somehow, because the greatest luminance was 63. Nope, that was just the brightest frame in the entire episode, which, as the name implies, takes place underground.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p>about a half-dozen google searches, a github search, a kagi search, even on marginalia, and I think Plex&rsquo;s(?) forums&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
