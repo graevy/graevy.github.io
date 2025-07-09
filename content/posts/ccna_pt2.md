@@ -14,14 +14,14 @@ You have to cram the end of the CCNA.
 - Cisco iOS syntax quirks
 - Outdated protocol trivia
 - Cisco protocols that have been obsoleted by industry adoption of open alternatives:
-- - PAgP
-- - HSRP
-- - GLBP
-- - ISL
-- - DTP/VTP
-- - EIGRP
-- - PVST
-- - Rapid PVST+
+    - PAgP
+    - HSRP
+    - GLBP
+    - ISL
+    - DTP/VTP
+    - EIGRP
+    - PVST
+    - Rapid PVST+
 
 Oh, the Cisco exams barely cover BGP, the for-all-intents only path-vector minimal-trust routing protocol used to *route the internet*. Instead, you get the DSCP codepoint values, FHRP MAC OUIs, WiFi standard bandwidths, E3 vs T3 line bandwidths! Don't forget Cisco-specific GUI operation.
 
