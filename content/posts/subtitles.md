@@ -18,36 +18,38 @@ I wrote a [script](https://github.com/graevy/greyer) that reads a video file con
 
 Pretty much all video you download is formatted in `yuv420p`. What is `yuv420p`? Color quantization. It's a lossy transcoding scheme for color. Eyes see brightness more clearly than color. Video may be *encoded* in `h264`, `hevc`, whatever, but the actual video being encoded is in the `yuv420p` format.
 
-The Y in `yuv` stands for "Luminance". Don't ask me why. U and V are color values. We care about luminance. `yuv420p` groups pixels into 2x2 blocks, in which each of the 4 pixels gets a brightess byte, and each block of 4 pixels gets 1 U and 1 V color byte. Don't ask me why it isn't `yuv411`[^7]. The `p` stands for "planar", by the way. In RGB, 4 pixels gets 12 bytes (3 per pixel); in `yuv420p`, 4 pixels gets 6.
+The Y in `yuv` stands for "Luminance". Don't ask me why. U and V are color values. We care about luminance. `yuv420p` groups pixels into 2x2 blocks, in which each of the 4 pixels gets a brightess byte, and each block of 4 pixels gets 1 U and 1 V color byte. Don't ask me why it isn't `yuv411`[^7]. In RGB, 4 pixels gets 12 bytes (3 per pixel); in `yuv420p`, 4 pixels gets 6.
 
-We have to talk about encodings though. How do we encode video? Let's start with the raw. Let's say I film a 2 hour movie in 1080p, 60fps, without any encoding or compression. 1920 times 1080 is about 2 million pixels per frame. 2 hours is 7200 seconds is 432000 frames. 432000 * 2 million is 864 billion pixels. What's in a pixel? Let's say it's just RGB. That's 3 bytes per pixel, so we're sitting north of 2 terabytes. When you download a movie, we can get watchable quality under a gigabyte. How?
+How do we actually encode video? Let's start with the raw. Let's say I film a 2 hour movie in 1080p, 60fps, without any encoding or compression. 1920 times 1080 is about 2 million pixels per frame. 2 hours is 7200 seconds is 432000 frames. 432000 * 2 million is 864 billion pixels. What's in a pixel? Let's say it's just RGB. That's 3 bytes per pixel, so we're sitting north of 2 terabytes. When you download a movie, we can get watchable quality under a gigabyte. How?
 
 - We only need to record pixel blocks that change. If a scene cuts to black for 2 seconds, then for 119 frames, that scene is "temporally redundant", requiring zero data.
 
-- When blocks *do* change, they usually move across the screen. If a shape moves to a neighboring region, rather than track each region independently, we can just define that motion in a *motion vector*. Now, thanks to *inter-frame prediction*, regions don't require grid-by-grid updates.
+- When blocks *do* change, they usually move across the screen. If a shape moves to a neighboring region, rather than track each region independently, we can just define that motion in a *motion vector*. Now, thanks to this *inter-frame prediction*, regions don't require block-by-block updates.
 
 - When encoding the video, we can look at the output we just generated and compare it to the input. If it smells bad, we can tune the quantization, include/exclude a motion vector, etc., and try again, machine-learning style. 
 
 What problems exist with these compression scheme?
 
-- Those dark pixels aren't *100%* dark, are they? It's not the *exact* same color from frame to frame, is it?
+- Those dark pixels aren't *100%* dark. It's not the *exact* same color from frame to frame.
 - What happens if I lose a frame or two? Video IS often streamed via UDP, after all, and we're assuming lossless *transmission* when we rely only on frame deltas rather than complete rasters.
 
 There are two relevant tools to address these issues. 
 
-- The color quantization of `yuv420p` collapses pixels, decreasing color resolution. Pixels are now more likely the exact color between frames. So, as we shrink the color space, compression also gets easier!
+- The color quantization of `yuv420p` collapses pixels, decreasing color granularity. Pixels are now more likely the exact color between frames. So, as we shrink the color space, compression also improves.
 - "i-frames" (a.k.a. key or anchor frames) inserted every ~3 seconds contain full pixel data and serve as error-recovery points. Have you ever seen video glitch out for a few seconds, usually with lots of grey boxing[^8] and artifacting around moving objects? The decoder lost a few frames, and probably recovered after using an i-frame.
 
 
 ### So how do we get the luminance value for a frame?
 
-Firstly, we have to get the frame. We have to find the i-frame before the timestamp we want, and perform video decoding until we reach that timestamp. This is expensive.
+Firstly, getting the frame is nontrivial. We have to find the i-frame before the timestamp we want, and expensively decode video until we reach that timestamp.
 
-We can also just grab the luminance value of the nearest preceding i-frame. While your gut reaction is probably "what if a scene transition happens in those few seconds before reaching the frame", consider the perspective of the video encoder:
+We can also cheat. Substitute the luminance value of the nearest preceding i-frame. What if luminance changes substantially (i.e. a scene transition) in those seconds before reaching the frame? i-frames often *are* scene transitions. Consider the perspective of the video encoder:
 
-- An i-frame is necessarily a complete[^1] frame, because the decoder needs to use it to recover from loss
+- an i-frame is necessarily a complete[^1] frame, because the decoder needs to use it to recover from loss
+- we want to reduce encoded filesize, and i-frames are huge
+- scene transitions involve changing many pixels already
 - i-frame insertion location is very flexible[^3]
-- scene transitions usually involve changing most pixels, so make great candidate i-frames
+- putting an i-frame on a scene transition tends to reduce filesize
 
 So, when grabbing luminance from the nearest iframe, opting not to decode video up to a precise timestamp is often fine. Further, consider the case where a scene transition occurs *while a subtitle is still rendered*. The subtitle will remain a potentially annoying brightness value, unless split into multiple renderings of the same subtitle. So there's already an unsolved brightness case involving scene transitions that can't be easily solved[^2] without integrating the video player's subtitle renderer.
 
@@ -89,6 +91,6 @@ As far as I searched[^6], nobody else has bothered trying to automate an open-so
 
 [^6]: about a half-dozen google searches, a github search, a kagi search, even on marginalia, and I think Plex's(?) forums
 
-[^7]: which also exists, by the way
+[^7]: which also exists! The `p` stands for planar, by the way
 
 [^8]: if you have to guess a color and you have no information, `#7F7F7F` is your best starting point. Especially as you get more data to average it with.

@@ -73,14 +73,14 @@
 <p>I wrote a <a href="https://github.com/graevy/greyer">script</a> that reads a video file concurrently with an SRT file. The SRT file contains time indicies of each rendered subtitle. I navigate to the <code>start_time</code> in ffmpeg, determine its <em>luminance</em>, and adjust the <em>color</em> of the SRT entry accordingly.</p>
 <h3 id="i-learned-about-video-formats-for-this-now-you-have-to-too">I learned about video formats for this; now you have to, too</h3>
 <p>Pretty much all video you download is formatted in <code>yuv420p</code>. What is <code>yuv420p</code>? Color quantization. It&rsquo;s a lossy transcoding scheme for color. Eyes see brightness more clearly than color. Video may be <em>encoded</em> in <code>h264</code>, <code>hevc</code>, whatever, but the actual video being encoded is in the <code>yuv420p</code> format.</p>
-<p>The Y in <code>yuv</code> stands for &ldquo;Luminance&rdquo;. Don&rsquo;t ask me why. U and V are color values. We care about luminance. <code>yuv420p</code> groups pixels into 2x2 blocks, in which each of the 4 pixels gets a brightess byte, and each block of 4 pixels gets 1 U and 1 V color byte. Don&rsquo;t ask me why it isn&rsquo;t <code>yuv411</code><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. The <code>p</code> stands for &ldquo;planar&rdquo;, by the way. In RGB, 4 pixels gets 12 bytes (3 per pixel); in <code>yuv420p</code>, 4 pixels gets 6.</p>
-<p>We have to talk about encodings though. How do we encode video? Let&rsquo;s start with the raw. Let&rsquo;s say I film a 2 hour movie in 1080p, 60fps, without any encoding or compression. 1920 times 1080 is about 2 million pixels per frame. 2 hours is 7200 seconds is 432000 frames. 432000 * 2 million is 864 billion pixels. What&rsquo;s in a pixel? Let&rsquo;s say it&rsquo;s just RGB. That&rsquo;s 3 bytes per pixel, so we&rsquo;re sitting north of 2 terabytes. When you download a movie, we can get watchable quality under a gigabyte. How?</p>
+<p>The Y in <code>yuv</code> stands for &ldquo;Luminance&rdquo;. Don&rsquo;t ask me why. U and V are color values. We care about luminance. <code>yuv420p</code> groups pixels into 2x2 blocks, in which each of the 4 pixels gets a brightess byte, and each block of 4 pixels gets 1 U and 1 V color byte. Don&rsquo;t ask me why it isn&rsquo;t <code>yuv411</code><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. In RGB, 4 pixels gets 12 bytes (3 per pixel); in <code>yuv420p</code>, 4 pixels gets 6.</p>
+<p>How do we actually encode video? Let&rsquo;s start with the raw. Let&rsquo;s say I film a 2 hour movie in 1080p, 60fps, without any encoding or compression. 1920 times 1080 is about 2 million pixels per frame. 2 hours is 7200 seconds is 432000 frames. 432000 * 2 million is 864 billion pixels. What&rsquo;s in a pixel? Let&rsquo;s say it&rsquo;s just RGB. That&rsquo;s 3 bytes per pixel, so we&rsquo;re sitting north of 2 terabytes. When you download a movie, we can get watchable quality under a gigabyte. How?</p>
 <ul>
 <li>
 <p>We only need to record pixel blocks that change. If a scene cuts to black for 2 seconds, then for 119 frames, that scene is &ldquo;temporally redundant&rdquo;, requiring zero data.</p>
 </li>
 <li>
-<p>When blocks <em>do</em> change, they usually move across the screen. If a shape moves to a neighboring region, rather than track each region independently, we can just define that motion in a <em>motion vector</em>. Now, thanks to <em>inter-frame prediction</em>, regions don&rsquo;t require grid-by-grid updates.</p>
+<p>When blocks <em>do</em> change, they usually move across the screen. If a shape moves to a neighboring region, rather than track each region independently, we can just define that motion in a <em>motion vector</em>. Now, thanks to this <em>inter-frame prediction</em>, regions don&rsquo;t require block-by-block updates.</p>
 </li>
 <li>
 <p>When encoding the video, we can look at the output we just generated and compare it to the input. If it smells bad, we can tune the quantization, include/exclude a motion vector, etc., and try again, machine-learning style.</p>
@@ -88,21 +88,23 @@
 </ul>
 <p>What problems exist with these compression scheme?</p>
 <ul>
-<li>Those dark pixels aren&rsquo;t <em>100%</em> dark, are they? It&rsquo;s not the <em>exact</em> same color from frame to frame, is it?</li>
+<li>Those dark pixels aren&rsquo;t <em>100%</em> dark. It&rsquo;s not the <em>exact</em> same color from frame to frame.</li>
 <li>What happens if I lose a frame or two? Video IS often streamed via UDP, after all, and we&rsquo;re assuming lossless <em>transmission</em> when we rely only on frame deltas rather than complete rasters.</li>
 </ul>
 <p>There are two relevant tools to address these issues.</p>
 <ul>
-<li>The color quantization of <code>yuv420p</code> collapses pixels, decreasing color resolution. Pixels are now more likely the exact color between frames. So, as we shrink the color space, compression also gets easier!</li>
+<li>The color quantization of <code>yuv420p</code> collapses pixels, decreasing color granularity. Pixels are now more likely the exact color between frames. So, as we shrink the color space, compression also improves.</li>
 <li>&ldquo;i-frames&rdquo; (a.k.a. key or anchor frames) inserted every ~3 seconds contain full pixel data and serve as error-recovery points. Have you ever seen video glitch out for a few seconds, usually with lots of grey boxing<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> and artifacting around moving objects? The decoder lost a few frames, and probably recovered after using an i-frame.</li>
 </ul>
 <h3 id="so-how-do-we-get-the-luminance-value-for-a-frame">So how do we get the luminance value for a frame?</h3>
-<p>Firstly, we have to get the frame. We have to find the i-frame before the timestamp we want, and perform video decoding until we reach that timestamp. This is expensive.</p>
-<p>We can also just grab the luminance value of the nearest preceding i-frame. While your gut reaction is probably &ldquo;what if a scene transition happens in those few seconds before reaching the frame&rdquo;, consider the perspective of the video encoder:</p>
+<p>Firstly, getting the frame is nontrivial. We have to find the i-frame before the timestamp we want, and expensively decode video until we reach that timestamp.</p>
+<p>We can also cheat. Substitute the luminance value of the nearest preceding i-frame. What if luminance changes substantially (i.e. a scene transition) in those seconds before reaching the frame? i-frames often <em>are</em> scene transitions. Consider the perspective of the video encoder:</p>
 <ul>
-<li>An i-frame is necessarily a complete<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> frame, because the decoder needs to use it to recover from loss</li>
+<li>an i-frame is necessarily a complete<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> frame, because the decoder needs to use it to recover from loss</li>
+<li>we want to reduce encoded filesize, and i-frames are huge</li>
+<li>scene transitions involve changing many pixels already</li>
 <li>i-frame insertion location is very flexible<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></li>
-<li>scene transitions usually involve changing most pixels, so make great candidate i-frames</li>
+<li>putting an i-frame on a scene transition tends to reduce filesize</li>
 </ul>
 <p>So, when grabbing luminance from the nearest iframe, opting not to decode video up to a precise timestamp is often fine. Further, consider the case where a scene transition occurs <em>while a subtitle is still rendered</em>. The subtitle will remain a potentially annoying brightness value, unless split into multiple renderings of the same subtitle. So there&rsquo;s already an unsolved brightness case involving scene transitions that can&rsquo;t be easily solved<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> without integrating the video player&rsquo;s subtitle renderer.</p>
 <p>This was the logic underpinning the <code>--fast</code> option, and in testing I didn&rsquo;t notice any difference using it.</p>
@@ -121,7 +123,7 @@
 <hr>
 <ol>
 <li id="fn:1">
-<p>which also exists, by the way&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>which also exists! The <code>p</code> stands for planar, by the way&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
 <p>if you have to guess a color and you have no information, <code>#7F7F7F</code> is your best starting point. Especially as you get more data to average it with.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
