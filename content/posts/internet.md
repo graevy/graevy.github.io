@@ -158,7 +158,7 @@ To install windows:
 
 ### <a name="music"></a>[Music](#navigation)
 
-It's hard to get a virus from downloading music. [rutracker](https://rutracker.org) is my favorite public tracker for music[^16]. [Soulseek](https://www.slsknet.org/) has a good english-language selection but it's kindof closed off from the rest of the torrent ecosystem. 
+It's hard to get a virus from downloading music. [rutracker](https://rutracker.org) is my favorite public tracker for music[^16]. [Soulseek](https://www.slsknet.org/) has a good english-language selection but it's kind of closed off from the rest of the torrent ecosystem. 
 
 For phones: you're probably looking for a cracked spotify app in Apps below. [revanced](https://revanced.io/)/[newpipe](https://newpipe.net/) will handle youtube. These projects come and go.
 

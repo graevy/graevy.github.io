@@ -41,7 +41,7 @@ Boson ExSim. I bought this subscription and the exam simulation was scarily accu
 
 ### The actual exam
 
-Was kindof rushed. Toward the beginning of May I learned of a free-exam-retake promotion if I took the CCNA before June 12th. So I scheduled for the 10th. I got sick mid-May, dropped the studying a lot, picked it back up. I thought I recovered, got worse about 4 days before the exam. So I showed up to the exam:
+Was kind of rushed. Toward the beginning of May I learned of a free-exam-retake promotion if I took the CCNA before June 12th. So I scheduled for the 10th. I got sick mid-May, dropped the studying a lot, picked it back up. I thought I recovered, got worse about 4 days before the exam. So I showed up to the exam:
 
 - Deeply sleep deprived
 - Nauseous

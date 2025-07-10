@@ -143,7 +143,7 @@ Go back into the bootloader interface (`adb -d reboot bootloader`) and `fastboot
 
 [^7]: One time, I opened this menu, and was greeted with a glitched noise texture reminiscent of GPU failure. It still worked, though. Thankfully LG doesn't make phones anymore
 
-[^8]: Overwriting. The etymology is kindof fun. On most computers (and some phones), flash memory refers to a tiny standalone ssd, like a usb drive. Fast compared to hdds, and you write to it with bursts of relatively high voltage, hence "flashing". Nowadays we use the same tech for ssds, nand flash memory.
+[^8]: Overwriting. The etymology is kind of fun. On most computers (and some phones), flash memory refers to a tiny standalone ssd, like a usb drive. Fast compared to hdds, and you write to it with bursts of relatively high voltage, hence "flashing". Nowadays we use the same tech for ssds, nand flash memory.
 
 [^9]: Because android is based off the linux kernel, and linux filesystems represent device firmware as files under /dev, the lines between software and firmware blur
 
