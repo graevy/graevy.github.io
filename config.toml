@@ -37,7 +37,7 @@ enableRobotsTXT = true
 # Configuration Features
 [params]
   description = "Project site!"              # Your meta description of the site
-  header_title = "graevy"                    # Your header title
+  header_title = "avery"                    # Your header title
   header_subtitle = "Wetware Developer"      # Your header subtitle
   # home_image = "graevy.png"                  # Path to header image starting from the static directory (optional)
   favicon = "/favicon.ico"                   # Path to favicon image starting from the static directory

@@ -28,7 +28,7 @@ How do we actually encode video? Let's start with the raw. Let's say I film a 2 
 
 - When encoding the video, we can look at the output we just generated and compare it to the input. If it smells bad, we can tune the quantization, include/exclude a motion vector, etc., and try again, machine-learning style. 
 
-What problems exist with these compression scheme?
+What problems exist with these compression schemes?
 
 - Those dark pixels aren't *100%* dark. It's not the *exact* same color from frame to frame.
 - What happens if I lose a frame or two? Video IS often streamed via UDP, after all, and we're assuming lossless *transmission* when we rely only on frame deltas rather than complete rasters.
