@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://quatl.ooo/posts/ccna_pt2/</loc>
-    <lastmod>2025-06-11T18:29:48-07:00</lastmod>
+    <loc>http://quatl.ooo/posts/calendar/</loc>
+    <lastmod>2025-09-10T00:53:58-07:00</lastmod>
   </url><url>
     <loc>http://quatl.ooo/posts/</loc>
-    <lastmod>2025-06-11T18:29:48-07:00</lastmod>
+    <lastmod>2025-09-10T00:53:58-07:00</lastmod>
   </url><url>
     <loc>http://quatl.ooo/</loc>
+    <lastmod>2025-09-10T00:53:58-07:00</lastmod>
+  </url><url>
+    <loc>http://quatl.ooo/posts/ccna_pt2/</loc>
     <lastmod>2025-06-11T18:29:48-07:00</lastmod>
   </url><url>
     <loc>http://quatl.ooo/posts/neovim-1/</loc>

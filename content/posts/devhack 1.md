@@ -26,24 +26,26 @@ Devhack resembled a sort of commercial freezer during the first winter, and rewi
 
 ![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/shibari.jpg)
 
-This didn't last. I made obvious decisions about space usage, sourced a dozen posters and contracted furniture, but I was also the only underemployee; I had the most free time.
+This didn't last. I made obvious decisions about space usage, themed rooms, contracted a tiered-couch platform...but I was also the only underemployee; I had the most free time.
 
 We'd host an open hack night, and the other two would have obligations. A was on call, B was taking a mental health break from tech, A was working late, B went on an extended European burnout-vacation, etc.; I was the only consistent event host. As people settled into their roles, the need for a dedicated event host dissolved[^6], but every Thursday from about 5pm-1am, I took care of the space.
 
-Being consistent and a co-founder caused people to ask me to give them access to/build/coordinate something. Most of them would assume I knew everything about our projects[^10]. I'm not some savant; I just had like 20 hours a week to complete tasks like "give the printer a CUPS container we can send files to so we don't need drivers on each machine" or "find out why the nodes can't talk to each other" or "proxmox HA" or "make auth happen". I failed about half of these tasks.
+Being consistent and a co-founder made me the point-of-contact for authorization. Most members would assume I knew everything about our projects[^10]. I'm not some savant; I just had like 20 hours a week to complete tasks like "give the printer a CUPS container we can send files to so we don't need drivers on each machine" or "find out why the nodes can't talk to each other" or "proxmox HA" or "make auth happen". I failed to complete about half of these tasks in a reasonable timeframe.
 
 ### Anarchy, State, and Utopia
 
-Volunteer churn resulted in, best-case, a lot of half-finished and duplicated work. Half a dozen people with hypervisor admin access kept intermittently stepping on each other. Flakey services cause hasty fixes cause flakey services. Mediawiki documentation stopgaps the problem, but service interdependency propagates downtime.
+Volunteer churn resulted in, best-case, a lot of half-finished and duplicated work. Half a dozen people with hypervisor admin kept stepping on each other, making downtime. Downtime fosters a desperation, a frustration, and an arrogance about the current infra; more downtime means more breaking means more downtime. Mediawiki documentation stopgaps the problem, but service interdependency propagates downtime.
 
-We debated, for several months, what would replace our hell. We decided that "version control for filesystems" was kind of possible with declarative IaC. In lieu of a test env, being able to regenerate infrastructure off a git repo and a shell script would at least spare us extended downtime with the nuclear option. Aforementioned employee #1 European vacation left devhack's infra design to me, the SRE with no experience. I asked the half-dozen homelab enthusiasts for advice and got as many different answers, so I spent awhile reading about bare-metal devops stacks on reddit. Ultimately, two things became clear to me:
+![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/storagehell.jpg)
 
-1. Kubernetes, being declarative, scalable, over-engineered, and popular, is the perfect choice for enthusiasts with colocation hosting ambitions
+We debated, for several months, what would replace our hell. I decided we needed declarative IaC wherever possible. In lieu of a test env, being able to regenerate infrastructure off a git repo and a shell script would at least spare us extended downtime with the nuclear option. Aforementioned employee #1's European vacation left devhack's infra design to me, the sysadmin with no experience. I asked the half-dozen homelab enthusiasts for advice and got as many different answers, so I spent awhile reading about bare-metal devops stacks on reddit. Ultimately, two things became clear to me:
+
+1. Kubernetes, being (mostly) declarative, scalable, over-engineered, and popular, is the perfect choice for enthusiasts with colocation+hosting ambitions
 2. Whatever kubernetes is built on top of needs to be sufficiently declarative to rebuild everything from a git repo
 
-One of the [professionals](https://github.com/1lann) had a Terraform -> Kubernetes stack that he used for everything and was willing to teach me, so that was an easy decision. Unfortunately, he was moving end-of-month, so he did what he could for about 3 weeks. Chuie laid the foundation that I still creatively break and reform to this day. Thanks!
+One of the [professionals](https://github.com/1lann) had a Terraform -> Kubernetes stack that he used for everything and was willing to teach me, so that was an easy decision. Unfortunately, he moved after 3 weeks, so he taught what he could. Chuie got me started declaratively and taught me some best practices (thanks <3).
 
-To generate the images for each machine in the space, I thought I'd use Packer; same language, nice interoperability. I lost a week trying to wrangle Packer and Terraform on our servers. These tools are made for cloud infrastructure. People suggested Chef, Ansible, MaaS...I wasn't going to add more complexity. Our images are made by fetching the latest Debian netinst iso and repacking it with [my script](https://github.com/graevy/debhack/blob/main/repack_mbr.sh)[^7] to bundle a Debian `preseed.cfg` for unattended installation. Then, a Terraform[^8] provisioner takes the installation and customizes it per-machine. Good enough; I'll trade Debian lock-in[^9] for simplicity.
+I got overzealous with the declaration, and I wanted to declare the hypervisor layer (mostly out of curiosity). To generate images I thought I'd use Packer; same language, nice interoperability. I lost a week trying to wrangle Packer and Terraform on our servers. These tools are made for cloud infrastructure. People suggested Chef, Ansible, MaaS...I wasn't going to add more complexity. Our images are made by fetching the latest Debian netinst iso and repacking it with [my script](https://github.com/graevy/debhack/blob/main/repack_mbr.sh)[^7] to bundle a Debian `preseed.cfg` for unattended installation. Then, a Terraform[^8] provisioner takes the installation and customizes it per-machine. Good enough; I'll trade Debian lock-in[^9] for simplicity[^11].
 
 It took three months or so to get the cluster to an acceptable state. I must thank [Finn](https://github.com/thefinn93) for picking me up where I stalled (cluster networking) and guiding us toward best-practices. Our biggest delays:
 - Renumbering the network about halfway through
@@ -72,3 +74,6 @@ The cluster is at least fully operational now. There's a lot of k8s-specific boi
 [^9]: Devhack tradition dictates one must take a shot every time one installs debian. One of our members built an [eternal debian installation](https://github.com/Kansattica/DebianWomanEdition). It has broken one hard drive and one cd drive thus far.
 
 [^10]: This is a great way to develop Imposter Syndrome, by the way
+
+[^11]: I'm not even going to use this now that I know enough NixOS internals
+

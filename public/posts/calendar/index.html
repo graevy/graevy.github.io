@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en-us"><head>
+    <title>quatloo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+
+    
+    <link rel="icon" type= image/x-icon href= /favicon.ico>
+
+    
+    
+    
+    <link rel="stylesheet" href="../../css/theme.min.css">
+
+    
+    
+    
+
+    
+</head>
+<body>
+        <div id="content" class="mx-auto"><header class="container mt-sm-5 mt-4 mb-4 mt-xs-1">
+    <div class="row">
+        
+        <div class="col-12 text-center">
+        
+            <h2 class="m-0 mb-2 mt-4">
+                <a href="../../posts/" class="text-decoration-none">
+                    
+                        avery
+                    
+                </a>
+            </h2>
+            <p class="text-muted mb-1">
+                
+                    Wetware Developer
+                
+            </p>
+            <ul id="nav-links" class="list-inline mb-2">
+                
+                
+            </ul>
+            <ul id="nav-social" class="list-inline">
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="https://github.com/graevy" target="_blank">
+                            <i class="fab fa-github fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="mailto:avry@pm.me" target="_blank">
+                            <i class="fas fa-at fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="../../about/" target="_blank">
+                            <i class="fas fa-address-card fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+    <hr />
+</header><div class="container">
+    <div class="pl-sm-4 ml-sm-5">
+        <p><code>https://io.devhack.gay/proxy/calendar.ics</code></p>
+<p>We need to talk about inter-cluster openbao eso sa jwt reviewers.</p>
+<h3 id="so-you-want-to-self-host-a-software-project">So you want to self-host a software project</h3>
+<p>Here are your hosting options:</p>
+<ul>
+<li>
+<p><input disabled="" type="checkbox"> a 24/7 desktop at home, maybe a homelab?</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> a $4/mo digitalocean droplet or similar</p>
+</li>
+<li>
+<p><input checked="" disabled="" type="checkbox"> the &ldquo;declarative&rdquo; multi-tenant kubernetes cluster that you said you&rsquo;d like to configure 2 years ago so your hackspace members can host their own software but &ldquo;never got around to doing&rdquo; because that would take like a year for you to learn how to do properly</p>
+</li>
+</ul>
+<h3 id="declaration-hell">Declaration hell</h3>
+<p>Here&rsquo;s how to declare a calendar! You will need:</p>
+<ul>
+<li>terraformed proxmox<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> configuration</li>
+<li>Talos VM configs<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> for the kubernetes clusters</li>
+<li>a <a href="https://git.devhack.net/devhack/core-infra">stable upstream cluster</a> to host crucial<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> services on</li>
+<li>a <a href="https://git.devhack.net/a/member-prod">less stable downstream cluster</a> for members (that&rsquo;s you!) to &ldquo;selfhost&rdquo; on</li>
+<li>a <a href="https://git.devhack.net/a/tenants">third repo</a><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> for flux to <a href="https://git.devhack.net/a/member-prod/src/branch/main/tenancy/tenants-repo.yaml">track</a> valid cluster tenants</li>
+<li>a <a href="https://git.devhack.net/a/k8s">fourth repo</a> for your own tenant k8s manifests</li>
+<li>your caldav server <a href="https://git.devhack.net/a/k8s/src/branch/main/apps/baikal/statefulset.yaml">manifests</a><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></li>
+<li>a <a href="https://git.devhack.net/a/k8s/src/branch/main/baikal/proxy">token-access-controlled reverse proxy</a> so the caldav server can serve a concatenated .ics blob for compatibility with pesky seattle google calendar polyamorists</li>
+<li>a <a href="https://git.devhack.net/a/member-prod/src/branch/main/tenancy/src-frontend">go-http webserver</a> so members can provision themselves space on the k8s cluster after passing both oidc authentication and keycloak&rsquo;s &ldquo;are you a paying member&rdquo; api query</li>
+</ul>
+<h4 id="things-that-dont-matter">Things that don&rsquo;t matter</h4>
+<p>I&rsquo;ve had a long day.</p>
+<ul>
+<li>
+<p>Getting it right the first time</p>
+</li>
+<li>
+<p>Bare-metal/Virtualized Kubernetes</p>
+<p>you&rsquo;re only going to touch nodes when you need more RAM. also it isn&rsquo;t hard to pivot</p>
+</li>
+<li>
+<p>What kubernetes distro should I use?</p>
+<p>you&rsquo;re only going to touch them to update every 2 years</p>
+</li>
+<li>
+<p>Single or multi-controlplane?</p>
+<p>you&rsquo;ll get more downtime from nodes tainting each other than uptime from reliability</p>
+</li>
+<li>
+<p>IP hardcoding</p>
+<p>it&rsquo;s always DNS anyway</p>
+</li>
+<li>
+<p>Flux vs Argo</p>
+<p>i&rsquo;m obnoxiously opinionated against GUIs and even I don&rsquo;t care</p>
+</li>
+</ul>
+<h4 id="things-that-matter">Things that matter</h4>
+<ul>
+<li>
+<p>banning people that escalate arguments about tooling</p>
+</li>
+<li>
+<p>not using FreeIPA</p>
+</li>
+</ul>
+<h4 id="030652-devin-hacker-heyy-i-restarted-cores-vms-can-you-unseal-vault-pls">[03:06:52] Devin Hacker: heyy I restarted core&rsquo;s VMs can you unseal vault pls?</h4>
+<p>How do you learn to use kubernetes if you&rsquo;ve never written a Dockerfile?</p>
+<ul>
+<li>setup your hypervisors and debian VMs</li>
+<li>pick the simplest kubernetes distro to configure (k3s)</li>
+<li>dangle your terrible cluster in front of knowledgable hobbyists</li>
+<li>they condescendingly explain to you what you&rsquo;re doing wrong</li>
+<li>incur tech-debt through poorly-implemented cluster patches</li>
+<li>repeat steps 3 through 5</li>
+</ul>
+<p>Stability is a red herring; devhack has two clusters because I wanted to learn to use kubernetes. Anyway, the Nerd Containment Cluster directs<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> the knowledgable away from my real baby:</p>
+<h4 id="downstream-k8s-member-prod">Downstream k8s (member-prod)<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup></h4>
+<p>Just read the <a href="https://git.devhack.net/a/member-prod#readme">README</a> for building out the cluster. DRY? I&rsquo;ve been interstitially chipping away at this all year. I started with talos, helm&rsquo;d traefik and external secrets, got frustrated with lack of networking knowledge, acquired CCNA, really started putting in the hours, <a href="https://git.devhack.net/a/member-prod/src/branch/main/kickflux.sh">beat</a> flux <a href="https://git.devhack.net/a/member-prod/src/branch/main/debugflux.sh">with</a> <a href="https://git.devhack.net/a/member-prod/commit/1c33c06f4b264ec33b2abab54896b387270c1472">a</a> <a href="https://git.devhack.net/a/member-prod/src/branch/main/toggleflux.sh">stick</a> until I settled on a <a href="https://fluxcd.io/flux/installation/configuration/multitenancy/#how-to-configure-flux-multi-tenancy">model</a>, wrangled inter-cluster auth. Observe<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> my gradual descent as this became my primary project:</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/committimes.png" alt="committimes"></p>
+<p>Note the number of commits between the hours of midnight to 6am. The first clustering represents openbao inter-cluster auth:</p>
+<pre tabindex="0"><code>(Sep 9, 2025, 02:38 PM PDT)
+ac755528e8 	redid the secrets model 	two months ago 
+9edfee8184 	connect externalsecret to secretstore 	two months ago 	
+df2ec5f41f 	members-&gt;tenants. debugging per-namespace secretstore 	two months ago 	
+bbcf9917d3 	route to the external openbao server. not sure if i need to hit port 8200 yet 	two months ago 	
+a984cabfac 	secrets hell 	two months ago 	
+555dc10194 	moving around the secretstore 	two months ago 	
+6d02c7bbb2 	i think the secretstore needs to be in the openbao namespace? 	two months ago 	
+d230c4cf73 	that should obviously go in infra 	two months ago 	
+b4c5779857 	openbao namespace 	two months ago	
+(Aug 10, 2025, 08:57 PM PDT)
+</code></pre><p>(The second clustering broadly represents <a href="https://git.devhack.net/a/member-prod#rook">rook-ceph-external declaration</a>)</p>
+<p>I enjoyed graphing this a lot so I took a break and wrote a featured <a href="https://github.com/graevy/sleep">go script</a> to automate doing this for arbitrary public git committers.</p>
+<p>Anyway, the webserver for tenant autoprovisioning just means I don&rsquo;t have to click approve indefinitely. No python; an opportunity to get into Go. Because traefik&rsquo;s middleware handles the oidc auth flow and gatekeeps <code>/trigger</code>, it&rsquo;s pretty simple and insecure and I can just vibe it out. Great.</p>
+<h4 id="lessons">Lessons</h4>
+<p><code>member-prod</code> foie gras&rsquo;d me with the tech firehose for about half a year. Mentality mid-marathon matters more than the technical minutiae when I treat myself as a component. Actively divorcing ego from the project made me feel and work better.</p>
+<p>When I let myself ride the high of project success, I inadvertently tie my ego to it&hellip;I start flinching at rearchitecting, because I&rsquo;m suddenly an idiot who should&rsquo;ve known better, or new tools, because I&rsquo;ll feel stupid while learning them. Eventually, I start thinking about architecture during off-time, making fresh perspectives rarer while burning out faster. College compsci 101 had me grinding similarly<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>; in particular, I remember learning kindof early that my brain hits diminishing returns on project effort without breaks after about 3 hours.</p>
+<p>Similarly, I didn&rsquo;t try to maintain the appearance of hard work around others; those relationships would create emotional stakes in productivity. To actually see my progress you would&rsquo;ve had to stalk my devhack forgejo and a 6-person infra group chat where I would post every ~week. This is maladaptive; marketing yourself matters, and doing too much alone means not learning from/with seniors/peers.</p>
+<p>Technical lessons? I&rsquo;m prone to connecting components before testing them. Eschewing TDD when you&rsquo;re F10-ing through a debugger works fine for local-only projects, but when you have to redeploy a docker image and attach a debugging container to your webapp&rsquo;s pod just to print debug something you could&rsquo;ve tested in isolation 3 steps ago on <code>localhost:8080</code>&hellip;</p>
+<p>I don&rsquo;t know best practices because I&rsquo;m learning on a weirdly-scaled homelab<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>, so I bias toward what I <em>hear</em> are best practices. Trying to focus on security from the start, or trying to declare something that doesn&rsquo;t want to be declared, especially when new, only creates a better result when you can&rsquo;t iterate. For a solo project especially, cheap iteration tolerates bad initial practices.</p>
+<p>Anyway, you can&rsquo;t really &ldquo;finish&rdquo; a cluster with people in it, so I&rsquo;m going to go ahead and post this now, and iterate on it later.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>we aren&rsquo;t sold on proxmox at the moment because ARM, and we&rsquo;ve largely agreed that if we did it over we would use nixos with virt-manager for the talos VMs&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>these I can&rsquo;t share because they&rsquo;re almost entirely full of secrets. I also can&rsquo;t store them in Vault because dependency graph. I just have them encrypted in my syncthing folders (laptop + desktop. phone/ereader too insecure). I&rsquo;ve been impressed with Talos&rsquo; documentation, and <code>talosctl</code> works every time I need it to&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>crucial is defined as anything that slows our ability to fix problems when it goes down; yes, DNS, but also e.g. the synapse (matrix) server. while I made the initial infra for this I can&rsquo;t take credit for most of the software on it&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>this is managed by the webserver and as such should be abstracted into another repo to reduce the privilege of the webserver and to not pollute commit history&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>baikal is a pretty obvious choice in that it&rsquo;s a simple pre-containerized caldav server. nextcloud is too heavy, good gui though&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>though I started getting PRs last week. mm&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>Because we&rsquo;re going to make member-test eventually, right?&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<pre tabindex="0"><code>nix-shell -p python313 python313Packages.matplotlib
+git log --reverse --pretty=&#39;%at&#39; &gt; /tmp/git_times.txt
+python3 - &lt;&lt;&#39;PY&#39;
+import matplotlib.pyplot as plt
+import datetime as dt
+
+with open(&#34;/tmp/git_times.txt&#34;) as f:
+    ts = [int(x.strip()) for x in f if x.strip()]
+
+times = [dt.datetime.fromtimestamp(t).hour + dt.datetime.fromtimestamp(t).minute/60 for t in ts]
+
+plt.style.use(&#34;dark_background&#34;)
+accent = &#34;#95d550&#34;
+
+plt.figure(figsize=(8,4), facecolor=&#34;#111&#34;, edgecolor=&#34;none&#34;)
+plt.scatter(range(len(times)), times, s=12, color=accent)
+plt.yticks(range(0,24,2), color=accent)
+plt.xticks(color=accent)
+plt.ylabel(&#34;Hour of Day (24h)&#34;, color=accent)
+plt.xlabel(&#34;Commit Number&#34;, color=accent)
+plt.title(&#34;Avery Mental Health, Visualized by `member-prod` Git Commit Timestamps Over Time&#34;, color=accent)
+plt.grid(True, color=&#34;#333&#34;, alpha=0.4)
+plt.tight_layout()
+plt.show()
+PY
+</code></pre>&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></li>
+<li id="fn:9">
+<p>Ivy League intro coding course second assignment: Python 60fps rendered (Qt) Newtonian solar-system model. Zero previous loc written, still bitter&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>&ldquo;Sysadmin&rdquo;:Server ratio at least 3:1&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+            </div>
+        </div><footer class="text-center pb-1">
+    <small class="text-muted">
+        Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a>, <a href="https://github.com/austingebauer/devise" target="_blank">Devise</a>
+    </small>
+</footer>
+</body>
+</html>
