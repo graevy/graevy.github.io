@@ -67,8 +67,7 @@
     <hr />
 </header><div class="container">
     <div class="pl-sm-4 ml-sm-5">
-        <p><code>https://io.devhack.gay/proxy/calendar.ics</code></p>
-<p>We need to talk about inter-cluster openbao eso sa jwt reviewers.</p>
+        <p>We need to talk about inter-cluster openbao eso sa jwt reviewers.</p>
 <h3 id="so-you-want-to-self-host-a-software-project">So you want to self-host a software project</h3>
 <p>Here are your hosting options:</p>
 <ul>
@@ -88,12 +87,12 @@
 <li>terraformed proxmox<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> configuration</li>
 <li>Talos VM configs<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> for the kubernetes clusters</li>
 <li>a <a href="https://git.devhack.net/devhack/core-infra">stable upstream cluster</a> to host crucial<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> services on</li>
-<li>a <a href="https://git.devhack.net/a/member-prod">less stable downstream cluster</a> for members (that&rsquo;s you!) to &ldquo;selfhost&rdquo; on</li>
-<li>a <a href="https://git.devhack.net/a/tenants">third repo</a><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> for flux to <a href="https://git.devhack.net/a/member-prod/src/branch/main/tenancy/tenants-repo.yaml">track</a> valid cluster tenants</li>
-<li>a <a href="https://git.devhack.net/a/k8s">fourth repo</a> for your own tenant k8s manifests</li>
-<li>your caldav server <a href="https://git.devhack.net/a/k8s/src/branch/main/apps/baikal/statefulset.yaml">manifests</a><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></li>
-<li>a <a href="https://git.devhack.net/a/k8s/src/branch/main/baikal/proxy">token-access-controlled reverse proxy</a> so the caldav server can serve a concatenated .ics blob for compatibility with pesky seattle google calendar polyamorists</li>
-<li>a <a href="https://git.devhack.net/a/member-prod/src/branch/main/tenancy/src-frontend">go-http webserver</a> so members can provision themselves space on the k8s cluster after passing both oidc authentication and keycloak&rsquo;s &ldquo;are you a paying member&rdquo; api query</li>
+<li>a <a href="https://git.devhack.net/io/member-prod">less stable downstream cluster</a> for members (that&rsquo;s you!) to &ldquo;selfhost&rdquo; on</li>
+<li>a <a href="https://git.devhack.net/io/tenants">third repo</a><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> for flux to <a href="https://git.devhack.net/io/member-prod/src/branch/main/tenancy/tenants-repo.yaml">track</a> valid cluster tenants</li>
+<li>a <a href="https://git.devhack.net/io/k8s">fourth repo</a> for your own tenant k8s manifests</li>
+<li>your caldav server <a href="https://git.devhack.net/io/k8s/src/branch/main/apps/baikal/statefulset.yaml">manifests</a><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></li>
+<li>a <a href="https://git.devhack.net/io/k8s/src/branch/main/baikal/proxy">token-access-controlled reverse proxy</a> so the caldav server can serve a concatenated .ics blob for compatibility with pesky seattle google calendar polyamorists</li>
+<li>a <a href="https://git.devhack.net/io/member-prod/src/branch/main/tenancy/src-frontend">go-http webserver</a> so members can provision themselves space on the k8s cluster after passing both oidc authentication and keycloak&rsquo;s &ldquo;are you a paying member&rdquo; api query</li>
 </ul>
 <h4 id="things-that-dont-matter">Things that don&rsquo;t matter</h4>
 <p>I&rsquo;ve had a long day.</p>
@@ -143,7 +142,7 @@
 </ul>
 <p>Stability is a red herring; devhack has two clusters because I wanted to learn to use kubernetes. Anyway, the Nerd Containment Cluster directs<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> the knowledgable away from my real baby:</p>
 <h4 id="downstream-k8s-member-prod">Downstream k8s (member-prod)<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup></h4>
-<p>Just read the <a href="https://git.devhack.net/a/member-prod#readme">README</a> for building out the cluster. DRY? I&rsquo;ve been interstitially chipping away at this all year. I started with talos, helm&rsquo;d traefik and external secrets, got frustrated with lack of networking knowledge, acquired CCNA, really started putting in the hours, <a href="https://git.devhack.net/a/member-prod/src/branch/main/kickflux.sh">beat</a> flux <a href="https://git.devhack.net/a/member-prod/src/branch/main/debugflux.sh">with</a> <a href="https://git.devhack.net/a/member-prod/commit/1c33c06f4b264ec33b2abab54896b387270c1472">a</a> <a href="https://git.devhack.net/a/member-prod/src/branch/main/toggleflux.sh">stick</a> until I settled on a <a href="https://fluxcd.io/flux/installation/configuration/multitenancy/#how-to-configure-flux-multi-tenancy">model</a>, wrangled inter-cluster auth. Observe<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> my gradual descent as this became my primary project:</p>
+<p>Just read the <a href="https://git.devhack.net/io/member-prod#readme">README</a> for building out the cluster. DRY? I&rsquo;ve been interstitially chipping away at this all year. I started with talos, helm&rsquo;d traefik and external secrets, got frustrated with lack of networking knowledge, acquired CCNA, really started putting in the hours, <a href="https://git.devhack.net/io/member-prod/src/branch/main/kickflux.sh">beat</a> flux <a href="https://git.devhack.net/io/member-prod/src/branch/main/debugflux.sh">with</a> <a href="https://git.devhack.net/io/member-prod/commit/1c33c06f4b264ec33b2abab54896b387270c1472">a</a> <a href="https://git.devhack.net/io/member-prod/src/branch/main/toggleflux.sh">stick</a> until I settled on a <a href="https://fluxcd.io/flux/installation/configuration/multitenancy/#how-to-configure-flux-multi-tenancy">model</a>, wrangled inter-cluster auth. Observe<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> my gradual descent as this became my primary project:</p>
 <p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/committimes.png" alt="committimes"></p>
 <p>Note the number of commits between the hours of midnight to 6am. The first clustering represents openbao inter-cluster auth:</p>
 <pre tabindex="0"><code>(Sep 9, 2025, 02:38 PM PDT)
@@ -157,16 +156,18 @@ a984cabfac 	secrets hell 	two months ago
 d230c4cf73 	that should obviously go in infra 	two months ago 	
 b4c5779857 	openbao namespace 	two months ago	
 (Aug 10, 2025, 08:57 PM PDT)
-</code></pre><p>(The second clustering broadly represents <a href="https://git.devhack.net/a/member-prod#rook">rook-ceph-external declaration</a>)</p>
+</code></pre><p>(The second clustering broadly represents <a href="https://git.devhack.net/io/member-prod#rook">rook-ceph-external declaration</a>)</p>
 <p>I enjoyed graphing this a lot so I took a break and wrote a featured <a href="https://github.com/graevy/sleep">go script</a> to automate doing this for arbitrary public git committers.</p>
 <p>Anyway, the webserver for tenant autoprovisioning just means I don&rsquo;t have to click approve indefinitely. No python; an opportunity to get into Go. Because traefik&rsquo;s middleware handles the oidc auth flow and gatekeeps <code>/trigger</code>, it&rsquo;s pretty simple and insecure and I can just vibe it out. Great.</p>
+<p>Didn&rsquo;t even describe the actual calendar. Published this a week ago. <em>Groan</em>. Baikal for caldav because it ships containers<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>. Flask for the gcal reverse proxy because I like to learn new things one-at-a-time.</p>
 <h4 id="lessons">Lessons</h4>
 <p><code>member-prod</code> foie gras&rsquo;d me with the tech firehose for about half a year. Mentality mid-marathon matters more than the technical minutiae when I treat myself as a component. Actively divorcing ego from the project made me feel and work better.</p>
-<p>When I let myself ride the high of project success, I inadvertently tie my ego to it&hellip;I start flinching at rearchitecting, because I&rsquo;m suddenly an idiot who should&rsquo;ve known better, or new tools, because I&rsquo;ll feel stupid while learning them. Eventually, I start thinking about architecture during off-time, making fresh perspectives rarer while burning out faster. College compsci 101 had me grinding similarly<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>; in particular, I remember learning kindof early that my brain hits diminishing returns on project effort without breaks after about 3 hours.</p>
+<p>When I let myself ride the high of project success, I inadvertently tie my ego to it&hellip;I start flinching at rearchitecting, because I&rsquo;m suddenly an idiot who should&rsquo;ve known better, or new tools, because I&rsquo;ll feel stupid while learning them. Eventually, I start thinking about architecture during off-time, making fresh perspectives rarer while burning out faster. College compsci 101 had me grinding similarly<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>; in particular, I remember learning kindof early that my brain hits diminishing returns on project effort without breaks after about 3 hours.</p>
 <p>Similarly, I didn&rsquo;t try to maintain the appearance of hard work around others; those relationships would create emotional stakes in productivity. To actually see my progress you would&rsquo;ve had to stalk my devhack forgejo and a 6-person infra group chat where I would post every ~week. This is maladaptive; marketing yourself matters, and doing too much alone means not learning from/with seniors/peers.</p>
 <p>Technical lessons? I&rsquo;m prone to connecting components before testing them. Eschewing TDD when you&rsquo;re F10-ing through a debugger works fine for local-only projects, but when you have to redeploy a docker image and attach a debugging container to your webapp&rsquo;s pod just to print debug something you could&rsquo;ve tested in isolation 3 steps ago on <code>localhost:8080</code>&hellip;</p>
-<p>I don&rsquo;t know best practices because I&rsquo;m learning on a weirdly-scaled homelab<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>, so I bias toward what I <em>hear</em> are best practices. Trying to focus on security from the start, or trying to declare something that doesn&rsquo;t want to be declared, especially when new, only creates a better result when you can&rsquo;t iterate. For a solo project especially, cheap iteration tolerates bad initial practices.</p>
+<p>I don&rsquo;t know best practices because I&rsquo;m learning on a weirdly-scaled homelab<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>, so I bias toward what I <em>hear</em> are best practices. Trying to focus on security from the start, or trying to declare something that doesn&rsquo;t want to be declared, especially when new, only creates a better result when you can&rsquo;t iterate. For a solo project especially, cheap iteration tolerates bad initial practices.</p>
 <p>Anyway, you can&rsquo;t really &ldquo;finish&rdquo; a cluster with people in it, so I&rsquo;m going to go ahead and post this now, and iterate on it later.</p>
+<p><a href="https://io.devhack.gay/proxy/calendar.ics?token=6c6d335e2af668a0eb1dedf4d24886eae92375a7e20a935b6f01db116d1c1d71">https://io.devhack.gay/proxy/calendar.ics</a></p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -219,10 +220,13 @@ plt.show()
 PY
 </code></pre>&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></li>
 <li id="fn:9">
-<p>Ivy League intro coding course second assignment: Python 60fps rendered (Qt) Newtonian solar-system model. Zero previous loc written, still bitter&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>and is weirdly opinionated about using subdomains instead of paths. <a href="https://git.devhack.net/io/k8s/src/branch/main/baikal/image/Dockerfile">Symlink, I guess</a>. Sortof motivated to pick up the project to build something competing in this space&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:10">
-<p>&ldquo;Sysadmin&rdquo;:Server ratio at least 3:1&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Ivy League intro coding course second assignment: Python 60fps rendered (Qt) Newtonian solar-system model. Zero previous loc written, still bitter&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11">
+<p>&ldquo;Sysadmin&rdquo;:Server ratio at least 3:1&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>

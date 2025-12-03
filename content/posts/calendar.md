@@ -4,8 +4,6 @@ date: 2025-09-10T00:53:58-07:00
 draft: false
 ---
 
-`https://io.devhack.gay/proxy/calendar.ics`
-
 We need to talk about inter-cluster openbao eso sa jwt reviewers.
 
 ### So you want to self-host a software project
@@ -25,12 +23,12 @@ Here's how to declare a calendar! You will need:
 - terraformed proxmox[^2] configuration
 - Talos VM configs[^3] for the kubernetes clusters
 - a [stable upstream cluster](https://git.devhack.net/devhack/core-infra) to host crucial[^5] services on
-- a [less stable downstream cluster](https://git.devhack.net/a/member-prod) for members (that's you!) to "selfhost" on
-- a [third repo](https://git.devhack.net/a/tenants)[^6] for flux to [track](https://git.devhack.net/a/member-prod/src/branch/main/tenancy/tenants-repo.yaml) valid cluster tenants
-- a [fourth repo](https://git.devhack.net/a/k8s) for your own tenant k8s manifests
-- your caldav server [manifests](https://git.devhack.net/a/k8s/src/branch/main/apps/baikal/statefulset.yaml)[^7]
-- a [token-access-controlled reverse proxy](https://git.devhack.net/a/k8s/src/branch/main/baikal/proxy) so the caldav server can serve a concatenated .ics blob for compatibility with pesky seattle google calendar polyamorists
-- a [go-http webserver](https://git.devhack.net/a/member-prod/src/branch/main/tenancy/src-frontend) so members can provision themselves space on the k8s cluster after passing both oidc authentication and keycloak's "are you a paying member" api query
+- a [less stable downstream cluster](https://git.devhack.net/io/member-prod) for members (that's you!) to "selfhost" on
+- a [third repo](https://git.devhack.net/io/tenants)[^6] for flux to [track](https://git.devhack.net/io/member-prod/src/branch/main/tenancy/tenants-repo.yaml) valid cluster tenants
+- a [fourth repo](https://git.devhack.net/io/k8s) for your own tenant k8s manifests
+- your caldav server [manifests](https://git.devhack.net/io/k8s/src/branch/main/apps/baikal/statefulset.yaml)[^7]
+- a [token-access-controlled reverse proxy](https://git.devhack.net/io/k8s/src/branch/main/baikal/proxy) so the caldav server can serve a concatenated .ics blob for compatibility with pesky seattle google calendar polyamorists
+- a [go-http webserver](https://git.devhack.net/io/member-prod/src/branch/main/tenancy/src-frontend) so members can provision themselves space on the k8s cluster after passing both oidc authentication and keycloak's "are you a paying member" api query
 
 #### Things that don't matter
 
@@ -79,7 +77,7 @@ Stability is a red herring; devhack has two clusters because I wanted to learn t
 
 #### Downstream k8s (member-prod)[^9]
 
-Just read the [README](https://git.devhack.net/a/member-prod#readme) for building out the cluster. DRY? I've been interstitially chipping away at this all year. I started with talos, helm'd traefik and external secrets, got frustrated with lack of networking knowledge, acquired CCNA, really started putting in the hours, [beat](https://git.devhack.net/a/member-prod/src/branch/main/kickflux.sh) flux [with](https://git.devhack.net/a/member-prod/src/branch/main/debugflux.sh) [a](https://git.devhack.net/a/member-prod/commit/1c33c06f4b264ec33b2abab54896b387270c1472) [stick](https://git.devhack.net/a/member-prod/src/branch/main/toggleflux.sh) until I settled on a [model](https://fluxcd.io/flux/installation/configuration/multitenancy/#how-to-configure-flux-multi-tenancy), wrangled inter-cluster auth. Observe[^10] my gradual descent as this became my primary project:
+Just read the [README](https://git.devhack.net/io/member-prod#readme) for building out the cluster. DRY? I've been interstitially chipping away at this all year. I started with talos, helm'd traefik and external secrets, got frustrated with lack of networking knowledge, acquired CCNA, really started putting in the hours, [beat](https://git.devhack.net/io/member-prod/src/branch/main/kickflux.sh) flux [with](https://git.devhack.net/io/member-prod/src/branch/main/debugflux.sh) [a](https://git.devhack.net/io/member-prod/commit/1c33c06f4b264ec33b2abab54896b387270c1472) [stick](https://git.devhack.net/io/member-prod/src/branch/main/toggleflux.sh) until I settled on a [model](https://fluxcd.io/flux/installation/configuration/multitenancy/#how-to-configure-flux-multi-tenancy), wrangled inter-cluster auth. Observe[^10] my gradual descent as this became my primary project:
 
 ![committimes](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/committimes.png)
 
@@ -99,11 +97,13 @@ b4c5779857 	openbao namespace 	two months ago
 (Aug 10, 2025, 08:57 PM PDT)
 ```
 
-(The second clustering broadly represents [rook-ceph-external declaration](https://git.devhack.net/a/member-prod#rook))
+(The second clustering broadly represents [rook-ceph-external declaration](https://git.devhack.net/io/member-prod#rook))
 
 I enjoyed graphing this a lot so I took a break and wrote a featured [go script](https://github.com/graevy/sleep) to automate doing this for arbitrary public git committers.
 
 Anyway, the webserver for tenant autoprovisioning just means I don't have to click approve indefinitely. No python; an opportunity to get into Go. Because traefik's middleware handles the oidc auth flow and gatekeeps `/trigger`, it's pretty simple and insecure and I can just vibe it out. Great.
+
+Didn't even describe the actual calendar. Published this a week ago. *Groan*. Baikal for caldav because it ships containers[^13]. Flask for the gcal reverse proxy because I like to learn new things one-at-a-time.
 
 #### Lessons
 
@@ -118,6 +118,8 @@ Technical lessons? I'm prone to connecting components before testing them. Esche
 I don't know best practices because I'm learning on a weirdly-scaled homelab[^12], so I bias toward what I *hear* are best practices. Trying to focus on security from the start, or trying to declare something that doesn't want to be declared, especially when new, only creates a better result when you can't iterate. For a solo project especially, cheap iteration tolerates bad initial practices.
 
 Anyway, you can't really "finish" a cluster with people in it, so I'm going to go ahead and post this now, and iterate on it later.
+
+[https://io.devhack.gay/proxy/calendar.ics](https://io.devhack.gay/proxy/calendar.ics?token=6c6d335e2af668a0eb1dedf4d24886eae92375a7e20a935b6f01db116d1c1d71)
 
 
 [^2]: we aren't sold on proxmox at the moment because ARM, and we've largely agreed that if we did it over we would use nixos with virt-manager for the talos VMs
@@ -166,4 +168,6 @@ Anyway, you can't really "finish" a cluster with people in it, so I'm going to g
 [^11]: Ivy League intro coding course second assignment: Python 60fps rendered (Qt) Newtonian solar-system model. Zero previous loc written, still bitter
 
 [^12]: "Sysadmin":Server ratio at least 3:1
+
+[^13]: and is weirdly opinionated about using subdomains instead of paths. [Symlink, I guess](https://git.devhack.net/io/k8s/src/branch/main/baikal/image/Dockerfile). Sortof motivated to pick up the project to build something competing in this space
 
