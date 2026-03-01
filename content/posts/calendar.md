@@ -4,9 +4,9 @@ date: 2025-09-10T00:53:58-07:00
 draft: false
 ---
 
-We need to talk about inter-cluster openbao eso sa jwt reviewers.
+This post isn't actually about calendars; I need to talk about inter-cluster openbao eso sa jwt reviewers.
 
-### So you want to self-host a software project
+### So you want to selfhost but you have homelab brainworms
 
 Here are your hosting options:
 
@@ -14,27 +14,24 @@ Here are your hosting options:
 
 - [ ] a $4/mo digitalocean droplet or similar
 
-- [x] the "declarative" multi-tenant kubernetes cluster that you said you'd like to configure 2 years ago so your hackspace members can host their own software but "never got around to doing" because that would take like a year for you to learn how to do properly
+- [x] the "declarative" multi-tenant kubernetes cluster that you said you'd like to configure 2 years ago so your hackspace members can host their own software """reliably""" but "never got around to doing" because that would take like a year for you to learn how to do properly
 
-### Declaration hell
+### Sating my inner autodidact by ignoring complexity when architecting :3
 
-Here's how to declare a calendar! You will need:
+How to configure my calendar:
 
-- terraformed proxmox[^2] configuration
-- Talos VM configs[^3] for the kubernetes clusters
+- Imperative proxmox[^2] hypervisor
+- Talos VM configs[^3] for kubernetes cluster nodes
 - a [stable upstream cluster](https://git.devhack.net/devhack/core-infra) to host crucial[^5] services on
-- a [less stable downstream cluster](https://git.devhack.net/io/member-prod) for members (that's you!) to "selfhost" on
-- a [third repo](https://git.devhack.net/io/tenants)[^6] for flux to [track](https://git.devhack.net/io/member-prod/src/branch/main/tenancy/tenants-repo.yaml) valid cluster tenants
-- a [fourth repo](https://git.devhack.net/io/k8s) for your own tenant k8s manifests
+- a [less stable downstream cluster](https://git.devhack.net/io/member-prod) for members (that's you and me!) to "selfhost" on
+- a [third repo](https://git.devhack.net/io/tenants)[^6] for fluxcd to [track](https://git.devhack.net/io/member-prod/src/branch/main/tenancy/tenants-repo.yaml) cluster tenants
+- a [fourth repo](https://git.devhack.net/io/k8s) for my own tenant k8s manifests
 - your caldav server [manifests](https://git.devhack.net/io/k8s/src/branch/main/apps/baikal/statefulset.yaml)[^7]
-- a [token-access-controlled reverse proxy](https://git.devhack.net/io/k8s/src/branch/main/baikal/proxy) so the caldav server can serve a concatenated .ics blob for compatibility with pesky seattle google calendar polyamorists
+- a [token-access-controlled reverse proxy](https://git.devhack.net/io/k8s/src/branch/main/baikal/proxy) so the caldav server can serve a concatenated `.ics` blob for compatibility with pesky seattle google calendar polyamorists
 - a [go-http webserver](https://git.devhack.net/io/member-prod/src/branch/main/tenancy/src-frontend) so members can provision themselves space on the k8s cluster after passing both oidc authentication and keycloak's "are you a paying member" api query
+- davx5/etar on android
 
 #### Things that don't matter
-
-I've had a long day.
-
-- Getting it right the first time
 
 - Bare-metal/Virtualized Kubernetes
 
@@ -55,6 +52,8 @@ I've had a long day.
 - Flux vs Argo
 
   i'm obnoxiously opinionated against GUIs and even I don't care
+
+- Getting it right the first time
 
 #### Things that matter
 
@@ -101,9 +100,9 @@ b4c5779857 	openbao namespace 	two months ago
 
 I enjoyed graphing this a lot so I took a break and wrote a featured [go script](https://github.com/graevy/sleep) to automate doing this for arbitrary public git committers.
 
-Anyway, the webserver for tenant autoprovisioning just means I don't have to click approve indefinitely. No python; an opportunity to get into Go. Because traefik's middleware handles the oidc auth flow and gatekeeps `/trigger`, it's pretty simple and insecure and I can just vibe it out. Great.
+Anyway, the webserver for tenant autoprovisioning just means I don't have to click approve indefinitely. No python; an opportunity to learn some Go. Because traefik's middleware handles the oidc auth flow and gatekeeps `/trigger`, it's pretty simple and insecure and I can just vibe it out. Great.
 
-Didn't even describe the actual calendar. Published this a week ago. *Groan*. Baikal for caldav because it ships containers[^13]. Flask for the gcal reverse proxy because I like to learn new things one-at-a-time.
+Didn't even describe the actual calendar. Published this a week ago. *Groan*. Baikal for caldav because it ships containers[^13]. Flask for the gcal reverse proxy because I prefer learning serially.
 
 #### Lessons
 
@@ -113,7 +112,7 @@ When I let myself ride the high of project success, I inadvertently tie my ego t
 
 Similarly, I didn't try to maintain the appearance of hard work around others; those relationships would create emotional stakes in productivity. To actually see my progress you would've had to stalk my devhack forgejo and a 6-person infra group chat where I would post every ~week. This is maladaptive; marketing yourself matters, and doing too much alone means not learning from/with seniors/peers.
 
-Technical lessons? I'm prone to connecting components before testing them. Eschewing TDD when you're F10-ing through a debugger works fine for local-only projects, but when you have to redeploy a docker image and attach a debugging container to your webapp's pod just to print debug something you could've tested in isolation 3 steps ago on `localhost:8080`...
+Technical lessons? I'm prone to connecting components before testing them. Eschewing TDD when you're F10-ing through a debugger works fine for local-only projects, but when you have to redeploy a docker image and attach a debugging container to your webapp's pod just to print-debug something you could've tested in isolation 3 steps ago at `localhost:8080`...
 
 I don't know best practices because I'm learning on a weirdly-scaled homelab[^12], so I bias toward what I *hear* are best practices. Trying to focus on security from the start, or trying to declare something that doesn't want to be declared, especially when new, only creates a better result when you can't iterate. For a solo project especially, cheap iteration tolerates bad initial practices.
 
@@ -134,7 +133,7 @@ Anyway, you can't really "finish" a cluster with people in it, so I'm going to g
 
 [^8]: though I started getting PRs last week. mm
 
-[^9]: Because we're going to make member-test eventually, right?
+[^9]: Because we're going to make member-dev eventually, right?
 
 [^10]:
     ```

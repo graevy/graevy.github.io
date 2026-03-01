@@ -28,7 +28,7 @@
             <h2 class="m-0 mb-2 mt-4">
                 <a href="../../posts/" class="text-decoration-none">
                     
-                        graevy
+                        avery
                     
                 </a>
             </h2>
@@ -67,7 +67,121 @@
     <hr />
 </header><div class="container">
     <div class="pl-sm-4 ml-sm-5">
-        
+        <p>I <a href="https://lichess.org/@/avry">play chess</a>. Someone told me a few weeks ago that they &ldquo;knew the rules to chess, even the weird ones&rdquo;, and we embarked on a sort of collaborative chess trivia. Some chess rules pertain to etiquette during the game e.g. &ldquo;no talking&rdquo;. Here are the rules of the board (and not the people around it) in ascending order of obscurity:</p>
+<ul>
+<li>the way the pieces move<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
+<li>the conditions of check and checkmate</li>
+<li>king cannot move into check, is never actually captured</li>
+<li>stalemate</li>
+<li>the specifics (and edge cases) of castling</li>
+<li>promotion specifics (underpromotion, you can have 3+ queens, etc.)</li>
+<li>en passant capture</li>
+<li>triple repetition draw declarations</li>
+<li>the 50/75 move rules<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></li>
+</ul>
+<p>and the last rule, which sent me down this rabbit hole:</p>
+<ul>
+<li>the outcome of a game when one player runs out of time and checkmate is impossible.</li>
+</ul>
+<p>Under United States Chess Federation rules, if you run out of time (this is called flagging), you lose the game. FIDE is more forgiving; flagging when your opponent can&rsquo;t possibly checkmate you is a draw<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. A lone knight+king can never actually deliver checkmate<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. This is a position where checkmate is <em>impossible</em>; a dead position; an <em>unwinnable</em> position.
+\</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/kvn.png" alt=""></p>
+<p>Two knights vs a king can&rsquo;t checkmate an opponent who doesn&rsquo;t intentionally walk their king into a corner. So for all practical purposes, this is a famously drawn endgame<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. However, since misplay could legally result in checkmate, flagging as black in this position would be considered a FIDE loss:</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/kvnn.png" alt=""></p>
+<p>I find this all fantastically interesting. FIDE doesn&rsquo;t assume the skill of the player in this scenario (understandable, given the arguments that would spawn), yet, the FIDE rules do require someone possess the chess acumen to accurately assess board winnability. I have to make two distinctions for you:</p>
+<ul>
+<li>
+<p>There&rsquo;s a big difference between <em>winnable</em> and <em>won</em> in the context of chess endgames. Neither of these boards are won, in the sense that best-play leads to a draw, and humans are generally capable of performing that best-play. However, only the first position is unwinnable, as no state in the remaining game tree contains a checkmate, contrary to the position above.</p>
+</li>
+<li>
+<p>In two knights vs king, the two knights side can win, so the <em>board</em> is winnable, but the only-king can&rsquo;t checkmate, so its <em>side</em> is unwinnable. FIDE&rsquo;s rules say that flagging while your opponent&rsquo;s side is unwinnable is a draw, which is neat. But they also say that an unwinnable <em>board</em> is automatically drawn, even if the players decide otherwise.</p>
+</li>
+</ul>
+<p>We&rsquo;ve gotten really good at recognizing winnability. On Lichess, it&rsquo;s even automated, where it works <a href="https://github.com/lichess-org/lila/issues/9249">&gt;99.9974% of the time!</a> Online games are far more likely to detectably encounter this discrepancy. For many reasons<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, players prefer to play fast chess online and slow chess in person. People are both far more likely to run out of time in speed chess, and far less likely to misjudge a position as decisive in a slow game. Slow chess players also tend to just be better players! Lastly, tournament games, especially high-profile ones, have many players spectating the results, and arbiters reviewing the score sheets.</p>
+<p>But we aren&rsquo;t perfect. It&rsquo;s been burning in the back of my mind for almost 2 years now: have the players ever gotten it wrong? Since the dawn of FIDE and articles 5.2.2 and 6.9, has there even been a high-profile tournament result declared decisive that was actually drawn?</p>
+<p>&hellip;</p>
+<p>We have to talk about unwinnable <em>boards</em>, and how to identify them. Most of the unwinnable boards humans encounter have few pieces left on the board. We&rsquo;ve catalogued every possible permutation of the game when there are 7 or fewer pieces on the board (including kings)<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> into the &ldquo;endgame tablebase&rdquo;. Chess engines can query this database for winnability. However, the chess game tree is <a href="https://en.wikipedia.org/wiki/Shannon_number">very big</a>, and, despite our best efforts, unwinnable boards exist beyond our brute-force horizon.</p>
+<p>Broadly, there are two categories of dead state, corresponding to the two drawing conditions in chess:</p>
+<ul>
+<li>Interaction is impossible. Pieces can&rsquo;t capture, and the 75 move rule will end the game if the players don&rsquo;t agree to a draw.</li>
+<li>Stalemate is inevitable. The current game tree always reduces to stalemate.</li>
+</ul>
+<p>Let&rsquo;s delve into the first category, interactionless games:</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/8pawns.png" alt=""></p>
+<p>Alright, so the kings can&rsquo;t ever confront, the pawns can never move. This one is pretty simple. We can spice things up:</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/22pieces.png" alt=""></p>
+<p>Stacking the pawns prevents both bishop colors from touching. I could construct the board with 18 bishops<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>, 9 on the same color per side.</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/checkers.png" alt=""></p>
+<p>Interestingly enough, lichess is aware of this edge-case enough to end the game pre-emptively. I assume this is because stockfish refuses to play checkers. Again, despite any perceived complexity, these positions are legally drawn, because checkmate is impossible; flagging here doesn&rsquo;t impact the outcome, because by FIDE rules, the game ended before time expired. It&rsquo;s fairly trivial<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup> to conceive that these are drawn.</p>
+<p>Let&rsquo;s add some piece variety<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>:</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/trapped.png" alt=""></p>
+<p>We need not be limited to bishops, they just make composing these a lot easier (they&rsquo;re easily trapped). All of these dead positions are pretty easy to prove are drawn, and therefore, are automatically drawn under FIDE article 6.9. Any sane arbiter would agree. However, &ldquo;impossible to checkmate&rdquo; also applies to the next echelon of complication.</p>
+<p>I&rsquo;ve only shown you category 1. Here&rsquo;s category 2<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>:</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/secondlevel.png" alt=""></p>
+<p>In this impossible position, white has to take the queen, then black has to let white take the knight or encounter stalemate, and then it&rsquo;s familiar black bishops and checkmate is impossible. This means that, from the initial board state, checkmate is impossible to deliver, thus this game is legally drawn, before white takes queen<sup id="fnref1:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>. This position reduces by force to a dead state that is not in tablebases (&gt;7 pieces) through a series of only-moves, and interestingly, <em>requires calculation</em>. Here we start to see the edge case that the most popular rules of chess don&rsquo;t accommodate.</p>
+<p>Let&rsquo;s introduce some formal definitions.</p>
+<p>Let D be the set of all dead board states. The simplest dead board state is 2 pieces &ndash; kings &ndash; call this D<sub>2</sub>. How big is D<sub>2</sub>? A king occupies 9 squares that another king can&rsquo;t, unless it&rsquo;s toward the edge. On an edge, that number is only 6. On a corner, 4. So D<sub>2</sub> has 36*55 + 24*58 + 4*60 = 3612 permutations. D<sub>3</sub> is D<sub>2</sub> but involving a bishop or knight; a major piece can checkmate, and a pawn can become a major piece. So D<sub>3</sub> is at least D<sub>2</sub> * (64 - 2) * 2 = 447888. This comprises the <em>category 1</em> subset of D<sub>3</sub>. Major pieces and pawns can exist in D<sub>3</sub> under the condition that one side is <em>forced</em> to capture (white to move):</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/d3pawn.png" alt=""></p>
+<p>D<sub>3</sub> contains 32 entries with a pawn:</p>
+<ul>
+<li>this position,</li>
+<li>the position where black&rsquo;s king is on f2 instead of f1,</li>
+<li>the same but mirrored to the other 3 corners, those 8 positions but with the colors swapped, and</li>
+<li>those 16 positions, but with the kings swapped such that the board is immediately (0-ply<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup>) stalemate<sup id="fnref1:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>.</li>
+</ul>
+<p>Outside of the corners, D<sub>3</sub> contains major pieces both in corners and on edges where the combination of king+major piece forces a checkmate unless the major piece is captured, with the unfortunate exception of queens far away from kings bloating the category-2 D<sub>3</sub> space:</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/d3farking.png" alt=""></p>
+<p>D<sub>4</sub> only contains boards where black and white have 2 bishops of the same color, or reduce by force to a D<sub>3</sub> position with a minor piece. One minor piece on each side isn&rsquo;t a dead state; observe this D<sub>4</sub> edge case:</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/d4exception.png" alt=""></p>
+<p>So far I&rsquo;ve shown you as far as D<sub>22</sub> (2 kings, 4 bishops, all 16 pawns). Let&rsquo;s observe an element in D<sub>32</sub>:</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/d32ply1.png" alt=""></p>
+<p>In this position, black is forced to capture the white queen, which immediately leads to a stalemate. It took me about 2 hours to compose this &ldquo;trivial&rdquo; 1-ply<sup id="fnref1:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup> stalemate reduction, just to demonstrate to myself that D<sub>32</sub> != ∅. Maybe D<sub>32</sub> has entries that don&rsquo;t involve pins, though I learned they&rsquo;re substantially easier to work with.</p>
+<p>So, knowing that D<sub>32</sub> is nonzero, do you think dead states exist beyond current engine computation horizon? Such a state, should it arise in a tournament setting, could be correctly declared drawn in the event either player flagged. When I was searching for the smallest <em>stable</em> D element containing a pawn, I constructed this state without initially recognizing its beauty:</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/d7pawns.png" alt=""></p>
+<p>This is a dead board state, though it&rsquo;s not immediately obvious. Once you realize that black can triangulate to win the bishop by force, it looks like black can clean house. But in actuality, to capture the bishop is stalemate; this is a dead board state (inside D<sub>7</sub>). It breaks my D-element binary. The only interaction results in stalemate, meaning there&rsquo;s neither zero interaction, nor inevitable stalemate. Maybe describing the interaction as one-sided makes the most sense. Let me add more pieces to exit the purview of tablebases:</p>
+<p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/d7pawnsplus.png" alt=""></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>In certain parts of the world, particularly Eastern Europe, some holdouts permit both sides to move two different pawns one square forward each on the first move, in addition to the normal 1-pawn-2-squares rule.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>If 50 moves occur without a piece capturing or a pawn advancing, either player (or an arbiter) can declare a draw. At 75, the game is drawn (and can retroactively be declared a draw by an arbiter even if players believe it to be decisive). A pawn advance functions as the negentropic unit.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>This is a combination of <a href="https://handbook.fide.com/chapter/E012023">articles 5.2.2 and 6.9</a>. If both sides can&rsquo;t checkmate each other, the game is actually drawn even if neither player is aware of this fact.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>A bishop can&rsquo;t either. 2 bishops can checkmate. 2 knights can checkmate, but can&rsquo;t forcibly checkmate, but can forcibly checkmate if your opponent has a pawn on the board of certain rank/file. A bishop+knight can forcibly checkmate, and is considered the most complicated of all &ldquo;elementary&rdquo; checkmates (pieces vs king) involving walking a king to 2 board corners, 2 competing theoretical frameworks for doing so (deletang&rsquo;s triangles vs the W-maneuvre), and a worst-case scenario of 33 moves to mate. This position occurs in roughly 1/6000 tournament games.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>The only (minimalist) drawn endgame with a greater point disparity I&rsquo;m aware of is: king+queen vs king+a c/f pawn on the 7th rank.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>First, physically moving a piece and pressing the clock in speed chess is really awkward. Sometimes you have to do this multiple times per second. I would judge the fastest &ldquo;playable&rdquo; chess format in person (&ldquo;otb&rdquo;, over the board) is 3+0 or 1+1 (1 minute per side, +1 second gained as increment per move). A mouse+keyboard feels so much better. Second, cheating is much easier online, and also, it&rsquo;s harder to detect cheating in slow games (where players are more likely to make engine moves), so people really like playing their slow games in person where cheating is much harder. Third, most tournaments are for slower games only, so when players want to play speed chess, they go to clubs/bars/parks/online. Fourth, most chess players I talk to agree that the game is nicer to play over the board, in front of someone. It&rsquo;s a more social and enjoyable activity, this sort of mutual quiet contemplative bloodsport.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>You have of course memorized the optimal play required to deliver checkmate as white in 545 moves in <a href="https://lichess.org/editor/8/r6n/8/8/5k2/3K4/7N/3b3Q_b_-_-_0_1?color=white">this position</a>. The 7-base record is 549. We are currently working on 8, and there is already a confirmed 584 depth-to-mate.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p>Conclave&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p>If you aren&rsquo;t a chess player and this isn&rsquo;t trivial: in this position, if white is on a light square, <em>check</em> is impossible. If you&rsquo;ve correctly deduced that white could be forced off a light square by feeding all their bishops to black&rsquo;s king and entering zugzwang, consider: contesting every light square around the white king is impossible (even on the corner, even while using the black king).&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>It&rsquo;s hard constructing chess positions where both players are your adversary. Regardless, this position is impossible to reach, if you&rsquo;re curious, because of the 4 required promotions.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11">
+<p>Black does have the option of stalemating or reducing to zero-interaction.&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:12">
+<p>A ply is a half-move; in chess, a move is when both sides move a piece. For the record, I hate this convention. A move should be when a piece is moved. Anyway, too late now&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
     </div>
 
     

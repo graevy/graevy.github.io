@@ -21,11 +21,10 @@ and the last rule, which sent me down this rabbit hole:
 - the outcome of a game when one player runs out of time and checkmate is impossible.
 
 Under United States Chess Federation rules, if you run out of time (this is called flagging), you lose the game. FIDE is more forgiving; flagging when your opponent can't possibly checkmate you is a draw[^4]. A lone knight+king can never actually deliver checkmate[^3]. This is a position where checkmate is *impossible*; a dead position; an *unwinnable* position. 
-\
 
 ![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/kvn.png)
 
-Two knights vs a king can't checkmate an opponent who doesn't intentionally walk their king into a corner. So for all practical purposes, this is a famously drawn endgame[^12]. However, since misplay could legally result in checkmate, flagging as black in this position would be considered a FIDE loss:
+Two knights vs a king can't checkmate an opponent who doesn't intentionally walk their king into a corner. So for all practical purposes, this is a famously drawn endgame[^12]. However, since misplay could legally result in checkmate, flagging as black in this position would be considered a FIDE loss, because of this boardstate:
 
 ![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/kvnn.png)
 
@@ -62,7 +61,7 @@ Stacking the pawns prevents both bishop colors from touching. I could construct 
 
 Interestingly enough, lichess is aware of this edge-case enough to end the game pre-emptively. I assume this is because stockfish refuses to play checkers. Again, despite any perceived complexity, these positions are legally drawn, because checkmate is impossible; flagging here doesn't impact the outcome, because by FIDE rules, the game ended before time expired. It's fairly trivial[^9] to conceive that these are drawn.
 
-Let's add some piece variety[^6]:
+Let's add some (impossible) piece variety[^6]:
 
 ![](https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/trapped.png)
 
@@ -74,7 +73,7 @@ I've only shown you category 1. Here's category 2[^8]:
 
 In this impossible position, white has to take the queen, then black has to let white take the knight or encounter stalemate, and then it's familiar black bishops and checkmate is impossible. This means that, from the initial board state, checkmate is impossible to deliver, thus this game is legally drawn, before white takes queen[^7]. This position reduces by force to a dead state that is not in tablebases (>7 pieces) through a series of only-moves, and interestingly, *requires calculation*. Here we start to see the edge case that the most popular rules of chess don't accommodate.
 
-Let's introduce some formal definitions.
+### Introducing "formal" definitions
 
 Let D be the set of all dead board states. The simplest dead board state is 2 pieces -- kings -- call this D<sub>2</sub>. How big is D<sub>2</sub>? A king occupies 9 squares that another king can't, unless it's toward the edge. On an edge, that number is only 6. On a corner, 4. So D<sub>2</sub> has 36\*55 + 24\*58 + 4\*60 = 3612 permutations. D<sub>3</sub> is D<sub>2</sub> but involving a bishop or knight; a major piece can checkmate, and a pawn can become a major piece. So D<sub>3</sub> is at least D<sub>2</sub> \* (64 - 2) \* 2 = 447888. This comprises the *category 1* subset of D<sub>3</sub>. Major pieces and pawns can exist in D<sub>3</sub> under the condition that one side is *forced* to capture (white to move):
 
