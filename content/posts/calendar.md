@@ -16,7 +16,7 @@ This post is actually just me boasting about learning[^1] kubernetes, but the [l
 
 ### Sating my inner autodidact by ignoring complexity
 
-How to configure my calendar:
+How to configure a calendar:
 
 - choose your hypervisor. I started with proxmox[^2]
 - write Talos VM configs[^3] for kubernetes cluster nodes
@@ -24,8 +24,8 @@ How to configure my calendar:
 - make a [less stable downstream cluster](https://git.devhack.net/io/member-prod) for members (that's you and me!) to "selfhost" on
 - make a [third repo](https://git.devhack.net/io/tenants)[^6] for fluxcd to [track](https://git.devhack.net/io/member-prod/src/branch/main/tenancy/tenants-repo.yaml) cluster tenants
 - make a [fourth repo](https://git.devhack.net/io/k8s) tracked by the third repo. for personal k8s manifests
-- get caldav server [manifests](https://git.devhack.net/io/k8s/src/branch/main/apps/baikal/statefulset.yaml)[^7]
-- write a [token-access-controlled reverse proxy](https://git.devhack.net/io/k8s/src/branch/main/baikal/proxy) so the caldav server can serve a concatenated `.ics` blob for compatibility with google calendar
+- get caldav server [manifests](https://git.devhack.net/io/k8s/src/branch/main/baikal/caldav.yaml)[^7]
+- write a [token-access-controlled reverse proxy](https://git.devhack.net/io/k8s/src/branch/main/baikal/src-proxy) so the caldav server can serve a concatenated `.ics` blob for compatibility with google calendar
 - write a [`go-http` webserver](https://git.devhack.net/io/member-prod/src/branch/main/tenancy/src-frontend) so members can provision themselves space on the k8s cluster after passing both oidc authentication and keycloak's "are you a paying member" api query
 - install davx5/etar on android for client sync
 - write [backup](https://git.devhack.net/io/k8s/src/branch/main/baikal/src-proxy/pushcalendars.py) [scripts](https://git.devhack.net/io/k8s/src/branch/main/baikal/src-proxy/savecalendars.py) in case *someone* were to wipe your PVCs
@@ -63,7 +63,7 @@ b4c5779857 	openbao namespace 	two months ago
 (Aug 10, 2025, 08:57 PM PDT)
 ```
 
-The first clustering represents openbao inter-cluster auth[^14], and the second [rook-ceph-external declaration](https://git.devhack.net/io/member-prod#rook))
+(The first clustering represents openbao inter-cluster auth[^14], and the second [rook-ceph-external declaration](https://git.devhack.net/io/member-prod#rook))
 
 I enjoyed graphing this a lot so I took a break and wrote a feature-crept [Go script](https://github.com/graevy/sleep) to automate doing this for arbitrary public git committers.
 
