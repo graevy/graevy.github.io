@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en-us"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <title>quatloo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+
+    
+    <link rel="icon" type= image/x-icon href= /favicon.ico>
+
+    
+    
+    
+    <link rel="stylesheet" href="../../css/theme.min.css">
+
+    
+    
+    
+
+    
+</head>
+<body>
+        <div id="content" class="mx-auto"><header class="container mt-sm-5 mt-4 mb-4 mt-xs-1">
+    <div class="row">
+        
+        <div class="col-12 text-center">
+        
+            <h2 class="m-0 mb-2 mt-4">
+                <a href="../../posts/" class="text-decoration-none">
+                    
+                        avery
+                    
+                </a>
+            </h2>
+            <p class="text-muted mb-1">
+                
+                    Wetware Developer
+                
+            </p>
+            <ul id="nav-links" class="list-inline mb-2">
+                
+                
+            </ul>
+            <ul id="nav-social" class="list-inline">
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="https://github.com/graevy" target="_blank">
+                            <i class="fab fa-github fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="mailto:avry@pm.me" target="_blank">
+                            <i class="fas fa-at fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+                    <li class="list-inline-item mr-3">
+                        <a href="../../about/" target="_blank">
+                            <i class="fas fa-address-card fa-1x text-muted"></i>
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+    <hr />
+</header><div class="container">
+    <div class="pl-sm-4 ml-sm-5">
+        <p>I have nothing poignant to say on this topic, but it&rsquo;s very funny to me</p>
+<h3 id="what">What</h3>
+<p><code>kubectl</code>, the only real k8s cli tool and frequent sysadmin cluster entrypoint, offers the <code>get</code> subcommand to &ldquo;Display one or many resources&rdquo; in a cluster. All kubernetes resources live in a namespace, have a type, and can be represented as text<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Because kubernetes clusters are very stateful<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, and tend to involve multiple people, enumerating the contents of a namespace (or all namespaces) is a helpful feature, especially for newer users, who might want to be peeking under the hood.</p>
+<p><a href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/">Kubernetes documentation</a> doesn&rsquo;t actually mention <code>kubectl get all</code> under <code>kubectl get</code> at the time of writing. I will say no more. <a href="https://feloy.medium.com/the-truth-about-kubectl-get-all-49cb533d8b8d">Peek under the hood</a> if you want.</p>
+<h2 id="an-oral-history-of-kubectl-get-all-told-through-kubernetes-and-kubectl-github-issues">An Oral History of <code>kubectl get all</code> told through <code>kubernetes</code> and <code>kubectl</code> GitHub Issues</h2>
+<p><code>kubectl</code> #113: <a href="https://github.com/kubernetes/kubectl/issues/113">Need a command to list all available/existing types (or resources) in a cluster. Kubectl get all does not show all resources such as secrets</a>.</p>
+<p><a href="https://github.com/kubernetes/kubectl/issues/113#issuecomment-369650116">It is intended to not show Secrets when kubectl get all &ndash;all-namespaces</a></p>
+<p><a href="https://github.com/kubernetes/kubectl/issues/113#issuecomment-381333646"><em>closes your git issue</em> use <code>kubectl api-resources --verbs=list -o name | xargs -n 1 kubectl get -o name</code></a></p>
+<p>Why didn&rsquo;t I think of that?</p>
+<p><code>kubernetes</code> #59561: <a href="https://github.com/kubernetes/kubernetes/issues/97347">list custom resources in kubectl get all</a></p>
+<p><a href="https://github.com/kubernetes/kubernetes/pull/59561#discussion_r166928655"><code>all</code> is for user facing resources. CRDs are highly privileged. They don&rsquo;t belong in the all list.</a></p>
+<p><a href="https://github.com/kubernetes/kubernetes/issues/97347#issuecomment-747670240">Rather than have this change be made widely, there is a plugin that exists that provides this functionality.
+https://github.com/corneliusweig/ketall. This is available now and wouldn&rsquo;t need to be added to the core of Kubernetes.</a></p>
+<p><a href="https://github.com/kubernetes/kubernetes/issues/97347#issuecomment-747817323">Using a plugin is great and is a good interim but to stick to the meaning of &ldquo;all&rdquo;. kubectl get all should return all and not exclude anything because all means everything. Happy to work on it if considered worthwhile</a></p>
+<p><a href="https://github.com/kubernetes/kubernetes/issues/97347#issuecomment-747825395">I understand what you are saying but this discussion has happened in this thread #28955 (comment) and more recently in kubernetes/kubectl#151. It is clear that going forward that this will not be implemented. The provided plugin provides the mechanism to get &ldquo;all&rdquo; the resources per namespace.</a></p>
+<p>10 Thumbs down from the peanut gallery. There&rsquo;s just something so heartwarming about getting seven posts into an issue before mentioning that it&rsquo;s been discussed prior. Let&rsquo;s take a look at <code>kubectl</code> #151:</p>
+<p><a href="https://github.com/kubernetes/kubectl/issues/151">kubectl get all does not list all resources in a namespace. As a user performing <code>kubectl get all</code> I expect to see all objects in the current context</a></p>
+<p><a href="https://github.com/kubernetes/kubectl/issues/151#issuecomment-410304193">Why is this closed? Some complex xargs stuff does not mitigate the fact at &ldquo;all&rdquo; is indeed a falsehood that does not return all objects.</a></p>
+<p><a href="https://github.com/kubernetes/kubectl/issues/151#issuecomment-410306145">all will not be extended because of compatibility concerns, and is not referenced in help any longer because it is misleading, as you point out</a></p>
+<p><a href="https://github.com/kubernetes/kubectl/issues/151#issuecomment-410309674">Is there some other literate way to &ldquo;verb&rdquo; all by label?</a></p>
+<p><a href="https://github.com/kubernetes/kubectl/issues/151#issuecomment-439090322"><code>kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -l &lt;label&gt;=&lt;value&gt; -n &lt;namespace&gt;</code>. This also has the disadvantages of not only being unintuitive, but also slow as hell &hellip;</a></p>
+<p><a href="https://github.com/kubernetes/kubectl/issues/151#issuecomment-439162493">that also doesn&rsquo;t work: error: unable to retrieve the complete list of server APIs: external.metrics.k8s.io/v1beta1: the server is currently unable to handle the request, metrics.k8s.io/v1beta1: the server is currently unable to handle the request</a></p>
+<p>As of <code>kubectl</code> github issue #151, complaining about <code>get all</code> is 3% of all <code>kubectl</code> issues. Here&rsquo;s #527:</p>
+<p><a href="https://github.com/kubernetes/kubectl/issues/527">Need a real &ldquo;get-all&rdquo; command</a></p>
+<p><a href="https://github.com/kubernetes/kubectl/issues/527#issuecomment-675173747"><code>kubectl get all</code> is a legacy command and is actually implemented with a hardcoded server side list that is not easy to maintain. There is potential that it will be removed in the future and therefore will not be expanded upon or improved at this time.</a></p>
+<p>This one really gets me. &ldquo;We can&rsquo;t remove this extremely common footgun because we&rsquo;d have to append a string when we added a new resource type.&rdquo; I don&rsquo;t really buy &ldquo;compatibility&rdquo; as a reason for not adding things to <code>all</code> either; breaking changes happen, and I&rsquo;m victim-blaming you. You knew what would happen when you shoved <code>all</code> inside a script.</p>
+<p>Chaser:</p>
+<p><a href="https://github.com/kubernetes/kubernetes/issues/49035"><code>kubectl delete --all</code> does not include uninitialized resources</a></p>
+<h3 id="kgetall"><code>kgetall</code></h3>
+<p>After staring at this <code>xargs</code> incantation I did eventually osmotically grasp that it does a k8s-apiserver <code>get</code> (with the auth and api discovery overhead) for each resource type. This is much faster:</p>
+<pre tabindex="0"><code>kgetall() {
+  kubectl get $(kubectl api-resources --verbs=list --namespaced -o name | grep -iv &#34;^events&#34; | paste -sd,) --show-kind --ignore-not-found &#34;$@&#34;
+}
+</code></pre><p>due to constructing a comma-separated list<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> of resource types to grab in a single <code>kubectl get</code>. Currently I&rsquo;m excluding events (which feel more debug-y than stateful) and usually passing <code>-A</code> for all namespaces.</p>
+<p>When I organically encountered the edge cases of <code>kubectl delete</code> I also eventually wrote</p>
+<pre tabindex="0"><code>kkill() {
+	if [[ $# -eq 2 ]]; then
+      # case: cluster-wide non-namespaced resource 
+		kubectl patch $1 $2 --type merge -p &#39;{&#34;metadata&#34;:{&#34;finalizers&#34;:null}}&#39;
+	else
+		kubectl -n $1 patch $2 $3 --type merge -p &#39;{&#34;metadata&#34;:{&#34;finalizers&#34;:null}}&#39;
+	fi
+}
+</code></pre><p>which, while sloppier due to modality, and rarely used, I am also a little chuffed about.</p>
+<h3 id="i-dont-have-anything-poignant-to-say">I don&rsquo;t have anything poignant to say</h3>
+<p>Explaining how I wrote a bash function that does what <code>kubectl get all</code> should do to my friend Finn at the ol&rsquo; sysadmin stitch-and-bitch<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> and he hits me with &ldquo;you should write a blogpost about that, people love that shit, they&rsquo;ll hire you&rdquo;. Your move ^^</p>
+<p>Codebase warts are funny to me. This one reminds me of generic erasure in Java for some reason<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. I&rsquo;m sure the kubernetes people have gone back and forth on this many times and have perfectly valid reasons for <code>all</code> not meaning <code>all</code>, but I&rsquo;ve also yet to see them.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://garnaudov.com/writings/how-i-think-about-kubernetes/">this</a> is my favorite blogpost for top-down understanding kubernetes.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>I once accidentally applied a manifest without a namespace (landing it in the <code>default</code> namespace) which, if memory serves, included an <code>IngressRoute</code> (a custom resource definition provided by traefik) which broke a website (I think, because its corresponding <code>Service</code> resource referenced the wrong namespace?). I was only able to find it after exploring many of the beautiful solutions proposed in git issues above. Kubernetes is so stateful that in many clusters people will get mad at you for manually applying manifests because you&rsquo;re supposed to commit them and let gitops (flux or argo) control everything. It&rsquo;s like giving half a dozen sysadmins <code>wheel</code> on the same server.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>which would actually be a problem if my cluster had more than <code>$(getconf ARG_MAX)</code> resources (<code>2097152</code> at the moment)&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>aka the <a href="https://devhack.net">/dev/hack</a> open hack night&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>I think probably because it follows the same pattern of baked-in assumptions at the start of the codebase solved by clunky syntactical hurdles that everyone involved has to eventually just accept. Though <code>get all</code> is much easier to fix&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+            </div>
+        </div><footer class="text-center pb-1">
+    <small class="text-muted">
+        Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a>, <a href="https://github.com/austingebauer/devise" target="_blank">Devise</a>
+    </small>
+</footer>
+</body>
+</html>

@@ -81,7 +81,7 @@
 </li>
 </ul>
 <h3 id="sating-my-inner-autodidact-by-ignoring-complexity">Sating my inner autodidact by ignoring complexity</h3>
-<p>How to configure my calendar:</p>
+<p>How to configure a calendar:</p>
 <ul>
 <li>choose your hypervisor. I started with proxmox<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></li>
 <li>write Talos VM configs<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> for kubernetes cluster nodes</li>
@@ -89,8 +89,8 @@
 <li>make a <a href="https://git.devhack.net/io/member-prod">less stable downstream cluster</a> for members (that&rsquo;s you and me!) to &ldquo;selfhost&rdquo; on</li>
 <li>make a <a href="https://git.devhack.net/io/tenants">third repo</a><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> for fluxcd to <a href="https://git.devhack.net/io/member-prod/src/branch/main/tenancy/tenants-repo.yaml">track</a> cluster tenants</li>
 <li>make a <a href="https://git.devhack.net/io/k8s">fourth repo</a> tracked by the third repo. for personal k8s manifests</li>
-<li>get caldav server <a href="https://git.devhack.net/io/k8s/src/branch/main/apps/baikal/statefulset.yaml">manifests</a><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></li>
-<li>write a <a href="https://git.devhack.net/io/k8s/src/branch/main/baikal/proxy">token-access-controlled reverse proxy</a> so the caldav server can serve a concatenated <code>.ics</code> blob for compatibility with google calendar</li>
+<li>get caldav server <a href="https://git.devhack.net/io/k8s/src/branch/main/baikal/caldav.yaml">manifests</a><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></li>
+<li>write a <a href="https://git.devhack.net/io/k8s/src/branch/main/baikal/src-proxy">token-access-controlled reverse proxy</a> so the caldav server can serve a concatenated <code>.ics</code> blob for compatibility with google calendar</li>
 <li>write a <a href="https://git.devhack.net/io/member-prod/src/branch/main/tenancy/src-frontend"><code>go-http</code> webserver</a> so members can provision themselves space on the k8s cluster after passing both oidc authentication and keycloak&rsquo;s &ldquo;are you a paying member&rdquo; api query</li>
 <li>install davx5/etar on android for client sync</li>
 <li>write <a href="https://git.devhack.net/io/k8s/src/branch/main/baikal/src-proxy/pushcalendars.py">backup</a> <a href="https://git.devhack.net/io/k8s/src/branch/main/baikal/src-proxy/savecalendars.py">scripts</a> in case <em>someone</em> were to wipe your PVCs</li>
@@ -120,7 +120,7 @@ a984cabfac 	secrets hell 	two months ago
 d230c4cf73 	that should obviously go in infra 	two months ago 	
 b4c5779857 	openbao namespace 	two months ago	
 (Aug 10, 2025, 08:57 PM PDT)
-</code></pre><p>The first clustering represents openbao inter-cluster auth<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>, and the second <a href="https://git.devhack.net/io/member-prod#rook">rook-ceph-external declaration</a>)</p>
+</code></pre><p>(The first clustering represents openbao inter-cluster auth<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>, and the second <a href="https://git.devhack.net/io/member-prod#rook">rook-ceph-external declaration</a>)</p>
 <p>I enjoyed graphing this a lot so I took a break and wrote a feature-crept <a href="https://github.com/graevy/sleep">Go script</a> to automate doing this for arbitrary public git committers.</p>
 <p>Anyway, the webserver for tenant autoprovisioning just means I don&rsquo;t have to click approve indefinitely. No python; an opportunity to learn some Go. Because traefik&rsquo;s middleware handles the oidc auth flow and gatekeeps <code>/trigger</code>, it&rsquo;s pretty simple and insecure and I can just vibe it out. Great.</p>
 <p>Didn&rsquo;t even describe the actual calendar. Published this a week ago. <em>Groan</em>. Baikal for caldav because it ships containers<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>. Flask for the gcal reverse proxy because I prefer learning serially.</p>
