@@ -67,11 +67,12 @@
     <hr />
 </header><div class="container">
     <div class="pl-sm-4 ml-sm-5">
-        <p>I have nothing poignant to say on this topic, but it&rsquo;s very funny to me</p>
-<h3 id="kubectl"><code>kubectl</code></h3>
-<p>The only real k8s cli tool and frequent sysadmin cluster entrypoint, offers the <code>get</code> subcommand to &ldquo;Display one or many resources&rdquo; in a cluster. All kubernetes resources live in a namespace, have a type, and can be represented as text<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Because kubernetes clusters are very stateful<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, and tend to involve multiple people, enumerating the contents of a namespace (or all namespaces) is a helpful feature, especially for newer users absorbing information.</p>
-<p><code>kubectl get all</code> is a legacy subcommand. <a href="https://feloy.medium.com/the-truth-about-kubectl-get-all-49cb533d8b8d">Peek under the hood</a> if you want. <a href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/">Kubernetes documentation</a> no longer mentions <code>kubectl get all</code> under <code>kubectl get</code> because of&hellip;conflict:</p>
-<h2 id="an-oral-history-of-kubectl-get-all-told-through-kubernetes-and-kubectl-github-issues">An Oral History of <code>kubectl get all</code> told through <code>kubernetes</code> and <code>kubectl</code> GitHub Issues</h2>
+        <p>While kvetching about this at the sysadmin stitch-n-bitch<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> my friend says to me &ldquo;you should write a blogpost, people love that shit, they&rsquo;ll hire you&rdquo;</p>
+<p>I have nothing poignant to say on this topic, but it&rsquo;s very funny to me</p>
+<h2 id="introduction">Introduction</h2>
+<p>The only real k8s cli tool and frequent sysadmin cluster entrypoint, <code>kubectl</code> offers the <code>get</code> subcommand to &ldquo;Display one or many resources&rdquo; in a cluster. All kubernetes resources live in a namespace, have a type, and can be represented as text<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. Because kubernetes clusters are very stateful<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>, and tend to involve multiple people, enumerating namespace contents is a helpful feature, especially for newer users absorbing information.</p>
+<p><code>kubectl get all</code> is a legacy subcommand. <a href="https://feloy.medium.com/the-truth-about-kubectl-get-all-49cb533d8b8d">Peek under the hood</a> if you want. <a href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/">Kubernetes documentation</a> no longer mentions <code>kubectl get all</code> under <code>kubectl get</code> because of&hellip;conflict. Please, dear reader, experience:</p>
+<h1 id="an-oral-history-of-kubectl-get-all-told-through-kubernetes-and-kubectl-github-issues">An Oral History of <code>kubectl get all</code> told through <code>kubernetes</code> and <code>kubectl</code> GitHub Issues</h1>
 <h4 id="kubectl-113-a-humble-beginning"><code>kubectl</code> #113: a humble beginning.</h4>
 <p><a href="https://github.com/kubernetes/kubectl/issues/113">1</a> Need a command to list all available/existing types (or resources) in a cluster. <code>kubectl get all</code> does not show all resources such as secrets.</p>
 <p><a href="https://github.com/kubernetes/kubectl/issues/113#issuecomment-369650116">6</a> It is intended to not show Secrets when <code>kubectl get all --all-namespaces</code>.</p>
@@ -105,12 +106,12 @@
 <p><a href="https://github.com/kubernetes/kubectl/issues/1584#issuecomment-2077449684">11</a> Due to backwards compatibility issues, I don&rsquo;t think we&rsquo;ll ever remove <code>get all</code> entirely. Yes, it will stay as deprecated and we&rsquo;ll continue recommending people to NOT using it. But we can&rsquo;t simply remove.</p>
 <p>Chaser:</p>
 <p><a href="https://github.com/kubernetes/kubernetes/issues/49035"><code>kubectl delete --all</code> does not include uninitialized resources</a></p>
-<p>##<code>kgetall</code></p>
+<h1 id="kgetall"><code>kgetall</code></h1>
 <p>After staring at this <code>xargs</code> incantation I did eventually osmotically grasp that it does a k8s-apiserver <code>get</code> (with the auth and api discovery overhead) for each resource type. This is much faster:</p>
 <pre tabindex="0"><code>kgetall() {
   kubectl get $(kubectl api-resources --verbs=list --namespaced -o name | grep -iv &#34;^events&#34; | paste -sd,) --show-kind --ignore-not-found &#34;$@&#34;
 }
-</code></pre><p>due to constructing a comma-separated list<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> of resource types to grab in a single <code>kubectl get</code>. Currently I&rsquo;m excluding events (which feel more debug-y than stateful) and usually passing <code>-A</code> for all namespaces.</p>
+</code></pre><p>due to constructing a comma-separated list<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> of resource types to grab in a single <code>kubectl get</code>. Currently I&rsquo;m excluding events (which feel more debug-y than stateful) and usually passing <code>-A</code> for all namespaces.</p>
 <p>When I organically encountered the edge cases of <code>kubectl delete</code> I also eventually wrote</p>
 <pre tabindex="0"><code>kkill() {
 	if [[ $# -eq 2 ]]; then
@@ -121,30 +122,32 @@
 	fi
 }
 </code></pre><p>which, while sloppier due to modality, and rarely used, I am also a little chuffed about.</p>
-<h3 id="i-have-one-poignant-thing-to-say">I have one poignant thing to say</h3>
-<p>New users want to see <code>all</code> so they can learn. Eventually, they learn more precise troubleshooting<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>, so the UX pattern becomes stackoverflow&rsquo;s &ldquo;being told not to do what you&rsquo;re trying to do&rdquo;. Trawling these github issues has shown me that this anti-pattern can come from knowledgeable users undervaluing the experience of doing things incorrectly. Every footgun has a story; too awkward to maintain, too load-bearing to remove. When enough of these accumulate, a software project develops a reputation for inaccessibility.</p>
-<p>Codebase warts are funny to me. This one reminds me of generic erasure in Java for some reason<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. I&rsquo;m sure the kubernetes people have gone back and forth on this many times and have perfectly valid reasons for <code>all</code> not meaning <code>all</code>, but I&rsquo;ve yet to see them, but I haven&rsquo;t really looked.</p>
-<p>Anyway. Explaining how I wrote a bash function that does what <code>kubectl get all</code> should do to my friend Finn at the ol&rsquo; sysadmin stitch-and-bitch<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> and he hits me with &ldquo;you should write a blogpost about that, people love that shit, they&rsquo;ll hire you&rdquo;. Your move ^^</p>
+<h3 id="i-have-one-poignant-thing-to-say-on-this-topic">I have one poignant thing to say on this topic</h3>
+<p>Codebase warts are funny. Every footgun has a story; too awkward to maintain, too load-bearing to remove. When enough of these accumulate, a software project develops a reputation for inaccessibility<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. I&rsquo;m sure kubernetes people (kubers?) have a series of perfectly valid reasons for <code>all</code> not meaning <code>all</code>, but the cumulative effect seems indefensible.</p>
+<p>New users want to see <code>all</code> so they can learn. Eventually, they learn more precise troubleshooting<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, so the UX pattern becomes stackoverflow&rsquo;s &ldquo;being told not to do what you&rsquo;re trying to do&rdquo;. Haunting these github issues, I see its shape: established users undervalue doing things incorrectly. Computer touchers consequently bias against tool learnability, probably due to our <a href="https://xkcd.com/2501/">familiarity with silicate geochemistry</a>, but also maybe our meritocracy. Neither the machine interfaces we work in<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>, nor the systems that employ us, prioritize our accommodation or accessibility. Left unchecked, why would our tooling?</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
-<p><a href="https://garnaudov.com/writings/how-i-think-about-kubernetes/">this</a> is my favorite blogpost for top-down understanding kubernetes.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>aka the <a href="https://devhack.net">/dev/hack</a> open hack night&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>It&rsquo;s very easy to accidentally leave something on a cluster. In most clusters I&rsquo;ve collaborated in, people will get mad at you for manually applying manifests because you&rsquo;re supposed to commit them and let gitops (flux or argo) control everything. It&rsquo;s like giving half a dozen sysadmins <code>wheel</code> on the same server.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://garnaudov.com/writings/how-i-think-about-kubernetes/">this</a> is my favorite blogpost for top-down understanding kubernetes.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>which would actually be a problem if my cluster had more than <code>$(getconf ARG_MAX)</code> resources (<code>2097152</code> at the moment)&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>It&rsquo;s very easy to accidentally leave something on a cluster. In most clusters I&rsquo;ve collaborated in, people will get mad at you for manually applying manifests because you&rsquo;re supposed to commit them and let gitops (flux or argo) control everything. It&rsquo;s like giving half a dozen sysadmins <code>wheel</code> on the same server.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
-<p>People learn to not make the kinds of mistakes that accumulate cruft on a cluster. Example: I once accidentally applied a manifest without a namespace (landing it in the <code>default</code> namespace) which included a traefik CR <code>IngressRoute</code> which broke a website (details hazy). <code>kgetall</code> showed me the route, but now I would probably just jump straight to <code>kubectl get -A ingressroute,service</code> piped into <code>rg</code>. Also, to reiterate from <sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, learning e.g. fluxcd (very common tool) almost eliminates this problem class. I still have <code>kgetall</code> because of a few edges.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>which would actually be a problem if my cluster had more than <code>$(getconf ARG_MAX)</code> (<code>2097152</code> at the moment) bytes of resources&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p>I think probably because it follows the same pattern of baked-in assumptions at the start of the codebase solved by clunky syntactical hurdles that everyone involved has to eventually just accept. Though <code>get all</code> is much easier to fix&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>This one reminds me of generic erasure in Java for some reason. I think probably because it follows the same pattern of baked-in assumptions at the start of the codebase solved by clunky syntactical hurdles that everyone involved has to eventually just accept. Though <code>get all</code> is much easier to fix&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
-<p>aka the <a href="https://devhack.net">/dev/hack</a> open hack night&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>People learn to not make the kinds of mistakes that accumulate cruft on a cluster. Example: I once accidentally applied a manifest without a namespace (landing it in the <code>default</code> namespace) which included a traefik CR <code>IngressRoute</code> which broke a website (details hazy). <code>kgetall</code> showed me the route, but now I would probably just jump straight to <code>kubectl get -A ingressroute,service | rg -i &lt;thing&gt;</code>. Also, to reiterate from <sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>, gitops almost eliminates this problem class. I still have <code>kgetall</code> because of a few edges.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>Heidegger’s <em>enframing</em> describes how technological systems impose order on humans, who imagine themselves masters, yet become caught sustaining that order, ultimately experiencing subject-object inversion (postmodern philosophy context) via Günther Anders&rsquo; <em>Promethean shame</em>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
