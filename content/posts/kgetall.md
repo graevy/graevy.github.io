@@ -29,6 +29,8 @@ Why didn't I think of that?
 
 #### `kubectl` #151: center stage
 
+The `kubectl get all` complaint cynosure. Legal precedent set here, hundreds of posts, you get it. As of #151, complaining about `get all` is 3% of all `kubectl` issues.
+
 [1](https://github.com/kubernetes/kubectl/issues/151) `kubectl get all` does not list all resources in a namespace. As a user performing `kubectl get all` I expect to see all objects in the current context
 
 [8](https://github.com/kubernetes/kubectl/issues/151#issuecomment-348206126) There are some rules about which resources must fall under "all", take a look [here](https://github.com/kubernetes/community/blob/master/contributors/devel/kubectl-conventions.md#rules-for-extending-special-resource-alias---all). Are the resources you want covered there?
@@ -44,8 +46,6 @@ Why didn't I think of that?
 [24](https://github.com/kubernetes/kubectl/issues/151#issuecomment-439090322) `kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -l <label>=<value> -n <namespace>`. This also has the disadvantages of not only being unintuitive, but also slow as hell ...
 
 [25](https://github.com/kubernetes/kubectl/issues/151#issuecomment-439162493) that also doesn't work: `error: unable to retrieve the complete list of server APIs: external.metrics.k8s.io/v1beta1: the server is currently unable to handle the request, metrics.k8s.io/v1beta1: the server is currently unable to handle the request`
-
-`kubectl get all` complaint cynosure. Legal precedent is set here. Hundreds of posts. As of #151, complaining about `get all` is 3% of all `kubectl` issues.
 
 #### `kubectl` #527: [Need a real "get-all" command](https://github.com/kubernetes/kubectl/issues/527)
 
@@ -78,9 +78,9 @@ The people have largely given up. But `kubectl get all` cannot be slain:
 
 [11](https://github.com/kubernetes/kubectl/issues/1584#issuecomment-2077449684) Due to backwards compatibility issues, I don't think we'll ever remove `get all` entirely. Yes, it will stay as deprecated and we'll continue recommending people to NOT using it. But we can't simply remove.
 
-Chaser:
+#### Chaser
 
-[`kubectl delete --all` does not include uninitialized resources](https://github.com/kubernetes/kubernetes/issues/49035)
+[`kubectl delete --all` does not include uninitialized resources](https://github.com/kubernetes/kubernetes/issues/49035)[^9]
 
 # `kgetall`
 
@@ -131,4 +131,6 @@ New users want to see `all` so they can learn. Eventually, they learn more preci
 [^7]: In that it's understandable why `kubectl get all` was made and (presumably) why it was left to rot. I give k8s the benefit of the doubt because software is notoriously bad at communicating about itself.
 
 [^8]: Heidegger’s *enframing* describes how technological systems impose order on humans, who imagine themselves masters, yet become caught sustaining that order, ultimately experiencing subject-object inversion (postmodern philosophy context) via Günther Anders' *Promethean shame*
+
+[^9]: while `kubectl delete` [won't delete an object with a finalizer](https://github.com/kubernetes/kubernetes/issues/95983) on it, even using `--force`, but it WILL schedule the object for deletion, and helpfully inform you that it has been deleted.
 

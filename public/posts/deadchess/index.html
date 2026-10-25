@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-us"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<html lang="en-us"><head>
     <title>quatloo</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -83,10 +83,9 @@
 <ul>
 <li>the outcome of a game when one player runs out of time and checkmate is impossible.</li>
 </ul>
-<p>Under United States Chess Federation rules, if you run out of time (this is called flagging), you lose the game. FIDE is more forgiving; flagging when your opponent can&rsquo;t possibly checkmate you is a draw<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. A lone knight+king can never actually deliver checkmate<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. This is a position where checkmate is <em>impossible</em>; a dead position; an <em>unwinnable</em> position.
-\</p>
+<p>Under United States Chess Federation rules, if you run out of time (this is called flagging), you lose the game. FIDE is more forgiving; flagging when your opponent can&rsquo;t possibly checkmate you is a draw<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. A lone knight+king can never actually deliver checkmate<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. This is a position where checkmate is <em>impossible</em>; a dead position; an <em>unwinnable</em> position.</p>
 <p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/kvn.png" alt=""></p>
-<p>Two knights vs a king can&rsquo;t checkmate an opponent who doesn&rsquo;t intentionally walk their king into a corner. So for all practical purposes, this is a famously drawn endgame<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. However, since misplay could legally result in checkmate, flagging as black in this position would be considered a FIDE loss:</p>
+<p>Two knights vs a king can&rsquo;t checkmate an opponent who doesn&rsquo;t intentionally walk their king into a corner. So for all practical purposes, this is a famously drawn endgame<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. However, since misplay could legally result in checkmate, flagging as black in this position would be considered a FIDE loss, because of this boardstate:</p>
 <p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/kvnn.png" alt=""></p>
 <p>I find this all fantastically interesting. FIDE doesn&rsquo;t assume the skill of the player in this scenario (understandable, given the arguments that would spawn), yet, the FIDE rules do require someone possess the chess acumen to accurately assess board winnability. I have to make two distinctions for you:</p>
 <ul>
@@ -113,13 +112,13 @@
 <p>Stacking the pawns prevents both bishop colors from touching. I could construct the board with 18 bishops<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>, 9 on the same color per side.</p>
 <p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/checkers.png" alt=""></p>
 <p>Interestingly enough, lichess is aware of this edge-case enough to end the game pre-emptively. I assume this is because stockfish refuses to play checkers. Again, despite any perceived complexity, these positions are legally drawn, because checkmate is impossible; flagging here doesn&rsquo;t impact the outcome, because by FIDE rules, the game ended before time expired. It&rsquo;s fairly trivial<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup> to conceive that these are drawn.</p>
-<p>Let&rsquo;s add some piece variety<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>:</p>
+<p>Let&rsquo;s add some (impossible) piece variety<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>:</p>
 <p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/trapped.png" alt=""></p>
 <p>We need not be limited to bishops, they just make composing these a lot easier (they&rsquo;re easily trapped). All of these dead positions are pretty easy to prove are drawn, and therefore, are automatically drawn under FIDE article 6.9. Any sane arbiter would agree. However, &ldquo;impossible to checkmate&rdquo; also applies to the next echelon of complication.</p>
 <p>I&rsquo;ve only shown you category 1. Here&rsquo;s category 2<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>:</p>
 <p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/secondlevel.png" alt=""></p>
 <p>In this impossible position, white has to take the queen, then black has to let white take the knight or encounter stalemate, and then it&rsquo;s familiar black bishops and checkmate is impossible. This means that, from the initial board state, checkmate is impossible to deliver, thus this game is legally drawn, before white takes queen<sup id="fnref1:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>. This position reduces by force to a dead state that is not in tablebases (&gt;7 pieces) through a series of only-moves, and interestingly, <em>requires calculation</em>. Here we start to see the edge case that the most popular rules of chess don&rsquo;t accommodate.</p>
-<p>Let&rsquo;s introduce some formal definitions.</p>
+<h3 id="introducing-formal-definitions">Introducing &ldquo;formal&rdquo; definitions</h3>
 <p>Let D be the set of all dead board states. The simplest dead board state is 2 pieces &ndash; kings &ndash; call this D<sub>2</sub>. How big is D<sub>2</sub>? A king occupies 9 squares that another king can&rsquo;t, unless it&rsquo;s toward the edge. On an edge, that number is only 6. On a corner, 4. So D<sub>2</sub> has 36*55 + 24*58 + 4*60 = 3612 permutations. D<sub>3</sub> is D<sub>2</sub> but involving a bishop or knight; a major piece can checkmate, and a pawn can become a major piece. So D<sub>3</sub> is at least D<sub>2</sub> * (64 - 2) * 2 = 447888. This comprises the <em>category 1</em> subset of D<sub>3</sub>. Major pieces and pawns can exist in D<sub>3</sub> under the condition that one side is <em>forced</em> to capture (white to move):</p>
 <p><img src="https://media.githubusercontent.com/media/graevy/graevy.github.io/main/static/images/chess/d3pawn.png" alt=""></p>
 <p>D<sub>3</sub> contains 32 entries with a pawn:</p>
